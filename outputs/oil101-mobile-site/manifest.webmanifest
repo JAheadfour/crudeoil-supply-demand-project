@@ -1,0 +1,8 @@
+{
+  "name": "Oil 101 Knowledge Base",
+  "short_name": "Oil101 KB",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f8f5",
+  "theme_color": "#1f6f5b"
+}

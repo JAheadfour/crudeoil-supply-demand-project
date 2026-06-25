@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter 20 - Managing Oil Price Risk</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">Oil 101 KB</a>
+      <nav class="header-links">
+        <a href="../index.html">All chapters</a>
+        <a href="https://oil101.morgandowney.com/chapters/risk-management">Source</a>
+      </nav>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">Chapter 20</div>
+      <h1>Managing Oil Price Risk</h1>
+      <div class="source-link">Source: <a href="https://oil101.morgandowney.com/chapters/risk-management">https://oil101.morgandowney.com/chapters/risk-management</a></div>
+    </section>
+    <div class="content">
+      <article class="article">
+<h1 id="chapter-20-managing-oil-price-risk-structured-notes">Chapter 20 - Managing Oil Price Risk: Structured Notes</h1>
+<h2 id="45be1df7580c4bd2b180edb92d229e41">学习目标</h2>
+<ul>
+<li>说清本章的核心机制、市场角色或技术逻辑。</li>
+<li>能把主要英文术语和中文解释对应起来。</li>
+<li>能用本章概念解释价格、物流、炼厂、政策或风险管理中的实际问题。</li>
+</ul>
+<h2 id="section-notes">Section Notes</h2>
+<h3 id="why-commodities-are-volatile">Why Commodities Are Volatile</h3>
+<p>Oil volatility 来自低短期弹性、库存限制、地缘政治和金融杠杆。</p>
+<h3 id="the-case-for-hedging">The Case for Hedging</h3>
+<p>Hedging 用可接受成本降低现金流波动，让公司能投资、借款和运营。</p>
+<h3 id="corporate-hedging-objectives-by-firm-type">Corporate Hedging Objectives by Firm Type</h3>
+<p>Producers、refiners、airlines、marketers 的风险暴露和目标不同。</p>
+<h3 id="hedging-instruments">Hedging Instruments</h3>
+<p>Futures、swaps、options、collars 和 physical contracts 各有成本和风险。</p>
+<h3 id="basis-risk">Basis Risk</h3>
+<p>Hedge index 与实际实货价格不完全一致，留下 basis exposure。</p>
+<h3 id="roll-risk-the-metallgesellschaft-lesson">Roll Risk: The Metallgesellschaft Lesson</h3>
+<p>短期 hedge 长期 exposure 需要连续 roll，曲线结构可产生巨大现金流压力。</p>
+<h3 id="value-at-risk-and-expected-shortfall">Value at Risk and Expected Shortfall</h3>
+<p>VaR 和 ES 衡量在置信水平下的潜在损失，但依赖模型假设。</p>
+<h3 id="stress-testing">Stress Testing</h3>
+<p>Stress tests 检查极端但 plausible 场景下的 liquidity 和 solvency。</p>
+<h3 id="counterparty-risk-and-the-isda-framework">Counterparty Risk and the ISDA Framework</h3>
+<p>OTC hedges 依赖 collateral、netting 和 legal documentation 管理信用风险。</p>
+<h3 id="hedge-accounting">Hedge Accounting</h3>
+<p>会计规则决定 hedge gains/losses 如何进入 earnings。</p>
+<h3 id="historical-corporate-hedging-blowups-and-one-famous-gain">Historical Corporate Hedging Blowups and One Famous Gain</h3>
+<p>历史案例说明 hedge 可以保护公司，也可能因结构和 governance 出错而放大风险。</p>
+<h3 id="portfolio-theory-and-the-efficient-frontier">Portfolio Theory and the Efficient Frontier</h3>
+<p>风险管理要看 portfolio covariance，而非孤立单笔交易。</p>
+<h3 id="peer-benchmarking-what-other-producers-are-doing">Peer Benchmarking: What Other Producers Are Doing</h3>
+<p>同行 hedge ratios 和 tenors 可作为参考，但不能替代自身风险目标。</p>
+<h3 id="why-some-companies-do-not-hedge">Why Some Companies Do Not Hedge</h3>
+<p>不 hedge 可能源于股东偏好、成本、会计、流动性或对价格的观点。</p>
+<h3 id="operational-reality">Operational Reality</h3>
+<p>有效 hedge 需要 policy、limits、reporting、systems 和董事会治理。</p>
+<h2 id="exam-traps-and-interpretation-notes">Exam Traps And Interpretation Notes</h2>
+<ul>
+<li>先确认口径：crude、total liquids、products、financial contracts 和 physical barrels 不能混用。</li>
+<li>先看约束：quality、location、time、storage、regulation 和 contract terms 通常比单一 headline price 更重要。</li>
+<li>先问谁承担风险：producer、refiner、trader、shipper、consumer 和 government 的目标函数不同。</li>
+</ul>
+<p>---</p>
+<h1 id="chapter-20-managing-oil-price-risk-formula-and-concept-bank">Chapter 20 - Managing Oil Price Risk: Formula And Concept Bank</h1>
+<table><tbody>
+<tr><th>Item</th><th>Definition / Formula</th><th>Common Confusion / Decision Cue</th></tr>
+<tr><td>Hedge ratio</td><td>Hedged volume / exposed volume。</td><td>100% hedge 不一定最优。</td></tr>
+<tr><td>Basis risk</td><td>Local physical price - hedge index price 的不确定性。</td><td>Flat price hedge 不能消除 location/quality risk。</td></tr>
+<tr><td>Roll risk</td><td>到期合约换月至远月时面临价差和现金流风险。</td><td>长期暴露不宜机械短期期货滚动。</td></tr>
+<tr><td>VaR</td><td>给定置信水平和期限的最大预期损失阈值。</td><td>尾部之外损失看不到。</td></tr>
+<tr><td>Expected shortfall</td><td>超过 VaR 后的平均损失。</td><td>比 VaR 更关注尾部严重性。</td></tr>
+<tr><td>Stress test</td><td>假设极端价格、basis、liquidity 和 counterparty 情景。</td><td>不是概率预测，而是生存测试。</td></tr>
+<tr><td>ISDA netting</td><td>OTC 衍生品主协议和净额结算安排。</td><td>法律可执行性很关键。</td></tr>
+<tr><td>Collar hedge</td><td>买保护性 option 同时卖另一侧 option 降低成本。</td><td>会限制收益空间。</td></tr>
+</tbody></table>
+<h2 id="how-to-use-this-bank">How To Use This Bank</h2>
+<ul>
+<li>用 Item 作为主动回忆提示。</li>
+<li>先复述 definition/formula，再说明 common confusion 或 decision cue。</li>
+<li>遇到价格或操作题时，把概念放回 quality、location、time、contract 和 regulation 五个约束中。</li>
+</ul>
+<p>---</p>
+<h1 id="chapter-20-managing-oil-price-risk-review-tools">Chapter 20 - Managing Oil Price Risk: Review Tools</h1>
+<h2 id="active-recall">Active Recall</h2>
+<ol>
+<li>什么是 Hedge ratio？</li>
+</ol>
+<ul>
+<li>Hedged volume / exposed volume。</li>
+</ul>
+<ol>
+<li>什么是 Basis risk？</li>
+</ol>
+<ul>
+<li>Local physical price - hedge index price 的不确定性。</li>
+</ul>
+<ol>
+<li>什么是 Roll risk？</li>
+</ol>
+<ul>
+<li>到期合约换月至远月时面临价差和现金流风险。</li>
+</ul>
+<ol>
+<li>什么是 VaR？</li>
+</ol>
+<ul>
+<li>给定置信水平和期限的最大预期损失阈值。</li>
+</ul>
+<ol>
+<li>什么是 Expected shortfall？</li>
+</ol>
+<ul>
+<li>超过 VaR 后的平均损失。</li>
+</ul>
+<ol>
+<li>什么是 Stress test？</li>
+</ol>
+<ul>
+<li>假设极端价格、basis、liquidity 和 counterparty 情景。</li>
+</ul>
+<ol>
+<li>什么是 ISDA netting？</li>
+</ol>
+<ul>
+<li>OTC 衍生品主协议和净额结算安排。</li>
+</ul>
+<ol>
+<li>什么是 Collar hedge？</li>
+</ol>
+<ul>
+<li>买保护性 option 同时卖另一侧 option 降低成本。</li>
+</ul>
+<h2 id="mini-quiz">Mini Quiz</h2>
+<ol>
+<li>用两句话解释 <code>Why Commodities Are Volatile</code> 为什么对本章重要。</li>
+<li>用两句话解释 <code>The Case for Hedging</code> 为什么对本章重要。</li>
+<li>用两句话解释 <code>Corporate Hedging Objectives by Firm Type</code> 为什么对本章重要。</li>
+<li>用两句话解释 <code>Hedging Instruments</code> 为什么对本章重要。</li>
+<li>用两句话解释 <code>Basis Risk</code> 为什么对本章重要。</li>
+<li>用两句话解释 <code>Roll Risk: The Metallgesellschaft Lesson</code> 为什么对本章重要。</li>
+<li>选两个概念，说明它们如何共同影响 price differential、margin 或 risk。</li>
+</ol>
+<h2 id="answer-key">Answer Key</h2>
+<ul>
+<li>前 6 题应覆盖对应 section 的机制、参与者和约束。</li>
+<li>最后一题的好答案要同时提到至少两个维度，例如 quality + location、time + storage、policy + demand。</li>
+</ul>
+<h2 id="can-i-explain-this">Can I Explain This?</h2>
+<ul>
+<li>I can explain <code>Hedge ratio</code> and avoid its common confusion.</li>
+<li>I can explain <code>Basis risk</code> and avoid its common confusion.</li>
+<li>I can explain <code>Roll risk</code> and avoid its common confusion.</li>
+<li>I can explain <code>VaR</code> and avoid its common confusion.</li>
+<li>I can explain <code>Expected shortfall</code> and avoid its common confusion.</li>
+<li>I can explain <code>Stress test</code> and avoid its common confusion.</li>
+<li>I can explain <code>ISDA netting</code> and avoid its common confusion.</li>
+<li>I can explain <code>Collar hedge</code> and avoid its common confusion.</li>
+</ul>
+<h2 id="common-error-log">Common Error Log</h2>
+<table><tbody>
+<tr><th>Error</th><th>Correction</th></tr>
+<tr><td>只背术语，不看约束</td><td>每个概念都要放回质量、地点、时间、合同或监管背景中</td></tr>
+<tr><td>把 financial price 当成 physical reality</td><td>先确认是否有交割、库容、物流或规格限制</td></tr>
+<tr><td>忽略区域差异</td><td>Oil markets 是全球连接但局部受限的网络</td></tr>
+</tbody></table>
+
+<nav class="page-nav">
+<a href="part-two-oil-markets--19-options.html">&larr; Chapter 19<br><strong>Forward Oil Markets: Options</strong></a>
+<a href="part-three-modern-era--21-shale-revolution.html">Chapter 21 &rarr;<br><strong>The Shale Revolution</strong></a>
+</nav>
+
+      </article>
+      <aside class="toc">
+        <strong>On this page</strong>
+        <a href="#45be1df7580c4bd2b180edb92d229e41">学习目标</a>
+        <a href="#section-notes">Section Notes</a>
+        <a href="#exam-traps-and-interpretation-notes">Exam Traps And Interpretation Notes</a>
+        <a href="#how-to-use-this-bank">How To Use This Bank</a>
+        <a href="#active-recall">Active Recall</a>
+        <a href="#mini-quiz">Mini Quiz</a>
+        <a href="#answer-key">Answer Key</a>
+        <a href="#can-i-explain-this">Can I Explain This?</a>
+        <a href="#common-error-log">Common Error Log</a>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

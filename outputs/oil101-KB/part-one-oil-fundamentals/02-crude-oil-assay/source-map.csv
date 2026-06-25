@@ -1,0 +1,11 @@
+source_id,source_type,title,url_or_path,chapter_section,coverage,notes
+S1,web chapter,A Crude Oil Assay,https://oil101.morgandowney.com/chapters/crude-oil-assay,chapter title and description,processed,"Web extraction lines 4-10"
+S1,web chapter,A Crude Oil Assay,https://oil101.morgandowney.com/chapters/crude-oil-assay,What Is a Crude Oil Assay,processed,"Assay purpose and cargo quality consequences; web extraction lines 11-18"
+S1,web chapter,A Crude Oil Assay,https://oil101.morgandowney.com/chapters/crude-oil-assay,Fields Streams and Blends,processed,"Field/stream/blend logic and marker examples; web extraction lines 19-40"
+S1,web chapter,A Crude Oil Assay,https://oil101.morgandowney.com/chapters/crude-oil-assay,Density,processed,"Density measures, API formula, hydrometer, and API classes; web extraction lines 41-80"
+S1,web chapter,A Crude Oil Assay,https://oil101.morgandowney.com/chapters/crude-oil-assay,Sulfur,processed,"Sweet/medium-sour/sour logic; web extraction lines 81-90"
+S1,web chapter,A Crude Oil Assay,https://oil101.morgandowney.com/chapters/crude-oil-assay,Crude Quality Matrix,processed,"API and sulfur quality quadrants; web extraction lines 91-105"
+S1,web chapter,A Crude Oil Assay,https://oil101.morgandowney.com/chapters/crude-oil-assay,Other assay properties,processed,"TAN, metals, viscosity, pour point, RVP, carbon residue, nitrogen, salt, BS&W; web extraction lines 106-118"
+S1,web chapter,A Crude Oil Assay,https://oil101.morgandowney.com/chapters/crude-oil-assay,Price implications,processed,"Yield calculation and price differential logic; web extraction lines 119-122"
+S2,web table of contents,Table of Contents,https://oil101.morgandowney.com/chapters,book navigation,processed,"Part and chapter sequence; web extraction lines 4-25"
+S1-PDF,web download target,1st edition 2009 PDF,https://oil101.morgandowney.com/api/download/pdf,legacy PDF,not processed,"The download target redirected to login during the trial run"

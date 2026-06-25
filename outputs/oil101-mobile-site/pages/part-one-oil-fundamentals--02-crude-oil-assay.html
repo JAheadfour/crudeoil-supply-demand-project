@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter 2 - A Crude Oil Assay</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">Oil 101 KB</a>
+      <nav class="header-links">
+        <a href="../index.html">All chapters</a>
+        <a href="https://oil101.morgandowney.com/chapters/crude-oil-assay">Source</a>
+      </nav>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">Chapter 2</div>
+      <h1>A Crude Oil Assay</h1>
+      <div class="source-link">Source: <a href="https://oil101.morgandowney.com/chapters/crude-oil-assay">https://oil101.morgandowney.com/chapters/crude-oil-assay</a></div>
+    </section>
+    <div class="content">
+      <article class="article">
+<h1 id="chapter-2-a-crude-oil-assay-structured-notes">Chapter 2 - A Crude Oil Assay: Structured Notes</h1>
+<h2 id="f41d26329ddc4d4d8399edb04486ed9b">学习目标</h2>
+<p>读完这一章后，应该能够：</p>
+<ul>
+<li>解释 crude oil assay 是什么，以及为什么它会直接影响成交价格。</li>
+<li>区分 field、stream、blend 和 marker crude。</li>
+<li>在 API gravity、specific gravity 和 metric density 之间转换。</li>
+<li>用 API gravity 和 sulfur content 判断一桶原油在质量矩阵中的位置。</li>
+<li>识别 TAN、metals、viscosity、pour point、RVP、carbon residue、salt、BS&amp;W 等 assay 项目对炼厂的意义。</li>
+</ul>
+<h2 id="1-crude-oil-assay">1. Crude Oil Assay 是什么</h2>
+<p>核心 idea：原油不是标准化商品，而是一组化学和物理属性的组合。Assay 是生产方或第三方给出的质量说明书，帮助炼厂估计这批 crude 能炼出什么产品、需要付出多少处理成本、以及是否符合采购合同。</p>
+<table><tbody>
+<tr><th>概念</th><th>定义</th><th>为什么重要</th></tr>
+<tr><td>Crude oil grade</td><td>一种具有相对稳定特性的原油品级</td><td>不同 grade 的收益和加工成本不同</td></tr>
+<tr><td>Assay</td><td>对某一 grade 或 cargo 的性质分析</td><td>炼厂用它做采购、调油和装置排程</td></tr>
+<tr><td>Off spec</td><td>实际交付质量偏离合同或 assay 规格</td><td>可能导致折价、改运、延迟或拒收</td></tr>
+<tr><td>Distressed cargo</td><td>没有合适买家或接收方案的原油船货</td><td>通常需要大幅折价才容易成交</td></tr>
+<tr><td>Product yield</td><td>炼后汽油、柴油、航煤、渣油等产品比例</td><td>决定这桶原油对炼厂的收入潜力</td></tr>
+</tbody></table>
+<p>炼厂最关心的不是“这桶油叫什么名字”，而是 assay 里反映出的经济结果：轻质产品能产多少，硫、酸、金属、盐、水和沉积物会带来多少处理成本。</p>
+<h2 id="2-fields-streams-blends-markers">2. Fields、Streams、Blends、Markers</h2>
+<p>原油不是从地下湖泊中抽出来的，而是存在于多孔岩石结构中。一个 oilfield 可以包含一个或多个 reservoir，由一组 wells 开采。</p>
+<table><tbody>
+<tr><th>层级</th><th>含义</th><th>学习重点</th></tr>
+<tr><td>Field</td><td>同一地质结构上的油田或油藏组合</td><td>是生产的地质来源</td></tr>
+<tr><td>Stream</td><td>一个或多个井口产出的原油经管线汇集后的流</td><td>性质相对稳定，但会随油田生命周期慢慢变化</td></tr>
+<tr><td>Blend</td><td>多个 stream 混合后形成的商业品级</td><td>便于形成足够交易量，也能平滑极端性质</td></tr>
+<tr><td>Marker crude</td><td>市场用作定价参照的代表性原油</td><td>WTI、Brent、Dubai、Maya 等承担基准角色</td></tr>
+</tbody></table>
+<p>例子：</p>
+<table><tbody>
+<tr><th>Marker</th><th>类型</th><th>典型质量信号</th></tr>
+<tr><td>WTI</td><td>美国轻质低硫 streams 的聚合，Cushing 交割中心相关</td><td>Light-sweet</td></tr>
+<tr><td>Brent</td><td>北海多个 streams 的 blend</td><td>Light-sweet</td></tr>
+<tr><td>Dubai</td><td>Middle East sour benchmark</td><td>Medium/sour</td></tr>
+<tr><td>Maya</td><td>Mexican heavy-sour blend</td><td>Heavy-sour</td></tr>
+<tr><td>Urals</td><td>俄罗斯出口 blend</td><td>Medium-sour</td></tr>
+</tbody></table>
+<p>商业逻辑有两层：第一，足够的 blend 体量才能支持长距离管线和油轮经济；第二，混合可以降低单一 stream 过高 sulfur、TAN 或其他极端属性带来的交易障碍。</p>
+<h2 id="3-density">3. Density: 最重要的物理性质</h2>
+<p>核心 idea：density 是 assay 中最重要的单一物理性质，因为它暗示原油分子结构和炼后产品结构。通常 lighter crude 含有更多较短、较简单的烃分子，更容易产出 gasoline、diesel、jet fuel 等高价值产品；heavy crude 则更容易留下 residual fuel、bitumen 或 coke 相关问题。</p>
+<h3 id="1d8c42f73fc74bac8a537aed42726f70">三种密度表达</h3>
+<table><tbody>
+<tr><th>指标</th><th>英文</th><th>含义</th><th>直觉</th></tr>
+<tr><td>公制密度</td><td>Metric density</td><td>kg/m3，水约为 1000 kg/m3</td><td>工程和科学表达</td></tr>
+<tr><td>比重</td><td>Specific gravity, SG</td><td>原油密度除以水密度</td><td>SG &lt; 1 会浮在水上</td></tr>
+<tr><td>API 度</td><td>API gravity</td><td>American Petroleum Institute 的倒置尺度</td><td>数字越大，油越轻</td></tr>
+</tbody></table>
+<p>API gravity 的直觉陷阱非常重要：API 数字越高，密度越低。它是一个倒置指标，不是“越高越重”。</p>
+<h3 id="01a5225689094bb5921f1d2f4e135242">关键公式</h3>
+<pre><code>
+API gravity = 141.5 / SG - 131.5
+SG = 141.5 / (API gravity + 131.5)
+Density kg/m3 ≈ SG * 1000
+</code></pre>
+<p>WTI 示例：若 API gravity 为 39.6，则 SG 约为 0.827，密度约为 827 kg/m3。一桶 42 US gallons 约等于 159 liters，所以一桶 WTI 的质量约为 131 kg，而同体积水约为 159 kg。</p>
+<h3 id="hydrometer">Hydrometer 的原理</h3>
+<p>Hydrometer 是现场测量比重或 API gravity 的简单仪器。它利用 Archimedes principle：仪器在液体中下沉到“排开液体重量等于仪器自身重量”的位置。液体越密，hydrometer 浮得越高；液体越轻，则沉得更低。实际读数通常要校正到 60 degrees F 的参考温度。</p>
+<h3 id="api-density">API density 分类</h3>
+<table><tbody>
+<tr><th>Class</th><th>API gravity</th><th>炼厂含义</th></tr>
+<tr><td>Light</td><td>&gt;31 degrees API</td><td>通常产出更多汽油、柴油、航煤，较容易加工</td></tr>
+<tr><td>Medium</td><td>22-31 degrees API</td><td>产品结构较均衡，多数炼厂能处理</td></tr>
+<tr><td>Heavy</td><td>10-22 degrees API</td><td>常需要 coker 或 hydrocracker 来减少低价值残渣</td></tr>
+<tr><td>Extra-heavy</td><td>&lt;10 degrees API</td><td>比水还重，运输常需要 diluent 或加热</td></tr>
+</tbody></table>
+<p>注意：市场命名不一定等于严格工程分类。判断质量时看 assay 数字，而不是只看商品名。</p>
+<h2 id="4-sweet-versus-sour-sulfur-content">4. Sweet versus Sour: Sulfur Content</h2>
+<p>核心 idea：sulfur 是原油质量的第二根支柱。硫越高，通常价值越低，因为它减少有效烃含量、增加腐蚀风险，并在燃烧或产品销售前带来环保处理成本。</p>
+<p>硫影响价值的三条路径：</p>
+<ul>
+<li>Energy/value：硫占据一部分 barrel，降低可转化为高价值烃产品的比例。</li>
+<li>Corrosion：硫化物会腐蚀管线、储罐和炼厂装置。</li>
+<li>Regulation：燃料中的硫会形成污染物，炼厂必须通过 hydrotreating 等工艺脱硫。</li>
+</ul>
+<table><tbody>
+<tr><th>Class</th><th>Sulfur content by weight</th><th>典型例子</th></tr>
+<tr><td>Sweet</td><td>&lt;0.5%</td><td>WTI、Brent、Bonny Light</td></tr>
+<tr><td>Medium-sour</td><td>0.5%-2.0% 左右</td><td>Urals、Oman Blend</td></tr>
+<tr><td>Sour</td><td>约 2.0% 及以上</td><td>Dubai、Arab Heavy、Maya</td></tr>
+</tbody></table>
+<p>Sulfur 往往更容易和较大、较复杂的烃分子绑定，所以极端质量常见组合是 light-sweet 或 heavy-sour。汽油、柴油、航煤等较轻馏分天然硫含量通常低于 residual fuel 和 bitumen。</p>
+<h2 id="5-the-crude-quality-matrix">5. The Crude Quality Matrix</h2>
+<p>核心 idea：把 API gravity 和 sulfur content 放在二维图上，就得到原油质量矩阵。横轴通常从 heavy 到 light，纵轴从 sweet 到 sour。最容易加工、通常溢价最高的是 light-sweet；最难加工、常有折价的是 heavy-sour。</p>
+<table><tbody>
+<tr><th>Quadrant</th><th>例子</th><th>经济含义</th></tr>
+<tr><td>Light-sweet</td><td>WTI、Brent、Bonny Light、Saharan Blend</td><td>高价值产品 yield 好，能被很多炼厂接收</td></tr>
+<tr><td>Light-sour</td><td>Oman Blend、Arab Extra Light</td><td>中间馏分潜力好，但需要脱硫</td></tr>
+<tr><td>Heavy-sweet</td><td>Doba、Dalia 等较少见例子</td><td>低硫是优点，但常被高 TAN 或其他问题抵消</td></tr>
+<tr><td>Heavy-sour</td><td>Maya、Arab Heavy、Dubai、Western Canadian Select</td><td>单桶价格低，但只有复杂炼厂能有效处理</td></tr>
+</tbody></table>
+<p>炼厂 complexity 决定买家范围。拥有 coking、hydrocracking、deep hydrotreating 能力的复杂炼厂可以购买折价 heavy-sour crude，并通过装置能力把“难处理”变成利润空间。缺少这些装置的简单炼厂更偏好 light-sweet crude。</p>
+<h2 id="6-assay-sheet">6. Assay Sheet 的其他关键项目</h2>
+<table><tbody>
+<tr><th>项目</th><th>英文</th><th>含义</th><th>炼厂影响</th></tr>
+<tr><td>总酸值</td><td>Total Acid Number, TAN</td><td>中和 1 gram crude 所需 KOH 的 mg 数</td><td>TAN 高会带来 naphthenic acid corrosion 和折价</td></tr>
+<tr><td>金属</td><td>Vanadium, nickel</td><td>重馏分中常见的催化剂毒物</td><td>会降低 catalyst 寿命和装置效率</td></tr>
+<tr><td>黏度</td><td>Viscosity</td><td>原油流动难易程度，常用 cSt 表示</td><td>高黏度原油运输和进料可能要加热或稀释</td></tr>
+<tr><td>倾点</td><td>Pour point</td><td>原油还能流动的最低温度</td><td>冷区管线和油轮运输风险高</td></tr>
+<tr><td>雷德蒸气压</td><td>Reid Vapor Pressure, RVP</td><td>轻端挥发性，单位常为 psi</td><td>高 RVP 表示轻端多，但产品环保规格会限制挥发</td></tr>
+<tr><td>残炭</td><td>Carbon residue</td><td>加工中形成 coke 的倾向</td><td>影响 coker 负荷和残渣处理</td></tr>
+<tr><td>沥青质</td><td>Asphaltenes</td><td>最重、芳香性强的分子群</td><td>可能堵管、增加 coke 问题，并与深色相关</td></tr>
+<tr><td>氮</td><td>Nitrogen</td><td>原油中的氮化合物</td><td>会形成污染物，也会毒化 catalysts</td></tr>
+<tr><td>盐</td><td>Salt</td><td>进入常压塔前必须在 desalter 中去除</td><td>否则会造成下游腐蚀</td></tr>
+<tr><td>基本沉积物和水</td><td>BS&amp;W</td><td>水、泥砂和杂质的总括指标</td><td>通常希望进厂低于 1% by weight</td></tr>
+</tbody></table>
+<p>TAN 的规则：多数炼厂偏好 TAN under 0.5；around 0.7 and above 往往会被视为高度酸性并要求折价或特殊防腐能力。Doba 等高 TAN crude 是典型例子。</p>
+<h2 id="7-assay">7. 为什么 Assay 最终会变成价格差</h2>
+<p>原油价格差不是抽象的“好坏”标签，而是 refinery yield calculation 的结果：</p>
+<pre><code>
+Refinery value ≈ expected product revenue - processing costs - quality/operational risk
+</code></pre>
+<p>Expected product revenue 取决于汽油、柴油、航煤、燃料油等产品价格和产率。Processing costs 取决于 sulfur、metals、acid、viscosity、salt、water、carbon residue 等问题。炼厂装置越复杂，越有能力吃下折价原油；当全球 coking 或 hydrotreating 能力紧张时，heavy-sour 折价会扩大。当复杂炼厂有闲置能力时，折价可能收窄。</p>
+<h2 id="20dcc314d8914536996b2a45ce5407cb">常见误区</h2>
+<ul>
+<li>把 API gravity 当作普通密度读数：API 越高，原油越轻，不是越重。</li>
+<li>只凭名称判断质量：必须看 assay 中的 API、sulfur、TAN 等数字。</li>
+<li>认为 sweet crude 一定总是便宜或贵：价格还取决于产品市场、炼厂配置和地区物流。</li>
+<li>忽略温度参考：密度和体积会随温度变化，行业通常在标准参考温度下报告。</li>
+<li>把 heavy-sour 视为“没人要”：它不是不能用，而是需要复杂炼厂和足够折价。</li>
+</ul>
+<p>---</p>
+<h1 id="chapter-2-formula-and-concept-bank">Chapter 2 - Formula And Concept Bank</h1>
+<h2 id="1-api-gravity-from-specific-gravity">1. API Gravity From Specific Gravity</h2>
+<pre><code>
+API gravity = 141.5 / SG - 131.5
+</code></pre>
+<ul>
+<li>Variables:</li>
+<li>API gravity: American Petroleum Institute gravity, in degrees API.</li>
+<li>SG: specific gravity, the density of the crude divided by the density of water at the reference condition.</li>
+<li>Use when: converting a measured or reported specific gravity into the oil market&#39;s common light/heavy indicator.</li>
+<li>Interpretation: higher API gravity means lower density and usually lighter crude.</li>
+<li>Edge case: API below 10 means the liquid is denser than water.</li>
+</ul>
+<p>Minimal example:</p>
+<pre><code>
+If SG = 0.850:
+API = 141.5 / 0.850 - 131.5 = 34.97 degrees API
+</code></pre>
+<h2 id="2-specific-gravity-from-api-gravity">2. Specific Gravity From API Gravity</h2>
+<pre><code>
+SG = 141.5 / (API gravity + 131.5)
+</code></pre>
+<ul>
+<li>Use when: converting a quoted API gravity into density logic.</li>
+<li>Assumption: values are reported at the standard reference condition, commonly 60 degrees F and 1 atmosphere.</li>
+</ul>
+<p>Minimal example:</p>
+<pre><code>
+If API = 39.6:
+SG = 141.5 / (39.6 + 131.5) = 0.827
+</code></pre>
+<h2 id="3-metric-density-approximation">3. Metric Density Approximation</h2>
+<pre><code>
+Density in kg/m3 ≈ SG * 1000
+</code></pre>
+<ul>
+<li>Variables:</li>
+<li>SG: specific gravity.</li>
+<li>1000 kg/m3: approximate density of water under the relevant reference convention.</li>
+<li>Use when: translating oil-market API/SG language into engineering density.</li>
+<li>Edge case: real commercial calculations use precise reference tables and temperature correction; this is a study-level approximation.</li>
+</ul>
+<p>Minimal example:</p>
+<pre><code>
+If SG = 0.827:
+Density ≈ 0.827 * 1000 = 827 kg/m3
+</code></pre>
+<h2 id="4-barrel-mass-estimate">4. Barrel Mass Estimate</h2>
+<pre><code>
+Mass per barrel ≈ density * 0.158987
+</code></pre>
+<ul>
+<li>Variables:</li>
+<li>Mass is in kg per 42-US-gallon barrel.</li>
+<li>Density is in kg/m3.</li>
+<li>0.158987 m3 is approximately one oil barrel.</li>
+<li>Use when: estimating why lighter crude weighs less than an equal volume of water.</li>
+</ul>
+<p>Minimal example:</p>
+<pre><code>
+WTI density ≈ 827 kg/m3
+Mass ≈ 827 * 0.158987 = 131.5 kg per barrel
+</code></pre>
+<h2 id="5-api-density-classes">5. API Density Classes</h2>
+<table><tbody>
+<tr><th>Class</th><th>API gravity cue</th><th>Decision cue</th></tr>
+<tr><td>Light</td><td>&gt;31 degrees API</td><td>Easier high-value product yield</td></tr>
+<tr><td>Medium</td><td>22-31 degrees API</td><td>Broad refinery compatibility</td></tr>
+<tr><td>Heavy</td><td>10-22 degrees API</td><td>More residue; complex conversion units matter</td></tr>
+<tr><td>Extra-heavy</td><td>&lt;10 degrees API</td><td>Denser than water; transport often needs diluent or heat</td></tr>
+</tbody></table>
+<p>Common confusion: API is inverted. Moving from 20 degrees API to 40 degrees API means moving to lighter, not heavier, crude.</p>
+<h2 id="6-sulfur-classes">6. Sulfur Classes</h2>
+<table><tbody>
+<tr><th>Class</th><th>Sulfur by weight</th><th>Decision cue</th></tr>
+<tr><td>Sweet</td><td>&lt;0.5%</td><td>Lower corrosion and desulfurization burden</td></tr>
+<tr><td>Medium-sour</td><td>roughly 0.5%-2.0%</td><td>Requires sulfur-aware refinery economics</td></tr>
+<tr><td>Sour</td><td>around/above 2.0%</td><td>Hydrotreating and corrosion controls become central</td></tr>
+</tbody></table>
+<p>Edge case: the 2.0% boundary is often rounded in market examples. Contracts and assay sheets define the exact commercial threshold.</p>
+<h2 id="7-total-acid-number-rule-of-thumb">7. Total Acid Number Rule Of Thumb</h2>
+<pre><code>
+TAN = mg KOH needed to neutralize 1 gram crude
+</code></pre>
+<ul>
+<li>Low concern: commonly under 0.5.</li>
+<li>High-acidity flag: roughly 0.7 and above.</li>
+<li>Use when: screening for naphthenic acid corrosion risk.</li>
+<li>Related concept: high TAN crude is often heavy because biodegradation tends to remove lighter hydrocarbons first.</li>
+</ul>
+<p>Minimal example:</p>
+<pre><code>
+TAN = 1.2 means 1.2 mg KOH is needed per gram of crude,
+which is above the usual high-acidity warning zone.
+</code></pre>
+<h2 id="8-viscosity-and-temperature">8. Viscosity And Temperature</h2>
+<ul>
+<li>Viscosity measures resistance to flow, often in centistokes (cSt).</li>
+<li>It is commonly reported at 40 degrees C and 100 degrees C because crude flows much more easily when warm.</li>
+<li>Use when: judging transport, pumping, heating, and diluent needs.</li>
+</ul>
+<p>Decision cue: high viscosity plus low API usually points to transportation constraints and a need for specialized handling.</p>
+<h2 id="9-reid-vapor-pressure">9. Reid Vapor Pressure</h2>
+<ul>
+<li>RVP measures volatility of light ends, commonly in psi.</li>
+<li>High RVP can signal valuable light material, but finished fuel volatility is constrained by environmental rules.</li>
+<li>Use when: thinking about light-end value, vapor handling, and gasoline blending constraints.</li>
+</ul>
+<h2 id="10-bs-w-intake-cue">10. BS&amp;W Intake Cue</h2>
+<pre><code>
+BS&amp;W = Basic Sediment and Water
+</code></pre>
+<ul>
+<li>Meaning: water, sediment, and unwanted material in crude.</li>
+<li>Common refinery intake cue: below 1% by weight.</li>
+<li>Use when: screening whether a crude cargo is physically clean enough for routine handling.</li>
+</ul>
+<h2 id="11-refinery-value-logic">11. Refinery Value Logic</h2>
+<pre><code>
+Crude value to refinery
+≈ expected product revenue - processing cost - operational/quality risk
+</code></pre>
+<ul>
+<li>Product revenue: driven by gasoline, diesel, jet fuel, fuel oil, and other product yields.</li>
+<li>Processing cost: driven by sulfur, TAN, metals, salt, water, carbon residue, viscosity, and refinery configuration.</li>
+<li>Operational risk: delays, corrosion, catalyst poisoning, off-spec delivery, and inability to run the crude in available units.</li>
+</ul>
+<p>---</p>
+<h1 id="chapter-2-review-tools">Chapter 2 - Review Tools</h1>
+<h2 id="active-recall">Active Recall</h2>
+<ol>
+<li>What is a crude oil assay?</li>
+</ol>
+<ul>
+<li>A quality profile that tells refiners the expected product yields and processing problems of a specific crude grade or cargo.</li>
+</ul>
+<ol>
+<li>Why can off-spec crude become expensive for the seller?</li>
+</ol>
+<ul>
+<li>It may not fit the buyer&#39;s refinery configuration or contract terms, forcing discounts, delays, rerouting, or rejection.</li>
+</ul>
+<ol>
+<li>What is the difference between a stream and a blend?</li>
+</ol>
+<ul>
+<li>A stream is gathered production with relatively stable properties; a blend combines multiple streams into a commercial marker or grade.</li>
+</ul>
+<ol>
+<li>Why is density the most important assay property?</li>
+</ol>
+<ul>
+<li>It signals molecular structure and therefore the expected yield of high-value light products versus heavy residual material.</li>
+</ul>
+<ol>
+<li>If API gravity rises, does density rise or fall?</li>
+</ol>
+<ul>
+<li>Density falls. API gravity is an inverted scale.</li>
+</ul>
+<ol>
+<li>What are the three common density measures?</li>
+</ol>
+<ul>
+<li>Metric density, specific gravity, and API gravity.</li>
+</ul>
+<ol>
+<li>Why does sulfur reduce crude value?</li>
+</ol>
+<ul>
+<li>It reduces useful hydrocarbon content, causes corrosion, and requires costly desulfurization to meet product regulations.</li>
+</ul>
+<ol>
+<li>What is the best-quality quadrant in the crude quality matrix?</li>
+</ol>
+<ul>
+<li>Light-sweet: high API gravity and low sulfur.</li>
+</ul>
+<ol>
+<li>Why might a complex refinery prefer discounted heavy-sour crude?</li>
+</ol>
+<ul>
+<li>It has coking, cracking, and hydrotreating capacity to convert difficult crude into valuable products.</li>
+</ul>
+<ol>
+<li>What does TAN measure?</li>
+</ol>
+<ul>
+<li>Acid content, expressed as mg KOH needed to neutralize 1 gram of crude.</li>
+</ul>
+<h2 id="mini-quiz">Mini Quiz</h2>
+<ol>
+<li>A crude has SG = 0.876. Is its API gravity roughly 30, 35, or 40?</li>
+<li>A crude with 0.24% sulfur is sweet, medium-sour, or sour?</li>
+<li>A crude with API = 18 and sulfur = 3.4% belongs in which quality quadrant?</li>
+<li>Why are API gravity values usually quoted at a reference temperature?</li>
+<li>What refinery unit helps handle high residual fuel yield from heavy crude?</li>
+<li>Name two properties besides API and sulfur that can create a price discount.</li>
+<li>What does BS&amp;W include?</li>
+<li>Why can high vanadium or nickel matter even at low concentrations?</li>
+<li>What is the key difference between WTI as a marker and an individual well&#39;s production?</li>
+<li>In one sentence, why does assay quality become a price differential?</li>
+</ol>
+<h2 id="answer-key">Answer Key</h2>
+<ol>
+<li>Roughly 30 degrees API.</li>
+<li>Sweet.</li>
+<li>Heavy-sour.</li>
+<li>Density and volume change with temperature, so a standard condition makes values comparable.</li>
+<li>A coker or hydrocracker.</li>
+<li>Examples: TAN, metals, viscosity, salt, water, carbon residue, pour point, RVP, nitrogen.</li>
+<li>Basic sediment and water: water, dirt, sediment, and unwanted material.</li>
+<li>They poison refinery catalysts and concentrate in heavy fractions.</li>
+<li>WTI is a commercial aggregation/marker of many light-sweet streams rather than a single well.</li>
+<li>A refinery pays for expected product revenue minus processing costs and operational risks.</li>
+</ol>
+<h2 id="can-i-explain-this">Can I Explain This?</h2>
+<p>Use this checklist without looking at the notes:</p>
+<ul>
+<li>I can define assay, off-spec, distressed cargo, stream, blend, and marker crude.</li>
+<li>I can explain why light crude usually yields more valuable products.</li>
+<li>I can convert API gravity and SG in both directions.</li>
+<li>I can classify a crude as light, medium, heavy, or extra-heavy from API gravity.</li>
+<li>I can classify sulfur as sweet, medium-sour, or sour from sulfur percentage.</li>
+<li>I can place WTI, Brent, Dubai, Maya, and Urals in rough quality terms.</li>
+<li>I can explain why heavy-sour crude is not useless, but refinery-specific.</li>
+<li>I can describe TAN, metals, viscosity, pour point, RVP, carbon residue, salt, and BS&amp;W in refinery terms.</li>
+<li>I can connect assay properties to price differentials.</li>
+</ul>
+<h2 id="common-error-log">Common Error Log</h2>
+<table><tbody>
+<tr><th>Error</th><th>Correction</th></tr>
+<tr><td>Treating API gravity like normal density</td><td>API is inverted: higher API means lighter crude</td></tr>
+<tr><td>Assuming all sweet crude is automatically high value</td><td>TAN, metals, viscosity, and location can still reduce value</td></tr>
+<tr><td>Assuming heavy-sour crude has no buyers</td><td>Complex refineries may want it if the discount is sufficient</td></tr>
+<tr><td>Ignoring temperature reference conditions</td><td>Density comparisons need standard reference conditions</td></tr>
+<tr><td>Memorizing marker names without quality numbers</td><td>Always check API, sulfur, and the rest of the assay</td></tr>
+<tr><td>Treating sulfur only as an environmental issue</td><td>It also affects corrosion, refinery cost, and product yield economics</td></tr>
+</tbody></table>
+<h2 id="spaced-review-prompts">Spaced Review Prompts</h2>
+<p>Day 1:</p>
+<ul>
+<li>Draw the API-versus-sulfur matrix and place WTI, Brent, Dubai, Maya, and Urals.</li>
+<li>Re-derive SG from API without looking at the formula bank.</li>
+</ul>
+<p>Day 3:</p>
+<ul>
+<li>Explain to a non-oil person why two barrels of crude can trade several dollars apart.</li>
+<li>List five assay sheet items beyond density and sulfur.</li>
+</ul>
+<p>Day 7:</p>
+<ul>
+<li>Work through a fake cargo: API 21, sulfur 2.8%, TAN 1.0, high viscosity. Decide what kind of refinery can run it and what discounts you would expect.</li>
+</ul>
+<p>Day 14:</p>
+<ul>
+<li>Compare light-sweet and heavy-sour crude from the perspective of a simple refinery versus a complex refinery.</li>
+</ul>
+
+<nav class="page-nav">
+<a href="part-one-oil-fundamentals--01-history.html">&larr; Chapter 1<br><strong>A Brief History of Oil</strong></a>
+<a href="part-one-oil-fundamentals--03-components.html">Chapter 3 &rarr;<br><strong>Components of Oil Liquids</strong></a>
+</nav>
+
+      </article>
+      <aside class="toc">
+        <strong>On this page</strong>
+        <a href="#f41d26329ddc4d4d8399edb04486ed9b">学习目标</a>
+        <a href="#1-crude-oil-assay">1. Crude Oil Assay 是什么</a>
+        <a href="#2-fields-streams-blends-markers">2. Fields、Streams、Blends、Markers</a>
+        <a href="#3-density">3. Density: 最重要的物理性质</a>
+        <a href="#4-sweet-versus-sour-sulfur-content">4. Sweet versus Sour: Sulfur Content</a>
+        <a href="#5-the-crude-quality-matrix">5. The Crude Quality Matrix</a>
+        <a href="#6-assay-sheet">6. Assay Sheet 的其他关键项目</a>
+        <a href="#7-assay">7. 为什么 Assay 最终会变成价格差</a>
+        <a href="#20dcc314d8914536996b2a45ce5407cb">常见误区</a>
+        <a href="#1-api-gravity-from-specific-gravity">1. API Gravity From Specific Gravity</a>
+        <a href="#2-specific-gravity-from-api-gravity">2. Specific Gravity From API Gravity</a>
+        <a href="#3-metric-density-approximation">3. Metric Density Approximation</a>
+        <a href="#4-barrel-mass-estimate">4. Barrel Mass Estimate</a>
+        <a href="#5-api-density-classes">5. API Density Classes</a>
+        <a href="#6-sulfur-classes">6. Sulfur Classes</a>
+        <a href="#7-total-acid-number-rule-of-thumb">7. Total Acid Number Rule Of Thumb</a>
+        <a href="#8-viscosity-and-temperature">8. Viscosity And Temperature</a>
+        <a href="#9-reid-vapor-pressure">9. Reid Vapor Pressure</a>
+        <a href="#10-bs-w-intake-cue">10. BS&amp;W Intake Cue</a>
+        <a href="#11-refinery-value-logic">11. Refinery Value Logic</a>
+        <a href="#active-recall">Active Recall</a>
+        <a href="#mini-quiz">Mini Quiz</a>
+        <a href="#answer-key">Answer Key</a>
+        <a href="#can-i-explain-this">Can I Explain This?</a>
+        <a href="#common-error-log">Common Error Log</a>
+        <a href="#spaced-review-prompts">Spaced Review Prompts</a>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
