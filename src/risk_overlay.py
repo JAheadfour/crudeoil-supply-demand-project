@@ -31,12 +31,17 @@ def load_returns(prices_path="data/raw/daily_prices.csv") -> pd.Series:
     return returns
 
 
-def fit_models(returns: pd.Series) -> dict:
+def fit_models(returns: pd.Series, last_obs: str | pd.Timestamp | None = None) -> dict:
     scaled_returns = returns * 100
     models = {}
     for model_key, params in MODEL_SPECS.items():
         am = arch_model(scaled_returns, mean="Constant", **params)
-        result = am.fit(disp="off", show_warning=False, options={"maxiter": 500})
+        result = am.fit(
+            last_obs=last_obs,
+            disp="off",
+            show_warning=False,
+            options={"maxiter": 500},
+        )
         models[model_key] = result
         print(
             f"{model_key}: loglik={result.loglikelihood:.2f}, "
@@ -64,13 +69,20 @@ def model_comparison_table(models: dict) -> pd.DataFrame:
     return comparison
 
 
+def _innovation_quantile(params: pd.Series, confidence: float) -> float:
+    alpha = 1 - confidence
+    if "nu" in params.index:
+        nu = params["nu"]
+        # The arch package uses a standardized Student-t innovation with unit
+        # variance, so the raw scipy t quantile needs the same scaling.
+        return t_dist.ppf(alpha, nu) * np.sqrt((nu - 2) / nu)
+    return norm.ppf(alpha)
+
+
 def extract_var_series(result, confidence=0.99) -> pd.DataFrame:
     cond_vol = result.conditional_volatility / 100
     cond_mean = result.params.get("mu", 0) / 100
-    if "nu" in result.params.index:
-        quantile = t_dist.ppf(1 - confidence, result.params["nu"])
-    else:
-        quantile = norm.ppf(1 - confidence)
+    quantile = _innovation_quantile(result.params, confidence)
 
     var_series = -(cond_mean + quantile * cond_vol)
     actual = result.resid / 100
@@ -78,6 +90,37 @@ def extract_var_series(result, confidence=0.99) -> pd.DataFrame:
         {
             "date": actual.index,
             "actual_return": actual.to_numpy(),
+            "cond_volatility": cond_vol.to_numpy(),
+            "var_99": var_series.to_numpy(),
+        }
+    )
+    var_df["breach"] = var_df["actual_return"] < -var_df["var_99"]
+    return var_df
+
+
+def extract_oos_var_series(
+    result,
+    returns: pd.Series,
+    test_start: str | pd.Timestamp = "2020-01-01",
+    confidence: float = 0.99,
+) -> pd.DataFrame:
+    scaled_returns = returns * 100
+    forecasts = result.forecast(horizon=1, start=test_start, reindex=True)
+    variance = forecasts.variance["h.1"].dropna()
+    mean = forecasts.mean["h.1"].reindex(variance.index).fillna(result.params.get("mu", 0))
+    actual = scaled_returns.reindex(variance.index).dropna()
+    index = variance.index.intersection(actual.index)
+
+    cond_vol = np.sqrt(variance.loc[index]) / 100
+    cond_mean = mean.loc[index] / 100
+    actual_return = actual.loc[index] / 100
+    quantile = _innovation_quantile(result.params, confidence)
+    var_series = -(cond_mean + quantile * cond_vol)
+
+    var_df = pd.DataFrame(
+        {
+            "date": index,
+            "actual_return": actual_return.to_numpy(),
             "cond_volatility": cond_vol.to_numpy(),
             "var_99": var_series.to_numpy(),
         }
@@ -192,7 +235,7 @@ def _plot_var_breaches(var_df: pd.DataFrame, model_name: str, backtest: dict, ou
         ha="left",
         bbox={"boxstyle": "round,pad=0.35", "facecolor": "white", "edgecolor": "#cbd5e0"},
     )
-    ax.set_title(f"WTI 1-Day 99% VaR Backtesting - {model_name}")
+    ax.set_title(f"WTI 1-Day 99% VaR Out-of-Sample Backtest - {model_name}")
     ax.set_ylabel("Daily Log Return")
     ax.legend(frameon=False, loc="lower right")
     _clean_axis(ax)
@@ -201,21 +244,47 @@ def _plot_var_breaches(var_df: pd.DataFrame, model_name: str, backtest: dict, ou
     plt.close(fig)
 
 
-def run_risk_overlay(prices_path="data/raw/daily_prices.csv", output_dir="outputs") -> dict:
+def run_risk_overlay(
+    prices_path="data/raw/daily_prices.csv",
+    output_dir="outputs",
+    train_end="2019-12-31",
+    test_start="2020-01-01",
+) -> dict:
     output_dir = Path(output_dir)
     (output_dir / "tables").mkdir(parents=True, exist_ok=True)
     (output_dir / "figures").mkdir(parents=True, exist_ok=True)
 
     returns = load_returns(prices_path)
-    models = fit_models(returns)
+    train_returns = returns.loc[:train_end]
+    test_returns = returns.loc[test_start:]
+    if train_returns.empty or test_returns.empty:
+        raise ValueError("Train/test split produced an empty sample.")
+
+    print(
+        "Risk overlay split: "
+        f"train={train_returns.index.min().date()} to {train_returns.index.max().date()} "
+        f"({len(train_returns):,} obs), "
+        f"test={test_returns.index.min().date()} to {test_returns.index.max().date()} "
+        f"({len(test_returns):,} obs)"
+    )
+    models = fit_models(returns, last_obs=train_end)
     comparison = model_comparison_table(models)
 
     best_key = comparison.iloc[0]["model"]
     best_model = models[best_key]
     print(f"Best model: {best_key} (AIC={comparison.iloc[0]['aic']:.1f})")
 
-    var_df = extract_var_series(best_model)
+    var_df = extract_oos_var_series(best_model, returns, test_start=test_start)
     backtest = kupiec_test(var_df)
+    backtest = {
+        "sample": "out_of_sample_fixed_parameter",
+        "model": best_key,
+        "train_start": train_returns.index.min().date().isoformat(),
+        "train_end": train_returns.index.max().date().isoformat(),
+        "test_start": var_df["date"].min().date().isoformat(),
+        "test_end": var_df["date"].max().date().isoformat(),
+        **backtest,
+    }
 
     bt_df = pd.DataFrame([backtest])
     bt_df.to_csv(output_dir / "tables" / "var_backtest.csv", index=False)

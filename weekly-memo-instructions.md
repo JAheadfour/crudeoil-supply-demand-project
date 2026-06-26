@@ -157,10 +157,14 @@ def assess_supply_demand(data: dict) -> dict:
     refinery_util = latest.get("refinery_utilization", np.nan)
     refinery_util_change = latest.get("refinery_util_change", np.nan)
     net_imports = latest.get("net_imports", np.nan)
-    crude_balance = latest.get("crude_balance", np.nan)
-    crude_supply = latest.get("crude_supply", np.nan)
-    crude_demand = latest.get("crude_demand", np.nan)
+    crude_balance = latest.get("implied_stock_change_kbbl", latest.get("crude_balance", np.nan))
+    balance_residual = latest.get("balance_residual_kbbl", latest.get("balance_residual", np.nan))
+    crude_supply_kbd = latest.get("crude_supply_kbd", np.nan)
+    crude_demand_kbd = latest.get("crude_demand_kbd", np.nan)
+    crude_supply_kbbl_week = latest.get("crude_supply_kbbl_week", np.nan)
+    crude_demand_kbbl_week = latest.get("crude_demand_kbbl_week", np.nan)
     days_of_supply = latest.get("days_of_supply", np.nan)
+    weeks_of_supply = latest.get("weeks_of_supply", np.nan)
     
     # Production assessment
     if not np.isnan(production_change):
@@ -187,11 +191,11 @@ def assess_supply_demand(data: dict) -> dict:
     # Balance assessment
     if not np.isnan(crude_balance):
         if crude_balance < -500:
-            balance_note = f"Implied deficit of {abs(crude_balance):.0f} kb — supply < demand"
+            balance_note = f"Implied weekly stock draw of {abs(crude_balance):.0f} kbbl — supply < demand"
         elif crude_balance > 500:
-            balance_note = f"Implied surplus of {crude_balance:.0f} kb — supply > demand"
+            balance_note = f"Implied weekly stock build of {crude_balance:.0f} kbbl — supply > demand"
         else:
-            balance_note = f"Supply-demand roughly balanced ({crude_balance:+.0f} kb)"
+            balance_note = f"Supply-demand roughly balanced ({crude_balance:+.0f} kbbl/week)"
     else:
         balance_note = "Balance data unavailable"
     
@@ -204,9 +208,13 @@ def assess_supply_demand(data: dict) -> dict:
         "ref_note": ref_note,
         "net_imports": net_imports,
         "crude_balance": crude_balance,
-        "crude_supply": crude_supply,
-        "crude_demand": crude_demand,
+        "balance_residual": balance_residual,
+        "crude_supply_kbd": crude_supply_kbd,
+        "crude_demand_kbd": crude_demand_kbd,
+        "crude_supply_kbbl_week": crude_supply_kbbl_week,
+        "crude_demand_kbbl_week": crude_demand_kbbl_week,
         "days_of_supply": days_of_supply,
+        "weeks_of_supply": weeks_of_supply,
         "balance_note": balance_note,
     }
 ```
@@ -390,7 +398,7 @@ def format_memo(data, inv, sd, mkt, tone, reasons, key_risk) -> str:
     week_end = pd.Timestamp(latest["week_end"]).strftime("%B %d, %Y")
     
     # Approximate release date
-    release_date = (pd.Timestamp(latest["week_end"]) + pd.offsets.BDay(4)).strftime("%B %d, %Y")
+    release_date = (pd.Timestamp(latest["week_end"]) + pd.offsets.BDay(3)).strftime("%B %d, %Y")
     
     memo = f"""# Weekly Crude Market Monitor
 
@@ -408,16 +416,17 @@ def format_memo(data, inv, sd, mkt, tone, reasons, key_risk) -> str:
 | Cushing Stocks | {inv['cushing_stocks']/1000:.1f} Mb | {inv['cushing_change']:+.1f} kb | {inv['cushing_shock_z']:+.2f} |
 | Production | {sd['production']:.0f} kb/d | {sd['production_change']:+.0f} kb/d | — |
 | Refinery Utilization | {sd['refinery_util']:.1f}% | {sd['refinery_util_change']:+.1f} pp | — |
-| Net Imports | {sd['net_imports']:.0f} kb | — | — |
+| Net Imports | {sd['net_imports']:.0f} kb/d | — | — |
 
 ## Supply-Demand Balance
 
 {sd['balance_note']}
 
-- Supply (production + imports): {sd['crude_supply']:.0f} kb
-- Demand (exports + refinery inputs): {sd['crude_demand']:.0f} kb
-- Implied balance: {sd['crude_balance']:+.0f} kb
-- Days of supply: {sd['days_of_supply']:.1f} days
+- Supply (production + imports): {sd['crude_supply_kbd']:.0f} kb/d ({sd['crude_supply_kbbl_week']:.0f} kbbl/week)
+- Demand (exports + refinery inputs): {sd['crude_demand_kbd']:.0f} kb/d ({sd['crude_demand_kbbl_week']:.0f} kbbl/week)
+- Implied stock change: {sd['crude_balance']:+.0f} kbbl/week
+- Residual vs reported inventory change: {sd['balance_residual']:+.0f} kbbl
+- Days of supply: {sd['days_of_supply']:.1f} days ({sd['weeks_of_supply']:.1f} weeks)
 
 ## Market Assessment
 

@@ -13,6 +13,7 @@ FUNDAMENTAL_FEATURES = [
     "net_import_change",
     "refinery_util_change",
     "crude_balance",
+    "balance_residual",
     "inventory_shock_z",
     "cushing_shock_z",
     "production_shock_z",
@@ -44,9 +45,13 @@ def add_fundamental_features(balance: pd.DataFrame) -> pd.DataFrame:
     features["production_change"] = features["us_crude_production"].diff()
     features["production_shock_z"] = compute_shock_zscore(features["production_change"])
     features["refinery_util_change"] = features["refinery_utilization"].diff()
-    features["net_imports"] = features["crude_imports"] - features["crude_exports"]
+    features["net_imports"] = features.get(
+        "net_imports_kbd",
+        features["crude_imports"] - features["crude_exports"],
+    )
     features["net_import_change"] = features["net_imports"].diff()
-    features["days_of_supply"] = features["us_crude_stocks"] / features["refinery_inputs"] * 7
+    features["days_of_supply"] = features["us_crude_stocks"] / features["refinery_inputs"]
+    features["weeks_of_supply"] = features["days_of_supply"] / 7
     features["days_of_supply_z"] = compute_shock_zscore(features["days_of_supply"])
     inventory_low = features["inventory_shock_z"].quantile(0.10)
     inventory_high = features["inventory_shock_z"].quantile(0.90)
@@ -57,7 +62,7 @@ def add_fundamental_features(balance: pd.DataFrame) -> pd.DataFrame:
     features["top_decile_cushing_draw"] = features["cushing_shock_z"] <= cushing_low
     features["top_decile_cushing_build"] = features["cushing_shock_z"] >= cushing_high
     features["week_end"] = features.index
-    features["release_date"] = features.index + pd.offsets.BDay(4)
+    features["release_date"] = features.index + pd.offsets.BDay(3)
     return features
 
 
@@ -112,8 +117,8 @@ def build_features(
         price_features.sort_values("date"),
         left_on="release_date",
         right_on="date",
-        direction="nearest",
-        tolerance=pd.Timedelta(days=2),
+        direction="forward",
+        tolerance=pd.Timedelta(days=3),
     )
     merged = merged.set_index("week_end").sort_index()
 

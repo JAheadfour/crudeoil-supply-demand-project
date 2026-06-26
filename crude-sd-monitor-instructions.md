@@ -107,7 +107,7 @@ Use EIA API v2. The key series (all weekly, units in thousand barrels or percent
 | Series ID (API v2 route) | Description |
 |---------------------------|-------------|
 | petroleum/sum/sndw/data (series: WCESTUS1) | U.S. ending stocks of crude oil |
-| petroleum/sum/sndw/data (series: WCRSTUS1) | U.S. crude oil production |
+| petroleum/sum/sndw/data (series: WCRFPUS2) | U.S. field production of crude oil |
 | petroleum/sum/sndw/data (series: WCRIMUS2) | U.S. crude oil imports |
 | petroleum/sum/sndw/data (series: WCREXUS2) | U.S. crude oil exports |
 | petroleum/sum/sndw/data (series: WGIRIUS2) | U.S. refinery crude inputs |
@@ -131,7 +131,7 @@ EIA_KEY = os.getenv("EIA_API_KEY")
 
 EIA_SERIES = {
     "us_crude_stocks": "WCESTUS1",
-    "us_crude_production": "WCRSTUS1",
+    "us_crude_production": "WCRFPUS2",
     "crude_imports": "WCRIMUS2",
     "crude_exports": "WCREXUS2",
     "refinery_inputs": "WGIRIUS2",
@@ -175,7 +175,7 @@ def fetch_all_eia(start="2010-01-01"):
 **IMPORTANT: Release-date alignment.**
 
 EIA WPSR is released on Wednesdays (usually), covering data through the prior Friday. The market reacts on the release date, not the week-end date. For this project, approximate:
-- `release_date = week_end + 4 business days` (Wednesday after the Friday week-end)
+- `release_date = week_end + 3 business days` (Wednesday after the Friday week-end)
 - Or use actual release dates from EIA schedule if available.
 
 This is critical for avoiding look-ahead bias. In the notebook, explicitly note this alignment.
@@ -202,10 +202,12 @@ def build_crude_balance(eia_df):
     df["inventory_change"] = df["us_crude_stocks"].diff()
     df["cushing_change"] = df["cushing_stocks"].diff()
     
-    # Supply-demand balance (all in thousand barrels)
-    df["crude_supply"] = df["us_crude_production"] + df["crude_imports"]
-    df["crude_demand"] = df["crude_exports"] + df["refinery_inputs"]
-    df["crude_balance"] = df["crude_supply"] - df["crude_demand"]
+    # EIA stock series are thousand barrels; flow series are thousand barrels/day.
+    df["crude_supply_kbd"] = df["us_crude_production"] + df["crude_imports"]
+    df["crude_demand_kbd"] = df["crude_exports"] + df["refinery_inputs"]
+    df["crude_supply_kbbl_week"] = df["crude_supply_kbd"] * 7
+    df["crude_demand_kbbl_week"] = df["crude_demand_kbd"] * 7
+    df["crude_balance"] = df["crude_supply_kbbl_week"] - df["crude_demand_kbbl_week"]
     
     # Residual: implied vs observed
     df["balance_residual"] = df["crude_balance"] - df["inventory_change"]
@@ -247,15 +249,14 @@ def build_features(balance_df, prices_df):
     
     # --- Tightness indicators ---
     # Days of supply (crude stocks / refinery inputs)
-    df["days_of_supply"] = df["us_crude_stocks"] / df["refinery_inputs"] * 7
+    df["days_of_supply"] = df["us_crude_stocks"] / df["refinery_inputs"]
+    df["weeks_of_supply"] = df["days_of_supply"] / 7
     df["days_of_supply_z"] = compute_shock_zscore(df["days_of_supply"])
     
     # --- Approximate release date (Wednesday after week-end Friday) ---
-    df["release_date"] = df.index + pd.offsets.Week(weekday=2)  # next Wednesday
-    # If week_end is already a Friday, +5 calendar days = Wednesday
-    # More robust: shift by 4-5 business days
+    # If week_end is Friday, +3 business days = Wednesday.
     df["release_date"] = df.index.map(
-        lambda d: d + pd.offsets.BDay(4)
+        lambda d: d + pd.offsets.BDay(3)
     )
     
     # --- Merge with daily prices on release_date ---
@@ -309,8 +310,8 @@ def build_features(balance_df, prices_df):
         prices.reset_index().sort_values("date"),
         left_on="release_date",
         right_on="date",
-        direction="nearest",
-        tolerance=pd.Timedelta("2D"),
+        direction="forward",
+        tolerance=pd.Timedelta("3D"),
     )
     
     return merged.dropna(subset=["fwd_5d_realized_vol", "inventory_shock_z"])
@@ -503,7 +504,11 @@ eia.tail()
 # Cell 5: Build supply-demand balance
 balance = build_crude_balance(eia)
 print(f"Balance table: {len(balance)} weeks")
-balance[["crude_supply", "crude_demand", "crude_balance", "inventory_change", "balance_residual"]].describe()
+balance[[
+    "crude_supply_kbd", "crude_demand_kbd",
+    "crude_supply_kbbl_week", "crude_demand_kbbl_week",
+    "crude_balance", "inventory_change", "balance_residual",
+]].describe()
 
 # Cell 6: Display supply-demand identity
 """
@@ -710,7 +715,7 @@ If the EIA API v2 is unreliable or rate-limited:
 - Get the full history XLS/CSV files
 
 **Option B:** Use FRED for some series:
-- WCRSTUS1 (crude production) is also on FRED
+- WCRFPUS2 (crude field production) is also on FRED/EIA data services
 - Some inventory series are on FRED
 
 **Option C:** Use the `myeia` package:

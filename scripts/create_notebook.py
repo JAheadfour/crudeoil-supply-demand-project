@@ -69,6 +69,8 @@ def main() -> None:
                 plot_price_history,
                 plot_spread,
             )
+            from generate_memo import generate_all_historical_memos, generate_memo
+            from risk_overlay import run_risk_overlay
             """
         ),
         code(
@@ -91,8 +93,11 @@ def main() -> None:
             """
             balance = build_crude_balance(eia)
             balance[[
-                "crude_supply",
-                "crude_demand",
+                "crude_supply_kbd",
+                "crude_demand_kbd",
+                "crude_supply_kbbl_week",
+                "crude_demand_kbbl_week",
+                "implied_stock_change_kbbl",
                 "crude_balance",
                 "inventory_change",
                 "balance_residual",
@@ -101,7 +106,7 @@ def main() -> None:
         ),
         markdown(
             """
-            The weekly physical balance is approximated as crude supply minus crude demand, where supply is domestic production plus imports and demand is exports plus refinery inputs. Inventory change is the observed stock movement. The residual compares the flow balance with reported inventory change, which is useful because it checks whether the market story is grounded in physical barrels rather than only prices.
+            The weekly physical balance is approximated as crude supply minus crude demand, where supply is domestic production plus imports and demand is exports plus refinery inputs. EIA flow series are reported in thousand barrels per day, so daily rates are converted to weekly volumes before comparing implied stock change with reported inventory change. The residual checks whether the market story is grounded in physical barrels rather than only prices.
             """
         ),
         code(
@@ -115,7 +120,7 @@ def main() -> None:
         ),
         markdown(
             """
-            Release-date alignment maps each weekly EIA observation to the nearest daily trading date around an approximate release date of four business days after the week end. Daily forward outcomes are computed before the merge. That ordering prevents look-ahead bias because the event row only receives price outcomes that were already defined on the daily price table.
+            Release-date alignment maps each weekly EIA observation to the first available trading date on or after an approximate release date of three business days after the week end. Daily forward outcomes are computed before the merge. That ordering keeps the event row aligned to information available at or after the estimated release timestamp and avoids using pre-release prices.
             """
         ),
         code(
@@ -185,9 +190,11 @@ def main() -> None:
                 "inventory_change",
                 "inventory_shock_z",
                 "cushing_shock_z",
+                "implied_stock_change_kbbl",
                 "crude_balance",
                 "balance_residual",
                 "days_of_supply",
+                "weeks_of_supply",
                 "brent_wti_spread",
                 "trailing_20d_vol",
                 "fwd_5d_realized_vol",
@@ -207,7 +214,45 @@ def main() -> None:
         ),
         markdown(
             """
-            Limitations: the release date is approximated, not pulled from the actual EIA release calendar. The study does not include survey expectations, so it measures raw shocks rather than surprises relative to market consensus. It does not include the futures curve, options-implied volatility, refinery outages, storage constraints, or macro news controls. Forward returns and volatility are short-horizon realized outcomes, not tradable forecasts. This is not a trading strategy.
+            Limitations: the release date is approximated as three business days after week-end, not pulled from the actual EIA holiday-adjusted release calendar. The study does not include survey expectations, so it measures raw shocks rather than surprises relative to market consensus. It does not include the futures curve, options-implied volatility, refinery outages, storage constraints, or macro news controls. Forward returns and volatility are short-horizon realized outcomes, not tradable forecasts. This is not a trading strategy.
+            """
+        ),
+        markdown(
+            """
+            ## Optional Market Risk Overlay
+
+            The fundamentals workflow can be extended into market-risk diagnostics by modeling WTI conditional volatility and one-day 99% VaR. This section is intentionally framed as a risk appendix rather than the core commodity-research result.
+            """
+        ),
+        code(
+            """
+            risk_results = run_risk_overlay(train_end="2019-12-31", test_start="2020-01-01")
+            risk_results["comparison"]
+            """
+        ),
+        code(
+            """
+            pd.DataFrame([risk_results["backtest"]])
+            """
+        ),
+        markdown(
+            """
+            ## Weekly Analyst Memo
+
+            A commodity research analyst's last mile is turning market data into concise commentary. The memo generator uses deterministic rules, not LLM text generation, to translate inventory shocks, Cushing tightness, refinery utilization, spread regime, and volatility state into a weekly market note.
+            """
+        ),
+        code(
+            """
+            latest_memo_path = generate_memo()
+            historical_paths = generate_all_historical_memos(last_n=4)
+            latest_memo_path, len(historical_paths)
+            """
+        ),
+        code(
+            """
+            from IPython.display import Markdown
+            Markdown(latest_memo_path.read_text(encoding="utf-8"))
             """
         ),
     ]

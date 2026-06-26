@@ -14,6 +14,8 @@ from src.event_study import run_all_event_studies
 from src.fetch_eia import fetch_eia_weekly
 from src.fetch_prices import fetch_daily_prices
 from src.figures import generate_all_figures
+from src.generate_memo import generate_all_historical_memos
+from src.risk_overlay import run_risk_overlay
 
 
 def main() -> None:
@@ -23,6 +25,8 @@ def main() -> None:
     merged = build_features(balance, prices)
     results = run_all_event_studies(merged)
     generate_all_figures(prices, balance, merged)
+    run_risk_overlay()
+    generate_all_historical_memos(last_n=4)
     print("\nFinal event-study results:")
     print(results.to_string(index=False))
 

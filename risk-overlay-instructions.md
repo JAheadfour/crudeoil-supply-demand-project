@@ -26,7 +26,7 @@ Add `arch>=7.0` to `requirements.txt` (append, do not overwrite).
 
 ## 2. Create `src/risk_overlay.py`
 
-This module fits GARCH-family volatility models to WTI daily log returns and produces VaR backtesting diagnostics.
+This module fits GARCH-family volatility models to WTI daily log returns and produces out-of-sample VaR diagnostics.
 
 ### 2A. Imports
 
@@ -81,9 +81,9 @@ Save to `outputs/tables/garch_model_comparison.csv`.
 
 Return the DataFrame.
 
-### 2E. Function: `extract_var_series(result, confidence=0.99) -> pd.DataFrame`
+### 2E. Function: `extract_oos_var_series(result, returns, test_start="2020-01-01", confidence=0.99) -> pd.DataFrame`
 
-From the best model (GJR-GARCH Student-t is expected to win on AIC):
+From the best model (GJR-GARCH Student-t is expected to win on AIC), generate one-day-ahead VaR forecasts for the out-of-sample period:
 
 1. Get conditional volatility: `cond_vol = result.conditional_volatility / 100` (convert back from %).
 2. Get conditional mean: `cond_mean = result.params.get("mu", 0) / 100`.
@@ -92,11 +92,11 @@ From the best model (GJR-GARCH Student-t is expected to win on AIC):
    - If Normal: use `scipy.stats.norm.ppf(1 - confidence)` = -2.326 for 99%.
 4. Compute 1-day VaR (as a positive number representing maximum loss):
    ```
-   quantile = t_dist.ppf(1 - confidence, nu)  # negative number
+   quantile = t_dist.ppf(1 - confidence, nu) * np.sqrt((nu - 2) / nu)  # standardized t
    var_series = -(cond_mean + quantile * cond_vol)
    ```
    VaR is positive when it represents a loss threshold.
-5. Get actual returns: `actual = result.resid / 100` (convert back from %).
+5. Get actual returns from the out-of-sample return index, not fitted residuals.
 
 Return DataFrame with columns:
 - `date`: index
@@ -137,15 +137,17 @@ Return dict:
 }
 ```
 
-### 2G. Function: `run_risk_overlay(prices_path, output_dir) -> dict`
+### 2G. Function: `run_risk_overlay(prices_path, output_dir, train_end="2019-12-31", test_start="2020-01-01") -> dict`
 
 Main orchestration:
 
 ```python
 def run_risk_overlay(prices_path="data/raw/daily_prices.csv",
-                     output_dir="outputs"):
+                     output_dir="outputs",
+                     train_end="2019-12-31",
+                     test_start="2020-01-01"):
     returns = load_returns(prices_path)
-    models = fit_models(returns)
+    models = fit_models(returns, last_obs=train_end)
     comparison = model_comparison_table(models)
     
     # Select best model by AIC
@@ -153,7 +155,7 @@ def run_risk_overlay(prices_path="data/raw/daily_prices.csv",
     best_model = models[best_key]
     print(f"Best model: {best_key} (AIC={comparison.iloc[0]['aic']:.1f})")
     
-    var_df = extract_var_series(best_model)
+    var_df = extract_oos_var_series(best_model, returns, test_start=test_start)
     backtest = kupiec_test(var_df)
     
     # Save backtest results
@@ -205,7 +207,7 @@ File: `outputs/figures/07_var_breaches.png`
 - Scatter plot breach dates as red dots (larger markers, zorder=5)
 - X-axis: date
 - Y-axis: "Daily Log Return"
-- Title: "WTI 1-Day 99% VaR Backtesting — [Model Name]"
+- Title: "WTI 1-Day 99% VaR Out-of-Sample Backtest — [Model Name]"
 - Add text annotation in corner: "Breaches: X/N (Y.Y% vs 1.0% target)"
 - Remove top/right spines, light grid
 - DPI: 150
@@ -298,13 +300,13 @@ Fitted four GARCH-family volatility models to WTI daily returns:
 
 Best model: **GJR-GARCH(1,1) Student-t** (AIC = [X]).
 
-99% 1-day VaR backtesting: [X] breaches in [N] trading days ([Y]% breach rate vs 1.0% target). Kupiec POF test p-value = [Z] — [consistent/inconsistent] with correct VaR calibration.
+99% 1-day out-of-sample VaR diagnostics: [X] breaches in [N] test observations ([Y]% breach rate vs 1.0% target). Kupiec POF test p-value = [Z] — [consistent/inconsistent] with correct VaR calibration.
 ```
 
 Update "Outputs" section to include:
 ```
 - GARCH model comparison table
-- VaR backtest results (Kupiec POF test)
+- Out-of-sample VaR diagnostic results (Kupiec POF test)
 - Conditional volatility chart (GJR-GARCH vs realized)
 - VaR breach visualization
 ```
@@ -320,7 +322,7 @@ After building everything, verify:
 - [ ] `python -c "from src.risk_overlay import run_risk_overlay; run_risk_overlay()"` runs without error
 - [ ] `outputs/tables/garch_model_comparison.csv` has 4 rows (one per model)
 - [ ] `outputs/tables/var_backtest.csv` has 1 row with Kupiec results
-- [ ] `outputs/tables/var_series.csv` has 4,000+ rows
+- [ ] `outputs/tables/var_series.csv` has the out-of-sample VaR series
 - [ ] `outputs/figures/06_conditional_volatility.png` exists and shows two vol lines
 - [ ] `outputs/figures/07_var_breaches.png` exists and shows return series with VaR boundary and red breach dots
 - [ ] Notebook has 5+ new cells at the end
@@ -352,9 +354,8 @@ If all 4 models fail to converge:
 
 ```
 • Developed GJR-GARCH(1,1)/Student-t conditional volatility model on 
-  [N]+ daily WTI returns; backtested 99% 1-day VaR across the full 
-  sample with Kupiec POF test confirming [X]% breach rate against 
-  1% target (p = [Y]).
+  WTI returns; evaluated 99% 1-day out-of-sample VaR exception frequency
+  with Kupiec unconditional-coverage diagnostics.
 ```
 
 Fill [N], [X], [Y] with actual numbers from the run.

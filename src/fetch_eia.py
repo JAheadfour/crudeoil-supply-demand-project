@@ -13,15 +13,52 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-EIA_SERIES = {
-    "WCESTUS1": "us_crude_stocks",
-    "W_EPC0_SAX_YCUOK_MBBL": "cushing_stocks",
-    "WCRSTUS1": "us_crude_production",
-    "WCRIMUS2": "crude_imports",
-    "WCREXUS2": "crude_exports",
-    "WGIRIUS2": "refinery_inputs",
-    "WPULEUS3": "refinery_utilization",
-}
+EIA_SERIES_METADATA = [
+    {
+        "series_id": "WCESTUS1",
+        "column": "us_crude_stocks",
+        "description": "U.S. commercial crude oil stocks excluding SPR",
+        "unit": "thousand barrels",
+    },
+    {
+        "series_id": "W_EPC0_SAX_YCUOK_MBBL",
+        "column": "cushing_stocks",
+        "description": "Cushing, Oklahoma crude oil stocks",
+        "unit": "thousand barrels",
+    },
+    {
+        "series_id": "WCRFPUS2",
+        "column": "us_crude_production",
+        "description": "U.S. field production of crude oil",
+        "unit": "thousand barrels per day",
+    },
+    {
+        "series_id": "WCRIMUS2",
+        "column": "crude_imports",
+        "description": "U.S. imports of crude oil",
+        "unit": "thousand barrels per day",
+    },
+    {
+        "series_id": "WCREXUS2",
+        "column": "crude_exports",
+        "description": "U.S. exports of crude oil",
+        "unit": "thousand barrels per day",
+    },
+    {
+        "series_id": "WGIRIUS2",
+        "column": "refinery_inputs",
+        "description": "U.S. gross inputs to refineries",
+        "unit": "thousand barrels per day",
+    },
+    {
+        "series_id": "WPULEUS3",
+        "column": "refinery_utilization",
+        "description": "U.S. refinery operable-capacity utilization",
+        "unit": "percent",
+    },
+]
+
+EIA_SERIES = {row["series_id"]: row["column"] for row in EIA_SERIES_METADATA}
 
 PRIMARY_ENDPOINT = "https://api.eia.gov/v2/petroleum/sum/sndw/data/"
 CUSHING_ENDPOINT = "https://api.eia.gov/v2/petroleum/stoc/wstk/data/"
@@ -114,6 +151,7 @@ def _fetch_series(key: str, series_id: str, start: str) -> pd.Series | None:
 def fetch_eia_weekly(
     start: str = "2010-01-01",
     output_path: str | Path = "data/raw/eia_weekly.csv",
+    series_config_path: str | Path = "data/eia_series_config.csv",
 ) -> pd.DataFrame:
     """Fetch weekly EIA petroleum series and merge them by week ending date."""
 
@@ -142,6 +180,11 @@ def fetch_eia_weekly(
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     eia.to_csv(output_path)
+
+    series_config_path = Path(series_config_path)
+    series_config_path.parent.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(EIA_SERIES_METADATA).to_csv(series_config_path, index=False)
+
     print(
         "Merged EIA weekly: "
         f"{len(eia):,} rows, {eia.index.min().date()} to {eia.index.max().date()}"

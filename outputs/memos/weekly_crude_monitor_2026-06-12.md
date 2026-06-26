@@ -1,7 +1,7 @@
 # Weekly Crude Market Monitor
 
-**Week Ending:** June 12, 2026  
-**Approximate Release Date:** June 18, 2026  
+**Week Ending:** June 12, 2026
+**Approximate Release Date:** June 17, 2026
 **Overall Tone:** Bullish
 
 ---
@@ -12,18 +12,19 @@
 |--------|-------|--------------|---------------|
 | U.S. Crude Stocks | 418.2 Mb | -8263.0 kb | -1.53 |
 | Cushing Stocks | 20.0 Mb | -1606.0 kb | -1.47 |
-| Production | 758473 kb/d | -17204 kb/d | - |
+| Production | 13806 kb/d | +7 kb/d | - |
 | Refinery Utilization | 96.7% | +1.4 pp | - |
-| Net Imports | 807 kb | - | - |
+| Net Imports | 807 kb/d | - | - |
 
 ## Supply-Demand Balance
 
-Implied surplus of 741865 kb - supply > demand
+Implied weekly stock draw of 19614 kbbl - supply < demand
 
-- Supply (production + imports): 763607 kb
-- Demand (exports + refinery inputs): 21742 kb
-- Implied balance: +741865 kb
-- Days of supply: 168.1 days
+- Supply (production + imports): 18940 kb/d (132580 kbbl/week)
+- Demand (exports + refinery inputs): 21742 kb/d (152194 kbbl/week)
+- Implied stock change: -19614 kbbl/week
+- Residual vs reported inventory change: -11351 kbbl
+- Days of supply: 24.0 days (3.4 weeks)
 
 ## Market Assessment
 
@@ -36,12 +37,12 @@ Implied surplus of 741865 kb - supply > demand
 
 ## Spread & Volatility
 
-*Market data shown from latest available aligned price date: June 11, 2026.*
+*Market data shown from latest available aligned price date: June 17, 2026.*
 
-- **WTI:** $91.58/bbl
-- **Brent:** $92.84/bbl
-- Brent-WTI spread at $1.26/bbl
-- 20-day realized vol at 54.6% - elevated risk environment
+- **WTI:** $80.65/bbl
+- **Brent:** $80.33/bbl
+- Brent-WTI spread at $-0.32/bbl
+- 20-day realized vol at 54.3% - elevated risk environment
 - **Volatility Regime:** High
 
 ## Key Risk

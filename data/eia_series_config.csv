@@ -1,0 +1,8 @@
+series_id,column,description,unit
+WCESTUS1,us_crude_stocks,U.S. commercial crude oil stocks excluding SPR,thousand barrels
+W_EPC0_SAX_YCUOK_MBBL,cushing_stocks,"Cushing, Oklahoma crude oil stocks",thousand barrels
+WCRFPUS2,us_crude_production,U.S. field production of crude oil,thousand barrels per day
+WCRIMUS2,crude_imports,U.S. imports of crude oil,thousand barrels per day
+WCREXUS2,crude_exports,U.S. exports of crude oil,thousand barrels per day
+WGIRIUS2,refinery_inputs,U.S. gross inputs to refineries,thousand barrels per day
+WPULEUS3,refinery_utilization,U.S. refinery operable-capacity utilization,percent
