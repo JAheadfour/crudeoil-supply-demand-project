@@ -25,8 +25,52 @@
     </section>
     <div class="content">
       <article class="article">
+<h1 id="chapter-17-oil-prices">Chapter 17 - Oil Prices: 深度讲解</h1>
+<h2 id="8157c9c3a4f943eda74cc2f19588cbed">先给你结论</h2>
+<p>这一章讲价格怎么从实货世界生成。Oil price 不是一个数字，而是一串阶梯：wellhead、pipeline、hub、seaborne cargo、refinery gate、wholesale、retail，每一层都加上质量、地点、时间、运输、税和 margin。</p>
+<h2 id="3307cd89e37c47b4b5328eff490358e6">脑内模型</h2>
+<p>用公式记：physical crude price = benchmark +/- quality differential +/- location differential +/- timing/freight adjustments。Benchmark 提供共同语言，differential 才把具体货物的质量和物流翻译出来。</p>
+<h2 id="15fc21ee8f434423965831563a379bf4">按章节怎么读</h2>
+<table><tbody>
+<tr><th>小节</th><th>你要真正理解的点</th></tr>
+<tr><td>Physical Oil Trading</td><td>这一节不是让你背标题，而是让你抓住：实货交易处理真实 barrels 的质量、地点、时间和信用风险。</td></tr>
+<tr><td>Benchmark Pricing</td><td>这一节不是让你背标题，而是让你抓住：WTI、Brent、Dubai 等 benchmarks 给不同 crudes 提供可观察参考价。</td></tr>
+<tr><td>The Delivery-Chain Price Ladder</td><td>这一节不是让你背标题，而是让你抓住：从 wellhead 到 retail，价格逐层加入 transport、storage、tax、margin 和 quality adjustments。</td></tr>
+<tr><td>Unit Conversions</td><td>这一节不是让你背标题，而是让你抓住：Barrel、metric tonne、gallon、BTU 等单位转换是价格比较基础。</td></tr>
+<tr><td>Formula Pricing: A Worked Example</td><td>这一节不是让你背标题，而是让你抓住：Formula price = benchmark price plus/minus quality and location differential。</td></tr>
+<tr><td>Freight Netback Pricing</td><td>这一节不是让你背标题，而是让你抓住：Netback 从目的地产品或 crude value 倒推产地可支付价格。</td></tr>
+<tr><td>Pricing Windows and the Platts MOC</td><td>这一节不是让你背标题，而是让你抓住：Price reporting agencies 用窗口和 MOC process 评估 physical market。</td></tr>
+<tr><td>Oil and the US Dollar</td><td>这一节不是让你背标题，而是让你抓住：国际 oil pricing 以美元为核心，FX 和利率影响生产国购买力和投资者需求。</td></tr>
+<tr><td>Retail Price Differences</td><td>这一节不是让你背标题，而是让你抓住：Retail fuel price 差异来自 taxes、logistics、specs、competition 和 crude/product markets。</td></tr>
+</tbody></table>
+<h2 id="ef74525feea74cb3b1b55596abc02516">现实推演</h2>
+<p>一桶重质高硫原油卖到远方复杂炼厂，价格可能按 Brent 减质量折价，再减 freight，再考虑目的地炼厂可承受的 netback。你看到新闻里的 Brent/WTI 只是起点，真正成交价还要通过 formula pricing 落地。</p>
+<h2 id="fb1b511513d04950be50e9dd2c03f186">概念怎么串起来</h2>
+<ul>
+<li><code>Formula price</code>：Benchmark +/- differential。 读的时候要防止这个误区或抓住这个 cue：Differential 同时包含质量、地点和物流。</li>
+<li><code>Netback</code>：Destination value - freight - handling - quality costs。 读的时候要防止这个误区或抓住这个 cue：用于比较不同买家或出口路径。</li>
+<li><code>Crack spread</code>：Product value - crude cost。 读的时候要防止这个误区或抓住这个 cue：炼厂 margin proxy，不是完整利润。</li>
+<li><code>Barrel-tonne conversion</code>：Tonnes depend on density, so factor varies by crude/API。 读的时候要防止这个误区或抓住这个 cue：不能用固定数比较所有 grades。</li>
+<li><code>Benchmark liquidity</code>：交易量、透明度和可交割性支撑 benchmark。 读的时候要防止这个误区或抓住这个 cue：名字知名不等于适合作 benchmark。</li>
+<li><code>MOC assessment</code>：Platts Market on Close 通过收盘窗口评估 spot price。 读的时候要防止这个误区或抓住这个 cue：是评估机制，不一定等于交易所结算价。</li>
+<li><code>Retail price build-up</code>：Crude/product wholesale + distribution + taxes + retail margin。 读的时候要防止这个误区或抓住这个 cue：油价涨跌不会一比一进入泵价。</li>
+</ul>
+<h2 id="5d941884ea4247c99166b79a1f20ba43">读完必须会解释</h2>
+<ul>
+<li>benchmark 和 differential 的关系</li>
+<li>freight netback 如何倒推产地价值</li>
+<li>为什么 retail gasoline price 不会一比一跟 crude price 同步</li>
+</ul>
+<h2 id="f9eb55fdb1d444489f416ec9a3c2d5d3">不看原书也能懂的检查</h2>
+<ul>
+<li>你能不能用自己的话说出本章的核心因果链，而不是只复述术语？</li>
+<li>你能不能把本章至少两个概念连到价格、物流、炼厂、政策或风险管理中的一个真实问题？</li>
+<li>你能不能指出一个常见误解，并解释为什么它错？</li>
+</ul>
+<p>Source reference: https://oil101.morgandowney.com/chapters/oil-prices</p>
+<p>---</p>
 <h1 id="chapter-17-oil-prices-structured-notes">Chapter 17 - Oil Prices: Structured Notes</h1>
-<h2 id="e53be3559c614964ac91d284c9a97fb5">学习目标</h2>
+<h2 id="8d62159ea8a44579827e8a9077823019">学习目标</h2>
 <ul>
 <li>说清本章的核心机制、市场角色或技术逻辑。</li>
 <li>能把主要英文术语和中文解释对应起来。</li>
@@ -161,7 +205,14 @@
       </article>
       <aside class="toc">
         <strong>On this page</strong>
-        <a href="#e53be3559c614964ac91d284c9a97fb5">学习目标</a>
+        <a href="#8157c9c3a4f943eda74cc2f19588cbed">先给你结论</a>
+        <a href="#3307cd89e37c47b4b5328eff490358e6">脑内模型</a>
+        <a href="#15fc21ee8f434423965831563a379bf4">按章节怎么读</a>
+        <a href="#ef74525feea74cb3b1b55596abc02516">现实推演</a>
+        <a href="#fb1b511513d04950be50e9dd2c03f186">概念怎么串起来</a>
+        <a href="#5d941884ea4247c99166b79a1f20ba43">读完必须会解释</a>
+        <a href="#f9eb55fdb1d444489f416ec9a3c2d5d3">不看原书也能懂的检查</a>
+        <a href="#8d62159ea8a44579827e8a9077823019">学习目标</a>
         <a href="#section-notes">Section Notes</a>
         <a href="#exam-traps-and-interpretation-notes">Exam Traps And Interpretation Notes</a>
         <a href="#how-to-use-this-bank">How To Use This Bank</a>

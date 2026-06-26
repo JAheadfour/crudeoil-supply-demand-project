@@ -1,4 +1,4 @@
-param(
+﻿param(
   [string]$KbRoot = "outputs/oil101-KB",
   [string]$SiteRoot = "outputs/oil101-mobile-site"
 )
@@ -343,7 +343,7 @@ for ($i = 0; $i -lt $units.Count; $i++) {
   $u = $units[$i]
   $unitDir = Join-Path $kb $u.Dir
   $parts = @()
-  foreach ($name in @("01-structured-notes.md", "02-concept-bank.md", "02-formula-bank.md", "03-review-tools.md")) {
+  foreach ($name in @("04-deep-explanation.md", "01-structured-notes.md", "02-concept-bank.md", "02-formula-bank.md", "03-review-tools.md")) {
     $path = Join-Path $unitDir $name
     if (Test-Path -LiteralPath $path) {
       $parts += [System.IO.File]::ReadAllText((Resolve-Path -LiteralPath $path), [System.Text.Encoding]::UTF8)
@@ -433,9 +433,9 @@ $indexHtml = @"
   </header>
   <main class="shell">
     <section class="hero">
-      <div class="eyebrow">Mobile study site</div>
-      <h1>Oil 101 Knowledge Base</h1>
-      <p>Structured notes, concept banks, and review tools for every chapter and appendix.</p>
+      <div class="eyebrow">Mobile deep-reading site</div>
+      <h1>Oil 101 深度知识库</h1>
+      <p>每章先用中文把核心逻辑、现实推演和关键概念讲透，再附结构化笔记、概念库和复习工具。</p>
     </section>
     <input class="search" data-search placeholder="Search chapters, concepts, or appendices" aria-label="Search chapters">
     <section class="grid">

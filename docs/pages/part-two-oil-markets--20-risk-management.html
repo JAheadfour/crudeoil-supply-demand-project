@@ -25,8 +25,59 @@
     </section>
     <div class="content">
       <article class="article">
+<h1 id="chapter-20-managing-oil-price-risk">Chapter 20 - Managing Oil Price Risk: 深度讲解</h1>
+<h2 id="ceb97cf8fd404fa7a52165f0f7ca911b">先给你结论</h2>
+<p>这一章把衍生品从交易工具拉回公司治理。Risk management 的目标不是猜对油价，而是让公司在坏情景下活下来，在正常情景下能融资、投资和运营。好的 hedge policy 服务现金流，不服务炫技。</p>
+<h2 id="8655e471e96e4fa3842e21bf898d963e">脑内模型</h2>
+<p>先识别 exposure，再选 instrument，再管理 basis、roll、liquidity、counterparty、accounting 和 governance。Producer、refiner、airline、marketer 的风险方向不同，所以没有统一 hedge ratio。</p>
+<h2 id="16c47395f5234205a77725866a799bd0">按章节怎么读</h2>
+<table><tbody>
+<tr><th>小节</th><th>你要真正理解的点</th></tr>
+<tr><td>Why Commodities Are Volatile</td><td>这一节不是让你背标题，而是让你抓住：Oil volatility 来自低短期弹性、库存限制、地缘政治和金融杠杆。</td></tr>
+<tr><td>The Case for Hedging</td><td>这一节不是让你背标题，而是让你抓住：Hedging 用可接受成本降低现金流波动，让公司能投资、借款和运营。</td></tr>
+<tr><td>Corporate Hedging Objectives by Firm Type</td><td>这一节不是让你背标题，而是让你抓住：Producers、refiners、airlines、marketers 的风险暴露和目标不同。</td></tr>
+<tr><td>Hedging Instruments</td><td>这一节不是让你背标题，而是让你抓住：Futures、swaps、options、collars 和 physical contracts 各有成本和风险。</td></tr>
+<tr><td>Basis Risk</td><td>这一节不是让你背标题，而是让你抓住：Hedge index 与实际实货价格不完全一致，留下 basis exposure。</td></tr>
+<tr><td>Roll Risk: The Metallgesellschaft Lesson</td><td>这一节不是让你背标题，而是让你抓住：短期 hedge 长期 exposure 需要连续 roll，曲线结构可产生巨大现金流压力。</td></tr>
+<tr><td>Value at Risk and Expected Shortfall</td><td>这一节不是让你背标题，而是让你抓住：VaR 和 ES 衡量在置信水平下的潜在损失，但依赖模型假设。</td></tr>
+<tr><td>Stress Testing</td><td>这一节不是让你背标题，而是让你抓住：Stress tests 检查极端但 plausible 场景下的 liquidity 和 solvency。</td></tr>
+<tr><td>Counterparty Risk and the ISDA Framework</td><td>这一节不是让你背标题，而是让你抓住：OTC hedges 依赖 collateral、netting 和 legal documentation 管理信用风险。</td></tr>
+<tr><td>Hedge Accounting</td><td>这一节不是让你背标题，而是让你抓住：会计规则决定 hedge gains/losses 如何进入 earnings。</td></tr>
+<tr><td>Historical Corporate Hedging Blowups and One Famous Gain</td><td>这一节不是让你背标题，而是让你抓住：历史案例说明 hedge 可以保护公司，也可能因结构和 governance 出错而放大风险。</td></tr>
+<tr><td>Portfolio Theory and the Efficient Frontier</td><td>这一节不是让你背标题，而是让你抓住：风险管理要看 portfolio covariance，而非孤立单笔交易。</td></tr>
+<tr><td>Peer Benchmarking: What Other Producers Are Doing</td><td>这一节不是让你背标题，而是让你抓住：同行 hedge ratios 和 tenors 可作为参考，但不能替代自身风险目标。</td></tr>
+<tr><td>Why Some Companies Do Not Hedge</td><td>这一节不是让你背标题，而是让你抓住：不 hedge 可能源于股东偏好、成本、会计、流动性或对价格的观点。</td></tr>
+<tr><td>Operational Reality</td><td>这一节不是让你背标题，而是让你抓住：有效 hedge 需要 policy、limits、reporting、systems 和董事会治理。</td></tr>
+</tbody></table>
+<h2 id="3208b0f68af34792b59b0dea407b801c">现实推演</h2>
+<p>Metallgesellschaft 的教训是 roll risk 和 liquidity risk 可以击穿看似合理的 hedge。用短期期货滚动长期固定价格销售，曲线结构和保证金现金流可能让公司在经济上对、现金上先死。</p>
+<h2 id="84c67ab5d74b4a1a84b77c0a662dd243">概念怎么串起来</h2>
+<ul>
+<li><code>Hedge ratio</code>：Hedged volume / exposed volume。 读的时候要防止这个误区或抓住这个 cue：100% hedge 不一定最优。</li>
+<li><code>Basis risk</code>：Local physical price - hedge index price 的不确定性。 读的时候要防止这个误区或抓住这个 cue：Flat price hedge 不能消除 location/quality risk。</li>
+<li><code>Roll risk</code>：到期合约换月至远月时面临价差和现金流风险。 读的时候要防止这个误区或抓住这个 cue：长期暴露不宜机械短期期货滚动。</li>
+<li><code>VaR</code>：给定置信水平和期限的最大预期损失阈值。 读的时候要防止这个误区或抓住这个 cue：尾部之外损失看不到。</li>
+<li><code>Expected shortfall</code>：超过 VaR 后的平均损失。 读的时候要防止这个误区或抓住这个 cue：比 VaR 更关注尾部严重性。</li>
+<li><code>Stress test</code>：假设极端价格、basis、liquidity 和 counterparty 情景。 读的时候要防止这个误区或抓住这个 cue：不是概率预测，而是生存测试。</li>
+<li><code>ISDA netting</code>：OTC 衍生品主协议和净额结算安排。 读的时候要防止这个误区或抓住这个 cue：法律可执行性很关键。</li>
+<li><code>Collar hedge</code>：买保护性 option 同时卖另一侧 option 降低成本。 读的时候要防止这个误区或抓住这个 cue：会限制收益空间。</li>
+</ul>
+<h2 id="97d7075fee0242b7b218e39f890ea1cc">读完必须会解释</h2>
+<ul>
+<li>basis risk 为什么无法靠 flat price hedge 消除</li>
+<li>VaR 和 expected shortfall 各自看什么</li>
+<li>为什么 hedge accounting 和 board policy 很现实</li>
+</ul>
+<h2 id="725967095d3c47a8aae3786332ff685e">不看原书也能懂的检查</h2>
+<ul>
+<li>你能不能用自己的话说出本章的核心因果链，而不是只复述术语？</li>
+<li>你能不能把本章至少两个概念连到价格、物流、炼厂、政策或风险管理中的一个真实问题？</li>
+<li>你能不能指出一个常见误解，并解释为什么它错？</li>
+</ul>
+<p>Source reference: https://oil101.morgandowney.com/chapters/risk-management</p>
+<p>---</p>
 <h1 id="chapter-20-managing-oil-price-risk-structured-notes">Chapter 20 - Managing Oil Price Risk: Structured Notes</h1>
-<h2 id="45be1df7580c4bd2b180edb92d229e41">学习目标</h2>
+<h2 id="67b6f94831c84684831c7ab537dc0f5a">学习目标</h2>
 <ul>
 <li>说清本章的核心机制、市场角色或技术逻辑。</li>
 <li>能把主要英文术语和中文解释对应起来。</li>
@@ -181,7 +232,14 @@
       </article>
       <aside class="toc">
         <strong>On this page</strong>
-        <a href="#45be1df7580c4bd2b180edb92d229e41">学习目标</a>
+        <a href="#ceb97cf8fd404fa7a52165f0f7ca911b">先给你结论</a>
+        <a href="#8655e471e96e4fa3842e21bf898d963e">脑内模型</a>
+        <a href="#16c47395f5234205a77725866a799bd0">按章节怎么读</a>
+        <a href="#3208b0f68af34792b59b0dea407b801c">现实推演</a>
+        <a href="#84c67ab5d74b4a1a84b77c0a662dd243">概念怎么串起来</a>
+        <a href="#97d7075fee0242b7b218e39f890ea1cc">读完必须会解释</a>
+        <a href="#725967095d3c47a8aae3786332ff685e">不看原书也能懂的检查</a>
+        <a href="#67b6f94831c84684831c7ab537dc0f5a">学习目标</a>
         <a href="#section-notes">Section Notes</a>
         <a href="#exam-traps-and-interpretation-notes">Exam Traps And Interpretation Notes</a>
         <a href="#how-to-use-this-bank">How To Use This Bank</a>

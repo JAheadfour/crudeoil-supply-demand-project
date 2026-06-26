@@ -25,8 +25,52 @@
     </section>
     <div class="content">
       <article class="article">
+<h1 id="appendix-1-more-on-the-two-most-important-forward-markets">Appendix 1 - More on the Two Most Important Forward Markets: 深度讲解</h1>
+<h2 id="7a45a60e23fe4697b4501778fdc6f5b2">先给你结论</h2>
+<p>这个 appendix 是第 18 章的技术补充，帮你分清 NYMEX WTI、ICE Brent、Dated Brent、BFOETM、CFD、EFP、EFS 这些名词。它们都和 forward markets 有关，但连接的实货、现金结算和风险窗口不一样。</p>
+<h2 id="b16d24d2ea7f4bd1a626488712859693">脑内模型</h2>
+<p>把 forward market 分成三层：exchange futures 提供标准化合约，physical assessments 提供实货价格锚，OTC/CFD/EFP/EFS 把两者连接起来。专业市场不是一个价格，而是一套桥梁。</p>
+<h2 id="97bea50e10834cff81254e4b5d5ee690">按章节怎么读</h2>
+<table><tbody>
+<tr><th>小节</th><th>你要真正理解的点</th></tr>
+<tr><td>NYMEX WTI Crude Oil Futures (CL)</td><td>这一节不是让你背标题，而是让你抓住：CL 是 Cushing 交割的 light sweet crude futures，标准化了美国内陆 benchmark。</td></tr>
+<tr><td>ICE Brent Crude Oil Futures</td><td>这一节不是让你背标题，而是让你抓住：Brent futures 是全球 seaborne crude 关键 benchmark，现金结算和实货 assessment 连接紧密。</td></tr>
+<tr><td>BFOETM: the basket, the 2018 and 2023 reforms</td><td>这一节不是让你背标题，而是让你抓住：Brent basket 扩展到 BFOETM 以维持可交割流动性。</td></tr>
+<tr><td>Dated Brent and the Platts Market on Close</td><td>这一节不是让你背标题，而是让你抓住：Dated Brent 是实货评估，MOC process 是形成 benchmark 的核心机制。</td></tr>
+<tr><td>Contracts for Differences (CFDs)</td><td>这一节不是让你背标题，而是让你抓住：CFDs 交易 Dated Brent 与 futures/forward 之间的差。</td></tr>
+<tr><td>Exchange for Physical (EFP)</td><td>这一节不是让你背标题，而是让你抓住：EFP 在 futures 与 physical positions 之间转换。</td></tr>
+<tr><td>Exchange for Swap (EFS)</td><td>这一节不是让你背标题，而是让你抓住：EFS 在 futures 与 OTC swap exposure 之间转换。</td></tr>
+<tr><td>Contract spec reference</td><td>这一节不是让你背标题，而是让你抓住：Contract specs 定义交割、质量、计量、结算和最后交易日。</td></tr>
+</tbody></table>
+<h2 id="8ea606fbc15e41bfa09cda63588991c4">现实推演</h2>
+<p>一个 physical Brent cargo 可能用 Dated Brent 定价，但 trader 又用 ICE Brent futures 管理风险，中间用 CFD 管理 Dated 与 forward 的差。看似都叫 Brent，其实 reference、timing 和 settlement 都不同。</p>
+<h2 id="ec37e2216c1f4452abd9d45748feb476">概念怎么串起来</h2>
+<ul>
+<li><code>CL contract</code>：NYMEX WTI futures，Cushing physical delivery。 读的时候要防止这个误区或抓住这个 cue：持有到期有交割义务。</li>
+<li><code>Brent futures</code>：ICE Brent futures，全球 seaborne crude 参考。 读的时候要防止这个误区或抓住这个 cue：与 Dated Brent 不是同一物。</li>
+<li><code>BFOETM</code>：Brent、Forties、Oseberg、Ekofisk、Troll、Midland basket。 读的时候要防止这个误区或抓住这个 cue：加入 Midland 是为维持流动性。</li>
+<li><code>Dated Brent</code>：短期实货 Brent cargo assessment。 读的时候要防止这个误区或抓住这个 cue：很多 physical crude formulas 参考它。</li>
+<li><code>CFD</code>：Dated Brent 与 forward/futures 之间的差价合约。 读的时候要防止这个误区或抓住这个 cue：用于管理 physical pricing window risk。</li>
+<li><code>EFP</code>：Exchange for Physical。 读的时候要防止这个误区或抓住这个 cue：连接实货和期货账本。</li>
+<li><code>EFS</code>：Exchange for Swap。 读的时候要防止这个误区或抓住这个 cue：连接期货和 OTC swaps。</li>
+<li><code>Contract spec</code>：合约的法律和操作说明书。 读的时候要防止这个误区或抓住这个 cue：交易前必须看质量、地点和到期规则。</li>
+</ul>
+<h2 id="5356e990c9c94f6888299625b4d2bdae">读完必须会解释</h2>
+<ul>
+<li>CL 和 Brent futures 的交割/结算差异</li>
+<li>Dated Brent 和 Brent futures 为什么不是同一物</li>
+<li>EFP/EFS 如何连接 futures、physical 和 swaps</li>
+</ul>
+<h2 id="1d31499baeb94e30a80b0d46a77a688a">不看原书也能懂的检查</h2>
+<ul>
+<li>你能不能用自己的话说出本章的核心因果链，而不是只复述术语？</li>
+<li>你能不能把本章至少两个概念连到价格、物流、炼厂、政策或风险管理中的一个真实问题？</li>
+<li>你能不能指出一个常见误解，并解释为什么它错？</li>
+</ul>
+<p>Source reference: https://oil101.morgandowney.com/appendices/forward-markets-mechanics</p>
+<p>---</p>
 <h1 id="appendix-1-more-on-the-two-most-important-forward-markets-structured-notes">Appendix 1 - More on the Two Most Important Forward Markets: Structured Notes</h1>
-<h2 id="19b3684d669442a396f898fb99f07014">学习目标</h2>
+<h2 id="ed08137c5b024c77a5639ecfa7e6d5da">学习目标</h2>
 <ul>
 <li>说清本章的核心机制、市场角色或技术逻辑。</li>
 <li>能把主要英文术语和中文解释对应起来。</li>
@@ -167,7 +211,14 @@
       </article>
       <aside class="toc">
         <strong>On this page</strong>
-        <a href="#19b3684d669442a396f898fb99f07014">学习目标</a>
+        <a href="#7a45a60e23fe4697b4501778fdc6f5b2">先给你结论</a>
+        <a href="#b16d24d2ea7f4bd1a626488712859693">脑内模型</a>
+        <a href="#97bea50e10834cff81254e4b5d5ee690">按章节怎么读</a>
+        <a href="#8ea606fbc15e41bfa09cda63588991c4">现实推演</a>
+        <a href="#ec37e2216c1f4452abd9d45748feb476">概念怎么串起来</a>
+        <a href="#5356e990c9c94f6888299625b4d2bdae">读完必须会解释</a>
+        <a href="#1d31499baeb94e30a80b0d46a77a688a">不看原书也能懂的检查</a>
+        <a href="#ed08137c5b024c77a5639ecfa7e6d5da">学习目标</a>
         <a href="#section-notes">Section Notes</a>
         <a href="#exam-traps-and-interpretation-notes">Exam Traps And Interpretation Notes</a>
         <a href="#how-to-use-this-bank">How To Use This Bank</a>

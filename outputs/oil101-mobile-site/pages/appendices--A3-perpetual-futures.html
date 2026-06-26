@@ -25,8 +25,49 @@
     </section>
     <div class="content">
       <article class="article">
+<h1 id="appendix-3-perpetual-futures-and-the-24-7-oil-market">Appendix 3 - Perpetual Futures and the 24/7 Oil Market: 深度讲解</h1>
+<h2 id="f0bf812e706c4ab5ae3d55ca3d8520ff">先给你结论</h2>
+<p>这个 appendix 讨论 crypto-style perpetual futures 能否进入 oil market。Perp 的吸引力是 24/7 和无到期，但 oil 是有实物交割、库存、监管和 benchmark assessment 的市场，所以 perp 很难替代传统 futures curve。</p>
+<h2 id="996d1f25966f42c8848284aab07e9c21">脑内模型</h2>
+<p>Perpetual futures 没有到期收敛，只能靠 funding rate 锚定外部 index。传统 commodity futures 有交割或现金结算机制，到期时会被实货世界拉回。两者最大差别是是否有 physical convergence。</p>
+<h2 id="d2d53dd14e004c0489ad291d70039145">按章节怎么读</h2>
+<table><tbody>
+<tr><th>小节</th><th>你要真正理解的点</th></tr>
+<tr><td>What a Perpetual Is</td><td>这一节不是让你背标题，而是让你抓住：Perpetual futures 没有固定到期日，通过 funding rate 锚定现货或指数。</td></tr>
+<tr><td>How Oil Perps Reached the Market</td><td>这一节不是让你背标题，而是让你抓住：Crypto-style perps 被引入 oil price exposure，但和 regulated commodity futures 有本质差异。</td></tr>
+<tr><td>Why the Clock Is the Real Attraction</td><td>这一节不是让你背标题，而是让你抓住：24/7 trading 满足周末和非交易时段风险表达需求。</td></tr>
+<tr><td>The Institutional Response</td><td>这一节不是让你背标题，而是让你抓住：传统机构更重视 clearing、market integrity、reference price 和监管框架。</td></tr>
+<tr><td>Why Oil Has Not Gone Perpetual, and the Skeptic&#39;s View</td><td>这一节不是让你背标题，而是让你抓住：Oil 是实物、交割、库存和监管市场，perp 不能替代 futures curve。</td></tr>
+<tr><td>The Borrowed Price</td><td>这一节不是让你背标题，而是让你抓住：Perps 借用外部 benchmark/index，价格发现仍依赖 underlying oil market。</td></tr>
+</tbody></table>
+<h2 id="9fc0c572920344b6a175d5956bc16f50">现实推演</h2>
+<p>如果周末中东出现风险，oil perp 可以让投资者立刻表达价格观点；但它引用的 index 仍来自传统油价体系。真正的 physical barrels、freight、storage 和 refinery demand 不会因为 perp 24/7 交易而变成 24/7 实货市场。</p>
+<h2 id="7f314a064a054dea89af885e0152eb9c">概念怎么串起来</h2>
+<ul>
+<li><code>Perpetual future</code>：无到期合约，通过 funding payments 维持与指数接近。 读的时候要防止这个误区或抓住这个 cue：没有自然交割收敛。</li>
+<li><code>Funding rate</code>：Longs 与 shorts 定期支付的锚定机制。 读的时候要防止这个误区或抓住这个 cue：funding 可以成为主要成本。</li>
+<li><code>Index price</code>：Perp 用外部价格源作为锚。 读的时候要防止这个误区或抓住这个 cue：若 index 薄弱，perp 价格也不稳。</li>
+<li><code>24/7 risk transfer</code>：周末和夜间可交易是主要卖点。 读的时候要防止这个误区或抓住这个 cue：流动性质量不等于交易时间长度。</li>
+<li><code>Delivery convergence</code>：传统 futures 到期通过实物或现金结算收敛。 读的时候要防止这个误区或抓住这个 cue：perp 缺少到期收敛机制。</li>
+<li><code>Regulatory gap</code>：Perps 常处在不同监管框架下。 读的时候要防止这个误区或抓住这个 cue：机构采用受合规和 clearing 限制。</li>
+<li><code>Borrowed price discovery</code>：Perp 依赖原油 benchmark，而非独立发现实货价格。 读的时候要防止这个误区或抓住这个 cue：不能用衍生报价替代 physical assessment。</li>
+</ul>
+<h2 id="37a11df5e04b4d92afec6fe40e752af7">读完必须会解释</h2>
+<ul>
+<li>funding rate 如何替代到期机制</li>
+<li>为什么 borrowed price discovery 是 perp 的弱点</li>
+<li>为什么 oil market 的实货约束比 crypto 更强</li>
+</ul>
+<h2 id="763b4c1580f044c0892ea21744ff3d27">不看原书也能懂的检查</h2>
+<ul>
+<li>你能不能用自己的话说出本章的核心因果链，而不是只复述术语？</li>
+<li>你能不能把本章至少两个概念连到价格、物流、炼厂、政策或风险管理中的一个真实问题？</li>
+<li>你能不能指出一个常见误解，并解释为什么它错？</li>
+</ul>
+<p>Source reference: https://oil101.morgandowney.com/appendices/perpetual-futures</p>
+<p>---</p>
 <h1 id="appendix-3-perpetual-futures-and-the-24-7-oil-market-structured-notes">Appendix 3 - Perpetual Futures and the 24/7 Oil Market: Structured Notes</h1>
-<h2 id="d45f21be7036418199a31537644dc679">学习目标</h2>
+<h2 id="b8bbe5ed7d0b4d93b812694400627ee0">学习目标</h2>
 <ul>
 <li>说清本章的核心机制、市场角色或技术逻辑。</li>
 <li>能把主要英文术语和中文解释对应起来。</li>
@@ -155,7 +196,14 @@
       </article>
       <aside class="toc">
         <strong>On this page</strong>
-        <a href="#d45f21be7036418199a31537644dc679">学习目标</a>
+        <a href="#f0bf812e706c4ab5ae3d55ca3d8520ff">先给你结论</a>
+        <a href="#996d1f25966f42c8848284aab07e9c21">脑内模型</a>
+        <a href="#d2d53dd14e004c0489ad291d70039145">按章节怎么读</a>
+        <a href="#9fc0c572920344b6a175d5956bc16f50">现实推演</a>
+        <a href="#7f314a064a054dea89af885e0152eb9c">概念怎么串起来</a>
+        <a href="#37a11df5e04b4d92afec6fe40e752af7">读完必须会解释</a>
+        <a href="#763b4c1580f044c0892ea21744ff3d27">不看原书也能懂的检查</a>
+        <a href="#b8bbe5ed7d0b4d93b812694400627ee0">学习目标</a>
         <a href="#section-notes">Section Notes</a>
         <a href="#exam-traps-and-interpretation-notes">Exam Traps And Interpretation Notes</a>
         <a href="#how-to-use-this-bank">How To Use This Bank</a>

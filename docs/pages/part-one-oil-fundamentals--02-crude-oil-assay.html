@@ -25,8 +25,49 @@
     </section>
     <div class="content">
       <article class="article">
+<h1 id="chapter-2-a-crude-oil-assay">Chapter 2 - A Crude Oil Assay: 深度讲解</h1>
+<h2 id="e6bc0a1cdaba407aa2f1bfb526618139">先给你结论</h2>
+<p>这一章的核心是：原油不是一种商品，而是一张质量表。API gravity、sulfur、TAN、metals、viscosity、salt、BS&amp;W 等指标共同决定炼厂愿意付多少钱。你看到 WTI、Brent、Maya、Dubai 这些名字时，真正要问的是：这桶油能炼出什么，处理它要花多少钱，谁有能力接收它。</p>
+<h2 id="8325f1cbf5834da599de7bf183e915bb">脑内模型</h2>
+<p>把 crude assay 当成炼厂的入场体检。轻质低硫原油像容易处理的原料，能多产 gasoline、diesel、jet fuel；重质高硫原油像需要特殊厨房和厨师的原料，便宜但只有复杂炼厂能吃下。价格差就是“产品收入 - 处理成本 - 操作风险”的结果。</p>
+<h2 id="e9899aa1cdee419294b2a9dff3180918">按章节怎么读</h2>
+<table><tbody>
+<tr><th>小节</th><th>你要真正理解的点</th></tr>
+<tr><td>三种密度表达</td><td>这一节不是让你背标题，而是让你抓住：/ 指标 / 英文 / 含义 / 直觉 / /---/---/---/---/ / 公制密度 / Metric density / kg/m3，水约为 1000 kg/m3 / 工程和科学表达 / / 比重 / Specific gravity, SG / 原油密度除以水密度 / SG &lt; 1 会浮在水上 / / API 度 / API gravity / American Petroleum Institute 的倒置尺度 / 数字越大，油越轻 / API gravity 的直觉陷阱非常重要：API 数字越高，密度越低。它是一个倒置指标，不是“越高越重”。</td></tr>
+<tr><td>关键公式</td><td>这一节不是让你背标题，而是让你抓住：``<code>text API gravity = 141.5 / SG - 131.5 SG = 141.5 / (API gravity + 131.5) Density kg/m3 ≈ SG * 1000 </code>`` WTI 示例：若 API gravity 为 39.6，则 SG 约为 0.827，密度约为 827 kg/m3。一桶 42 US gallons 约等于 159 liters，所以一桶 WTI 的质量约为 131 kg，而同体积水约为 159 kg。</td></tr>
+<tr><td>Hydrometer 的原理</td><td>这一节不是让你背标题，而是让你抓住：Hydrometer 是现场测量比重或 API gravity 的简单仪器。它利用 Archimedes principle：仪器在液体中下沉到“排开液体重量等于仪器自身重量”的位置。液体越密，hydrometer 浮得越高；液体越轻，则沉得更低。实际读数通常要校正到 60 degrees F 的参考温度。</td></tr>
+<tr><td>API density 分类</td><td>这一节不是让你背标题，而是让你抓住：/ Class / API gravity / 炼厂含义 / /---/---:/---/ / Light / &gt;31 degrees API / 通常产出更多汽油、柴油、航煤，较容易加工 / / Medium / 22-31 degrees API / 产品结构较均衡，多数炼厂能处理 / / Heavy / 10-22 degrees API / 常需要 coker 或 hydrocracker 来减少低价值残渣 / / Extra-heavy / &lt;10 degrees API / 比水还重，运输常需要 diluent 或加热 / 注意：市场命名不一定等于严格工程分类。判断质量时看 assay 数字，而不是只看商品名。</td></tr>
+</tbody></table>
+<h2 id="11d30f496c214aff8686de6c3cf850e5">现实推演</h2>
+<p>假设两桶油都叫 crude：一桶 40 API、0.3% sulfur，另一桶 20 API、3% sulfur、TAN 高。前者很多炼厂都能接收，产品 slate 好；后者可能需要 coker、hydrocracker、hydrotreating 和防腐能力。后者不是“没价值”，而是必须折价到复杂炼厂觉得值得冒险。</p>
+<h2 id="de8ab76a364f4fc38b38d13d01dcd48f">概念怎么串起来</h2>
+<ul>
+<li><code>Class</code>：API gravity cue 读的时候要防止这个误区或抓住这个 cue：Decision cue</li>
+<li><code>Light</code>：&gt;31 degrees API 读的时候要防止这个误区或抓住这个 cue：Easier high-value product yield</li>
+<li><code>Medium</code>：22-31 degrees API 读的时候要防止这个误区或抓住这个 cue：Broad refinery compatibility</li>
+<li><code>Heavy</code>：10-22 degrees API 读的时候要防止这个误区或抓住这个 cue：More residue; complex conversion units matter</li>
+<li><code>Extra-heavy</code>：&lt;10 degrees API 读的时候要防止这个误区或抓住这个 cue：Denser than water; transport often needs diluent or heat</li>
+<li><code>Class</code>：Sulfur by weight 读的时候要防止这个误区或抓住这个 cue：Decision cue</li>
+<li><code>Sweet</code>：&lt;0.5% 读的时候要防止这个误区或抓住这个 cue：Lower corrosion and desulfurization burden</li>
+<li><code>Medium-sour</code>：roughly 0.5%-2.0% 读的时候要防止这个误区或抓住这个 cue：Requires sulfur-aware refinery economics</li>
+<li><code>Sour</code>：around/above 2.0% 读的时候要防止这个误区或抓住这个 cue：Hydrotreating and corrosion controls become central</li>
+</ul>
+<h2 id="86189ee570114d9abd0494444a565c81">读完必须会解释</h2>
+<ul>
+<li>为什么 API 越高反而越轻</li>
+<li>为什么 sweet/sour 不只是环保标签，而是炼厂成本标签</li>
+<li>为什么 heavy-sour crude 可以便宜但仍然很重要</li>
+</ul>
+<h2 id="bd3acd3ce5ad4365a0cd27c382023bd3">不看原书也能懂的检查</h2>
+<ul>
+<li>你能不能用自己的话说出本章的核心因果链，而不是只复述术语？</li>
+<li>你能不能把本章至少两个概念连到价格、物流、炼厂、政策或风险管理中的一个真实问题？</li>
+<li>你能不能指出一个常见误解，并解释为什么它错？</li>
+</ul>
+<p>Source reference: https://oil101.morgandowney.com/chapters/crude-oil-assay</p>
+<p>---</p>
 <h1 id="chapter-2-a-crude-oil-assay-structured-notes">Chapter 2 - A Crude Oil Assay: Structured Notes</h1>
-<h2 id="f41d26329ddc4d4d8399edb04486ed9b">学习目标</h2>
+<h2 id="fa7d128be8fa44b993b34af60dc87069">学习目标</h2>
 <p>读完这一章后，应该能够：</p>
 <ul>
 <li>解释 crude oil assay 是什么，以及为什么它会直接影响成交价格。</li>
@@ -67,7 +108,7 @@
 <p>商业逻辑有两层：第一，足够的 blend 体量才能支持长距离管线和油轮经济；第二，混合可以降低单一 stream 过高 sulfur、TAN 或其他极端属性带来的交易障碍。</p>
 <h2 id="3-density">3. Density: 最重要的物理性质</h2>
 <p>核心 idea：density 是 assay 中最重要的单一物理性质，因为它暗示原油分子结构和炼后产品结构。通常 lighter crude 含有更多较短、较简单的烃分子，更容易产出 gasoline、diesel、jet fuel 等高价值产品；heavy crude 则更容易留下 residual fuel、bitumen 或 coke 相关问题。</p>
-<h3 id="1d8c42f73fc74bac8a537aed42726f70">三种密度表达</h3>
+<h3 id="9c860eb1359b47ac9d609a22affc65a6">三种密度表达</h3>
 <table><tbody>
 <tr><th>指标</th><th>英文</th><th>含义</th><th>直觉</th></tr>
 <tr><td>公制密度</td><td>Metric density</td><td>kg/m3，水约为 1000 kg/m3</td><td>工程和科学表达</td></tr>
@@ -75,7 +116,7 @@
 <tr><td>API 度</td><td>API gravity</td><td>American Petroleum Institute 的倒置尺度</td><td>数字越大，油越轻</td></tr>
 </tbody></table>
 <p>API gravity 的直觉陷阱非常重要：API 数字越高，密度越低。它是一个倒置指标，不是“越高越重”。</p>
-<h3 id="01a5225689094bb5921f1d2f4e135242">关键公式</h3>
+<h3 id="096f52db2aa140ada859e562b423dc3e">关键公式</h3>
 <pre><code>
 API gravity = 141.5 / SG - 131.5
 SG = 141.5 / (API gravity + 131.5)
@@ -139,7 +180,7 @@ Density kg/m3 ≈ SG * 1000
 Refinery value ≈ expected product revenue - processing costs - quality/operational risk
 </code></pre>
 <p>Expected product revenue 取决于汽油、柴油、航煤、燃料油等产品价格和产率。Processing costs 取决于 sulfur、metals、acid、viscosity、salt、water、carbon residue 等问题。炼厂装置越复杂，越有能力吃下折价原油；当全球 coking 或 hydrotreating 能力紧张时，heavy-sour 折价会扩大。当复杂炼厂有闲置能力时，折价可能收窄。</p>
-<h2 id="20dcc314d8914536996b2a45ce5407cb">常见误区</h2>
+<h2 id="1c3a91e36187449a9e566f68b9ffc630">常见误区</h2>
 <ul>
 <li>把 API gravity 当作普通密度读数：API 越高，原油越轻，不是越重。</li>
 <li>只凭名称判断质量：必须看 assay 中的 API、sulfur、TAN 等数字。</li>
@@ -415,7 +456,14 @@ Crude value to refinery
       </article>
       <aside class="toc">
         <strong>On this page</strong>
-        <a href="#f41d26329ddc4d4d8399edb04486ed9b">学习目标</a>
+        <a href="#e6bc0a1cdaba407aa2f1bfb526618139">先给你结论</a>
+        <a href="#8325f1cbf5834da599de7bf183e915bb">脑内模型</a>
+        <a href="#e9899aa1cdee419294b2a9dff3180918">按章节怎么读</a>
+        <a href="#11d30f496c214aff8686de6c3cf850e5">现实推演</a>
+        <a href="#de8ab76a364f4fc38b38d13d01dcd48f">概念怎么串起来</a>
+        <a href="#86189ee570114d9abd0494444a565c81">读完必须会解释</a>
+        <a href="#bd3acd3ce5ad4365a0cd27c382023bd3">不看原书也能懂的检查</a>
+        <a href="#fa7d128be8fa44b993b34af60dc87069">学习目标</a>
         <a href="#1-crude-oil-assay">1. Crude Oil Assay 是什么</a>
         <a href="#2-fields-streams-blends-markers">2. Fields、Streams、Blends、Markers</a>
         <a href="#3-density">3. Density: 最重要的物理性质</a>
@@ -423,7 +471,7 @@ Crude value to refinery
         <a href="#5-the-crude-quality-matrix">5. The Crude Quality Matrix</a>
         <a href="#6-assay-sheet">6. Assay Sheet 的其他关键项目</a>
         <a href="#7-assay">7. 为什么 Assay 最终会变成价格差</a>
-        <a href="#20dcc314d8914536996b2a45ce5407cb">常见误区</a>
+        <a href="#1c3a91e36187449a9e566f68b9ffc630">常见误区</a>
         <a href="#1-api-gravity-from-specific-gravity">1. API Gravity From Specific Gravity</a>
         <a href="#2-specific-gravity-from-api-gravity">2. Specific Gravity From API Gravity</a>
         <a href="#3-metric-density-approximation">3. Metric Density Approximation</a>
