@@ -1,0 +1,2 @@
+total_observations,num_breaches,breach_rate_pct,expected_rate_pct,LR_statistic,p_value,reject_H0_5pct,interpretation
+4124,27,0.655,1.0,5.6567,0.0174,True,Breach rate significantly differs from 1% target

@@ -1,0 +1,15 @@
+pandas>=2.2,<3
+numpy>=1.26
+fredapi>=0.5.2
+pandas-datareader>=0.10
+requests>=2.31
+scipy>=1.11
+matplotlib>=3.8
+seaborn>=0.13
+python-dotenv>=1.0
+openpyxl>=3.1
+nbformat>=5.10
+nbclient>=0.10
+ipykernel>=6.29
+setuptools>=68
+arch>=7.0
