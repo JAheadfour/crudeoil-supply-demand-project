@@ -5,15 +5,30 @@ import { test } from "node:test";
 const read = (path) => readFileSync(path, "utf8");
 const dataPath = "docs/data/oil101-understanding/module-05-inventory-curve.json";
 const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const isSubstantiveString = (value, minLength = 1) =>
+  typeof value === "string" && value.trim().length >= minLength;
 const termPattern = (label) =>
   /[A-Za-z0-9]/.test(label)
     ? new RegExp(`(^|[^A-Za-z0-9])${escapeRegExp(label)}($|[^A-Za-z0-9])`, "i")
     : new RegExp(escapeRegExp(label), "i");
 const numberPattern = /\d[\d,]*(?:\.\d+)?/;
 const recognizedUnitPattern =
-  /\b(?:bbl|bbls|barrel|barrels|bpd|kbpd|mbpd|tonne|tonnes|ton|tons|gallon|gallons|psi|API|RVP|octane|cetane|hours?|days?|kg|%|WS)\b|°API|US\$|\$/i;
-const actorOrContextPattern = /(?:一名|一位|一家|一座|一批|一桶|一条|一艘|一个|两个|比较|全球|cargo|field|refinery|terminal|trader|operator|well|basin|油田|炼厂|终端|交易员|油藏|货轮|油井|地区|枢纽|在\s*\S+)/i;
-const calculationPattern = /(?:=|≈|~|×|÷|\+|-|plus|minus|less|more|higher|lower|约|折价|差|增加|减少)/i;
+  /\b(?:bbl|bbls|barrel|barrels|bpd|kbpd|mbpd|tonne|tonnes|ton|tons|gallon|gallons|psi|API|RVP|octane|cetane|hours?|days?|kg|m3|m³|liters?|litres?|L|days?)\b|°API|US\$|\$|%/i;
+const explicitCalculationPattern =
+  /^(?=.*=)(?=.*\d[\d,]*(?:\.\d+)?)(?=.*(?:\d[\d,]*(?:\.\d+)?[\s]*%|\d[\d,]*(?:\.\d+)?[\s]*(?:bbl|bbls|barrel|barrels|bpd|kbpd|mbpd|tonne|tonnes|ton|tons|gallon|gallons|psi|API|RVP|octane|cetane|hour|hours|day|days|kg|m3|m³|liters?|litres?|L)|°API|US\$|\$))/i;
+const preDefinitionFields = (lesson) => [
+  lesson.reader_question,
+  ...Object.values(lesson.scene || {}),
+  lesson.plain_answer,
+  lesson.explanation,
+  ...(lesson.mechanism_chain || []),
+  lesson.worked_example?.actor,
+  ...(lesson.worked_example?.inputs || []),
+  lesson.worked_example?.setup,
+  ...(lesson.worked_example?.steps || []),
+  lesson.worked_example?.answer,
+  lesson.practitioner_lens,
+].filter((value) => typeof value === "string" && value.trim());
 
 test("homepage exposes the thematic learning route and full course shell", () => {
   const html = read("docs/index.html");
@@ -158,9 +173,24 @@ test("catalog links all nine complete and mirrored course modules", () => {
 
 test("module 01 only uses newly introduced lesson terms after terms_in_context defines them", () => {
   const module = JSON.parse(read("docs/data/oil101-understanding/module-01-barrel-journey.json"));
-  const definedLabels = new Set();
+  const firstDefinitionLessonByLabel = new Map();
 
   assert.equal(module.lessons.length, 8);
+  module.lessons.forEach((lesson, lessonIndex) => {
+    for (const term of lesson.terms_in_context || []) {
+      for (const label of [term.term, term.cn]) {
+        if (!isSubstantiveString(label) || firstDefinitionLessonByLabel.has(label)) {
+          continue;
+        }
+        firstDefinitionLessonByLabel.set(label, lessonIndex);
+      }
+    }
+  });
+
+  const preDefinitionTextByLesson = module.lessons.map((lesson) =>
+    preDefinitionFields(lesson).join(" ")
+  );
+
   for (const lesson of module.lessons) {
     assert.ok(lesson.reader_question.length >= 20, lesson.id);
     assert.ok(lesson.scene.setting.length >= 30, lesson.id);
@@ -172,34 +202,36 @@ test("module 01 only uses newly introduced lesson terms after terms_in_context d
     assert.ok(lesson.terms_in_context.every((term) =>
       term.term && term.cn && term.plain_definition && term.why_it_matters
     ), lesson.id);
-    const predefinitionText = [
-      lesson.reader_question,
-      lesson.scene.setting,
-      lesson.scene.actors,
-      lesson.scene.action,
-      lesson.plain_answer,
-    ].join(" ");
     const currentLabels = [...new Set(lesson.terms_in_context.flatMap((term) =>
-      [term.term, term.cn].filter((label) => typeof label === "string" && label.trim())
+      [term.term, term.cn].filter((label) => isSubstantiveString(label))
     ))];
     for (const label of currentLabels) {
-      if (definedLabels.has(label)) {
-        continue;
+      const firstDefinitionLessonIndex = firstDefinitionLessonByLabel.get(label);
+      for (let lessonIndex = 0; lessonIndex <= firstDefinitionLessonIndex; lessonIndex += 1) {
+        assert.doesNotMatch(
+          preDefinitionTextByLesson[lessonIndex],
+          termPattern(label),
+          `${module.lessons[lessonIndex].id}: ${label}`
+        );
       }
-      assert.doesNotMatch(predefinitionText, termPattern(label), `${lesson.id}: ${label}`);
     }
     const example = lesson.worked_example;
-    assert.match(example.setup, actorOrContextPattern, `${lesson.id}: setup actor/context`);
+    assert.ok(isSubstantiveString(example.actor, 8), `${lesson.id}: example actor`);
+    assert.ok(Array.isArray(example.inputs), `${lesson.id}: example inputs array`);
+    assert.ok(
+      example.inputs.filter((input) => isSubstantiveString(input, 8)).length >= 2,
+      `${lesson.id}: example substantive inputs`
+    );
     assert.match(example.setup, numberPattern, `${lesson.id}: setup numeric value`);
     assert.match(example.setup, recognizedUnitPattern, `${lesson.id}: setup recognized unit`);
     assert.ok(example.steps.length >= 2, `${lesson.id}: example steps`);
     assert.ok(example.steps.every((step) => step.length >= 20), `${lesson.id}: step detail`);
-    assert.match(example.steps.join(" "), calculationPattern, `${lesson.id}: explicit calculation/operator`);
-    assert.ok(example.answer.length >= 25, `${lesson.id}: substantive answer`);
+    assert.ok(
+      example.steps.some((step) => explicitCalculationPattern.test(step)),
+      `${lesson.id}: explicit = calculation with numbers and units`
+    );
+    assert.ok(isSubstantiveString(example.answer, 25), `${lesson.id}: substantive answer`);
     assert.ok(lesson.deep_dive.length >= 1, lesson.id);
-    for (const label of currentLabels) {
-      definedLabels.add(label);
-    }
   }
 });
 

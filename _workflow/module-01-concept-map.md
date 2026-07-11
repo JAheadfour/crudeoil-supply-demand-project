@@ -129,7 +129,7 @@ Coverage note: this concept order reorganizes the teaching path for beginners, b
 - Numerical example: A cargo priced attractively at the production basin can still destroy value if the nearest refinery is in turnaround for 30 days, the alternative freight path adds $4 per barrel, and the delivered quality misses the buyer's sulfur window.
 - Market question answered: When does a nominal barrel of supply become a usable barrel for a specific refinery, product market, place, and time?
 
-## Source Anomalies
+## Source-Handling Notes
 
 - The public web source layers note that the legacy 2009 PDF download path redirected to login during capture, so Task 1 relies on Morgan Downey's current public web chapters only.
 - Some source chapters mix timeless mechanisms with time-sensitive examples or league tables; Task 1 records the dependency map without resolving those dated details through old JSON prose.
