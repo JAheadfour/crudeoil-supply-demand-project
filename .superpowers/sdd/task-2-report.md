@@ -216,3 +216,91 @@ warning: in the working copy of '.superpowers/sdd/task-2-report.md', LF will be 
 warning: in the working copy of 'course/data/oil101-understanding/module-01-barrel-journey.json', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'docs/data/oil101-understanding/module-01-barrel-journey.json', LF will be replaced by CRLF the next time Git touches it
 ```
+
+## Second review fix: 2026-07-11
+
+### Finding-to-fix map
+
+- Restored a transport foundation inside `logistics-availability` without weakening its economic-usability synthesis. One refinery-dispatch scene now follows route selection through truck, pipeline, rail, tanker, storage, and a trading hub before applying the grade + location + timing + compatible-facility test.
+- Put the essential mode roles and tradeoffs in `plain_answer`, `explanation`, and `mechanism_chain`: truck for flexible short-haul collection, pipeline for fixed-route high-volume flow, rail for rerouting or places without pipeline access, tanker for large cross-sea movement, and storage for bridging arrival and use time.
+- Added deep dives on all-in freight, booked versus usable capacity, hub inflow/outflow bottlenecks, and Worldscale. The Worldscale explanation distinguishes a route-specific flat rate from a WS percentage and notes the remaining delivered-cost adjustments.
+- Removed the false statement that earlier lessons had already taught logistics. Kept all 11 coverage rows mapped to this lesson because their promised subjects are now taught in the main path or deep dive; all 87 module coverage rows remain.
+- Preserved the usable-supply worked example and its declared-input -> arithmetic -> interpretation order, including grade/specification, delivery timing, turnaround, and facility-fit constraints.
+
+### Red-green content evidence
+
+Pre-fix assertion output (exit 1):
+
+```text
+missing main:油轮,main:铁路,main:卡车,deep:Worldscale,deep:运费,deep:枢纽,deep:capacity
+```
+
+Post-fix assertion output (exit 0):
+
+```text
+missing none
+```
+
+### Verification evidence
+
+Command:
+
+```powershell
+& 'C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' --test tests\oil101-platform.test.mjs
+```
+
+Output:
+
+```text
+tests 13
+pass 13
+fail 0
+duration_ms 205.8386
+```
+
+Command:
+
+```powershell
+& 'C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -c "import json,sys; sys.path.insert(0,r'C:\Users\justi\.codex\skills\book-to-platform\scripts'); from build_course_app import validate_module; m=json.load(open(r'course/data/oil101-understanding/module-01-barrel-journey.json',encoding='utf-8')); e=validate_module(m,'understanding'); print(chr(10).join(e) if e else 'FLOORS OK'); raise SystemExit(bool(e))"
+```
+
+Output:
+
+```text
+FLOORS OK
+```
+
+Mirror and coverage audit output:
+
+```text
+mirror_equal true
+coverage_count 87
+lesson_ids reservoir-to-well,physical-chain,liquids-family,assay-quality,molecular-barrel,refinery-transformation,products-specifications,logistics-availability
+main_modes 卡车:true,管道:true,铁路:true,油轮:true,储存:true
+synthesis 牌号:true,地点:true,时间:true,设施:true,检修:true,检测:true,交货:true
+deep_dive Worldscale:true,运费:true,枢纽:true,能力:true
+mapped_rows 11
+coverage Five Methods of Moving Oil => true
+coverage Tanker Ships => true
+coverage Chartering and Worldscale => true
+coverage Pipelines => true
+coverage Crude by Rail and the Bakken Boom => true
+coverage Trucking: The Last Mile => true
+coverage Trading Hubs => true
+coverage Incoterms and Delivery Pricing => true
+sha256 7f07a2d8ef50f7e19d0cb99b65b970415da95f75830085bb01985faa87660a88
+```
+
+Command:
+
+```powershell
+git diff --check
+```
+
+Output (exit 0; line-ending warnings only):
+
+```text
+warning: in the working copy of '.superpowers/sdd/task-2-report.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'course/data/oil101-understanding/module-01-barrel-journey.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/data/oil101-understanding/module-01-barrel-journey.json', LF will be replaced by CRLF the next time Git touches it
+```
