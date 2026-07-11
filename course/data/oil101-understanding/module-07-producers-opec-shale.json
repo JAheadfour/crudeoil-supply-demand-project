@@ -1,0 +1,491 @@
+{
+  "id": "07-producers-opec-shale",
+  "variant": "understanding",
+  "reading": "07",
+  "reading_title": "谁决定长期供给",
+  "title": "谁决定长期供给：上游投资、储量、页岩与 OPEC+",
+  "deck": "把地下资源、资本预算、项目周期、衰减曲线、页岩钻机、OPEC+闲置产能与霍尔木兹运输约束放进同一张供给地图。",
+  "reading_intent": "这不是一份产油国排行榜，而是一套判断未来供给能否真正出现的工作方法。读完后，你应能区分资源、储量、产能和当期产量，理解传统项目与页岩的不同响应速度，判断 OPEC+宣布减产是否真的改变可售桶数，并把地缘事件拆成运输冻结、被迫关井、库存缓冲和复产爬坡。",
+  "opening_question": "油价上涨以后，为什么有些供给几个月就能回来，有些要五到十年，而有些明明写在储量表里却永远不会成为市场上的一桶油？",
+  "quick_answer": [
+    "地下有油只是起点；法律权利、地质成功、开发方案、融资、基础设施和经济性全部通过后，资源才可能成为产量。",
+    "储量不是固定的地下事实，而是地质、技术、价格、开发时限与会计规则共同给出的可生产判断。",
+    "传统巨型油田衰减慢、单井产量高但开发周期长；页岩单井建设快、响应灵活，却必须不断钻新井抵消陡峭衰减。",
+    "OPEC+真正的权力不是会议声明，而是少数成员持有且能在短期持续上线的有效闲置产能，以及其他成员是否遵守配额。",
+    "运输咽喉受阻会先冻结保险和航运，再迫使出口国因储罐填满而关井；这与自愿减产的可逆性完全不同。"
+  ],
+  "learning_objectives": [
+    "用从矿权到第一桶油的完整链条解释长期供给为何具有多年时滞",
+    "区分 OOIP、resources、1P/2P/3P、PDP/PDNP/PUD、EUR、capacity 与 production",
+    "比较传统油田、深水项目和页岩在衰减、资本承诺与供给响应速度上的差异",
+    "用闲置产能、基线、配额与履约率判断 OPEC+决策的实际供给效果",
+    "把霍尔木兹冲击拆成保险、运输、储存、关井、战略库存与复产门槛"
+  ],
+  "main_thread": "长期供给不是地下储量表的一列数字，而是一条有大量闸门的资本与物理链。企业或国家先取得矿权，用地震资料寻找圈闭，再以勘探井验证地质；发现之后还要做储量评价、工程设计、融资、审批、管线和处理设施建设。传统陆上和深水项目一旦投产可以多年缓慢衰减，却需要数年乃至更久才能从投资决定走到第一桶油。页岩把这条链压缩成标准化制造流程：已有租约、道路和管线的核心区可以在几个月内把价格信号转成钻机、压裂队和新井，但单井首年通常急剧衰减，所以行业必须不断补井。储量位于这条链的中间而非终点：只有在当前价格、技术、合同和开发时间表下可经济生产的资源才能记为储量；同一地下油藏可因油价、规则或邻井表现而增减账面桶数。OPEC+在另一层管理已经存在的短期供给。真正有用的变量是有效产能减实际产量形成的闲置产能，而不是名义装机能力；配额又是相对基线的减量，所以高基线、低履约或产能不足都可能让宣布的减产与实际减产不同。最后，供给还必须能离开产区。霍尔木兹事件显示，水道在军事上没有完全封死也可能因保险撤离而商业关闭；出口停止使储罐填满，随后迫使生产关停。战略库存和绕行管线可以买时间，却不能创造永久产能。分析未来供给时，因此要同时看资源可转化性、项目时间表、自然衰减、短周期页岩、OPEC+可逆闲置产能以及物流可达性。",
+  "mental_model": "未来可售供给 = 已投产基数 - 自然衰减 + 已批准项目爬坡 + 页岩补井净增量 + 可释放闲置产能 - 非自愿中断；每一项都要标注时间尺度、地点、品质与可运输性。",
+  "mental_model_detail": {
+    "equation": "Net supply change = base decline + project startups + short-cycle response + quota/spare-capacity change - outages and logistics losses",
+    "market_translation": "长期价格信号先改变资本预算，再通过钻井、完井与设施建设改变产能；短期事件则主要改变闲置产能、库存和运输利用率。两种时间尺度不能混为一谈。",
+    "decision_rule": "看到供给新闻时依次问：这是资源、储量、产能还是产量？是新能力还是恢复旧能力？需要多久？谁出钱？自然衰减是多少？桶能否通过现有管线、港口和炼厂进入市场？"
+  },
+  "formulas": [
+    {
+      "name": "储量替代率",
+      "formula": "RRR = 当年新增储量 / 当年产量",
+      "variables": "新增可来自发现、延伸、提高采收率、收购与修订；分子必须按来源拆开。",
+      "worked_note": "企业生产 100 百万桶并新增 120 百万桶，RRR 为 120%；若其中 80 百万桶来自收购，它的钻探有机替代能力远低于 headline。"
+    },
+    {
+      "name": "储采比",
+      "formula": "R/P = 已报告探明储量 / 当前年产量",
+      "variables": "这是静态比率，不含未来发现、价格变化、产量路径或会计制度差异。",
+      "worked_note": "15 年 R/P 不表示 15 年后石油归零，也不表示未来 15 年能维持平产。"
+    },
+    {
+      "name": "有效闲置产能",
+      "formula": "Surplus capacity = effective production capacity - actual production",
+      "variables": "EIA 将有效产能定义为可在 90 天内达到并可持续、且不损害油田的产量；不等同于 nameplate。",
+      "worked_note": "某国有效产能 12 Mbpd、实际产量 9 Mbpd，表面闲置 3 Mbpd；若出口设施只能多运 1.5 Mbpd，全球可用增量仍受物流限制。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "supply-power-history",
+      "title": "先看控制权：供给权力来自可调节的桶，不来自最大的地下数字",
+      "concept": {
+        "en": "Swing producer and supply control",
+        "cn": "摆动生产者与供给控制权",
+        "definition": "能够在市场需要时有意增加或减少可持续产量、并拥有足够市场份额影响平衡的生产者，才具备供给控制力。"
+      },
+      "explanation": "石油史不断重复同一个结构：技术进步和新发现先造成过剩，随后某个拥有大量可调产能力的机构试图稳定价格。20 世纪中期的 Texas Railroad Commission 通过限制德州井口允许产量管理闲置产能；1970 年代美国本土缓冲消失后，OPEC接过这一角色。历史的关键不是谁拥有最多资源，而是谁同时拥有低成本产能、可执行的减产机制和把产量重新上线的能力。垄断炼化和运输的 Standard Oil 控制的是中下游通道；TRC与后来的OPEC控制的是边际生产流量。页岩崛起后，供给权力变成双层结构：OPEC+管理已有闲置产能，北美页岩通过数月后的新增钻井对价格作出分散响应。两者都能影响供给，却不是同一种控制。",
+      "mechanism_chain": [
+        "新发现或技术突破扩大可生产资源并造成潜在过剩",
+        "高成本或高财政依赖生产者承受低价压力，要求协调减产",
+        "持有闲置产能的核心成员承担最大实际减量并形成价格支撑",
+        "更高价格又激励非成员投资，逐步侵蚀协调者的市场份额",
+        "协调者在价格与份额之间重新选择，形成下一轮周期"
+      ],
+      "worked_example": {
+        "setup": "2014年美国页岩增产挤压OPEC市场份额，沙特选择不减产。",
+        "steps": [
+          "OPEC若独自减产，会把高价与新增销量留给页岩企业；维持产量则让价格下跌并测试页岩成本。",
+          "油价从每桶100美元以上跌至2016年初30美元以下，许多高杠杆企业破产。",
+          "页岩通过更长水平段、pad drilling和服务成本下降把核心区成本降下来，产量随后恢复。",
+          "OPEC认识到仅靠成员不足以管理市场，于2016年与俄罗斯等国建立OPEC+。"
+        ],
+        "answer": "价格战能淘汰脆弱资产，却也会迫使技术与成本曲线下移；控制者必须评估竞争者的学习速度，而不能只看当前成本。"
+      },
+      "practitioner_lens": "判断摆动生产者时，关注可验证的可持续产能、实际产量、出口能力和启动时间，而不是政治声明或地下储量排名。",
+      "misreading": "把最大产油国、最大储量国和摆动生产者当成同一个概念，会错判谁能在下一季度真正改变边际桶。",
+      "boundary": "历史类比提供结构，不保证制度复制；TRC有州内法律执行力，OPEC+主要依赖国家自愿履约和声誉。"
+    },
+    {
+      "id": "project-pipeline",
+      "title": "从矿权到第一桶油：长期供给是一条资本项目流水线",
+      "concept": {
+        "en": "Upstream project pipeline",
+        "cn": "上游项目管线",
+        "definition": "把矿权、勘探、评价、最终投资决定、开发钻井、设施建设、投产爬坡和自然衰减按时间排序的供给形成链。"
+      },
+      "explanation": "油公司首先需要地表与矿产权利。美国和加拿大允许私人持有矿权，许多国家则由政府通过特许权、PSA、服务合同或合资安排分配风险与收益。取得权利只把lead变成prospect，地震资料仍只是地下结构的间接图像，wildcat井可能失败。发现之后，工程师要确认孔隙度、渗透率、压力、流体性质与可采率，再决定井数、平台、处理设施和外输路线。深水项目的工程和资本承诺巨大，最终投资决定后仍需多年；页岩核心区则可把同类井标准化。投产也不是永久平台：每取出一桶都会消耗压力，过快生产可能降低最终采收率。供给预测因此必须使用项目级时间表和衰减曲线，不能把宣布发现的资源在下一年直接加进产量。",
+      "mechanism_chain": [
+        "取得矿权并确定合同如何分配资本、成本回收与产量权益",
+        "地震与勘探井把地质假说转成发现，但仍存在规模与商业性不确定",
+        "评价井、储层模型和开发方案把发现转成可融资的项目",
+        "最终投资决定锁定钻井、平台、处理和外输资本",
+        "设施完工后经历投产爬坡，随后由压力与维护决定自然衰减"
+      ],
+      "worked_example": {
+        "setup": "某深水发现被新闻称为‘新增10亿桶供给’，但尚未作最终投资决定。",
+        "steps": [
+          "先确认10亿桶是OOIP、2P资源还是可开发储量；若只是原地资源，不能等同可售桶。",
+          "检查运营商权益、政府合同、评价井结果、FPSO方案和外输安排。",
+          "把FID、建设、首油、爬坡与平台期分别列入年度供给，而不是一次性加10亿桶。",
+          "再扣除同一公司成熟资产的自然衰减，得到净供给变化。"
+        ],
+        "answer": "发现是未来供给的候选项；只有经过资本、工程和时间闸门的项目产量才进入基准预测。"
+      },
+      "practitioner_lens": "项目表至少记录发现状态、FID状态、首油年份、峰值产量、爬坡速度、运营商、出口路线和主要延期风险。",
+      "misreading": "把资源发现公告直接当作短期新增产量，会把多年项目时滞压缩成不存在的即时供给。",
+      "boundary": "合同类型影响风险和激励，但不能单独决定项目好坏；地质、税制、政治稳定和基础设施要一起评估。"
+    },
+    {
+      "id": "reserves-bookability",
+      "title": "储量不是地下库存：它是带价格、技术和时限条件的判断",
+      "concept": {
+        "en": "Resources, reserves and development status",
+        "cn": "资源、储量与开发状态",
+        "definition": "资源是技术上可能回收的地下量；储量是其中在规定经济与技术条件下可商业生产的部分，并按概率和开发状态分类。"
+      },
+      "explanation": "OOIP是地下原始总量，远大于可采资源；resources还不要求当前经济可行，reserves则必须通过价格、技术、合同与开发计划。1P/P90强调高置信度，2P加入probable，3P再加入possible。美国披露又把proved拆成PDP、PDNP和PUD：正在产的PDP最接近现金流，PUD仍需要完整钻完井资本且通常受五年开发规则约束。油价下跌、邻井表现变差或计划延期都能让桶从高置信类别移出，这种re-catting是信用事件，因为RBL借款基础更偏重PDP。R/P和RRR只能在明确会计口径后使用：一个国家超长R/P可能反映保守产量或政治化分子；公司RRR超过100%也可能主要来自收购，而非自身发现。储量数字必须附上方法、价格基准、审计制度与开发状态。",
+      "mechanism_chain": [
+        "地震、测井和岩心估计OOIP及不确定性分布",
+        "采收率把原地量缩小为技术可采资源",
+        "价格、成本、合同与设施把资源筛成经济储量",
+        "概率与开发状态决定1P/2P/3P以及PDP/PDNP/PUD标签",
+        "实际钻井和生产数据不断修订EUR、储量与贷款抵押价值"
+      ],
+      "worked_example": {
+        "setup": "一个油藏面积1000英亩、净厚50英尺、孔隙度20%、含水饱和度25%、地层体积系数1.2。",
+        "steps": [
+          "按原文公式 OOIP = 7758 × 1000 × 50 × 0.20 × 0.75 / 1.2，约为4850万桶。",
+          "若工程采收率假设30%，技术可采量约1455万桶。",
+          "再用井、设施、运营与弃置成本以及价格情景筛选经济部分。",
+          "只有满足开发计划和披露规则的高置信部分才能进入proved；4850万桶绝不能直接写成储量。"
+        ],
+        "answer": "算术通常不是争议中心，面积、净厚、饱和度、采收率、价格和开发计划才是。"
+      },
+      "practitioner_lens": "阅读10-K时把储量变动拆成extensions/discoveries、improved recovery、acquisitions/divestitures和revisions，再看PDP占比与PV-10。",
+      "misreading": "把某国探明储量除以产量得到的R/P当作倒计时，会忽略会计制度、产量变化、未来投资和政治性修订。",
+      "boundary": "不同监管体系不可机械横比；SEC、PRMS和国家储量口径可能对同一油藏给出不同数字。"
+    },
+    {
+      "id": "shale-short-cycle",
+      "title": "页岩既是短周期供给，又是一台必须持续喂井的跑步机",
+      "concept": {
+        "en": "Shale treadmill",
+        "cn": "页岩跑步机",
+        "definition": "页岩单井初产高、早期衰减陡，使盆地产量必须依靠连续钻井和完井补充才能维持。"
+      },
+      "explanation": "页岩突破不是单项发明，而是水平钻井与水力压裂在低渗透源岩中的规模化组合。水平段增加与目标层接触长度，多级压裂以高压液体和支撑剂创造流动通道。它把勘探型业务改造成制造型业务：钻机在pad间移动，压裂队随后完成井，库存位置和服务能力决定节奏。优势是已有基础设施的核心区从决策到首油可压缩到数月；缺点是单井首年常下降60%至70%，第二年继续显著下降。盆地产量是新井增量与全部旧井衰减的差额，所以钻机效率提升不自动等于总产量增长。更长laterals和更快钻速降低单位成本，但parent-child干扰和Tier 1位置有限会侵蚀未来质量。价格信号还要经过公司资本纪律、套期保值、服务成本和管线容量，不能把页岩称为瞬时开关。",
+      "mechanism_chain": [
+        "价格与对冲提高预期井口回报，董事会增加钻完井预算",
+        "运营商调用钻机、压裂队、砂、水、管线接入与许可",
+        "新井以高初产迅速加入，但旧井群持续大幅衰减",
+        "新井总增量超过旧井衰减时盆地产量增长，反之下降",
+        "核心位置耗尽、子井干扰或服务成本上涨会抬高边际成本"
+      ],
+      "worked_example": {
+        "setup": "一个页岩盆地年初产量为5 Mbpd，若停止钻井，成熟井群加权年衰减约40%。",
+        "steps": [
+          "不钻新井时，一年内理论损失约2 Mbpd，剩余约3 Mbpd。",
+          "若全年新井在年末贡献2.3 Mbpd，净产量约增加0.3 Mbpd，而不是增加2.3 Mbpd。",
+          "若服务成本上涨让完井推迟，新井贡献只有1.7 Mbpd，盆地产量反而净减0.3 Mbpd。"
+        ],
+        "answer": "分析页岩必须同时建旧井衰减曲线和新井投产队列；只数rig或只看IP都不够。"
+      },
+      "practitioner_lens": "跟踪spud、drilled-but-uncompleted wells、frac spreads、lateral length、well productivity、parent-child表现和takeaway，而不是只看总rig count。",
+      "misreading": "把页岩视为随油价当天开关的闲置产能，会忽略预算审批、服务供应链、完井排程和数月生产时滞。",
+      "boundary": "作者页面中的2025产量和breakeven属于时点估计；课程保留机制，具体数值应以最新EIA与Dallas Fed调查更新。"
+    },
+    {
+      "id": "opec-spare-capacity",
+      "title": "读懂OPEC+：先算闲置产能，再审基线、配额与履约",
+      "concept": {
+        "en": "Effective spare capacity and quota compliance",
+        "cn": "有效闲置产能与配额履约",
+        "definition": "有效闲置产能是可在规定短期内上线并持续的产能减实际产量；配额效果则取决于基线、目标值与真实产量之差。"
+      },
+      "explanation": "OPEC+的会议标题常说削减多少，但市场需要的是实际少了多少可售桶。配额通常以某个baseline为起点，高基线会让成员在名义减产后仍能卖更多；本来就达不到目标的成员得到的纸面削减也不会产生真实变化。沙特、阿联酋、科威特等少数国家持有大部分可持续闲置产能，其他成员接近满产或受制裁与事故影响。EIA区分nameplate、maximum sustainable、effective和surplus capacity：只有扣除中断后可在90天内达到并持续、且未被实际生产使用的部分才构成可调用缓冲。协调又是重复博弈：成员希望别人减产抬价、自己多卖；JMMC和补偿性减产试图约束这种激励。OPEC+因此不是一个能完全控制供给的单一公司，而是由核心产能持有者支撑、受成员财政和市场份额目标牵制的合作机制。",
+      "mechanism_chain": [
+        "秘书处与成员评估需求、非OPEC供给、库存和价格风险",
+        "会议以baseline为参照设定目标或自愿调整",
+        "核心成员通过降低装船与井口产量创造大部分真实减量",
+        "二手来源监测实际产量并识别过度生产",
+        "履约缺口、补偿减产和后续增产共同决定最终净供给"
+      ],
+      "worked_example": {
+        "setup": "A国基线4.0 Mbpd、目标3.6、实际产能只有3.5；B国基线10、目标9、有效产能12且实际按目标生产。",
+        "steps": [
+          "A国headline减产0.4 Mbpd，但它原本最多只能产3.5，目标反而高于现实产量，因此没有真实减量。",
+          "B国从可生产10降至9，创造1 Mbpd真实减量，并留下约3 Mbpd对比实际产量的潜在闲置。",
+          "若出口瓶颈或油田中断使B国有效产能降到10.5，可调用缓冲随之收缩。"
+        ],
+        "answer": "宣布减产不能直接相加；必须以未经限制的可实现产量为反事实，逐国计算真实变化。"
+      },
+      "practitioner_lens": "建立逐国表：基线、目标、二手来源实际产量、有效产能、出口量、补偿义务和制裁/中断状态。",
+      "misreading": "把OPEC+公告的名义削减量直接从全球供给预测中扣除，通常会高估实际收紧。",
+      "boundary": "闲置产能本身是估计值而非可现场盘点的库存；启动速度、原油品质和出口能力会限制其替代范围。"
+    },
+    {
+      "id": "hormuz-forced-shutins",
+      "title": "霍尔木兹告诉你：出口受阻会把物流问题反向传到井口",
+      "concept": {
+        "en": "Chokepoint propagation and forced shut-ins",
+        "cn": "咽喉冲击与被迫关井",
+        "definition": "关键航道因安全与保险失去商业可通行性后，出口中断、储存填满并迫使上游减产的反向传导。"
+      },
+      "explanation": "霍尔木兹最窄处约21英里，商业航线集中在狭窄交通分离带，正常年份承载约20 Mbpd石油及产品。事件显示，海峡不必被物理障碍完全封死：攻击风险上升后，战争险保费和承保能力先决定船东是否进入。装船骤减使出口终端和陆上储罐填满，产油国随后不是为了抬价而减产，而是因为无处存油被迫关井。绕行管线只能承担部分流量，战略库存则在消费地释放既有桶以购买谈判和修复时间。复航也不是签署协议当天完成：停火可信度、排雷、承保重新定价、空船返回装货和上游复产要依次通过。EIA与IEA一手资料确认了2026年2月28日起的有效关闭、约20 Mbpd正常通行量、IEA 4亿桶应急行动以及6月中旬协议后的恢复；作者页中无法由这些资料核验的逐船攻击、收费与AI库存效率估计不作为确定事实。",
+      "mechanism_chain": [
+        "安全威胁首先提高战争险并使船东、融资方和港口拒绝航次",
+        "装船量下降导致出口终端和上游储罐快速填满",
+        "生产者被迫降产或关井，物流中断转化为全球供应损失",
+        "绕行管线、商业库存与战略库存部分填补缺口并抑制需求",
+        "停火后保险、排雷、航运、装船与油田复产按不同速度恢复"
+      ],
+      "worked_example": {
+        "setup": "正常有20 Mbpd通过海峡，绕行管线最多吸收约7 Mbpd，其他条件暂不变。",
+        "steps": [
+          "海峡商业关闭后，理论上仍有约13 Mbpd缺口不能靠现有绕行解决。",
+          "出口国先使用本地储罐延缓关井，但库存是容量而不是持续流量。",
+          "储罐满后，被迫关井量上升；消费国释放库存只是在另一端暂时补流。",
+          "即使协议恢复通行，船、保险与生产设施的重启时滞使供应只能渐进回归。"
+        ],
+        "answer": "咽喉风险要用‘流量缺口×持续时间’与库存天数共同分析，不能只看航道地图。"
+      },
+      "practitioner_lens": "事件期按顺序看P&I/war-risk公告、AIS流量、装船、港口库存、逐国关井、绕行利用率、战略库存交付和复产曲线。",
+      "misreading": "看到军舰仍能通过就说海峡没有关闭，会忽略商业航运真正受保险、融资和船东风险限额约束。",
+      "boundary": "地图和正常流量是结构事实；事件中的价格、船数与库存每天变化，必须带日期并使用EIA、IEA或官方航运资料复核。"
+    },
+    {
+      "id": "supply-dashboard",
+      "title": "把所有人放进同一张表：用时间尺度判断谁能补上下一桶",
+      "concept": {
+        "en": "Time-bucketed supply stack",
+        "cn": "按时间分层的供给堆栈",
+        "definition": "按数日、数月、数年三个时间窗，将库存、闲置产能、页岩、在建项目和未批准资源分别计入可实现供给。"
+      },
+      "explanation": "供给分析最常见的错误是把不同速度的桶相加。数日到数周内，可用工具主要是商业库存、战略库存、已存在的闲置产能和解除临时中断；数月到两年，页岩钻完井、维护恢复、已完成项目爬坡和部分增产优化开始发挥作用；三到十年，决定性变量才是FID、深水平台、油砂扩建、发现转储量与基础设施。每个桶还应带上反事实：若没有这个事件，本来会生产多少？例如OPEC+放松限制可能只是恢复被扣留的产量，不能与全新产能同等看待；页岩新井的gross additions必须先抵消旧井衰减。最后要做物流与品质过滤，确认新增桶能到达需要它的炼厂。这个堆栈把‘谁决定长期供给’变成可更新的预测，而不是国家故事。",
+      "mechanism_chain": [
+        "为每个供给来源标记最早上线时间、峰值、持续期与置信区间",
+        "从既有资产基数扣除自然衰减和计划维护",
+        "将恢复产量、新增产能和库存释放分开，避免重复计算",
+        "用管线、港口、品质和炼厂适配过滤名义桶",
+        "比较不同价格情景下项目FID、页岩预算和OPEC+政策反应"
+      ],
+      "worked_example": {
+        "setup": "市场突然缺2 Mbpd，分析师列出3 Mbpd OPEC+闲置、两年后1.5 Mbpd深水项目和未来一年页岩0.8 Mbpd gross growth。",
+        "steps": [
+          "先确认3 Mbpd闲置能否在90天内持续上线以及出口是否可用；这是短期候选。",
+          "深水1.5 Mbpd在两年后才进入，不能解决当前季度，但会压低远期短缺风险。",
+          "页岩0.8 Mbpd gross additions要扣除旧井衰减；若旧井损失0.6，净增只有0.2。",
+          "若海峡受阻使1.5 Mbpd闲置无法出口，可交付短期缓冲仅1.5，缺口仍存在。"
+        ],
+        "answer": "同样标成Mbpd的数字只有在时间、反事实和物流一致后才能相加。"
+      },
+      "practitioner_lens": "每月维护一张supply bridge：上月产量、衰减、项目爬坡、页岩净增、OPEC变化、中断、恢复和物流调整。",
+      "misreading": "把库存释放、恢复产量和新产能都称为‘新增供给’，会同时错判持续性与长期平衡。",
+      "boundary": "堆栈是情景工具，不是精确预言；战争、政策、成本通胀和技术学习会改变概率与时间表。"
+    }
+  ],
+  "figures": [
+    {
+      "id": "hormuz-map",
+      "lesson_id": "hormuz-forced-shutins",
+      "src": "../assets/figures/module-07/strait-of-hormuz-map.jpg",
+      "alt": "霍尔木兹海峡、伊朗、阿曼与阿联酋相对位置地图",
+      "reading_guide": "先找到波斯湾出口和阿曼穆桑代姆半岛，再看船舶为何必须收束进入狭窄水道。地图说明的是地理集中度；20 Mbpd流量、保险和绕行能力需要结合正文数据，不能仅凭地图推断。",
+      "caption": "Figure 26-1 的原始公版地图。海峡地理狭窄使安全风险、保险和航线选择可以同时影响大量出口。",
+      "reference": {
+        "label": "Oil 101 Chapter 26, Figure 26-1; U.S. Government map via Wikimedia Commons (public domain)",
+        "url": "https://oil101.morgandowney.com/chapters/iran-strait",
+        "accessed": "2026-07-11"
+      }
+    }
+  ],
+  "figure_candidates": [
+    {
+      "lesson_id": "opec-spare-capacity",
+      "source_page": "https://oil101.morgandowney.com/chapters/opec-plus",
+      "figure": "Figure 22-3: OPEC production versus estimated sustainable capacity",
+      "status": "candidate-download-failed",
+      "reason": "作者链接指向EIA 2025-12-19页面；页面可访问并验证图意，但其动态图片端点在下载时返回EIA错误页，未用截图或重绘冒充原图。"
+    }
+  ],
+  "comparison_tables": [
+    {
+      "title": "不同供给来源的时间结构",
+      "headers": ["来源", "典型响应", "主要约束", "能否持续"],
+      "rows": [
+        ["库存释放", "数日到数周", "库存位置、产品类型、抽取速率", "有限，必须补库"],
+        ["OPEC+有效闲置产能", "数周到数月", "油田启动、配额、出口与品质", "可持续一段时间，但取决于维护与政策"],
+        ["页岩钻完井", "数月到两年", "资本纪律、frac crews、旧井衰减、takeaway", "需连续钻井维持"],
+        ["传统/深水新项目", "三到十年", "FID、工程、许可、融资、基础设施", "投产后通常较长久"],
+        ["未开发资源", "未知", "商业性、技术、法律、社会许可", "尚不能计入基准供给"]
+      ]
+    },
+    {
+      "title": "地下量与可售桶数不要混用",
+      "headers": ["术语", "回答的问题", "不能推出什么"],
+      "rows": [
+        ["OOIP", "地下原来有多少油", "不能推出经济可采量"],
+        ["Resources", "技术上可能回收多少", "不能推出当前可融资性"],
+        ["1P/2P/3P reserves", "在给定条件下不同置信度的商业可采量", "不能推出生产时间表"],
+        ["Capacity", "设施和油田可达到的产率", "不能推出当前实际流量"],
+        ["Production", "当前真正流出的桶", "不能推出未来可维持多久"]
+      ]
+    },
+    {
+      "title": "自愿减产与被迫关井",
+      "headers": ["维度", "OPEC+自愿减产", "咽喉受阻被迫关井"],
+      "rows": [
+        ["触发", "价格管理与政策协调", "出口、保险或储存失效"],
+        ["可逆性", "核心成员通常可较快恢复", "需航运、库存、设施和油藏安全共同恢复"],
+        ["闲置产能", "通常增加", "有效产能可能因中断而下降"],
+        ["分析重点", "baseline、target、compliance", "AIS、保险、装船、库存、shut-ins"]
+      ]
+    }
+  ],
+  "term_family": {
+    "root": "可售供给",
+    "tree": "地下禀赋 → OOIP/resources → reserves与开发状态 → capacity → production → exportable supply；调节器分为库存、闲置产能、短周期页岩、长期项目和中断恢复",
+    "analogy": "把供给想成一列要穿过多道闸门的火车：地质是矿山，储量是有条件的车票，FID是发车许可，井和设施是机车，闲置产能是备用车厢，港口与海峡是唯一出站口。任何一闸关闭，地下数字都不会变成消费者拿到的桶。",
+    "branches": [
+      {"name": "地下量", "children": ["OOIP", "Resources", "1P/2P/3P", "EUR"]},
+      {"name": "开发状态", "children": ["PDP", "PDNP", "PUD", "FID"]},
+      {"name": "流量", "children": ["Capacity", "Production", "Spare capacity", "Decline"]},
+      {"name": "协调与中断", "children": ["Baseline", "Quota", "Compliance", "Forced shut-in"]}
+    ]
+  },
+  "glossary": [
+    {"term": "OOIP", "full_en": "Original Oil In Place", "cn": "原始地质储量", "definition": "油藏中最初存在的总油量，不等于可采量。", "example": "4850万桶OOIP在30%采收率下只有约1455万桶技术可采。", "confusion": "常被新闻误写成储量或未来产量。"},
+    {"term": "1P / 2P / 3P", "full_en": "Proved / Proved plus Probable / Proved plus Probable plus Possible", "cn": "探明/探明加概算/再加可能储量", "definition": "按可采概率与不确定性逐层扩大的储量口径。", "example": "贷款人和运营商可能参考2P，SEC资产披露更强调proved。", "confusion": "P90的含义是实际量至少达到该数值的概率约90%，不是误差只有10%。"},
+    {"term": "PDP", "full_en": "Proved Developed Producing", "cn": "已开发在产探明储量", "definition": "已钻完井且正在生产的高置信储量。", "example": "RBL通常给予PDP最高借款权重。", "confusion": "PDP仍会衰减，并非现金流无风险。"},
+    {"term": "PUD", "full_en": "Proved Undeveloped", "cn": "未开发探明储量", "definition": "尚未钻井、但有明确开发计划和资本需求的proved桶。", "example": "美国披露中长期不在规定年限内开发的PUD需要移出proved。", "confusion": "名称含proved不表示井和现金流已经存在。"},
+    {"term": "EUR", "full_en": "Estimated Ultimate Recovery", "cn": "预计最终采收量", "definition": "一口井或油田从首油到弃置累计预计生产量。", "example": "页岩EUR对早期decline曲线和b-factor十分敏感。", "confusion": "EUR是模型结果，不是已经证实的地下库存。"},
+    {"term": "RRR", "full_en": "Reserve Replacement Ratio", "cn": "储量替代率", "definition": "新增储量与同期产量的比率。", "example": "RRR 120%表示报告期新增桶数超过生产桶数。", "confusion": "收购也能提高RRR，不等于有机发现能力强。"},
+    {"term": "PV-10", "full_en": "Present Value discounted at 10%", "cn": "储量税前折现价值", "definition": "按规定价格与10%折现率计算的proved储量未来税前现金流现值。", "example": "美国E&P在10-K披露PV-10，银行会使用更保守price deck重算。", "confusion": "PV-10不是企业市值，也不是完全风险调整后的公允价值。"},
+    {"term": "Decline curve", "full_en": "Production decline curve", "cn": "产量递减曲线", "definition": "井或油田峰值后随压力和流动条件变化而下降的产量路径。", "example": "页岩首年衰减显著高于成熟常规油田。", "confusion": "单井衰减不等于盆地必然衰减；新井可抵消旧井。"},
+    {"term": "FID", "full_en": "Final Investment Decision", "cn": "最终投资决定", "definition": "项目赞助方正式承诺资本、进入建设执行阶段的决策点。", "example": "深水发现只有在FID后才更可靠地进入中期供给表。", "confusion": "发现公告、概念选择和FID不是同一里程碑。"},
+    {"term": "Spare capacity", "full_en": "Surplus crude oil production capacity", "cn": "闲置原油产能", "definition": "有效产能中因自愿协调而未被实际生产使用的部分。", "example": "有效产能12、实际9 Mbpd时表面闲置3 Mbpd。", "confusion": "不等于陈旧nameplate，也不包括无法快速修复的中断产能。"},
+    {"term": "Baseline", "full_en": "Quota baseline", "cn": "配额基线", "definition": "OPEC+计算减产目标时采用的参照产量。", "example": "相同10%削减在不同基线下产生不同目标。", "confusion": "高基线可能让headline减产大于真实减量。"},
+    {"term": "Compliance", "full_en": "Quota compliance", "cn": "配额履约", "definition": "成员实际产量相对约定目标的执行程度。", "example": "持续超产会形成后续compensation cut义务。", "confusion": "组织层面100%履约可能掩盖成员间过度与超额减产相抵。"},
+    {"term": "Forced shut-in", "full_en": "Involuntary production shut-in", "cn": "被迫关井", "definition": "因出口、储存、安全或设备约束而非价格管理主动停止生产。", "example": "海峡运输停止后，终端储罐填满会把关停压力传回油田。", "confusion": "不能把它当作随时可逆的OPEC自愿减产。"},
+    {"term": "PSA", "full_en": "Production Sharing Agreement", "cn": "产品分成合同", "definition": "承包商承担勘探开发成本，并按合同从产量中回收成本与分享利润。", "example": "政府保留资源所有权，国际公司获得合同权益。", "confusion": "PSA不是简单的固定服务费合同。"}
+  ],
+  "extreme_detail": [
+    {"mechanism": "P90方向", "why_it_matters": "概率标签方向很容易读反，直接影响风险判断。", "micro_example": "P90表示有约90%概率真实可采量至少达到该保守数值；P10通常更大但置信度低。", "misreading": "把P90理解为乐观的90分位大数。", "takeaway": "看到P值先问概率陈述是‘至少’还是‘不超过’。"},
+    {"mechanism": "PUD五年规则", "why_it_matters": "开发时间表会改变账面proved，即使岩石没有变化。", "micro_example": "原计划六年后才钻的地点不能长期以美国SEC口径留在PUD。", "misreading": "认为从proved移出就代表地下油消失。", "takeaway": "把地质修订与开发计划修订分开读。"},
+    {"mechanism": "Parent-child干扰", "why_it_matters": "更密井距不一定提高单位面积价值。", "micro_example": "新子井压裂缝与已排采母井沟通，可能损害两口井并降低child EUR。", "misreading": "把剩余位置数乘以历史母井type curve。", "takeaway": "库存质量要按井距、层位和开发顺序折减。"},
+    {"mechanism": "Baseline反事实", "why_it_matters": "配额效果取决于若无协议本来能产多少。", "micro_example": "目标3.6 Mbpd对只有3.5能力的国家没有约束力。", "misreading": "用baseline减target当作真实减产。", "takeaway": "实际减量应相对可实现的无约束产量计算。"},
+    {"mechanism": "Effective与nameplate", "why_it_matters": "闲置产能是市场的短期保险，口径过宽会制造虚假安全感。", "micro_example": "损坏、制裁或缺维护的设施仍可写在nameplate，却不能在90天内持续上线。", "misreading": "把装过多少设备当作今天可增产多少。", "takeaway": "使用EIA effective capacity并单列disruptions。"},
+    {"mechanism": "商业关闭先于物理关闭", "why_it_matters": "航道风险通过保险和融资放大，不需军方完全封锁。", "micro_example": "P&I或war-risk保险撤离后，能物理通过的油轮也可能因无法承保和融资而停航。", "misreading": "只看船是否还能穿过海峡。", "takeaway": "运输事件先查保险、费率和船东通告，再看军事地图。"}
+  ],
+  "cases": [
+    {
+      "title": "OPEC+宣布减产200万桶，市场为什么只信一半",
+      "scenario": "组织宣布headline削减2 Mbpd。部分成员已经低于目标，核心成员拥有闲置产能，另有成员长期超产。请估计真实影响需要哪些步骤。",
+      "background": "配额相对baseline设定，成员有效产能和实际产量不同。",
+      "shock": "新协议从下月生效，并要求超产国以后补偿。",
+      "transmission": ["逐国建立无协议可实现产量反事实", "将target与反事实比较得到约束性减量", "用二手来源实际产量跟踪履约", "加入补偿减产与核心成员额外自愿削减", "检查出口和制裁是否让井口变化变成可售桶变化"],
+      "market_result": "headline 2 Mbpd可能只有部分立即落实；市场更关注沙特装船、俄罗斯出口和持续履约。",
+      "lesson": "OPEC+公告是一组条件，不是可以直接输入模型的实物桶数。",
+      "model_answer": ["先拒绝用baseline-target机械求和，逐国比较有效产能、无协议产量与目标。", "再用实际生产和出口验证执行，单列超额减产、过度生产与补偿。", "最后把真实减量放进库存、非OPEC增长和需求背景判断价格效果。"]
+    },
+    {
+      "title": "霍尔木兹恢复通航后，为什么产量没有当天全部回来",
+      "scenario": "一份协议宣布海峡重新开放，油价立刻下跌，但区域产量仍低于冲突前。解释价格和实物流为何不同步。",
+      "background": "事件期保险撤离、储罐填满并出现大规模被迫关井。",
+      "shock": "签约后少量油轮恢复，排雷、保险重定价和油田重启仍在进行。",
+      "transmission": ["价格先移除极端尾部风险", "保险公司要求安全航次记录后才降低费率", "空船返回、港口排队和库存腾空需要时间", "关停油田按设备与储层安全程序复产", "不同国家和油种以不同速度恢复"],
+      "market_result": "金融价格可在数小时重定价，而装船和生产量以数周到数月爬坡。",
+      "lesson": "市场价格交易预期，物理供给服从流程。",
+      "model_answer": ["区分协议日、商业可保日、首批正常装船日和生产恢复日。", "说明风险溢价可迅速消失，但排雷、保险、船位、储罐与井口重启构成连续门槛。", "使用EIA/IEA带日期数据更新，不把作者逐船叙事当永久事实。"]
+    }
+  ],
+  "core_model": {
+    "core_points": [
+      "资源只有经过权利、地质、经济、资本和基础设施闸门才成为产量。",
+      "储量是带方法和条件的判断；PDP现金流属性远强于PUD和未入账inventory。",
+      "传统项目提供慢而长的供给，页岩提供快而高衰减的供给，两者要分时间窗建模。",
+      "OPEC+权力来自有效闲置产能和履约，headline配额必须转成逐国真实减量。",
+      "物流能把产能变成不可售供给；保险、储罐和绕行能力是咽喉事件的关键变量。",
+      "任何新增桶都必须先扣除自然衰减，并与恢复产量、库存释放分开。"
+    ],
+    "one_liner": "先问这桶在哪个时间窗、通过哪道闸门、相对什么反事实出现，再问它有多少。"
+  },
+  "self_checks": [
+    {"prompt": "为什么10亿桶新发现不能直接加入明年全球供给？", "model_answer": "因为发现可能只是OOIP或资源，还需评价、商业性、FID、融资、钻井、设施和外输；只有项目级首油与爬坡产量才能按年份进入供给。"},
+    {"prompt": "用一句话区分reserves、capacity和production。", "model_answer": "reserves是给定条件下可经济采出的累计桶数，capacity是单位时间可达到的生产能力，production是当前实际流出的单位时间桶数。"},
+    {"prompt": "页岩为什么既能快速响应，又不能视为无成本开关？", "model_answer": "标准化井和现有设施缩短决策到首油时间，但仍需预算、钻机、压裂队和管线；旧井陡峭衰减要求持续资本才能维持总量。"},
+    {"prompt": "OPEC+宣布减产时最少要核对哪四个数字？", "model_answer": "逐国baseline、target、无约束可实现产量或有效产能、二手来源实际产量；最好再加入出口量、补偿义务和中断状态。"},
+    {"prompt": "为什么被迫关井不会自动增加可调用闲置产能？", "model_answer": "被迫关井往往伴随出口、储存、安全或设施中断，有效产能本身可能下降；自愿扣留且可短期恢复的桶才属于surplus capacity。"},
+    {"prompt": "R/P为15年是否意味着该国15年后没有油？", "model_answer": "不意味着。R/P只是当前proved除当前年产量的静态比率，未来价格、技术、发现、修订、投资和产量都会变化，而且不同国家会计口径不同。"},
+    {"prompt": "霍尔木兹协议签署后，为什么价格可能比实物恢复快？", "model_answer": "价格会立即移除部分尾部风险，但保险重定价、排雷、空船返回、装船排队、储罐腾空和油田重启必须按物理顺序完成。"}
+  ],
+  "applications": [
+    {"situation": "新闻宣布某国发现大型油田", "action": "标注OOIP、resources或reserves口径，查运营商权益、评价状态、FID、首油年份、峰值与外输路线。"},
+    {"situation": "OPEC+会议宣布新的自愿减产", "action": "建立逐国baseline-target-actual-effective capacity表，只把约束性真实减量加入供给桥。"},
+    {"situation": "美国rig count连续下降", "action": "同时看钻井效率、frac spreads、DUC、laterals、旧井衰减和EIA产量；不要由rig单指标直接推断供给崩塌。"},
+    {"situation": "关键航道传出袭击或封锁", "action": "按保险与费率、AIS流量、港口装船、产区库存、被迫关井、绕行容量和战略库存交付的顺序核验。"}
+  ],
+  "review_prompts": [
+    "一周后：不看资料画出从mineral rights到first oil的八个闸门，并给每个闸门写一种失败原因。",
+    "两周后：任选一份OPEC+公告，建立baseline、target、actual和capacity四列表，判断headline中多少是真实减量。",
+    "一个月后：把一个传统深水项目、一个页岩盆地和一次库存释放放进0-3月、3-24月、2-10年三个时间桶。",
+    "事件复盘：用保险→航运→储存→关井→库存→复产六步解释一次咽喉冲击。"
+  ],
+  "sources": [
+    {"label": "Oil 101 Chapter 1: A Brief History of Oil", "url": "https://oil101.morgandowney.com/chapters/history", "coverage": "供给控制制度、TRC、OPEC形成、油价周期与页岩时代背景"},
+    {"label": "Oil 101 Chapter 6: Exploration and Production", "url": "https://oil101.morgandowney.com/chapters/exploration-production", "coverage": "矿权合同、成藏、地震、钻井、采收、衰减与项目链"},
+    {"label": "Oil 101 Chapter 14: Reserves", "url": "https://oil101.morgandowney.com/chapters/reserves", "coverage": "OOIP、1P/2P/3P、PDP/PUD、估算、RRR、PV-10与RBL"},
+    {"label": "Oil 101 Chapter 21: The Shale Revolution", "url": "https://oil101.morgandowney.com/chapters/shale-revolution", "coverage": "水平井、压裂、盆地、跑步机、效率、成本和行业整合"},
+    {"label": "Oil 101 Chapter 22: OPEC+", "url": "https://oil101.morgandowney.com/chapters/opec-plus", "coverage": "DoC、成员、闲置产能、基线、履约与战略权衡"},
+    {"label": "Oil 101 Chapter 26: Iran Blocks the Strait", "url": "https://oil101.morgandowney.com/chapters/iran-strait", "coverage": "咽喉传播、被迫关井、绕行、库存、复航和2026案例；细粒度事件仅作待核验线索"},
+    {"label": "EIA: OPEC capacity definitions", "url": "https://www.eia.gov/todayinenergy/detail.php?id=66904", "coverage": "maximum sustainable、effective、disruptions与surplus capacity的一手定义"},
+    {"label": "EIA July 2026 Short-Term Energy Outlook", "url": "https://www.eia.gov/outlooks/steo/report/global_oil.php", "coverage": "霍尔木兹有效关闭、6月协议、价格与供给恢复的一手时点核验"},
+    {"label": "IEA March 2026 emergency stock release", "url": "https://www.iea.org/news/iea-member-countries-to-carry-out-largest-ever-oil-stock-release-amid-market-disruptions-from-middle-east-conflict", "coverage": "4亿桶应急行动、约20 Mbpd正常通行量与供给中断"},
+    {"label": "IEA March 2026 Oil Market Report", "url": "https://www.iea.org/reports/oil-market-report-march-2026", "coverage": "海峡流量降至极低、绕行有限、产区被迫减产与产品市场影响"},
+    {"label": "OPEC Declaration of Cooperation materials", "url": "https://www.opec.org/opec-plus.html", "coverage": "OPEC+合作框架、成员决策与官方调整公告"}
+  ],
+  "source_coverage": [
+    {"source":"history","section":"1859 to 1911: A New Industry","disposition":"history → 1859 to 1911: A New Industry → covered in supply-power-history as boom-bust and integration origin","id":"supply-power-history"},
+    {"source":"history","section":"International Origins: Baku, Persia, and Sumatra","disposition":"history → International Origins: Baku, Persia, and Sumatra → deferred: company genealogy is not needed for the supply-control model","defer_reason":"国际公司谱系放入行业公司纵深模块。"},
+    {"source":"history","section":"World War I and the Navy Switch to Oil","disposition":"history → World War I and the Navy Switch to Oil → deferred: strategic demand history belongs to geopolitics context","defer_reason":"战争需求与海军燃料转换放入历史/地缘纵深。"},
+    {"source":"history","section":"The Texas Railroad Commission and Achnacarry","disposition":"history → The Texas Railroad Commission and Achnacarry → covered as prototype supply-control institutions","id":"supply-power-history"},
+    {"source":"history","section":"The Seven Sisters and OPEC's Founding","disposition":"history → The Seven Sisters and OPEC's Founding → covered as transition from corporate to sovereign control","id":"supply-power-history"},
+    {"source":"history","section":"Mossadegh, the Abadan Crisis, and the 1953 Coup","disposition":"history → Mossadegh, the Abadan Crisis, and the 1953 Coup → deferred: political chronology not required for this module's mechanism","defer_reason":"伊朗政治史在地缘专题展开。"},
+    {"source":"history","section":"Enrico Mattei and the 25/75 Break","disposition":"history → Enrico Mattei and the 25/75 Break → deferred: concession bargaining history goes to company-state relations","defer_reason":"合同分成史留给行业制度纵深。"},
+    {"source":"history","section":"1971: The Tehran Agreement and the Nixon Gold Standard","disposition":"history → 1971: The Tehran Agreement and the Nixon Gold Standard → deferred: monetary pricing channel belongs to price module","defer_reason":"美元与posted-price机制放入价格形成模块。"},
+    {"source":"history","section":"The Oil Shocks and Demand Destruction","disposition":"history → The Oil Shocks and Demand Destruction → covered selectively as spare-capacity stress; demand rule deferred","id":"supply-power-history"},
+    {"source":"history","section":"NYMEX, Formula Pricing, and the 1986 Counter-Shock","disposition":"history → NYMEX, Formula Pricing, and the 1986 Counter-Shock → covered for Saudi market-share reversal; futures mechanics deferred","id":"supply-power-history"},
+    {"source":"history","section":"1990 to 2008: Low Prices, Asian Crisis, and the Supercycle","disposition":"history → 1990 to 2008: Low Prices, Asian Crisis, and the Supercycle → covered as spare-capacity cycle context","id":"supply-power-history"},
+    {"source":"history","section":"2009 to 2026: The Shale Revolution, OPEC+, and Negative Oil","disposition":"history → 2009 to 2026: The Shale Revolution, OPEC+, and Negative Oil → covered across shale and OPEC lessons","id":"shale-short-cycle"},
+    {"source":"history","section":"Timeline: Key Events in Oil History","disposition":"history → Timeline: Key Events in Oil History → deferred: chronology reference is not repeated as a lesson","defer_reason":"完整时间线保留在原文参考，不重复灌水。"},
+    {"source":"exploration-production-h01","section":"The Upstream Sector","disposition":"exploration-production → The Upstream Sector → covered as risk-capital starting point","id":"project-pipeline"},
+    {"source":"exploration-production-h02","section":"Obtaining Rights to Explore and Drill","disposition":"exploration-production → Obtaining Rights to Explore and Drill → covered as the first legal gate","id":"project-pipeline"},
+    {"source":"exploration-production-h03","section":"Types of E&P Agreements","disposition":"exploration-production → Types of E&P Agreements → covered selectively through concession, PSA, service contract and JV risk allocation","id":"project-pipeline"},
+    {"source":"exploration-production-h04","section":"How Oil Forms: Source Rock, Reservoir Rock, and Cap Rock","disposition":"exploration-production → How Oil Forms: Source Rock, Reservoir Rock, and Cap Rock → covered as geological precondition, details in Module 01","id":"project-pipeline"},
+    {"source":"exploration-production-h05","section":"Reservoir Mechanics: Pressure Is Everything","disposition":"exploration-production → Reservoir Mechanics: Pressure Is Everything → covered as recovery and decline constraint","id":"project-pipeline"},
+    {"source":"exploration-production-h06","section":"Exploration: Seismic Surveys","disposition":"exploration-production → Exploration: Seismic Surveys → covered as indirect evidence and discovery-risk gate","id":"project-pipeline"},
+    {"source":"exploration-production-h07","section":"Drilling","disposition":"exploration-production → Drilling → covered selectively as verification and capital execution; equipment taxonomy deferred","id":"project-pipeline"},
+    {"source":"exploration-production-h08","section":"Production Phases","disposition":"exploration-production → Production Phases → covered through pressure support and field-life logic","id":"project-pipeline"},
+    {"source":"exploration-production-h09","section":"Decline Curves and Field Life","disposition":"exploration-production → Decline Curves and Field Life → covered as base-decline engine and shale contrast","id":"shale-short-cycle"},
+    {"source":"exploration-production-h10","section":"Offshore Production","disposition":"exploration-production → Offshore Production → covered selectively as long-cycle capital; platform typology deferred","id":"project-pipeline"},
+    {"source":"exploration-production-h11","section":"The Shale Revolution","disposition":"exploration-production → The Shale Revolution → covered in dedicated short-cycle lesson","id":"shale-short-cycle"},
+    {"source":"reserves","section":"What Are Oil Reserves?","disposition":"reserves → What Are Oil Reserves? → covered with OOIP-resource-reserve-EUR distinctions","id":"reserves-bookability"},
+    {"source":"reserves","section":"The Three Ps","disposition":"reserves → The Three Ps → covered with probability direction and disclosure use","id":"reserves-bookability"},
+    {"source":"reserves","section":"PDP, PDNP, PUD: The Development Status Categories","disposition":"reserves → PDP, PDNP, PUD: The Development Status Categories → covered as capital and cash-flow ladder","id":"reserves-bookability"},
+    {"source":"reserves","section":"Reserve Recategorization (Re-Catting)","disposition":"reserves → Reserve Recategorization (Re-Catting) → covered as reserve and credit warning","id":"reserves-bookability"},
+    {"source":"reserves","section":"Reserve Estimation Methods","disposition":"reserves → Reserve Estimation Methods → covered selectively with volumetric example and method progression","id":"reserves-bookability"},
+    {"source":"reserves","section":"Peak Oil and Hubbert's Curve","disposition":"reserves → Peak Oil and Hubbert's Curve → covered as fixed-resource model boundary under technology change","id":"reserves-bookability"},
+    {"source":"reserves","section":"OPEC's 1982-1988 Reserve Revisions","disposition":"reserves → OPEC's 1982-1988 Reserve Revisions → covered as political-accounting caution without adopting unaudited numbers","id":"reserves-bookability"},
+    {"source":"reserves","section":"Reserves to Production Ratio by Country","disposition":"reserves → Reserves to Production Ratio by Country → covered as static ratio; 2024 table values not reused","id":"reserves-bookability"},
+    {"source":"reserves","section":"Reserve Replacement Ratio","disposition":"reserves → Reserve Replacement Ratio → covered with acquisition-versus-organic decomposition","id":"reserves-bookability"},
+    {"source":"reserves","section":"SEC PV-10 and Reserve-Based Lending","disposition":"reserves → SEC PV-10 and Reserve-Based Lending → covered as collateral and price-deck channel","id":"reserves-bookability"},
+    {"source":"reserves","section":"EUR and Drilling Inventory","disposition":"reserves → EUR and Drilling Inventory → covered as two-tier shale disclosure and Tier 1 runway","id":"shale-short-cycle"},
+    {"source":"reserves","section":"Giant Fields Still Dominate Global Reserves","disposition":"reserves → Giant Fields Still Dominate Global Reserves → covered as long-lived conventional-base context; old regional counts deferred","id":"project-pipeline"},
+    {"source":"shale-revolution","section":"The Technology Behind Shale","disposition":"shale-revolution → The Technology Behind Shale → covered as horizontal-plus-fracturing combination","id":"shale-short-cycle"},
+    {"source":"shale-revolution","section":"Inside a Frac Job","disposition":"shale-revolution → Inside a Frac Job → covered selectively as service-chain constraint; 2025 parameter ranges flagged time-sensitive","id":"shale-short-cycle"},
+    {"source":"shale-revolution","section":"George Mitchell and the Barnett Shale","disposition":"shale-revolution → George Mitchell and the Barnett Shale → covered as cumulative learning example, company chronology deferred","id":"shale-short-cycle"},
+    {"source":"shale-revolution","section":"Tight Oil and the Permian Basin","disposition":"shale-revolution → Tight Oil and the Permian Basin → covered as stacked-pay manufacturing context; latest output requires EIA update","id":"shale-short-cycle"},
+    {"source":"shale-revolution","section":"The Basins","disposition":"shale-revolution → The Basins → covered as heterogeneity warning; point estimates deferred to live data","id":"shale-short-cycle"},
+    {"source":"shale-revolution","section":"The 2014 Price Collapse","disposition":"shale-revolution → The 2014 Price Collapse → covered as cost-learning response to price war","id":"supply-power-history"},
+    {"source":"shale-revolution","section":"The Shale Treadmill","disposition":"shale-revolution → The Shale Treadmill → fully covered with gross-versus-net worked example","id":"shale-short-cycle"},
+    {"source":"shale-revolution","section":"Laterals, Parent-Child Wells, and Drilling Efficiency","disposition":"shale-revolution → Laterals, Parent-Child Wells, and Drilling Efficiency → covered as productivity and inventory-quality tradeoff","id":"shale-short-cycle"},
+    {"source":"shale-revolution","section":"Tight Oil Breakevens and the Global Marginal Cost of Supply","disposition":"shale-revolution → Tight Oil Breakevens and the Global Marginal Cost of Supply → mechanism covered; 2025 dollar estimates treated as time-sensitive","id":"shale-short-cycle"},
+    {"source":"shale-revolution","section":"Lifting the Crude Export Ban","disposition":"shale-revolution → Lifting the Crude Export Ban → covered selectively as logistics unlocking supply; trade chronology deferred","id":"supply-dashboard"},
+    {"source":"shale-revolution","section":"Consolidation and the Chevron-Hess Deal","disposition":"shale-revolution → Consolidation and the Chevron-Hess Deal → deferred: transaction chronology is not needed for supply mechanism","defer_reason":"并购事件与实时公司数据放入企业纵深模块。"},
+    {"source":"opec-plus","section":"From OPEC to OPEC+","disposition":"opec-plus → From OPEC to OPEC+ → covered through 2016 DoC and Russia participation","id":"opec-spare-capacity"},
+    {"source":"opec-plus","section":"Who Is in the Room","disposition":"opec-plus → Who Is in the Room → covered structurally; 2025 roster/output table requires live OPEC verification","id":"opec-spare-capacity"},
+    {"source":"opec-plus","section":"Spare Capacity as the Swing Variable","disposition":"opec-plus → Spare Capacity as the Swing Variable → fully covered with EIA definition","id":"opec-spare-capacity"},
+    {"source":"opec-plus","section":"Quotas, Baselines, and Compliance","disposition":"opec-plus → Quotas, Baselines, and Compliance → fully covered with counterfactual example","id":"opec-spare-capacity"},
+    {"source":"opec-plus","section":"Key Moments of OPEC+","disposition":"opec-plus → Key Moments of OPEC+ → covered selectively in mechanism; full timeline deferred to original","id":"supply-power-history"},
+    {"source":"opec-plus","section":"The 2020 Price War","disposition":"opec-plus → The 2020 Price War → covered as failed coordination and emergency cut case","id":"supply-power-history"},
+    {"source":"opec-plus","section":"Saudi Arabia, Aramco, and Ghawar","disposition":"opec-plus → Saudi Arabia, Aramco, and Ghawar → covered as concentration of capacity; fiscal estimates flagged time-sensitive","id":"opec-spare-capacity"},
+    {"source":"opec-plus","section":"Russia After the Invasion","disposition":"opec-plus → Russia After the Invasion → deferred: sanctions and shadow-fleet chronology requires a dedicated current-data module","defer_reason":"制裁、价帽与贸易转向需要独立实时核验。"},
+    {"source":"opec-plus","section":"The Strategic Calculus","disposition":"opec-plus → The Strategic Calculus → covered as price-versus-share repeated game","id":"opec-spare-capacity"},
+    {"source":"iran-strait","section":"The Chokepoint","disposition":"iran-strait → The Chokepoint → covered with map and IEA/EIA-verified flow scale","id":"hormuz-forced-shutins"},
+    {"source":"iran-strait","section":"Anatomy of a Closure","disposition":"iran-strait → Anatomy of a Closure → covered as insurance-to-shut-in mechanism","id":"hormuz-forced-shutins"},
+    {"source":"iran-strait","section":"The Price Shock","disposition":"iran-strait → The Price Shock → deferred: intraday price chronology is time-sensitive and not needed for supply mechanics","defer_reason":"价格路径放入事件研究模块，需逐日数据复核。"},
+    {"source":"iran-strait","section":"Forced Shut-Ins","disposition":"iran-strait → Forced Shut-Ins → covered; magnitude anchored to EIA/IEA rather than unverified country anecdotes","id":"hormuz-forced-shutins"},
+    {"source":"iran-strait","section":"The Bypass Pipelines and Their Ceiling","disposition":"iran-strait → The Bypass Pipelines and Their Ceiling → covered with approximate capacity and explicit scenario arithmetic","id":"hormuz-forced-shutins"},
+    {"source":"iran-strait","section":"A Two-Tier Market","disposition":"iran-strait → A Two-Tier Market → deferred-unverified: selective transit fees and vessel-level claims lack first-party confirmation in reviewed sources","defer_reason":"不采纳作者逐船收费与选择性通行叙事为确定事实。"},
+    {"source":"iran-strait","section":"Who Is Most Exposed","disposition":"iran-strait → Who Is Most Exposed → covered conceptually; country percentages and reserve days require national-source updates","id":"hormuz-forced-shutins"},
+    {"source":"iran-strait","section":"Why Oil Hasn’t Broken $200","disposition":"iran-strait → Why Oil Hasn’t Broken $200 → covered only for verified emergency stocks; AI inventory-efficiency estimate deferred-unverified","defer_reason":"作者约10亿桶AI结构缓冲推断未获一手数据支持，不采纳。"},
+    {"source":"iran-strait","section":"The SPR Defends Crude, Not the Pump","disposition":"iran-strait → The SPR Defends Crude, Not the Pump → mechanism deferred to refining/products module; IEA confirms release includes crude and products","defer_reason":"crack spread与产品短缺属于下游模块。"},
+    {"source":"iran-strait","section":"Anatomy of a Reopening","disposition":"iran-strait → Anatomy of a Reopening → covered as sequential insurance, shipping and production gates","id":"hormuz-forced-shutins"},
+    {"source":"iran-strait","section":"The 2026 Crisis: A Timeline","disposition":"iran-strait → The 2026 Crisis: A Timeline → core dates verified by EIA/IEA; granular military and vessel claims deferred-unverified","defer_reason":"只采纳EIA/IEA确认的2月28日关闭、3月库存行动与6月协议。"},
+    {"source":"iran-strait","section":"The Standing Lessons","disposition":"iran-strait → The Standing Lessons → covered selectively for finite buffers and slow supply response; permanent-premium and AI claims treated as author inference","id":"supply-dashboard"}
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "name": "Oil 101 Knowledge Base",
-  "short_name": "Oil101 KB",
+  "name": "Oil 101 原油市场理解平台",
+  "short_name": "Oil 101",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f7f8f5",
-  "theme_color": "#1f6f5b"
+  "background_color": "#f5f6f2",
+  "theme_color": "#176451"
 }

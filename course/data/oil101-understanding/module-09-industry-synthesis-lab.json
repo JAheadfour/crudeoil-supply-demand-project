@@ -1,0 +1,540 @@
+{
+  "id": "09-industry-synthesis-lab",
+  "variant": "understanding",
+  "reading": "09",
+  "reading_title": "行业判断实验室：把供需、物流、曲线与地缘事件连起来",
+  "title": "从一条新闻推演整条石油产业链",
+  "deck": "不猜标题后的涨跌，而是沿着冲击、流量、瓶颈、库存、价格结构、主体反应和反证条件，构造一套能更新、能否定的行业判断。",
+  "reading_intent": "这一模块不是再讲一遍库存、页岩、OPEC+、LNG 或能源转型，而是训练你把这些知识同时放进一个动态系统。学完后，你应能在看到减产、港口中断、炼厂事故、LNG 价差或 EV 数据时，先确定冲击作用在哪个环节，再判断它如何穿过物理网络、多久进入库存和价格、哪些主体会反应，以及什么证据会推翻最初判断。",
+  "opening_question": "如果新闻说霍尔木兹海峡风险上升、OPEC+可能增产、美国页岩钻机减少、欧洲天然气走强，你应该先看油价，还是先画物流与库存链？",
+  "quick_answer": [
+    "先给冲击分类：需求、供给、物流、政策还是金融执行；同一标题可能同时含有两种冲击。",
+    "把冲击换算为可观察流量：每天少了多少、从哪里少、持续多久、有没有替代路线与替代品质。",
+    "寻找最先饱和或最先短缺的节点；价格首先反映边际瓶颈，不一定反映全球总量。",
+    "库存决定系统能缓冲多久，期限结构、地区价差、裂解价差与运费告诉你稀缺正停留在哪一层。",
+    "最后列出企业和政策反应及其时滞，并预先写下会推翻判断的证据。"
+  ],
+  "learning_objectives": [
+    "把能源新闻准确归类为需求、供给、物流、政策或金融执行冲击，并识别冲击的初始节点",
+    "用流量、持续时间、替代能力和库存缓冲推导物理短缺，而不是由标题直接跳到价格",
+    "联合读取月差、地区基差、裂解价差、天然气跨区价差与运费，判断稀缺停留在哪一层",
+    "比较 OPEC+、页岩生产商、LNG 贸易商、炼厂、政府和终端消费者的反应函数与时滞",
+    "把行业观点写成带条件、概率、时间窗和反证指标的可更新判断"
+  ],
+  "main_thread": "石油市场不是一只全球统一的大桶，而是一张带方向、容量、品质和时间约束的网络。新闻只告诉你某处发生了变化，真正的分析从第二步开始：这项变化会使哪条流量增加或减少，最先碰到哪一个管线、港口、储罐、炼厂或合约窗口，现有库存能把冲击吸收多久，价格会先通过哪个相对价格表达，以及生产商、贸易商、消费者和政府会在什么时间尺度上修正行为。2020 年 WTI 负价说明总需求崩塌只有与交割地点、储存能力和到期机制结合，才能解释价格为什么穿过零；美国页岩说明供给反应快于传统大项目，却仍受衰减曲线、资本纪律和完井队伍约束；OPEC+说明公告减产不等于实际减量，基线、履约和备用产能才决定有效供给；美国 LNG 说明区域天然气只有跨过液化、航运和再气化瓶颈才会全球化；能源转型则提醒我们，慢变量会改变未来需求斜率和投资意愿，但不会自动解决今天的局部物流短缺。专业判断因此不是一句看多或看空，而是一条完整因果链，外加一组提前写好的反证条件。",
+  "mental_model": "新闻是冲击的线索，物流网络决定冲击的路径，库存决定冲击的时长，相对价格定位稀缺，主体反应决定冲击如何自我修正。",
+  "mental_model_detail": {
+    "equation": "有效缺口 = 初始流量损失 - 可立即替代流量；缓冲天数 = 可动用库存 / 有效缺口",
+    "seven_links": [
+      "冲击：到底改变需求、供给、物流、政策还是交易执行",
+      "流量：影响的是每天多少桶或多少 Bcf，而非储量口号",
+      "瓶颈：哪一个地点、品质、设备或制度窗口先成为约束",
+      "库存：商业库存、操作库存和战略库存分别能缓冲多久",
+      "价格结构：月差、基差、裂解价差、运费和跨区气价在哪一层报警",
+      "反应：企业、OPEC+、政府和消费者以多长时滞改变行为",
+      "反证：哪一条可观察数据出现后，原判断必须降级或撤回"
+    ],
+    "decision_rule": "先画物理链，再看相对价格，最后才讨论绝对价格；任何观点若没有时间窗和反证条件，都还不是可执行判断。"
+  },
+  "formulas": [
+    {
+      "name": "库存缓冲",
+      "expression": "缓冲天数 = 可释放库存 ÷ 每日有效缺口",
+      "use": "把新闻中的产量或运输中断换算为系统还能维持多久。"
+    },
+    {
+      "name": "LNG 目的地净回值",
+      "expression": "目的地净回值 = 到岸气价 - 液化费 - 航运费 - 损耗与再气化成本",
+      "use": "判断一船美国 LNG 应驶向欧洲还是亚洲，及价差是否足以支付改道。"
+    },
+    {
+      "name": "观点最小结构",
+      "expression": "判断 = 方向 + 地点 + 品质 + 时间窗 + 传导路径 + 反证条件",
+      "use": "避免用全球短缺或长期转型之类宽泛标签替代分析。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "shock-classification",
+      "title": "第一步不是猜涨跌，而是给冲击分类",
+      "concept": {
+        "en": "Shock taxonomy",
+        "cn": "冲击分类",
+        "definition": "按冲击首先改变的变量，将事件分为需求、供给、物流、政策和金融执行冲击；分类的判别标准是第一条可观察流量在哪里改变。"
+      },
+      "explanation": "同一条新闻可能包含多个层次，但必须先找第一推动。疫情封锁首先是需求冲击，随后炼厂降低加工量，才变成原油累库和上游减产；OPEC+公告首先是政策协调，只有成员实际降低产量和出口后才成为供给冲击；海峡风险首先可能通过保险撤保和船东停航变成物流冲击，即使油田仍在生产；交易系统允许负价格属于金融基础设施变化，它不会创造原油过剩，却改变过剩如何在临期合约中被表达。分类的价值在于决定你该看什么证据：需求冲击看消费与炼厂加工，供给冲击看产量与装船，物流冲击看船舶、保险、管线和运费，政策冲击看基线与执行，金融冲击看合约、持仓和流动性。",
+      "mechanism_chain": [
+        "把标题拆成行为主体、受影响资产、地点和时间窗",
+        "识别第一条发生变化的可观测流量，而不是先观察价格结果",
+        "区分直接冲击与后续二阶反应，避免把结果倒写成原因",
+        "为不同冲击分配首要证据，并设定首次复核时间"
+      ],
+      "worked_example": {
+        "setup": "新闻称某产油区宣布减产，同时当地主要出口港因天气关闭三天。",
+        "steps": [
+          "先把港口关闭记为短期物流冲击，因为装船立即停止；宣布减产暂记为待验证的政策或供给意图。",
+          "检查离港船舶、港口排队、陆上储罐液位与油田实际产量，判断三天后是补装船还是被迫停井。",
+          "若港口恢复后出口迅速补回而产量未降，最初的全球供给短缺判断应撤回，只保留短期区域运费和基差影响。"
+        ],
+        "result": "同一标题被拆成两个不同时间尺度、不同证据标准的冲击。"
+      },
+      "practitioner_lens": "交易台会先问哪一个数据在今天下午就会变，研究员再问哪一个数据在下月报表中才会出现。两者并不矛盾，而是在处理不同传导阶段。",
+      "misreading": "看到战争、减产或新能源三个词就直接映射为油价上涨或下跌，省略了流量变化与替代路径。",
+      "boundary": "冲击分类不是互斥标签。复杂事件可以逐阶段改变类型，但每一阶段仍应有明确的第一推动和证据。"
+    },
+    {
+      "id": "flow-and-lag",
+      "title": "把口号换成流量，再给每种反应装上时钟",
+      "concept": {
+        "en": "Flow conversion and response lag",
+        "cn": "流量换算与反应时滞",
+        "definition": "把事件换算为单位时间内的实际增减量，并区分立即、数周、数季和数年的反应能力。"
+      },
+      "explanation": "储量、产能、配额、项目规模和销售目标不是同一种数字。真正进入平衡表的是某段时间内实际生产、运输、加工或消费的流量。OPEC+的名义减产必须扣除虚高基线和不履约；页岩油虽比深水项目反应更快，也要经过资本预算、钻井、完井和高初始衰减的补充循环；LNG 项目即使获得许可，仍需融资、建设和投产，而一艘现货 LNG 船却能在数周内改变目的地；EV 销量增长是慢变量，要先累积成车队存量，才逐年替代燃油需求。把每个变量放上时钟，能防止用十年后的需求趋势解释明天的现货月差，也防止把今天的价格跳升误当成长期产能已经消失。",
+      "mechanism_chain": [
+        "将公告数字转换为实际日流量，并注明基线、利用率和持续期",
+        "列出可在一天、一个月、一个季度和数年内启动的反应",
+        "用自然衰减、维护、合同和资本约束修正理论最大反应",
+        "比较冲击持续时间与各类反应到达时间，判断缺口是否会被填平"
+      ],
+      "worked_example": {
+        "setup": "OPEC+宣布削减 100 万桶/日，市场同时预期美国页岩增产。",
+        "steps": [
+          "先核对减产基线和成员历史履约；若真实出口只减少 60 万桶/日，平衡表采用 60 万而不是标题中的 100 万。",
+          "再把页岩反应分开：现有井短期继续衰减，新增钻完井通常要数月，且企业可能优先自由现金流而非追产。",
+          "若减产只维持两个月而页岩新增供给要两个季度才出现，近端可能收紧，但不能据此断言全年供给不足。"
+        ],
+        "result": "方向判断被拆成近端收紧与中期供给弹性两个时间窗口。"
+      },
+      "practitioner_lens": "做平衡表时，给每个数字附四个脚注：是产量还是产能、是名义还是实际、何时开始、能维持多久。",
+      "misreading": "把备用产能当成已经生产的油，把页岩短周期当成即时供给，或把 EV 当年销量直接当成同年全部车队替代量。",
+      "boundary": "流量换算提高一致性，却不能消除数据修订、隐性库存和地缘事件持续期的不确定性。"
+    },
+    {
+      "id": "bottleneck-geometry",
+      "title": "全球总量不告诉你，哪一个节点会先断",
+      "concept": {
+        "en": "Bottleneck geometry",
+        "cn": "瓶颈几何",
+        "definition": "由运输方向、设备容量、品质兼容、合同权利和可用闲置量共同决定的局部约束结构。"
+      },
+      "explanation": "石油和天然气只能沿可用网络移动。霍尔木兹海峡的结构风险不在于地图上的狭窄本身，而在于大量海运原油、成品油和 LNG 依赖同一出口通道，替代管线的名义容量又不等于中断时可新增的闲置容量。EIA 对 2024 年的核验显示，海峡油流约为 2,000 万桶/日，而沙特和阿联酋管线在冲击情景下估算可追加绕行能力约 260 万桶/日；这比把所有管线铭牌容量简单相加更接近边际替代能力。LNG 同样受液化列车、合格船型、运河时隙、航程和接收站约束。瓶颈一旦出现，价格可能按地区、品质或交付时间分裂，因此全球库存充足也不能保证每个买家都拿得到合适的桶。",
+      "mechanism_chain": [
+        "画出起点、终点、必经通道和可替代路线，不把地图距离当成可运输能力",
+        "区分名义容量、已使用容量、可追加闲置容量和商业上可获得的容量",
+        "检查品质、船型、港口水深、保险和合同是否允许替代流量真正执行",
+        "用地区基差、运费和交货延迟确认瓶颈是否已进入价格"
+      ],
+      "worked_example": {
+        "setup": "假设霍尔木兹油流短期减少 500 万桶/日，而可立即追加的绕行能力为 260 万桶/日。",
+        "steps": [
+          "先得到毛物流缺口 500 万桶/日，再扣除 260 万桶/日可执行绕行，初始有效缺口为 240 万桶/日。",
+          "检查绕行出口是否把原油送到同一客户、是否经过另一高风险通道，以及炼厂能否接受替代品质。",
+          "若保险恢复使海运量回升 200 万桶/日，有效缺口将迅速缩小；若只有停火声明而保费未降，不能把通道视为恢复。"
+        ],
+        "result": "判断从海峡关闭等于损失全部流量，修正为边际可替代能力和商业可执行性的计算。"
+      },
+      "practitioner_lens": "物流分析最有用的数字往往不是总容量，而是今天还能多挤出多少容量，以及谁拥有提名权。",
+      "misreading": "把管线设计能力、港口吞吐量或储罐几何容量全部视为可以立刻调用的自由余量。",
+      "boundary": "公开数据通常能描述基础设施，却未必显示合同预订、维护和实时保险条件，边际可用量必须持续更新。"
+    },
+    {
+      "id": "inventory-migration",
+      "title": "库存不是结论，它决定冲击在哪里迁移",
+      "concept": {
+        "en": "Buffer depletion and scarcity migration",
+        "cn": "缓冲消耗与稀缺迁移",
+        "definition": "当一个环节用库存吸收冲击后，稀缺可能从原油转向储存、炼化、成品油或终端交付，而非消失。"
+      },
+      "explanation": "库存给系统买时间，却不会创造永久供给。需求突然消失时，原油先进入储罐；可操作库容和交割能力变得稀缺，2020 年临期 WTI 因此比远月承受更强压力。出口通道受阻时，进口国可能消耗商业和战略库存，而出口国一侧却因无法装船而累库，最终被迫停产。政府释放战略原油可以缓解原油短缺，但如果真正约束在炼厂能力或柴油、航煤供应，稀缺会迁移到裂解价差和终端价格。分析库存必须同时回答谁的库存、在哪个地点、是什么品质、能否释放、释放后由谁加工。仅用全球库存天数，会把相反方向的局部压力相互抵消。",
+      "mechanism_chain": [
+        "识别冲击两端谁在累库、谁在去库，以及库存是否商业可动用",
+        "估算有效缺口与可释放库存，得到缓冲天数而非静态库存规模",
+        "检查下一环节的加工和运输能力，判断释放库存能否抵达消费者",
+        "观察稀缺是否从原油价格迁移到月差、裂解价差、运费或零售端"
+      ],
+      "worked_example": {
+        "setup": "某进口区每日短缺 100 万桶原油，可释放库存 3,000 万桶，但炼厂因事故损失 40 万桶/日加工能力。",
+        "steps": [
+          "若只看原油，库存理论上提供约 30 天缓冲；但释放速度和港口接卸上限还要另行核对。",
+          "炼厂少加工 40 万桶/日会降低对原油的即时需求，却让成品油缺口扩大，因此原油价格可能稳定而柴油裂解价差继续走强。",
+          "只有当炼厂复产、成品油进口增加或终端需求下降时，消费者层面的稀缺才真正缓解。"
+        ],
+        "result": "原油库存缓冲与成品油短缺可以同时存在，价格信号会分层。"
+      },
+      "practitioner_lens": "每天追踪库存时，把数值放在节点图上；同样的去库发生在进口终端、炼厂罐区或战略储备，含义完全不同。",
+      "misreading": "认为释放战略原油等于解决汽柴油短缺，或把出口国累库和进口国去库合并成一个无地点的全球数字。",
+      "boundary": "缓冲天数是情景估算，不代表库存可按恒定速度抽出，也不包含品质隔离、最低罐底和政策限制。"
+    },
+    {
+      "id": "relative-price-map",
+      "title": "绝对油价讲情绪，相对价格帮你定位稀缺",
+      "concept": {
+        "en": "Relative-price triangulation",
+        "cn": "相对价格三角验证",
+        "definition": "联合使用跨期、跨地、跨品种和跨加工环节价差，确认市场正在为何种约束付费。"
+      },
+      "explanation": "单看 Brent 或 WTI 很难知道价格变化来自宏观风险偏好、原油短缺还是局部产品问题。近月对远月走强通常说明即期桶更有价值，但需要库存与现货升贴水验证；中东酸油相对大西洋轻油走强，可能暴露地区或品质短缺；柴油裂解价差扩大而原油平稳，说明约束更接近炼化或成品油；TTF、JKM 相对 Henry Hub 的价差只有覆盖液化、航运、损耗和再气化成本后，才会真正拉动美国 LNG 改道。2020 年 4 月 May WTI 跌为负而 June 合约仍为正，正是时间和交割地点约束压倒全球长期价值的极端例子。相对价格不是原因本身，而是用来定位物理链上哪一个边际服务最稀缺。",
+      "mechanism_chain": [
+        "先选择与假设对应的价差：月差、地区基差、品质差、裂解价差或跨区气价",
+        "扣除仓储、运费、液化和损耗等执行成本，判断价差是否足以引发套利",
+        "用库存、船期、炼厂运行或管线流量检验价格信号是否有物理对应",
+        "若价格与物理数据背离，提出时点、预期或金融流动性解释并等待复核"
+      ],
+      "worked_example": {
+        "setup": "欧洲 TTF 大涨，但 Henry Hub 仅小幅上涨，市场声称美国天然气会立刻全球同价。",
+        "steps": [
+          "先计算 TTF 减去 Henry Hub、液化费、跨洋运费和损耗后的净回值，确认改道是否经济。",
+          "再看美国液化终端是否已有闲置能力；若列车满负荷，国际溢价只能改变现有船货目的地，不能立即增加总出口。",
+          "若欧洲接收站或船舶也受限，TTF 可以继续高企而 Henry Hub 传导有限，全球同价判断应被否定。"
+        ],
+        "result": "价格联动取决于套利通道的可执行容量，而非存在三个基准价就自动收敛。"
+      },
+      "practitioner_lens": "研究报告应同时展示至少一个绝对价格和两个与机制直接相关的价差，避免方向正确但原因错误。",
+      "misreading": "把期限结构当成未来价格预测，或把价差存在本身当成无风险套利，忽略执行成本与容量。",
+      "boundary": "相对价格可能先于物理数据变化，也会受指数换月、流动性和保证金影响，因此必须与现货证据交叉确认。"
+    },
+    {
+      "id": "reaction-functions",
+      "title": "每个主体都在反应，但速度和目标不同",
+      "concept": {
+        "en": "Reaction functions",
+        "cn": "主体反应函数",
+        "definition": "在特定价格、库存、政策和财务约束下，各类市场主体改变产量、贸易、消费、对冲或干预的规律。"
+      },
+      "explanation": "市场会自我修正，但没有一个统一控制器。OPEC+在价格、财政收入和市场份额之间权衡，实际效果取决于基线、履约和可持续备用产能；页岩企业面对高价不会立刻无限增产，因为高衰减要求持续钻完井，资本纪律和服务成本会限制速度；LNG 贸易商先在既有合同允许的范围内改道，液化项目开发商则要等待长期合同、许可和融资；政府可以释放战略储备、调整制裁或协调消费，但原油工具未必解决成品油瓶颈；ETF 和被动产品还可能因公开换月规则放大临期流动性。分析二阶效应时，要写清每个主体优化的目标和它真正能动用的工具。",
+      "mechanism_chain": [
+        "列出受到冲击的生产商、贸易商、加工商、消费者、金融机构和政府",
+        "为每个主体写出目标函数、硬约束、可用工具和决策频率",
+        "判断反应是增加物理供给、重新分配流量、转移价格风险还是仅改变预期",
+        "将最可能反应重新放回平衡表，形成二阶和三阶反馈"
+      ],
+      "worked_example": {
+        "setup": "近月油价快速上涨，新闻称 OPEC+、页岩生产商和政府都会增加供给。",
+        "steps": [
+          "OPEC+只有在确有可持续备用产能并愿意调整配额时，才能较快增加原油流量；会议表态本身不计入供给。",
+          "页岩企业先增加完井或钻机，但新增产量要经过数月，同时要抵消旧井高衰减，反应更适合季度尺度。",
+          "政府释放战略原油可以较快增加特定品质的库存流出，却不能替代受损炼厂，也未必降低柴油裂解价差。"
+        ],
+        "result": "三种都被称为增供的反应，在资产、速度和终端效果上完全不同。"
+      },
+      "practitioner_lens": "对每个政策或公司动作标注它改变的是分子、地点、所有权、现金流还是预期；只有第一类真正增加短期物理供给。",
+      "misreading": "把宣布、许可、投资决定和实际产量放在同一时间轴上，或假设高价会自动释放所有备用能力。",
+      "boundary": "反应函数会因公司资产负债表、选举、制裁和市场结构变化而改变，历史行为只能提供先验概率。"
+    },
+    {
+      "id": "falsifiable-thesis",
+      "title": "最后一步是写反证，不是写口号",
+      "concept": {
+        "en": "Falsifiable market thesis",
+        "cn": "可证伪行业判断",
+        "definition": "包含方向、作用地点、时间窗、因果链、置信度和明确撤回条件的市场观点。"
+      },
+      "explanation": "能源转型、地缘风险和产油国政策都充满叙事竞争。IEA 与 OPEC 对长期需求路径可以给出差异很大的情景，这不是让分析者任选一个立场，而是要求找出各自依赖的销量、效率、经济增长、政策和投资假设。短期新闻判断也一样：如果你认为海运中断会收紧欧洲柴油，应同时写下船舶流量、炼厂运行、产品库存和裂解价差需要如何变化；如果你认为 EV 将压低原油需求，应说明车队存量、行驶里程、发电结构和被替代燃料。反证条件必须在持仓或观点形成前写出，否则每个新数据都容易被重新解释成支持原结论。好的判断会随着证据更新概率，而不是为了维护一句预测不断移动门柱。",
+      "mechanism_chain": [
+        "把观点写成方向、地点、品质和时间窗明确的条件句",
+        "列出支撑链上每一环对应的可观察指标与更新频率",
+        "指定至少两个能直接推翻关键机制的反证条件",
+        "按新证据调整概率、缩短时间窗或撤回判断，并记录改变原因"
+      ],
+      "worked_example": {
+        "setup": "初始观点是未来六周欧洲柴油将比原油更紧，原因是运输绕行与炼厂检修重叠。",
+        "steps": [
+          "支撑指标设为欧洲中间馏分库存下降、柴油裂解价差扩大、到港时间延长和炼厂开工率低于季节水平。",
+          "反证一是成品油进口连续两周显著增加并填补库存；反证二是炼厂提前复产且柴油裂解价差回落。",
+          "如果 Brent 上涨但产品库存和裂解价差不支持，不能用油价上涨维持原观点，应把结论降级为宏观或原油端风险。"
+        ],
+        "result": "观点从宽泛的能源看多变成可跟踪、可撤回的产品层判断。"
+      },
+      "practitioner_lens": "投委会真正需要的不是最响亮的预测，而是判断错了以后多快能知道、损失前能否退出。",
+      "misreading": "把情景当预测，把相关性当机制，或者在数据不支持时不断延长时间窗来保护原观点。",
+      "boundary": "可证伪不代表容易预测。突发政策和数据缺失仍会造成跳跃风险，但它能限制事后合理化。"
+    }
+  ],
+  "figures": [
+    {
+      "id": "strait-of-hormuz-map",
+      "lesson_id": "bottleneck-geometry",
+      "src": "../assets/figures/module-09/strait-of-hormuz-map.jpg",
+      "alt": "Oil 101 原图：霍尔木兹海峡水深、伊朗与阿曼海岸以及商船航道地图",
+      "reading_guide": "先看海峡北侧的伊朗与南侧阿曼 Musandam 半岛，再找紫色 shipping lane。地图最重要的信息不是两岸直线距离，而是深水航道被压缩在有限通行带内。随后把地图与 EIA 的 2024 流量和可追加绕行能力一起读：地理瓶颈决定路径，现有管线使用率决定真正的边际替代空间。",
+      "caption": "Figure 26-1: Strait of Hormuz。地图显示波斯湾通向阿曼湾的狭窄水域、主要岛屿与商船航道，用于理解为什么该节点会把航运、保险和能源流量风险集中在同一位置。",
+      "reference": {
+        "label": "Morgan Downey, Oil 101, Chapter 26 Figure 26-1; base map: U.S. Government / Wikimedia Commons, public domain",
+        "url": "https://oil101.morgandowney.com/chapters/iran-strait",
+        "asset_url": "https://oil101.morgandowney.com/images/ch26-strait-of-hormuz.jpg",
+        "accessed": "2026-07-11"
+      }
+    }
+  ],
+  "figure_candidates": [
+    {
+      "source": "Oil 101 Chapter 21 Figure 21-12",
+      "reason": "页岩油与页岩气分盆地图适合 Module 07 的供给纵深，本综合课仅使用其已核验结论，避免重复堆图。"
+    },
+    {
+      "source": "Oil 101 Chapter 24 Figure 24-7",
+      "reason": "美国、澳大利亚与卡塔尔 LNG 出口对比属于 Module 08 的行业纵深，本课用 EIA 2024 数据构建跨市场案例。"
+    },
+    {
+      "source": "Oil 101 Chapter 26 Figures 26-3 to 26-8",
+      "reason": "这些图依赖作者对 2026 危机的现时叙事；在缺少一手资料逐项核验前不下载、不展示。"
+    }
+  ],
+  "comparison_tables": [
+    {
+      "title": "五类冲击：第一证据与常见错判",
+      "headers": ["冲击类型", "第一条流量", "首要证据", "最常见错判"],
+      "rows": [
+        ["需求", "终端消费或炼厂加工", "交通、航班、产品供应量、炼厂 runs", "把后续原油累库当成供给增加"],
+        ["供给", "井口产量或实际出口", "产量、装船、管线提名、卫星与月报", "把配额和声明当成实际减产"],
+        ["物流", "可交付流量", "AIS、港口排队、保险、运费、管线流量", "把油仍在地下误判为市场仍可获得"],
+        ["政策", "受规则影响的生产、贸易或消费", "正式文件、执行日期、豁免和履约", "只读标题，不读基线和生效条件"],
+        ["金融执行", "合约持仓与退出能力", "到期规则、持仓、保证金、流动性", "认为金融波动与物理市场完全无关"]
+      ]
+    },
+    {
+      "title": "不同主体的反应速度",
+      "headers": ["主体", "主要工具", "典型时间尺度", "硬约束"],
+      "rows": [
+        ["贸易商", "改道、库存、价差套利", "小时至数周", "船舶、合同、信用、目的地净回值"],
+        ["OPEC+", "配额、补偿性减产、备用产能", "数周至数月", "基线、履约、国家财政与地缘关系"],
+        ["美国页岩", "完井、增钻机、对冲", "数月至数季", "高衰减、资本纪律、服务与管输能力"],
+        ["LNG 开发商", "签长期合同、FID、扩建液化", "数年至十年", "许可、融资、建设周期和接收能力"],
+        ["政府", "战略储备、制裁、税费、需求管理", "数天至数年", "库存品质、释放速度、法律与政治成本"],
+        ["消费者", "节约、替代燃料、换车换设备", "数周至多年", "收入、设备存量、基础设施与行为惯性"]
+      ]
+    },
+    {
+      "title": "价格结构在告诉你什么",
+      "headers": ["信号", "更可能定位的约束", "必须配对的数据", "不能单独推出"],
+      "rows": [
+        ["近月相对远月走强", "即时可用桶或库存释放价值", "现货升贴水、库存、交割物流", "未来绝对价格必涨"],
+        ["地区基差扩大", "运输、制裁或地区供需错配", "船期、运费、管线和品质", "全球总供给必然不足"],
+        ["柴油裂解价差扩大", "炼化能力或中间馏分短缺", "炼厂开工、产品库存和进口", "原油本身一定短缺"],
+        ["TTF/JKM 对 Henry Hub 扩大", "国际气紧张与 LNG 套利价值", "液化利用率、船运费和接收站", "美国气价会立即同幅上涨"],
+        ["临期合约与次月断裂", "交割、流动性或仓储约束", "到期日、持仓、库容和买方能力", "整条长期需求曲线失去价值"]
+      ]
+    }
+  ],
+  "term_family": {
+    "root": "行业冲击推演",
+    "tree": "行业冲击推演\n├─ 起点：需求 / 供给 / 物流 / 政策 / 金融执行\n├─ 物理层：流量 → 瓶颈 → 库存\n├─ 定价层：月差 / 基差 / 裂解价差 / 运费 / 跨区气价\n├─ 行为层：OPEC+ / 页岩 / LNG / 炼厂 / 政府 / 消费者\n└─ 决策层：时间窗 / 概率 / 反证 / 更新",
+    "analogy": "像排查一座城市的停水：不能只看水库总量，要找到哪条管线停了、哪个区先缺水、备用水箱能撑多久、维修队何时到，以及哪些压力表读数证明故障已经解除。",
+    "branches": [
+      {"name": "物理可得性", "terms": ["effective gap", "bottleneck", "spare capacity", "inventory buffer"]},
+      {"name": "相对定价", "terms": ["calendar spread", "basis", "crack spread", "netback"]},
+      {"name": "动态反应", "terms": ["reaction function", "shale treadmill", "compliance", "demand displacement"]},
+      {"name": "判断纪律", "terms": ["scenario", "leading indicator", "falsifier", "confidence update"]}
+    ]
+  },
+  "glossary": [
+    {"term": "有效缺口 Effective Gap", "definition": "初始流量损失扣除可立即执行替代后的净短缺。", "example": "中断 500 万桶/日、可追加绕行 260 万桶/日时，初始有效缺口为 240 万桶/日。", "confusion": "不同于 headline loss；后者未扣除绕行、替代品质和需求反应。"},
+    {"term": "可持续备用产能 Effective Spare Capacity", "definition": "能在较短时间启动并持续一段时间的生产能力，不包括战略库存。", "example": "某国拥有闲置油井且可在 30 天内增产并维持，才可能构成有效备用产能。", "confusion": "不同于铭牌产能；维护、油田状态和出口设施会降低可用量。"},
+    {"term": "基线 Baseline", "definition": "配额增减所参照的起始产量水平。", "example": "名义减产 10% 若基线高于真实产量，实际减量可能很小。", "confusion": "不同于减产前一个月的实际产量。"},
+    {"term": "履约率 Compliance", "definition": "成员实际减产相对于承诺减产的实现程度。", "example": "承诺减少 100 万桶/日、实际减少 70 万桶/日，履约并未达到标题水平。", "confusion": "不能只用配额表推算，需核对产量与出口。"},
+    {"term": "页岩跑步机 Shale Treadmill", "definition": "高初始衰减迫使生产商持续钻完井，才能维持总产量。", "example": "新增井先用来抵消旧井下降，剩余部分才形成净增产。", "confusion": "不等于页岩资源马上耗尽，而是基础产量需要高频补充。"},
+    {"term": "目的地净回值 Destination Netback", "definition": "到岸销售收入扣除液化、运输、损耗和接收成本后的价值。", "example": "TTF 虽高于 JKM，一船 LNG 仍要比较改道欧洲后的净回值。", "confusion": "不同于直接比较两个基准屏幕价格。"},
+    {"term": "瓶颈 Bottleneck", "definition": "在当前流量下最先达到可用上限并限制整个链条的节点。", "example": "液化列车满负荷时，更多美国天然气不能立即变成 LNG 出口。", "confusion": "瓶颈会随流向和时间改变，不一定是名义容量最小的设备。"},
+    {"term": "库存缓冲 Inventory Buffer", "definition": "可在冲击期间释放或吸收的可操作库存及其对应时间。", "example": "3,000 万桶可释放库存面对 100 万桶/日缺口，静态缓冲约 30 天。", "confusion": "不包含无法抽出的罐底、管线填充或政策上不可释放库存。"},
+    {"term": "裂解价差 Crack Spread", "definition": "成品油价格相对原油成本的简化加工利润信号。", "example": "柴油裂解价差扩大而原油平稳，常提示炼厂或产品端更紧。", "confusion": "不是炼厂净利润，还未扣除能源、氢气、维护和固定成本。"},
+    {"term": "反应函数 Reaction Function", "definition": "主体在价格、库存、政策与财务条件变化时采取行动的规律。", "example": "页岩企业可能先提高完井量，而非在高价当天增加产量。", "confusion": "不是固定公式；资本纪律和政治目标会改变历史反应。"},
+    {"term": "领先指标 Leading Indicator", "definition": "在目标结果出现前先变化、且与传导机制直接相连的数据。", "example": "空载油轮返回装货区可能领先于出口量恢复。", "confusion": "仅领先但无机制的相关序列不一定具有解释力。"},
+    {"term": "反证条件 Falsifier", "definition": "一旦出现就足以否定观点关键因果环节的可观察证据。", "example": "若保险费率回落且船舶流量恢复，海峡商业关闭的假设应撤回。", "confusion": "不同于普通风险提示；反证必须能迫使观点改变。"},
+    {"term": "需求替代 Demand Displacement", "definition": "新技术或效率使原本需要的油品消费不再发生。", "example": "EV 车队增加会逐步替代汽柴油，但效果取决于车队存量与行驶里程。", "confusion": "不能把当年 EV 销量直接等同于同规模燃油需求下降。"},
+    {"term": "战略储备 Strategic Petroleum Reserve", "definition": "政府为重大供应中断而持有并按政策释放的石油库存。", "example": "释放原油可缓和原油端缺口，但炼厂停运时未必降低柴油价格。", "confusion": "不同于企业操作库存，也不代表政府储存同等规模的成品油。"}
+  ],
+  "extreme_detail": [
+    {"mechanism": "名义管线容量与边际绕行能力", "why_it_matters": "危机中真正能替代海运的是未被日常流量占用的剩余能力。", "micro_example": "EIA 对 2024 结构的估算显示，沙特和阿联酋管线可追加绕行约 260 万桶/日，低于把全部铭牌容量相加的数字。", "misreading": "用管线总设计能力直接抵扣海峡全部流量。", "takeaway": "所有基础设施数字都要拆成总容量、当前使用量和可追加量。"},
+    {"mechanism": "保险先于物理封锁", "why_it_matters": "船道技术上开放时，撤保和高额战争险也可能让商业流量骤降。", "micro_example": "船东若无法取得 P&I 与战争险，即使军方未宣布封航，也可能拒绝进入风险水域。", "misreading": "只等官方关闭声明才确认物流中断。", "takeaway": "跟踪保费、承保条款和船东行为，而非只看外交措辞。"},
+    {"mechanism": "基线稀释减产", "why_it_matters": "高基线会让同一名义减产对应较小真实流量变化。", "micro_example": "配额从 400 降到 360，但实际此前只有 370，真实减量仅 10 而非 40。", "misreading": "把配额差额完整写进供需平衡表。", "takeaway": "以可核验实际产量和出口为起点计算。"},
+    {"mechanism": "页岩高衰减的净增产门槛", "why_it_matters": "新增井先抵消旧井衰减，钻机增加不等于总产量同比例增加。", "micro_example": "某盆地基础产量每月自然减少 20 万桶/日，新井贡献 25 万时，净增长只有 5 万。", "misreading": "看到钻机数上升便立即上调当月产量。", "takeaway": "同时追踪新井产量与 legacy decline。"},
+    {"mechanism": "LNG 套利的容量门槛", "why_it_matters": "国际价差再大，液化列车和接收站满负荷时也只能重新分配船货。", "micro_example": "TTF 净回值高于 JKM，但美国终端满负荷，欧洲只能竞价吸引原计划去亚洲的货。", "misreading": "认为跨区价差会无上限增加美国 LNG 总出口。", "takeaway": "先问套利方向，再问套利通道还能增加多少流量。"},
+    {"mechanism": "原油稀缺向产品稀缺迁移", "why_it_matters": "战略原油释放可能压低 crude，却无法修复炼厂或增加柴油收率。", "micro_example": "原油库存上升同时柴油库存下降、柴油裂解扩大，说明约束已移到加工端。", "misreading": "看到原油价格回落就宣布能源危机结束。", "takeaway": "同时观察 crude、products、runs 和 cracks。"},
+    {"mechanism": "EV 销量到油品需求的存量转换", "why_it_matters": "当年销量只占车队一小部分，替代量还受里程和车型影响。", "micro_example": "IEA 核验 2024 年全球电动车销量超过 1,700 万辆，但油品替代量按车队运行估算约 130 万桶/日，而不是按销量直接换算。", "misreading": "把销售占比当成道路燃料需求同比降幅。", "takeaway": "用车队存量、行驶里程和被替代车型计算需求影响。"},
+    {"mechanism": "临期合约的交割流动性", "why_it_matters": "缺少接货能力的多头在到期前必须找到具备实物能力的买家。", "micro_example": "2020 年 May WTI 在到期前一日结算于负值，而更远月仍为正，显示压力集中在具体交割窗口。", "misreading": "把负价理解为所有原油在所有时间都没有价值。", "takeaway": "极端价格必须定位合约月份、地点与交割义务。"}
+  ],
+  "cases": [
+    {
+      "title": "2020 年 4 月：为什么需求崩塌还不足以解释负油价",
+      "scenario": "May 2020 WTI 在 2020 年 4 月 20 日结算于每桶 -37.63 美元，次日合约到期。",
+      "background": "疫情使燃料需求骤降，炼厂削减加工，同时 3 月产油国价格战使原油继续流入系统。CFTC 后续报告确认 May 合约从 17.73 美元跌至 -37.63 美元，负值发生在到期前一日。",
+      "shock": "需求冲击先造成原油持续累库，随后 Cushing 可用储存与接货安排收紧，临期金融多头必须退出实物交割合约。",
+      "transmission": [
+        "终端需求下降使炼厂减少原油加工",
+        "原油流入超过流出，交割中心库存和可用容量收紧",
+        "临期多头缺少储罐、管线提名与接货能力，只能寻找少数实物买家",
+        "退出服务本身变得稀缺，May 合约跌破零而远月保持正值"
+      ],
+      "market_result": "价格结构显示稀缺的是立即处置和接收一桶油的能力，而不是原油在未来所有月份的能源价值。",
+      "lesson": "需求解释了为什么油进入库存，地点、库容、交割规则和临期流动性解释了为什么特定合约会穿过零。",
+      "model_answer": [
+        "按七步链写法，第一推动是需求崩塌，流量结果是炼厂少吃油和库存增加，瓶颈位于 Cushing 接货与储存。",
+        "库存压力通过极端 contango 和 May/June 断裂表达，金融持仓的集中退出放大了最后交易日前的价格。",
+        "若远月也同步失去流动性、其他地点现货同幅为负，才支持更广泛价值崩塌；实际价差结构反驳了这种解释。"
+      ]
+    },
+    {
+      "title": "霍尔木兹风险演练：不要把最坏标题直接写进平衡表",
+      "scenario": "假设风险事件使通过霍尔木兹的油流暂时减少 500 万桶/日，持续时间未知。",
+      "background": "EIA 核验 2024 年海峡油流约 2,000 万桶/日，并估算沙特和阿联酋管线在中断情景下可追加绕行约 260 万桶/日。作者 Chapter 26 对 2026 危机的现时叙事未获得本模块独立一手核验，因此不作为事实输入。",
+      "shock": "这是首先作用于保险、船舶与可交付流量的物流冲击，而不是自动等于油田永久减产。",
+      "transmission": [
+        "船舶与保险条件收紧，海运可交付量下降",
+        "可追加绕行能力抵消部分毛损失，剩余缺口由进口国库存和改道货源吸收",
+        "出口端若持续无法装船会先累库，随后才可能被迫停井",
+        "地区基差、运费、酸甜油价差和月差按瓶颈位置重新定价",
+        "OPEC+、政府储备、需求节约和其他产区供应以不同速度反应"
+      ],
+      "market_result": "初始有效缺口约为 240 万桶/日，但真实结果取决于保险恢复、库存释放速度、替代品质和持续时间。",
+      "lesson": "情景分析要保留物流中断、实际供给损失和长期产能损害之间的层级，不能在第一天把三者合并。",
+      "model_answer": [
+        "先用 500 减 260 得到初始 240 万桶/日缺口，再按进口区可释放库存估算缓冲天数。",
+        "首要领先指标是战争险、船舶流量、装船和地区基差；正式声明只有与这些数据一致才算通道恢复。",
+        "反证条件包括海运快速恢复、绕行能力高于预期，或需求下降足以完全吸收缺口；任一出现都应下调短缺概率。"
+      ]
+    },
+    {
+      "title": "欧洲天然气走强：美国 LNG 能否立刻填满缺口",
+      "scenario": "欧洲 TTF 大幅高于 Henry Hub，买家开始争夺美国 LNG。",
+      "background": "EIA 记录 2024 年美国 LNG 出口平均 11.9 Bcf/d，继续位居全球第一，欧洲约占 53%。美国合同通常具有较高目的地灵活性，但出口总量仍受液化设施和航运限制。",
+      "shock": "欧洲需求或供应变化先扩大跨区净回值，现有船货改道快于新液化产能建设。",
+      "transmission": [
+        "TTF 相对 Henry Hub 的净回值扩大",
+        "贸易商在合同允许范围内将船货从较低净回值市场改道欧洲",
+        "美国液化列车利用率上升至可用上限后，新增国际溢价主要重分配目的地",
+        "若高价维持，长期合同和 FID 才推动数年后的新出口能力",
+        "更强 feedgas 需求随后通过美国管网影响国内天然气平衡"
+      ],
+      "market_result": "欧洲可以迅速吸引更多美国船货，但不能仅凭价差让已经满负荷的液化系统即时扩容。",
+      "lesson": "短期贸易弹性与长期产能弹性必须分开；净回值决定方向，基础设施决定数量。",
+      "model_answer": [
+        "先比较 TTF 与 Henry Hub 加液化、运费和损耗后的净回值，而非只比较屏幕价格。",
+        "再检查液化利用率、可用船舶和欧洲接收能力，判断反应是改道还是新增总出口。",
+        "若美国 feedgas 未增加但欧洲到港增加，说明主要是全球船货重分配，不是美国供给立即扩张。"
+      ]
+    }
+  ],
+  "core_model": {
+    "core_points": [
+      "先识别第一推动和第一条变化的流量，再讨论价格方向。",
+      "名义容量必须拆成当前使用量与可追加量，真正的瓶颈是边际可用能力。",
+      "库存只购买时间；稀缺可能在原油、仓储、炼化、产品和运输之间迁移。",
+      "绝对价格给出市场总结果，相对价格帮助定位时间、地点、品质和加工约束。",
+      "OPEC+、页岩、LNG、政府与消费者的反应速度不同，公告不能代替实际流量。",
+      "每个观点必须写清时间窗、支撑指标和反证条件，并随证据更新。"
+    ],
+    "one_liner": "冲击改变流量，网络放大瓶颈，库存购买时间，相对价格定位稀缺，主体反应与反证决定判断能活多久。"
+  },
+  "self_checks": [
+    {"prompt": "为什么海峡或港口仍在物理上开放，物流冲击也可能已经发生？", "model_answer": "商业航运还需要保险、船东同意、港口服务和合同许可。战争险撤保或保费暴涨会使船舶停止进入，所以应看实际通行、承保和运费，而不是只等官方封锁声明。"},
+    {"prompt": "OPEC+宣布减产后，至少检查哪四项才能写进供需平衡表？", "model_answer": "应检查减产基线、实际产量或出口、成员履约与补偿性减产、开始和结束日期；还要区分配额调整与真正可持续的备用产能变化。"},
+    {"prompt": "为什么页岩油是短周期供给，却不是即时供给？", "model_answer": "页岩项目从资本决策到钻井、完井和首油仍需数月，而且新井先要抵消旧井高衰减；服务成本、管输和资本纪律会进一步限制净增产速度。"},
+    {"prompt": "原油价格回落而柴油裂解价差继续扩大，最合理的初步解释是什么？", "model_answer": "稀缺可能已从原油端迁移到炼化或成品油端。应检查炼厂开工、柴油库存、产品进口和装置事故，不能用 crude 回落宣布终端问题结束。"},
+    {"prompt": "TTF 显著高于 Henry Hub，为什么美国 LNG 总出口仍可能不增加？", "model_answer": "跨区价差必须覆盖液化、运费和损耗，而且液化列车可能已满负荷。此时价差只能吸引现有船货改道，不能在短期创造新液化能力。"},
+    {"prompt": "把一个行业观点改写为可证伪判断，最少需要哪些成分？", "model_answer": "需要方向、地点或品种、时间窗、完整传导链、支撑指标以及至少一个能否定关键机制的反证条件；最好再给出当前置信度和下次更新时点。"},
+    {"prompt": "为什么 2020 年 WTI 负价不能简单解释为原油没有价值？", "model_answer": "负值集中在临近到期的 May 合约和 Cushing 交割约束，远月仍为正。需求崩塌造成累库，有限接货能力与临期退出压力才把特定合约压到零下。"}
+  ],
+  "applications": [
+    {"situation": "看到战争或制裁导致油价跳涨的新闻", "action": "先画受影响的实际流量与替代路线，检查保险、装船、地区基差和运费，再把风险溢价与已发生的物理损失分开。"},
+    {"situation": "看到 OPEC+发布新的配额表", "action": "用成员实际产量重算有效减量，标注基线、履约、开始日期和备用产能，拒绝直接采用新闻标题数字。"},
+    {"situation": "看到美国钻机数上升或下降", "action": "同时查看完井量、新井产量、legacy decline、管输能力和企业资本计划，判断它何时影响净产量。"},
+    {"situation": "看到欧洲或亚洲天然气价格飙升", "action": "计算目的地净回值，并检查液化、船舶、运河和接收站容量，区分船货改道与全球总供应增加。"},
+    {"situation": "看到 EV 销量或新能源装机创纪录", "action": "把销量转为车队存量和油品替代量，把装机转为发电与调峰需求，再判断它影响的是多年需求趋势还是近期平衡。"},
+    {"situation": "准备写一段看多或看空观点", "action": "强制填完方向、地点、品质、时间窗、传导链、三项验证指标和两项反证条件后再发布。"}
+  ],
+  "review_prompts": [
+    "一周后：任选一条能源新闻，不看本课，画出冲击到反证的七节点链。",
+    "两周后：比较同一天的原油月差、柴油裂解价差和一项地区基差，解释三者是否指向同一个瓶颈。",
+    "一个月后：复盘一项当时的判断，记录哪条指标最先证实或推翻它，以及你是否及时更新。",
+    "一个季度后：用 OPEC+实际产量、美国页岩产量与 LNG 出口重新评估短周期供给弹性。"
+  ],
+  "sources": [
+    {"label": "Oil 101 Chapter 23: When Oil Went Negative", "url": "https://oil101.morgandowney.com/chapters/negative-prices", "coverage": "负价事件、实物交割、仓储约束、金融持仓和市场改革"},
+    {"label": "Oil 101 Chapter 21: The Shale Revolution", "url": "https://oil101.morgandowney.com/chapters/shale-revolution", "coverage": "页岩技术、衰减、短周期供给、成本与出口"},
+    {"label": "Oil 101 Chapter 22: OPEC+", "url": "https://oil101.morgandowney.com/chapters/opec-plus", "coverage": "配额、基线、履约、备用产能和战略权衡"},
+    {"label": "Oil 101 Chapter 24: US LNG Exports", "url": "https://oil101.morgandowney.com/chapters/us-lng", "coverage": "液化能力、目的地灵活性、跨区净回值与航运瓶颈"},
+    {"label": "Oil 101 Chapter 25: The Energy Transition", "url": "https://oil101.morgandowney.com/chapters/energy-transition", "coverage": "长期需求情景、EV、可再生能源与投资悖论"},
+    {"label": "Oil 101 Chapter 26: Iran Blocks the Strait", "url": "https://oil101.morgandowney.com/chapters/iran-strait", "coverage": "霍尔木兹瓶颈的分析框架；2026 现时事件叙事未核验且未采纳"},
+    {"label": "U.S. EIA: Amid regional conflict, the Strait of Hormuz remains critical oil chokepoint", "url": "https://www.eia.gov/todayinenergy/detail.php?id=65504", "coverage": "2024 海峡油流约 2,000 万桶/日与约 260 万桶/日可追加绕行能力"},
+    {"label": "CFTC: Interim Report on NYMEX WTI around April 20, 2020", "url": "https://www.cftc.gov/PressRoom/PressReleases/8315-20", "coverage": "May WTI 到期前一日从 17.73 美元跌至 -37.63 美元的监管记录"},
+    {"label": "U.S. EIA: The United States remained the world's largest LNG exporter in 2024", "url": "https://www.eia.gov/todayinenergy/detail.php?id=64844", "coverage": "2024 美国 LNG 出口 11.9 Bcf/d、欧洲占比与目的地结构"},
+    {"label": "U.S. EIA: Tight oil production in Permian drives Lower 48 growth", "url": "https://www.eia.gov/todayinenergy/detail.php?id=65404", "coverage": "2024 tight oil 与 Permian 产量结构"},
+    {"label": "OPEC: 9th Extraordinary OPEC and non-OPEC Ministerial Meeting", "url": "https://www.opec.org/pr-detail/313-09-apr-2020.html", "coverage": "2016 Declaration of Cooperation 框架、2020 历史性减产安排与基线"},
+    {"label": "IEA Global EV Outlook 2025: Trends in electric car markets", "url": "https://www.iea.org/reports/global-ev-outlook-2025/trends-in-electric-car-markets-2", "coverage": "2024 全球 EV 销量超过 1,700 万辆"},
+    {"label": "IEA Global EV Outlook 2025: Outlook for energy demand", "url": "https://www.iea.org/reports/global-ev-outlook-2025/outlook-for-energy-demand", "coverage": "2024 EV 车队替代油品需求超过 130 万桶/日"},
+    {"label": "IRENA Renewable Capacity Statistics 2025", "url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Mar/IRENA_DAT_RE_Capacity_Statistics_2025.pdf", "coverage": "2024 可再生能源新增装机 585 GW，其中太阳能 452 GW、风电 113 GW"}
+  ],
+  "source_anomalies": [
+    "Chapter 26 对 2026 霍尔木兹危机的日期、攻击、价格、储备、谈判和结果属于现时叙事；本模块未找到足够政府或国际机构一手资料逐项确认，因此全部不作为事实案例，仅保留 EIA 可核验的 2024 结构数据。",
+    "Chapter 26 将多条绕行管线名义容量合计为约 700 至 900 万桶/日；EIA 对冲击时可追加闲置能力的估算约为 260 万桶/日。本模块在边际替代计算中采用后者，并明确两种口径不同。",
+    "Chapter 25 给出的 2024 EV 油品替代量约 180 万桶/日，高于 IEA Global EV Outlook 2025 的超过 130 万桶/日；课程采用 IEA 一手口径。",
+    "Chapter 25 对 2025 后美国税收政策和 Chapter 24 对 2025 至 2030 LNG 项目进度的陈述具有时效性，本综合模块不用于形成现时政策或投产结论。",
+    "OPEC 2020 年 4 月初始公告使用 1,000 万桶/日调整口径，后续常用历史口径为 970 万桶/日；课程只把它作为规模级别与执行口径差异的例子。"
+  ],
+  "source_coverage": [
+    "Chapter 23 Negative Prices → The Unthinkable Happens → lesson shock-classification 与 Case 1 覆盖事件结果和多重冲击",
+    "Chapter 23 Negative Prices → The WTI Delivery Mechanism → lesson bottleneck-geometry 选择性覆盖实物收敛，合约细节留给 Module 05/06",
+    "Chapter 23 Negative Prices → Cushing: The Pipeline Crossroads With a Ceiling → lesson inventory-migration 覆盖局部可操作容量，设施细节已由 Module 05 承担",
+    "Chapter 23 Negative Prices → The Pandemic Demand Shock → Case 1 覆盖需求到炼厂加工和累库的传导",
+    "Chapter 23 Negative Prices → USO and the Crowded Front Month → lesson reaction-functions 覆盖被动持仓与公开换月的行为反馈",
+    "Chapter 23 Negative Prices → A Small Rule Change at the Clearing House → lesson reaction-functions 覆盖交易基础设施对极端价格表达的边界",
+    "Chapter 23 Negative Prices → TAS and the Afternoon of April 20 → lesson relative-price-map 选择性覆盖临期流动性，TAS 规则延期至 Module 06",
+    "Chapter 23 Negative Prices → Aftermath, Lawsuits, and Reforms → lesson falsifiable-thesis 覆盖规则与产品结构如何响应失效机制",
+    "Chapter 23 Negative Prices → Negative Prices Elsewhere: Power Markets → lesson shock-classification 用作必须运行供给遇到需求上限的跨市场类比",
+    "Chapter 23 Negative Prices → What Negative Prices Taught the Market → core_model 吸收物理约束优先于抽象金融叙事的结论",
+    "Chapter 21 Shale Revolution → The Technology Behind Shale → lesson flow-and-lag 选择性覆盖短周期供给来源，工程细节延期至 Module 07",
+    "Chapter 21 Shale Revolution → Inside a Frac Job → 延期至 Module 07 讲解水、支撑剂、压力与完井设备，本综合课只采用反应时滞",
+    "Chapter 21 Shale Revolution → George Mitchell and the Barnett Shale → 延期至 Module 07 的技术扩散史，不影响本课事件推演链",
+    "Chapter 21 Shale Revolution → Tight Oil and the Permian Basin → lesson flow-and-lag 覆盖 Permian 作为短周期边际供给的角色",
+    "Chapter 21 Shale Revolution → The Basins → 延期至 Module 07 比较盆地地质、主产品和成本，本课避免静态名录",
+    "Chapter 21 Shale Revolution → The 2014 Price Collapse → lesson reaction-functions 覆盖 OPEC 与页岩相互适应的二阶反馈",
+    "Chapter 21 Shale Revolution → The Shale Treadmill → lesson flow-and-lag 与 extreme_detail 覆盖高衰减和净增产门槛",
+    "Chapter 21 Shale Revolution → Laterals, Parent-Child Wells, and Drilling Efficiency → 延期至 Module 07 工程纵深；本课仅保留效率会改变反应函数",
+    "Chapter 21 Shale Revolution → Tight Oil Breakevens and the Global Marginal Cost of Supply → lesson reaction-functions 选择性覆盖成本与资本纪律，具体价格区间不采纳",
+    "Chapter 21 Shale Revolution → Lifting the Crude Export Ban → lesson bottleneck-geometry 覆盖出口通道解除地区轻油错配",
+    "Chapter 21 Shale Revolution → Consolidation and the Chevron-Hess Deal → lesson reaction-functions 覆盖资本纪律；2025 交易进展属时效信息未用于课程结论",
+    "Chapter 22 OPEC+ → From OPEC to OPEC+ → lesson reaction-functions 覆盖 2016 协作框架和非 OPEC 参与逻辑",
+    "Chapter 22 OPEC+ → Who Is in the Room → 延期至 Module 07 的成员结构；2025 产量表具有时效性，不作为本课输入",
+    "Chapter 22 OPEC+ → Spare Capacity as the Swing Variable → lessons flow-and-lag 与 reaction-functions 覆盖有效备用产能",
+    "Chapter 22 OPEC+ → Quotas, Baselines, and Compliance → lesson flow-and-lag 与 glossary 完整覆盖配额到实际流量的修正",
+    "Chapter 22 OPEC+ → Key Moments of OPEC+ → lesson reaction-functions 选择性使用 2016 与 2020 节点，其余时间线延期至 Module 07",
+    "Chapter 22 OPEC+ → The 2020 Price War → Case 1 覆盖供给政策与疫情需求冲击叠加",
+    "Chapter 22 OPEC+ → Saudi Arabia, Aramco, and Ghawar → lesson reaction-functions 选择性覆盖国家目标与供给工具，油田储量细节延期",
+    "Chapter 22 OPEC+ → Russia After the Invasion → 延期至 Module 07 的制裁与贸易流重构专题，本课不复述地缘时间线",
+    "Chapter 22 OPEC+ → The Strategic Calculus → lesson reaction-functions 覆盖价格支持、市场份额、页岩和需求转型之间的权衡",
+    "Chapter 24 US LNG → From Net Importer to Largest Exporter → Case 3 覆盖页岩气盈余如何创造出口阀门",
+    "Chapter 24 US LNG → The Operating US LNG Fleet → Case 3 使用 EIA 2024 总出口核验，2025 设施清单延期至 Module 08",
+    "Chapter 24 US LNG → The Second Wave Under Construction → lesson flow-and-lag 覆盖多年建设时滞，项目日期属时效信息不采纳",
+    "Chapter 24 US LNG → The Biden Pause and the Trump Reversal → 延期至 Module 08 并要求按 DOE 正式文件重核政策状态",
+    "Chapter 24 US LNG → Where the Cargoes Go → Case 3 覆盖目的地灵活性，并以 EIA 2024 欧洲占比核验",
+    "Chapter 24 US LNG → Henry Hub, TTF and JKM → lesson relative-price-map 覆盖三地区基准和套利逻辑",
+    "Chapter 24 US LNG → LNG Pricing Contracts → lessons relative-price-map 与 reaction-functions 覆盖 tolling 和目的地选择，费率区间不作为现时结论",
+    "Chapter 24 US LNG → LNG Carriers → lesson bottleneck-geometry 选择性覆盖合格船型，船舶规格延期至 Module 08",
+    "Chapter 24 US LNG → Shipping Bottlenecks: Panama and the Red Sea → lesson bottleneck-geometry 覆盖航程、运河与替代路线约束",
+    "Chapter 24 US LNG → FSRUs and Europe's 2022 Scramble → lesson reaction-functions 覆盖接收能力的较快基础设施反应，项目名录延期",
+    "Chapter 24 US LNG → Henry Hub Globalization → Case 3 覆盖出口阀门如何把美国管网连接全球气价",
+    "Chapter 25 Energy Transition → The Peak Demand Debate → lesson falsifiable-thesis 覆盖情景分歧与假设审计，不把任一预测当事实",
+    "Chapter 25 Energy Transition → OECD and Non-OECD Divergence → lesson falsifiable-thesis 选择性覆盖需求分层，现时总量延期至 Module 08",
+    "Chapter 25 Energy Transition → Electric Vehicles → lessons flow-and-lag 与 falsifiable-thesis 覆盖销量到车队存量再到油品替代，并采用 IEA 核验值",
+    "Chapter 25 Energy Transition → The Cost Collapse in Solar and Wind → lesson flow-and-lag 选择性覆盖长期成本慢变量，LCOE 细节延期至 Module 08",
+    "Chapter 25 Energy Transition → Renewable Additions and the Gas Paradox → lesson reaction-functions 覆盖可变电源与灵活气电的互补，2024 装机采用 IRENA 口径",
+    "Chapter 25 Energy Transition → Carbon Markets and the EU ETS → 延期至 Module 08；碳价与 CBAM 属政策时效信息，需欧盟一手文件核验",
+    "Chapter 25 Energy Transition → The IRA and the 2025 Rollback → 延期且不采纳现时税收结论，后续须用美国法案与 IRS 文件独立核验",
+    "Chapter 25 Energy Transition → Carbon Capture and Hydrogen → 延期至 Module 08 的技术与项目经济性纵深",
+    "Chapter 25 Energy Transition → The Investment Paradox → lesson falsifiable-thesis 覆盖需求预期、长期投资和短期供给不足的反馈",
+    "Chapter 25 Energy Transition → Peak Demand or Peak Fossil Fuel? → core_model 覆盖不同燃料和终端部门以不同速度转型的边界",
+    "Chapter 26 Iran Strait → The Chokepoint → lesson bottleneck-geometry 与原图覆盖，并用 EIA 2024 结构数据核验",
+    "Chapter 26 Iran Strait → Anatomy of a Closure → 仅提取保险、航运、库存和停产的机制链；2026 事件细节待核验且不采纳",
+    "Chapter 26 Iran Strait → The Price Shock → 未采纳 2026 价格路径，缺少交易所或政府一手资料逐日确认",
+    "Chapter 26 Iran Strait → Forced Shut-Ins → lesson inventory-migration 使用出口受阻可迫使上游停产的通用机制，2026 国别数字未采用",
+    "Chapter 26 Iran Strait → The Bypass Pipelines and Their Ceiling → Case 2 覆盖并以 EIA 可追加 260 万桶/日口径修正边际能力",
+    "Chapter 26 Iran Strait → A Two-Tier Market → lesson relative-price-map 仅采用选择性通行会造成地区基差分裂的情景机制，2026 收费叙事待核验",
+    "Chapter 26 Iran Strait → Who Is Most Exposed → lesson bottleneck-geometry 覆盖进口依赖分析法，作者国别储备天数未采纳",
+    "Chapter 26 Iran Strait → Why Oil Hasn't Broken $200 → lesson inventory-migration 采用库存与需求反应可缓冲冲击的框架，2026 数字和 AI 库存论断不采纳",
+    "Chapter 26 Iran Strait → The SPR Defends Crude, Not the Pump → lesson inventory-migration 覆盖原油工具无法替代炼化和产品供给的机制，2026 价差数字未使用",
+    "Chapter 26 Iran Strait → Anatomy of a Reopening → lesson falsifiable-thesis 使用保险、通航与装船作为恢复门槛，2026 时间线不采纳",
+    "Chapter 26 Iran Strait → The 2026 Crisis: A Timeline → 全部标记待独立核验，本模块不把该时间线作为历史事实",
+    "Chapter 26 Iran Strait → The Standing Lessons → 仅将可证伪、库存缓冲和保险约束转化为分析问题；永久溢价等预测性结论不采纳"
+  ]
+}

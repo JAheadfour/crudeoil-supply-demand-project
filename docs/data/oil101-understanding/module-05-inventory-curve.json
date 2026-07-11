@@ -1,0 +1,320 @@
+{
+  "id": "05-inventory-curve",
+  "variant": "understanding",
+  "reading": "05",
+  "reading_title": "库存、期限结构与价格信号",
+  "title": "库存如何通过期限结构影响价格",
+  "deck": "从一桶油为什么要被储存开始，读懂库存、Contango、Backwardation、库容约束与负油价之间的完整传导链。",
+  "reading_intent": "学完这一模块，你不再把库存增加机械翻译成利空，也不会把期货曲线当成未来价格预测。你将能够先识别库存的类型、地点和原因，再结合月差、库容与现货物流，形成一个有条件、可验证的市场判断。",
+  "opening_question": "EIA 公布原油库存增加，为什么油价有时不跌反涨？而库存尚未真正装满时，WTI 又为什么能跌到负数？",
+  "quick_answer": [
+    "库存是供需错配累积出来的存量，但一周变化同时受进口到港、出口、炼厂加工、管道流向和统计时点影响。",
+    "期限结构首先描述不同交割时间的相对价格，不是市场对未来现货价格的无条件预测。",
+    "Contango 是否能刺激储油，取决于远近月价差能否覆盖仓储、融资、保险和损耗等全部持有成本。",
+    "真正危险的不是名义库容达到 100%，而是可用库容、接入管线和交割窗口同时收紧。",
+    "专业判断要把库存、月差、地点和物流放在一起，而不是只盯一个总量数字。"
+  ],
+  "learning_objectives": [
+    "区分库存的运营、商业与战略功能，并解释它们为何不能混在一起解读",
+    "从流量变化推导库存变化，同时识别周度数据中的统计噪声",
+    "用持有成本解释 Contango 的上限，用即时稀缺解释 Backwardation 的来源",
+    "说明物理交割、可用库容和合约到期如何共同造成 2020 年 WTI 负价格",
+    "形成一套读取库存报告和期货曲线的五步分析框架"
+  ],
+  "main_thread": "原油市场每天都在处理时间错配：油田连续生产，油轮间歇到港，炼厂按计划或故障改变加工量，消费者又按照季节和经济活动使用成品油。库存把这些不同节奏暂时吸收起来，因此它不是供应或需求之外的第三个孤立变量，而是过去一段时间供需与物流不匹配留下的结果。期货曲线则给这个时间缓冲器标价：当未来价格足够高，市场愿意支付持有成本，把今天的油搬到未来；当眼前的油更值钱，市场会奖励释放库存。但这套关系必须落到具体地点、具体品种和具体交割条件。全国库存宽松，不等于 Cushing 的可交割库容宽松；总库存增加，也不等于可自由出售的商业库存增加。真正有用的分析，是把存量、流量、地点、期限和约束放进同一张图里。",
+  "mental_model": "库存记录过去的净流量，期限结构给跨期持有定价，库容与物流决定这个价格信号能否被执行。",
+  "mental_model_detail": {
+    "equation": "期末库存 = 期初库存 + 流入 - 流出",
+    "market_translation": "流入包括生产、进口和调入；流出包括炼厂加工、出口、消费和调出。曲线决定把库存留到未来是否有经济价值，库容与物流决定这种选择是否真的可执行。",
+    "decision_rule": "先问库存为什么变，再问变化发生在哪里，最后用月差验证市场是否也在为同一种松紧状态定价。"
+  },
+  "lessons": [
+    {
+      "id": "inventory-buffer",
+      "title": "库存首先是缓冲器，不是多余的油",
+      "concept": {
+        "en": "Operational, commercial and strategic inventory",
+        "cn": "运营库存、商业库存与战略库存",
+        "definition": "三类库存分别服务于连续运行、跨期获利和国家应急；只有先识别持有目的，库存数字才有可比较的经济含义。"
+      },
+      "explanation": "炼厂不会等到一船原油靠岸才临时决定当天是否开工。油轮可能每隔数天到港，装置却需要全天连续进料，因此厂内必须保有工作库存。管道中的 line fill 也不是可以随意出售的闲置油，而是系统保持运行所必需的物理填充。商业库存不同：贸易商只有在未来售价足以覆盖全部持有成本时，才愿意主动增加库存。战略库存又不同，它由政府为供应中断准备，释放逻辑受政策而非日常套利支配。把三者合并后直接说“库存高所以过剩”，会把维持系统运转的底层油、可交易的边际油和政策储备误当成同一种商品。真正影响短期价格的通常是边际可用库存及其释放意愿。",
+      "mechanism_chain": [
+        "生产、运输和炼厂加工的节奏无法逐时一致",
+        "运营主体持有工作库存吸收到货与出货的时间差",
+        "只有超过运营需要且可被调度的部分，才成为影响现货松紧的边际库存",
+        "若把不可动用库存算作宽松供应，就会高估市场缓冲能力"
+      ],
+      "worked_example": {
+        "setup": "一家炼厂每天加工 20 万桶原油，但 VLCC 到港和卸货并非每天均匀发生。",
+        "steps": [
+          "炼厂先在罐区保留若干天加工量，确保天气或港口延误时装置仍能连续运行。",
+          "某周库存上升可能只是新船到港而装置尚未消化，并不代表炼厂主动押注油价下跌。",
+          "只有观察后续加工量、到港计划和罐区可用空间，才能判断这次增加是正常补库还是持续过剩。"
+        ],
+        "answer": "相同的库存增加，在运营补库和商业囤油两种情境下，对价格的含义完全不同。"
+      },
+      "practitioner_lens": "看到库存总量前，先找 working inventory、strategic stocks、pipeline fill 与可出售商业库存的口径差异。",
+      "misreading": "最常见的错误是把所有库存都视为随时可以卖出的多余供应，因此见到高库存便无条件看空。",
+      "boundary": "库存分类不能替代价格分析；即便大部分属于运营库存，边际库容不足仍可能使局部市场快速承压。"
+    },
+    {
+      "id": "stock-flow",
+      "title": "库存是存量，周度变化是多条流量的净结果",
+      "concept": {
+        "en": "Stock-flow balance",
+        "cn": "存量—流量平衡",
+        "definition": "库存是某个时点的存量，而库存变化是生产、进口、调运、炼厂加工、出口和消费等流量在一个期间内的净差。"
+      },
+      "explanation": "一份周度库存报告并不是对“供给减需求”的纯净测量。美国商业原油库存可能因为国内产量增加而上升，也可能因为进口油轮集中清关、出口装船推迟或炼厂进入检修而上升。反过来，库存下降可能来自需求强，也可能只是出口突然放量。市场交易的不是正负号本身，而是实际结果相对预期的差异，以及构成是否可持续。更重要的是，原油库存与成品油库存可能朝相反方向变化：炼厂加工量下降会令原油累库，却可能令汽油和馏分油去库。若只看全国原油总量，就会错过炼厂环节正在制造的产品紧张。",
+      "mechanism_chain": [
+        "炼厂检修使原油投入量下降",
+        "到港原油暂时无法被加工，商业原油库存增加",
+        "汽油和柴油产量同步下降，成品油库存可能减少",
+        "原油月差走弱而成品油裂解价差走强，价格信号出现分化"
+      ],
+      "worked_example": {
+        "setup": "EIA 公布原油库存增加 500 万桶，但汽油库存下降、炼厂利用率大幅下滑。",
+        "steps": [
+          "先将原油累库拆成炼厂加工下降、进口和出口变化，发现主因是计划检修。",
+          "再看汽油库存和裂解价差，若产品库存下降且利润走强，说明终端需求并未同步崩塌。",
+          "最后检查未来两周炼厂复工安排，判断原油累库是否可能快速逆转。"
+        ],
+        "answer": "这个组合更像暂时的加工瓶颈，而不是整个石油需求链条全面转弱。"
+      },
+      "practitioner_lens": "每次数据发布都至少拆解 production、imports、exports、refinery runs 和 product stocks，而不是只报 headline build。",
+      "misreading": "把库存变化当成单一原因的直接证据，尤其把一次周度累库自动等同于需求变差。",
+      "boundary": "周度分项本身也有估算误差和时间错位，单周异常需要用四周均值、船期和价格结构交叉验证。"
+    },
+    {
+      "id": "curve-carry",
+      "title": "期限结构在给时间定价，而不是替你预测方向",
+      "concept": {
+        "en": "Contango, backwardation and full carry",
+        "cn": "正价差、反向市场与完全持有成本",
+        "definition": "Contango 是远月高于近月，Backwardation 是近月高于远月；只有当正价差覆盖全部持有成本时，跨期储油套利才真正成立。"
+      },
+      "explanation": "把不同交割月份的价格排在一起，就得到期限结构。Contango 表明未来交割的油价格更高，但并不等于市场确信未来现货一定上涨，因为远月溢价中包含仓储、融资、保险、损耗和资产占用。若十二个月价差只有每桶 3 美元，而持有一年总成本为 6 美元，买现货存起来仍会亏损。只有价差超过全成本，贸易商才能买近月、租罐、卖远月，把套利锁定。Backwardation 则表示眼前一桶油的即时可用性更值钱；持有人卖出现货并买回远月，可以释放库存并保留未来敞口。它常与现货紧张相关，但风险溢价、质量和地点也会影响曲线，因此曲线是约束下的价格信号，不是水晶球。",
+      "mechanism_chain": [
+        "现货供应宽松使近月价格相对承压，曲线转向 Contango",
+        "远近月价差扩大并逐步覆盖仓储、融资和保险成本",
+        "贸易商执行买近卖远的储油套利，现货被吸收、远月被卖出",
+        "套利行为压缩价差，使曲线回到接近 full carry 的水平"
+      ],
+      "worked_example": {
+        "setup": "近月 WTI 为每桶 70 美元，十二个月远月为 77 美元，全年仓储、融资、保险与损耗合计每桶 5 美元。",
+        "steps": [
+          "贸易商以 70 美元买入现货，同时以 77 美元卖出十二个月远月，先锁定 7 美元毛价差。",
+          "持有期间支付 5 美元成本，理论净收益为每桶 2 美元，前提是有可用库容且交割品质和地点匹配。",
+          "大量交易者复制后，近月买盘增强、远月卖压增加，价差趋于收窄。"
+        ],
+        "answer": "Contango 只有超过实际 carry cost 才能转化为可执行的库存需求。"
+      },
+      "practitioner_lens": "读曲线时优先看 M1-M2、M1-M6 等月差相对仓储成本的变化，再讨论 flat price 方向。",
+      "misreading": "把 Contango 解读成市场预测未来上涨，把 Backwardation 解读成市场预测未来下跌。",
+      "boundary": "当库容、信用额度、品质或交割地点受限时，理论价差即使超过平均持有成本，也未必能被实际套利。"
+    },
+    {
+      "id": "physical-convergence",
+      "title": "价格最终要面对物理交割：负油价是约束的价格",
+      "concept": {
+        "en": "Physical convergence and operational capacity",
+        "cn": "物理收敛与可操作库容",
+        "definition": "临近到期的实物交割合约必须与指定地点的可交付现货收敛，因此真正约束价格的是可在交割窗口内接收和转运的库容，而非油罐铭牌总容量。"
+      },
+      "explanation": "每张 NYMEX WTI（CL）合约对应 1,000 桶、在 Cushing 实物交割。正常月份约 99% 的持仓会在到期前平仓或移仓，但实物交割义务始终把纸面价格锚在具体地点。May 2020 合约的最后交易日是 4 月 21 日，4 月 20 日已是倒数第二个交易日。疫情导致燃料需求骤降、炼厂削减加工，原油却持续流入库存。EIA 当时口径下 Cushing working capacity 约 7,600 万桶，shell capacity 约 9,100 万桶；可操作空间还会因罐底油、轮换要求、合同预订和管线连接进一步缩小。临期多头没有储罐、管线提名或实货团队，随着愿意接货的买家消失，退出头寸本身变成需要付费的服务。负价格不是原油永久失去能源价值，而是那个地点、那个交割月份的额外一桶油处置成本超过了桶内价值。",
+      "mechanism_chain": [
+        "疫情冲击使交通燃料需求和炼厂加工量急剧下降",
+        "原油仍在生产和流入 Cushing，可用且未被预订的库容快速减少",
+        "May 2020 WTI 合约临近到期，多头必须平仓或安排实物接收",
+        "具备库容与物流能力的买家极少，卖方竞争退出，价格跌破零"
+      ],
+      "worked_example": {
+        "setup": "一个金融投资者持有临近到期的 WTI 多头，但没有 Cushing 储罐、管线席位或实货运营团队。",
+        "steps": [
+          "正常情况下他可把合约卖给贸易商并换到下一月份；但交割前买方流动性突然枯竭。",
+          "若继续持有，他将面对无法履行的接货义务及高昂处置成本，因此愿意支付对手方接手。",
+          "拥有可用库容的少数实体获得极强议价权，成交价格可以低于零。"
+        ],
+        "answer": "合约价值取决于持有人是否有能力处理交割，纸面多头在物理瓶颈前并不等同于拥有一桶可自由使用的油。"
+      },
+      "practitioner_lens": "临近交割时关注未平仓量、可租库容、管线流向、合约最后交易日与持仓者结构，而非只看全国库存百分比。",
+      "misreading": "把 2020 年负价格解释成全球所有原油都没有价值，或仅解释成投机者情绪失控。",
+      "boundary": "负价机制依赖具体合约、交割地点和到期压力，不能直接外推到远月 Brent 或所有实货原油。"
+    },
+    {
+      "id": "reading-framework",
+      "title": "把库存和曲线合成一套可执行判断",
+      "concept": {
+        "en": "Triangulation",
+        "cn": "多信号交叉验证",
+        "definition": "用库存构成、地点分布、月差、现货升贴水和物流数据相互验证，只有多个独立信号指向同一机制时才提高判断置信度。"
+      },
+      "explanation": "市场分析不是寻找一个永远正确的指标，而是给不同证据分配角色。EIA Weekly Petroleum Status Report 通常在美国东部时间周三 10:30 发布，并把 crude、gasoline、distillate、jet、residual stocks 按 PADD 与 Cushing 拆分；节假日会顺延。单周数字要放进 five-year range 和四周均值，因为一艘约 200 万桶的 VLCC 跨过统计时点就足以改变 headline。库存告诉你过去一段时间净流量留下什么结果；月差给近端稀缺与跨期持有定价；现货升贴水反映具体品质和地点；船期、管线与炼厂运行解释变化为何发生。可靠结论应写成条件句，并明确下一次哪些数据会推翻它，而不是用一个词给市场贴标签。",
+      "mechanism_chain": [
+        "先用库存分项提出对变化原因的初步假设",
+        "再用地点库存、月差和现货升贴水验证市场是否感受到同一松紧状态",
+        "用炼厂、管线、船期和季节性判断该机制能持续多久",
+        "写出会推翻判断的数据条件，并在下一次发布时复核"
+      ],
+      "worked_example": {
+        "setup": "全国原油累库，但 Cushing 去库、WTI 近月月差走强，墨西哥湾沿岸进口集中到港。",
+        "steps": [
+          "全国总量看似宽松，但交割中心 Cushing 去库，说明宽松并未均匀分布。",
+          "近月月差走强与 Cushing 去库相互印证，近端 WTI 体系仍有即时需求。",
+          "湾区累库若来自集中到港且出口排期正常，更可能是物流时点而非结构性过剩。"
+        ],
+        "answer": "结论应是地区错配，而不是简单的全美原油过剩；后续重点检查湾区出口和管线调运。"
+      },
+      "practitioner_lens": "每次写观点都附三项支持证据、一项反证和一个未来验证日期。",
+      "misreading": "把多个高度相关的指标当作多份独立证据，或者只挑选支持原有方向的数据。",
+      "boundary": "交叉验证提高置信度但不消除突发事件风险，数据发布滞后时仍需保留情景区间。"
+    }
+  ],
+  "figures": [
+    {
+      "id": "eia-negative-wti-2020",
+      "lesson_id": "physical-convergence",
+      "src": "assets/figures/eia-wti-negative-2020.svg",
+      "alt": "EIA 图表显示 2020 年 4 月临近到期的 May WTI 期货价格跌破零，而后续月份价格明显更高",
+      "reading_guide": "先看不同到期月份没有同步崩溃：最靠近交割的 May 合约跌幅远大于远月。这说明冲击集中在即时交割与库容，而不是市场认为未来所有原油都永久失去价值。",
+      "caption": "May 2020 WTI 在到期前跌至负值，远月仍保持正价；期限结构把‘现在无处放’与‘未来仍有价值’清楚地区分开。",
+      "reference": {
+        "label": "Oil 101, Chapter 18, Figure 18-1；原始图表：U.S. EIA Today in Energy",
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=43495",
+        "accessed": "2026-07-11"
+      }
+    }
+  ],
+  "comparison_tables": [
+    {
+      "title": "四种信号分别回答什么",
+      "headers": ["信号", "主要回答", "不能单独证明"],
+      "rows": [
+        ["库存变化", "过去一段时间流入是否超过流出", "未来油价方向"],
+        ["Calendar spread", "近端相对远端的时间稀缺", "绝对价格一定涨或跌"],
+        ["现货升贴水", "特定品质和地点的即时竞争", "全国或全球同步松紧"],
+        ["库容利用率", "系统缓冲空间是否缩小", "所有容量都可在交割窗口调用"]
+      ]
+    }
+  ],
+  "term_family": {
+    "root": "时间价值",
+    "tree": "时间价值 → 库存（运营/商业/战略）→ 期限结构（Contango/Backwardation/Calendar spread）→ 持有约束（仓储/融资/保险/损耗/库容）",
+    "analogy": "把库存想成跨越时间的仓库，把期限结构想成搬运一桶油穿越时间所得到或支付的运费表。",
+    "branches": [
+      {"name": "库存", "children": ["运营库存", "商业库存", "战略库存"]},
+      {"name": "期限结构", "children": ["Contango", "Backwardation", "Calendar spread"]},
+      {"name": "持有约束", "children": ["Storage cost", "Financing", "Insurance", "Shrinkage", "Capacity"]}
+    ]
+  },
+  "glossary": [
+    {"term": "Contango", "full_en": "Contango", "cn": "正价差结构", "definition": "远月价格高于近月价格的期限结构。", "example": "M12 比 M1 高 7 美元，但只有超过全年持有成本才支持储油套利。", "confusion": "不是市场保证未来现货上涨。"},
+    {"term": "Backwardation", "full_en": "Backwardation", "cn": "反向市场", "definition": "近月价格高于远月价格的期限结构。", "example": "现货紧张时持有人卖出现货并买回远月，可释放库存并保留未来敞口。", "confusion": "不等于市场预测未来一定下跌。"},
+    {"term": "Full carry", "full_en": "Full carry", "cn": "完全持有成本", "definition": "月差恰好覆盖仓储、融资、保险及损耗等全部成本的状态。", "example": "一年持有成本 5 美元时，远月至少高出约 5 美元才接近 full carry。", "confusion": "平均成本不代表每个地点都能获得库容。"},
+    {"term": "Working capacity", "full_en": "Working storage capacity", "cn": "工作库容", "definition": "扣除罐底不可泵出油和运行限制后，可被正常装卸使用的容量。", "example": "油罐铭牌容量尚有空间，但剩余空间可能已经被预订。", "confusion": "不能与 shell capacity 直接等同。"},
+    {"term": "Line fill", "full_en": "Pipeline line fill", "cn": "管存", "definition": "为保持管道连续运行而必须存在管线中的原油。", "example": "长距离管线内数百万桶油不能像罐区商业库存一样随时抽走出售。", "confusion": "它是库存，但通常不是自由库存。"},
+    {"term": "Calendar spread", "full_en": "Calendar spread", "cn": "跨月价差", "definition": "同一标的不同交割月份之间的价格差。", "example": "交易 M1-M2 可表达近端松紧，而不必承担全部 flat-price 风险。", "confusion": "报价正负必须先确认市场约定。"},
+    {"term": "Convenience yield", "full_en": "Convenience yield", "cn": "便利收益", "definition": "立即持有实物带来的运营安全和选择权价值。", "example": "炼厂担心到货中断时，罐中现货的价值可能高于单纯财务持有收益。", "confusion": "它不是一笔直接收到的现金利息。"},
+    {"term": "Physical convergence", "full_en": "Physical convergence", "cn": "实物收敛", "definition": "期货临近到期时通过交割或可替代交易向现货价值靠拢。", "example": "WTI 合约最终面对 Cushing 接货能力，因此库容紧张会压低临期合约。", "confusion": "成交量大并不会取消实物锚。"}
+  ],
+  "extreme_detail": [
+    {"mechanism": "罐底油与已租库容", "why_it_matters": "名义空闲容量往往高估可立即调用的空间。", "micro_example": "一座罐区报告 80% 利用率，但剩余容量可能因维护、品质隔离或合同预订而不可用。", "misreading": "把 20% 名义余量全部视为可接收 WTI 的自由空间。", "takeaway": "分析交割压力要找 uncommitted operational capacity。"},
+    {"mechanism": "进口清关时点", "why_it_matters": "一艘大型油轮跨周计入即可显著改变周度库存。", "micro_example": "同样的真实到货，周五清关或周一清关会落在不同统计周。", "misreading": "把单周跳升直接当成供应趋势突变。", "takeaway": "结合四周均值与船期。"},
+    {"mechanism": "炼厂检修的双向影响", "why_it_matters": "原油和成品油库存可能给出相反信号。", "micro_example": "炼厂少加工一桶，会增加原油库存，却减少汽柴油产出。", "misreading": "只看原油累库就判断全链条需求弱。", "takeaway": "同时检查 runs、products 与 cracks。"},
+    {"mechanism": "曲线套利的不对称", "why_it_matters": "Contango 有持有成本上限，Backwardation 没有对称的无风险套利约束。", "micro_example": "你能把今天的油存到未来，却无法从未来借一桶油到今天。", "misreading": "认为两种曲线会以同样机制自动回归平坦。", "takeaway": "即时稀缺可使 Backwardation 深于正常 carry 逻辑。"}
+  ],
+  "cases": [
+    {
+      "title": "2020 年 4 月：负价格不是需求故事的最后一步",
+      "scenario": "COVID-19 需求崩塌后，May 2020 WTI 在 Cushing 交割窗口临近时跌至负值。",
+      "background": "2020 年 4 月全球石油消费较疫情前约 1 亿桶/日水平下降约 2,000 万桶/日，美国汽油需求数周内近乎减半；与此同时 3 月 Saudi-Russia 价格战使供应仍在涌入，4 月 12 日宣布的 970 万桶/日 OPEC+ 减产来不及逆转已经形成的库存潮。",
+      "shock": "Cushing 库存从 1 月约 3,500 万桶升向 4 月中旬约 6,000 万桶，名义剩余空间多数已出租。May 2020 WTI 最后交易日为 4 月 21 日，缺乏接货能力的多头在倒数第二个交易日集中退出。",
+      "transmission": [
+        "需求冲击先转化为炼厂减产和原油累库",
+        "累库在 Cushing 变成可操作库容和管线席位的稀缺",
+        "不具备实物能力的金融多头争相退出临期合约",
+        "少数能接货的实体要求得到补偿，临期价格跌破零"
+      ],
+      "market_result": "May 合约结算为每桶 -37.63 美元，而更远月份仍为正值，显示危机集中在即时交割窗口。",
+      "lesson": "需求崩塌解释了油为什么累积，库容与合约机制才解释了价格为什么能穿过零。"
+      ,"model_answer": [
+        "需求骤降与炼厂减产先造成原油持续流入库存，解释了物理压力的来源。",
+        "Cushing 可操作库容、交割窗口和临期多头退出共同造成买方稀缺，解释了价格跌破零。"
+      ]
+    }
+  ],
+  "core_model": {
+    "core_points": [
+      "库存变化是多条流量的净结果，先拆原因再谈利多利空。",
+      "Contango 给储油付费，但只有价差超过全部 carry cost 才能形成真实套利。",
+      "Backwardation 更接近即时稀缺信号，却不能被当成未来价格预测。",
+      "交割压力取决于具体地点的可操作库容、物流连接和合约时间。",
+      "可靠观点必须由库存、月差、现货和物流至少三类信号共同支持。"
+    ],
+    "one_liner": "库存是过去供需错配留下的痕迹，期限结构是市场对把一桶油从现在搬到未来所给出的价格。"
+  },
+  "self_checks": [
+    {"prompt": "合上页面，解释为什么‘库存增加’不能直接翻译为‘需求变差’。", "model_answer": "合格回答要指出库存是生产、进口、出口、炼厂加工与调运的净结果，并至少举出炼厂检修或集中到港造成累库但终端需求未必变弱的例子。"},
+    {"prompt": "用自己的话区分 Contango 和‘市场预测未来油价上涨’。", "model_answer": "合格回答要说明远月溢价包含仓储、融资、保险和损耗等持有成本；只有超过全部成本才支持套利，所以曲线形状不是无条件的方向预测。"},
+    {"prompt": "为什么 2020 年 WTI 负价格首先是地点和时间问题？", "model_answer": "合格回答要提到 Cushing 实物交割、May 合约临近到期、可用库容和买方流动性枯竭，并说明远月和其他原油并未同时跌到相同负值。"},
+    {"prompt": "如果全国原油累库、Cushing 去库、近月月差走强，你会如何描述市场？", "model_answer": "合格回答不能直接说全国过剩，而应提出地区物流错配假设，并继续检查湾区到港、出口、管线流向和 Cushing 现货升贴水。"},
+    {"prompt": "列出你分析一份 EIA 库存报告时的最少五个步骤。", "model_answer": "合格回答应覆盖实际相对预期、库存分项原因、地区分布、原油与产品联动、月差或现货验证，并写出未来会推翻当前判断的数据。"}
+  ],
+  "applications": [
+    {"situation": "周三看到 EIA 原油库存大幅增加", "action": "先拆进口、出口和炼厂加工量，再看 Cushing、成品油库存与月差，最后判断是物流时点还是持续过剩。"},
+    {"situation": "新闻称期货曲线转入 Contango，储油需求将爆发", "action": "计算目标月份价差能否覆盖具体地点的仓储、融资、保险和损耗，并确认是否真有未被预订的合格库容。"},
+    {"situation": "临近交割的合约突然与远月严重脱节", "action": "立即检查最后交易日、未平仓量、交割规则、可操作库容和物流连接，优先排查物理收敛压力。"},
+    {"situation": "库存和价格给出相反方向", "action": "不要选择性忽略其中一个；把全国数据拆到地区、品种和时间，寻找两者实际上在描述的不同约束。"}
+  ],
+  "review_prompts": [
+    "一周后：不看笔记画出‘炼厂检修如何同时造成原油累库和产品去库’。",
+    "两周后：找一份最新 EIA 报告，用五步框架写 150 字判断并列出反证条件。",
+    "一个月后：比较当时 WTI M1-M6 月差与商业库存变化，判断二者是否相互印证。"
+  ],
+  "sources": [
+    {"label": "Oil 101 Chapter 12: Storage", "url": "https://oil101.morgandowney.com/chapters/storage", "coverage": "库存功能、Cushing、持有成本、库存报告与库容约束"},
+    {"label": "Oil 101 Chapter 17: Oil Prices", "url": "https://oil101.morgandowney.com/chapters/oil-prices", "coverage": "基准价格、地点差异与现货定价"},
+    {"label": "Oil 101 Chapter 18: Futures and Swaps", "url": "https://oil101.morgandowney.com/chapters/futures-swaps", "coverage": "期限结构、full carry、实物收敛和 2020 年负油价"},
+    {"label": "Oil 101 Chapter 23: When Oil Went Negative", "url": "https://oil101.morgandowney.com/chapters/negative-prices", "coverage": "合约规模、最后交易日、Cushing 容量口径、疫情需求冲击与负价传导"},
+    {"label": "U.S. EIA: Low liquidity and limited available storage pushed WTI below zero", "url": "https://www.eia.gov/todayinenergy/detail.php?id=43495", "coverage": "2020 年 4 月 WTI 负价格图表与交割机制说明"}
+  ],
+  "source_coverage": [
+    "Ch12 Storage → Why Store Oil? → inventory-buffer 已完整覆盖库存作为时间缓冲的作用",
+    "Ch12 Storage → Categories of Storage → inventory-buffer 已区分运营、商业与战略库存",
+    "Ch12 Storage → Tank Types → physical-convergence 选择性覆盖；设备细节留到行业深读",
+    "Ch12 Storage → Cushing, Oklahoma → physical-convergence 已覆盖交割中心与可操作库容",
+    "Ch12 Storage → Salt Caverns → 延后至中游与炼化行业深读",
+    "Ch12 Storage → U.S. Strategic Petroleum Reserve → inventory-buffer 选择性覆盖；历史留到供应冲击模块",
+    "Ch12 Storage → International Strategic Reserves → 延后至地缘政治模块，现时数字需独立核验",
+    "Ch12 Storage → Iran Floating Storage → 延后至地缘政治模块，估算值需独立核验",
+    "Ch12 Storage → The Contango Storage Play → curve-carry 已覆盖储油套利机制",
+    "Ch12 Storage → Inventory Reports and the Five-Year Range → reading-framework 已覆盖周报与五年区间",
+    "Ch12 Storage → AI and a 30% Inventory Reduction → 暂不采纳，前瞻性判断缺少独立一手证据",
+    "Ch12 Storage → Where Storage Sits in the System → inventory-buffer 已覆盖储存在全链条的位置",
+    "Ch17 Oil Prices → Physical Oil Trading → physical-convergence 选择性覆盖实货锚定",
+    "Ch17 Oil Prices → The Benchmark System → 安排在 Module 04 解释基准体系",
+    "Ch17 Oil Prices → The Delivery Chain Price Ladder → 安排在 Module 04 解释价格阶梯",
+    "Ch17 Oil Prices → Unit Conversions → 安排在 Module 04 与计算附录",
+    "Ch17 Oil Prices → Formula Pricing → 安排在 Module 04 解释公式定价",
+    "Ch17 Oil Prices → Freight and Netback Pricing → 安排在 Module 04 解释运费净回值",
+    "Ch17 Oil Prices → Pricing Windows and Platts MOC → 安排在 Module 04 解释定价窗口",
+    "Ch17 Oil Prices → Oil and the U.S. Dollar → 安排在 Module 04 讨论相关性边界",
+    "Ch17 Oil Prices → Why Retail Prices Differ → 安排在 Module 08 解释终端价差",
+    "Ch18 Futures and Swaps → Paper Barrels and Wet Barrels → physical-convergence 已覆盖纸桶与湿桶连接",
+    "Ch18 Futures and Swaps → The Forward Curve and Its Shapes → curve-carry 已覆盖两类曲线形状",
+    "Ch18 Futures and Swaps → Cost of Carry and Full Carry → curve-carry 已覆盖全部持有成本",
+    "Ch18 Futures and Swaps → April 2020 Negative WTI → physical-convergence 已覆盖负价机制",
+    "Ch18 Futures and Swaps → Marginal Finding and Development Cost → 安排在 Module 07 讨论长期供给",
+    "Ch18 Futures and Swaps → Spreads and How Traders Trade → reading-framework 覆盖月差，其余结构留给 Modules 04/06",
+    "Ch18 Futures and Swaps → 3:2:1 and 2:1:1 Crack Spreads → 安排在 Module 06 讲裂解价差",
+    "Ch18 Futures and Swaps → Spread Families → 安排在 Module 06 建立价差家族",
+    "Ch18 Futures and Swaps → Exchange-Traded Futures → 安排在 Module 06 解释场内工具",
+    "Ch18 Futures and Swaps → OTC Swaps → 安排在 Module 06 解释场外互换",
+    "Ch18 Futures and Swaps → EFP, EFS, and Block Trades → 安排在 Module 06 解释大宗转换交易",
+    "Ch18 Futures and Swaps → Reading a Live Curve → reading-framework 选择性覆盖曲线读法",
+    "Ch23 Negative Prices → The Unthinkable Happens → physical-convergence 已覆盖结算事件",
+    "Ch23 Negative Prices → The WTI Delivery Mechanism → physical-convergence 已覆盖合约规模与交割规则",
+    "Ch23 Negative Prices → Cushing Approaches Its Practical Ceiling → physical-convergence 已覆盖两类容量口径",
+    "Ch23 Negative Prices → The Pandemic Demand Shock → physical-convergence 已覆盖需求与供应的共同冲击"
+  ]
+}

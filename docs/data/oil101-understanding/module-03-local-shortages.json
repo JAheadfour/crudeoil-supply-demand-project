@@ -1,0 +1,516 @@
+{
+  "id": "03-local-shortages",
+  "variant": "understanding",
+  "reading": "03",
+  "reading_title": "局部短缺从哪里来",
+  "title": "全球有油，为什么你所在的市场仍会缺油",
+  "deck": "把炼厂配置、燃料标准、运输通道、有效库存与季节日历放进同一张图，读懂原油充足与成品油短缺为何能够同时发生。",
+  "reading_intent": "学完本模块，你应能把“缺油”拆成品种、品质、地点、时间和设施五个问题：缺的是原油还是合格成品油，现有炼厂能否转化，法规是否允许销售，运输与罐区是否连通，以及短缺持续多久。面对炼厂事故、管道中断、RVP 换季、飓风或低水位新闻时，你将不再直接从全球供应总量推导当地价格，而能画出受约束的物理传导链，并指出哪项信息会推翻判断。",
+  "opening_question": "如果全球原油供应没有下降，为什么某个州的汽油、某个机场的 jet fuel 或某条河流上游的柴油仍会突然涨价甚至断供？",
+  "quick_answer": [
+    "石油不是一种可以无损替代的单一商品；原油要先经过特定配置的炼厂，才能成为满足当地标准的成品油。",
+    "局部可用供应取决于物理库存、加工能力、产品规格、运输连通性和时间窗口的交集，而不是全球桶数的总和。",
+    "库存只有位于正确节点、装在适合的设施里并且能够被抽取和运出，才是缓解短缺的有效库存。",
+    "季节需求、RVP 换季和 refinery turnaround 会让原本够用的系统在几周内失去余量；飓风、河流低水位或管道故障再叠加时，短缺会非线性放大。",
+    "分析顺序应是：先确定缺什么，再定位卡在哪一环，最后判断替代路线需要多少时间和额外成本。"
+  ],
+  "learning_objectives": [
+    "用五层可用性模型区分全球供应充足与局部市场可用供应",
+    "解释炼厂 crude slate、conversion capacity、treatment 和 blending 如何限制产品产量",
+    "读懂 RVP、硫含量、octane、cetane 等规格为何把相邻市场分割开",
+    "比较油轮、管道、铁路、卡车和库存节点在速度、规模与可替代性上的差异",
+    "把季节需求、换季清罐、计划检修与天气冲击组合成局部短缺的机制链",
+    "遇到价格异动时提出可验证的数据清单，而不是只引用全球供需叙事"
+  ],
+  "main_thread": "原油市场常被描述为一个全球大池子，但消费者买到的并不是抽象的全球原油，而是在特定地点、特定日期符合当地法规的汽油、柴油、航煤或船燃。一桶原油要变成这种可消费产品，必须连续穿过五道门：它的品质要适合当地炼厂的 crude slate；炼厂必须有可用的 separation、conversion、treatment 与 blending 装置；成品必须满足当地和当季的 specification；管道、油轮、铁路、卡车与终端必须能把它送到需求地；库存还必须位于正确节点并能及时抽取。任何一道门关闭，全球总供应未变也会产生局部短缺。更重要的是，这些约束经常同步出现：春季炼厂 turnaround 降低加工量，终端又必须在 5 月前切换低 RVP 夏季汽油；夏末需求仍高时，飓风可能同时关闭 Gulf Coast 炼厂、港口和 Colonial 等产品物流；欧洲干旱则会让莱茵河驳船减载，使 ARA 有库存而内陆终端补不上货。因此，局部短缺不是一个简单的“供给减少”标签，而是一个网络流问题。专业分析要沿着 feedstock → refinery unit → specification → transport link → terminal inventory → end user 逐点检查，并把名义容量与可操作容量、总库存与合格库存、正常季节基线与异常冲击分开。",
+  "mental_model": "有效供应 = 物理桶数 ∩ 可用加工能力 ∩ 合格规格 ∩ 运输连通性 ∩ 可用时间；五个集合只要有一个很小，局部市场就会短缺。",
+  "mental_model_detail": {
+    "equation": "Local available supply = min(compatible feedstock, available conversion, on-spec product, transport throughput, deliverable inventory)",
+    "market_translation": "这里的 min 不是严格会计公式，而是瓶颈思维：最终能够交付的数量由最紧的一环决定。多一桶不兼容原油、多一个装错产品的油罐或多一条到不了需求地的管线，都不会自动增加当地可用供应。",
+    "decision_rule": "先问缺的是哪种 on-spec 产品；再沿上游寻找第一个容量或时间约束；最后检查替代来源是否同时满足规格、路线和到货期限。"
+  },
+  "formulas": [
+    {
+      "name": "US pump octane",
+      "expression": "AKI = (RON + MON) / 2",
+      "interpretation": "美国加油机显示 RON 与 MON 的平均值；欧洲主要标 RON，所以 87 AKI 与约 95 RON 不能按数字大小直接比较。"
+    },
+    {
+      "name": "Heating Degree Days",
+      "expression": "HDD = max(0, 65°F - 当日平均温度)",
+      "interpretation": "平均 40°F 的一天贡献 25 HDD，平均 70°F 则为 0；累计 HDD 用来衡量采暖需求相对正常年份的强弱。"
+    },
+    {
+      "name": "Worldscale effective freight",
+      "expression": "Effective freight = Worldscale flat rate × WS quote / 100",
+      "interpretation": "原文示例中 flat rate 为 18.50 美元/吨、WS 60，则有效运费为 11.10 美元/吨；它把航线标准成本与当期船舶紧张程度分开。"
+    },
+    {
+      "name": "Tanker rough capacity",
+      "expression": "Estimated barrels ≈ DWT × 7.5",
+      "interpretation": "这是油轮载量的粗略换算，不是装港 loadline、货物密度和吃水限制下的最终装载量。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "five-gates",
+      "title": "先把“缺油”改写成五道可用性门",
+      "concept": {
+        "en": "Local availability constraint",
+        "cn": "局部可用性约束",
+        "definition": "只有同时满足品质、加工、规格、运输和时间条件的桶，才构成某地在某时可消费的供应。"
+      },
+      "explanation": "全球原油产量回答的是地下到地表的总流量，局部短缺回答的却是某个产品能否按时交到某个节点。两者之间隔着炼厂和物流网络。比如 Gulf Coast 可以拥有大量原油库存，但 East Coast 驾驶者需要的是能进入成品油管道、符合夏季 RVP 的汽油；如果 Colonial Pipeline 已满负荷、港口没有可立即卸货的 clean tanker，原油库存本身不能直接倒进汽车。反过来，一个地区也可能原油偏紧但成品油不紧，因为它能从其他炼化中心进口汽柴油。分析时应先给短缺加四个限定词：什么产品、什么规格、什么地点、什么日期，再问设施是否可用。这样才能区分 volume shortage、conversion shortage、specification shortage、logistics shortage 与 timing mismatch，也能解释为什么同一事件会压低产地原油价格，却推高消费地产品价格。",
+      "mechanism_chain": [
+        "消费地对某种 on-spec 产品的需求上升或当地供给环节受损",
+        "替代桶必须同时通过炼厂配置、法规规格、运输通道和交付时间筛选",
+        "可替代集合迅速小于全球名义库存，边际合格桶开始竞价",
+        "消费地产品升水与 crack 走强，而受阻上游的原油可能累库并走弱"
+      ],
+      "worked_example": {
+        "setup": "美国东海岸进入夏季，零售端需要低 RVP 汽油；Gulf Coast 原油库存充足，但产品管道已经高负荷运行。",
+        "steps": [
+          "先排除“全球没油”：原油仍在 Gulf Coast，问题是炼厂能否及时多产夏季规格汽油。",
+          "再检查替代路线：额外汽油必须符合 East Coast 当期规格，并通过 Colonial、合格 clean tanker 或区域终端进入市场。",
+          "若管道无余量且海运到货晚于零售缺口，全球库存再高也不能在本周增加当地可售数量。"
+        ],
+        "answer": "这是产品、规格、运输与时间共同造成的局部可用性短缺，不应被概括成全球原油短缺。"
+      },
+      "practitioner_lens": "每次看到 shortage，先写出 product/spec/location/date 四元组，再开始找原因。",
+      "misreading": "最常见的误读是拿全球原油库存证明任何地区都不会缺汽油，跳过原油到合格成品油之间的全部转换环节。",
+      "boundary": "五道门模型用于定位瓶颈，不替代完整数量平衡；当多个约束同时变化时，仍需用实际流量、库存和价格数据估计影响规模。"
+    },
+    {
+      "id": "refinery-config",
+      "title": "炼厂不是万能转换器：有原油不等于有你需要的产品",
+      "concept": {
+        "en": "Refinery configuration and crude slate",
+        "cn": "炼厂配置与原油篮子",
+        "definition": "炼厂的装置组合与设计原料决定它能经济地处理哪些 crude grades，并能产出多少高价值合格产品。"
+      },
+      "explanation": "炼厂先用 ADU/CDU 按沸点分离馏分，再用 VDU 在低压下处理重质残余，之后才由 FCC、hydrocracker、coker 等 conversion units 改变分子结构。单纯 topping refinery 只能接受原油天然带来的产品比例；复杂炼厂则可把 VGO 或 vacuum resid 进一步转成 gasoline、jet 和 diesel。原文给出的直觉很重要：一桶 42 US gallons 的原油经典型美国炼厂后大约形成 45 gallons 产品，额外体积来自较轻分子密度更低的 refinery gain，并不是凭空创造质量。复杂性还决定替代性：FCC 偏汽油，hydrocracker 擅长窄馏程的 jet 和 middle distillates，coker 能把重质残余升级。若关键装置停机，名义 crude distillation capacity 仍在，但目标产品的有效产能已经下降；把别处轻甜原油运来，也未必能弥补本地 hydrocracker 或 desulfurization capacity 的损失。",
+      "mechanism_chain": [
+        "原油进入 ADU/VDU，被分为 naphtha、kerosene、gasoil、VGO 与 resid 等馏分",
+        "conversion units 按配置把重馏分升级为汽油或中间馏分，并由 treatment 去除硫、氮和金属",
+        "关键 FCC、hydrocracker、coker 或 hydrotreater 停机后，目标 blendstock 产量下降",
+        "炼厂即使仍有原油和蒸馏能力，也无法按原比例生产合格汽油、柴油或航煤",
+        "目标产品 crack 与区域升水上升，低价值中间料或不适配原油反而可能积压"
+      ],
+      "worked_example": {
+        "setup": "一家依靠 hydrocracker 生产 jet fuel 的炼厂在航空旺季发生装置故障，但 CDU 仍正常运行。",
+        "steps": [
+          "CDU 继续分离原油，因此 headline refinery throughput 下降可能不大，现场仍会产出 heavy VGO 等中间料。",
+          "hydrocracker 无法把 heavy VGO 高转化率地变成符合窄馏程要求的 jet，jet yield 明显下滑。",
+          "炼厂可以降低原油加工、改卖中间料或进口 jet；每个替代方案都受储罐、船期和规格认证约束。"
+        ],
+        "answer": "短缺来自特定 conversion unit，而不是整个炼厂或全球原油总量；看 CDU 利用率会低估航煤风险。"
+      },
+      "practitioner_lens": "不要只看 nameplate capacity；要问出问题的是 distillation、conversion、treatment 还是 blending。",
+      "misreading": "把所有炼厂容量当成同质产能，认为任何炼厂只要增加 crude runs 就能按需要多产任意成品油。",
+      "boundary": "Nelson Complexity Index 能概括资本密集度，却不能替代逐装置分析；两家指数相近的炼厂也可能因具体装置和 crude slate 不同而产出不同。"
+    },
+    {
+      "id": "spec-frag",
+      "title": "标准既让油品可交易，也把不合格的桶挡在市场外",
+      "concept": {
+        "en": "Specification fungibility",
+        "cn": "规格可替代性",
+        "definition": "标准用共同测试方法定义可交付产品，但只有通过当地限值的货物才能参与该市场的供给。"
+      },
+      "explanation": "ASTM、EN、ISO 8217、EPA、CARB 和 IMO 等体系让买卖双方用同一语言描述产品，这扩大了正常时期的替代来源；同一机制在紧张时期也会形成边界。汽油需同时满足 octane、sulfur、benzene、RVP 与 ethanol 等指标，而且 octane 本身还有 RON、MON、AKI 三种口径。柴油强调 cetane、15 ppm ULSD sulfur、flash point、cloud point 与 lubricity；Jet A 和 Jet A-1 的 freeze point 分别为最高 -40°C 与 -47°C。船燃在 IMO 2020 后又分为 HSFO 3.5%、VLSFO 0.5% 和 ECA 使用的 0.1% 桶。于是，“附近有汽油”并不等于“这批汽油可以在当地、当季销售”。合格供应是多项约束的交集，任何一个指标超限都可能迫使货物 re-blend、downgrade、export 或折价处置。",
+      "mechanism_chain": [
+        "监管者和合同以 ASTM、EN、ISO 等测试方法规定质量边界",
+        "炼厂通过 treatment 与 blending 组合多种 blendstocks，留出合规余量",
+        "装置故障、原料变化或季节切换使某项指标接近或越过限值",
+        "原本存在的物理桶被排除出当地可售集合，合格桶的替代池缩小",
+        "on-spec 产品升水扩大，off-spec 货物只能返炼、调和、转卖或降级"
+      ],
+      "worked_example": {
+        "setup": "一批欧洲标注 95 RON 的汽油准备补充美国 regular gasoline 市场，交易员仅比较泵上数字。",
+        "steps": [
+          "先把口径统一：美国泵号是 AKI = (RON + MON) / 2，欧洲数字通常是 RON，不能把 95 与 87 当成质量差 8 点。",
+          "再核查 RVP、sulfur、benzene、ethanol 与地区规则；octane 对得上并不代表整张 certificate of quality 合格。",
+          "最后考虑到港时间和终端 blending 能力，确认能否在缺口发生前完成认证与调和。"
+        ],
+        "answer": "跨区域替代必须逐项验证规格与测试口径，不能只凭产品名称或单个 octane 数字。"
+      },
+      "practitioner_lens": "看进口套利时，把目标市场完整 spec sheet 与 cargo certificate 并排，而不是只看 headline grade。",
+      "misreading": "把标准化理解成所有同名油品完全同质，忽略地区法规、测试口径、季节限值和终端调和能力。",
+      "boundary": "满足纸面规格仍不保证商业可替代；合同认可、添加剂授权、管道批次和零售标签也可能构成额外门槛。"
+    },
+    {
+      "id": "transport-net",
+      "title": "油能不能到达，比世界上有没有油更接近当地价格",
+      "concept": {
+        "en": "Capacity-constrained logistics network",
+        "cn": "受容量约束的物流网络",
+        "definition": "油轮、管道、铁路、驳船和卡车组成分工网络，每条边都有产品限制、吞吐上限、速度与恢复时间。"
+      },
+      "explanation": "运输方式不是可瞬间互换的选项。VLCC 约载 200 万桶原油，适合跨洋干线，却受港口吃水、Suez 等通道和装卸设施约束；MR 多运 clean products，dirty tanker 改做 clean service 需要昂贵清舱。管道适合连续大流量，Colonial 全长约 5,500 miles，承担美国东海岸约 40% 液体燃料，产品以 3–5 mph 前进，全程要 18–20 days，因此缺口发生后即使增泵也有显著在途时间。管道 batching 还会在 jet、diesel、gasoline 批次边界形成 interface cut。铁路能在 pipeline capacity 不足时绕开瓶颈，但成本和安全约束更高；truck 适合最后一公里，单位 barrel-mile 成本最高。网络局部受阻时，价差会先扩大到足以支付替代路线的运费；如果替代路线也无容量，价格必须继续上升以削减需求。",
+      "mechanism_chain": [
+        "主要管道、港口、海峡或河道的有效吞吐下降",
+        "原定货流在上游排队或转向油轮、铁路、驳船与卡车等替代方式",
+        "替代方式受船型、清洁等级、吃水、车皮、终端和在途时间限制",
+        "消费地到货率低于提货率，终端库存下降而产地或中转地库存上升",
+        "区域 basis、freight 和产品 crack 扩大，直到新路线出现或需求被价格抑制"
+      ],
+      "worked_example": {
+        "setup": "Gulf Coast 已生产出合格汽油，但一条通往 East Coast 的产品管道流量受限。",
+        "steps": [
+          "管道中的既有批次仍以 3–5 mph 前进，新增调度不能让货物当天到达纽约终端。",
+          "贸易商寻找 MR clean tanker，但船舶需有合格涂层、装卸窗口和可用港口，clean/dirty service 不能无成本切换。",
+          "铁路与卡车只适合部分缺口；在替代量到达前，East Coast 库存下降而 Gulf Coast 产品可能积压。"
+        ],
+        "answer": "同一国家内会同时出现产区产品走弱与消费区产品走强，价差反映的是网络容量和到货时间。"
+      },
+      "practitioner_lens": "定位物流瓶颈时，同时看 throughput、travel time、product compatibility 和替代路线剩余容量。",
+      "misreading": "把“有替代运输方式”当成“替代方式有足够容量且能及时到达”，忽略转运设备、船型与终端限制。",
+      "boundary": "区域价差不全是运费；信用、制裁、保险、Incoterms 风险分配和产品质量也会进入 landed cost。"
+    },
+    {
+      "id": "storage-local",
+      "title": "库存必须在正确的罐里、正确的节点上，才算缓冲",
+      "concept": {
+        "en": "Deliverable working inventory",
+        "cn": "可交付工作库存",
+        "definition": "扣除 dead stock、line fill、合同占用和操作限制后，能在目标时间从合适设施进入目标路线的库存。"
+      },
+      "explanation": "Storage 是生产、运输、炼制和消费不同节奏之间的 shock absorber，但库存总量会掩盖可用性。炼厂通常需要 5–20 days crude runs 的 operating tankage；pipeline line fill 是真实库存，却不能在不关闭管线的情况下抽空。不同产品还需要不同罐型：crude、gasoline 和 naphtha 常用 floating roof 降低蒸发，LPG 需要 bullet 或 sphere，LNG 需要 cryogenic containment。每个罐底都有不能正常泵出的 dead stock 或 heel，所以“95% full”通常以 working capacity 为分母，不是 shell capacity。地点同样关键：Cushing 是管道交汇和 WTI 交割点，但 landlocked；东海岸终端库存则直接服务人口密集区。释放远方战略原油也不能直接填补当地汽油罐，因为它还要经过炼厂、规格和产品物流。分析短缺时，应问库存属于 crude 还是 product、在哪个 PADD、是否 on-spec、是否已被预订以及每天能抽取多少。",
+      "mechanism_chain": [
+        "终端提货超过补货，目标产品库存开始下降",
+        "其他地区虽有总库存，但部分属于 line fill、dead stock、战略库存或不合格品",
+        "真正可调度的 working inventory 又受泵速、管线方向、罐型和合同占用限制",
+        "市场发现名义库存高于可交付库存，现货升水和近端紧张迅速扩大"
+      ],
+      "worked_example": {
+        "setup": "区域报告显示罐区尚有 10% 空间，但汽油终端仍拒绝接收一批到港货物。",
+        "steps": [
+          "先确认分母：报告可能按全罐区 working capacity 汇总，剩余空间分散在不适合汽油或正在维护的罐中。",
+          "再确认产品隔离：汽油货物的 RVP 或 sulfur 不同，不能随意与现有批次混罐。",
+          "最后核查连接：有空罐不代表该泊位、泵组和产品管线能在卸货窗口接入。"
+        ],
+        "answer": "名义空罐不等于可接收容量；罐型、规格隔离和连接关系共同决定有效库容。"
+      },
+      "practitioner_lens": "库存数字至少拆成 location、product、working capacity、uncommitted space 和 withdrawal rate。",
+      "misreading": "看到库存或库容总量就认为市场拥有同等规模的自由缓冲，忽视 line fill、dead stock、已租容量和抽取速度。",
+      "boundary": "工作库存口径能改善判断，但实时可用容量常属商业信息；公开数据需用升贴水、船期和运营公告交叉验证。"
+    },
+    {
+      "id": "season-cycle",
+      "title": "季节性让多个正常动作在同一窗口变成瓶颈",
+      "concept": {
+        "en": "Seasonal synchronization risk",
+        "cn": "季节同步风险",
+        "definition": "需求高峰、燃料换季、炼厂检修和天气风险在日历上重叠，使系统余量在特定数周显著收窄。"
+      },
+      "explanation": "石油年历至少有四个重叠周期：April–September driving season、October–March heating season、February–April 与 September–October refinery turnarounds，以及 June 1–November 30 Atlantic hurricane season。美国 gasoline demand 从冬季谷底到夏季高点通常变化约 8–10%；在约 9 Mbpd 的汽油池上，8% 就是约 700 kbpd 的增量。炼厂会在夏季提高 gasoline yield、冬季偏向 distillate，但只能在肩季安排维护。原文的典型利用率从 March 约 86% 升至 July 95%，秋季 turnaround 又让 crude throughput 下降约 1 Mbpd。与此同时，May 1 炼厂和终端必须切到 7.8 psi federal summer gasoline，June 1 零售站也要合规；California 可低至 6.5–7.0 psi。冬季桶若没及时清掉就成为 orphan barrel。季节性不是价格预测，而是正常基线；真正的风险来自寒潮、飓风或检修延期对低余量系统的偏离。",
+      "mechanism_chain": [
+        "春季炼厂计划检修先降低 crude runs 与成品产量",
+        "终端同时清理高 RVP 冬季汽油并建立更昂贵的低 RVP 夏季库存",
+        "Memorial Day 后需求上升，合格汽油库存的安全垫缩小",
+        "若装置复工延迟或飓风影响 Gulf Coast，补货能力与物流同时受损",
+        "短缺从正常换季升级为区域价格冲击，并通过 crack、basis 和零售价格体现"
+      ],
+      "worked_example": {
+        "setup": "4 月末某终端仍持有大量冬季高 RVP 汽油，而当地 5 月 1 起要求夏季规格。",
+        "steps": [
+          "终端不能把这批货继续当夏季零售汽油销售，因为联邦或地方 RVP 截止日期是硬约束。",
+          "经营者只能用低 RVP blendstock re-blend、出口到仍允许冬季规格的市场，或深度折价处理。",
+          "与此同时需重新采购 alkylate、reformate 比例更高的夏季汽油，合格桶竞争上升。"
+        ],
+        "answer": "总汽油库存可能不低，但当季合格库存不足；这正是 specification 与 timing 共同制造的 orphan barrel shortage。"
+      },
+      "practitioner_lens": "把今年的数据与正常季节路径比较，并单独记录 turnaround、RVP deadline、HDD 和 hurricane track 的偏差。",
+      "misreading": "把季节平均模式当成确定预测，或看到总汽油库存充足就忽略其中有多少会在换季后失去当地销售资格。",
+      "boundary": "季节基线会被疫情、结构性炼厂关闭、法规变化和异常天气打破；应作为比较尺，不应单独成为交易结论。"
+    },
+    {
+      "id": "compound-shock",
+      "title": "真正危险的是复合冲击：一个事件同时切断多道门",
+      "concept": {
+        "en": "Compound infrastructure shock",
+        "cn": "复合基础设施冲击",
+        "definition": "同一事件同时影响生产、炼制、港口、管道和库存补给，使各环节损失相互放大而非简单相加。"
+      },
+      "explanation": "飓风是理解复合冲击的最好例子。Gulf of Mexico 约承载美国 15% crude production，而从 Corpus Christi 到 lower Mississippi 的沿岸又集中约 45% refining capacity。风暴来临时，offshore platforms 会提前撤人停产，港口关闭会阻止油轮装卸，洪水或断电可能迫使炼厂停机，产品管道也会因上游无货或设施受损降低流量。Katrina 与 Rita 在 2005 年使约四分之一美国炼油能力停运数周，并触发 SPR release；Harvey 2017 则让约 23% capacity offline，并造成 Colonial delays。释放战略原油只解决 feedstock 层，如果 refinery units 和 product pipelines 仍关着，汽油短缺不会立刻消失。类似逻辑也适用于 Rhine low water：ARA 港口可能有货，但 Kaub 吃水不足迫使驳船减载，2022 年最严重时装载约降至正常 draft 的 30%，同一批货需要更多船次。",
+      "mechanism_chain": [
+        "天气事件先迫使上游平台、港口或河道降低运行",
+        "炼厂因断电、洪水、缺原料或安全停机而减少成品产出",
+        "管道、驳船和终端补货又因同一事件受限，替代路线同步拥堵",
+        "消费地库存连续下降，单一政策工具只能修复其中一环",
+        "产品价格冲击持续到炼厂复工、物流恢复和库存重建三件事依次完成"
+      ],
+      "worked_example": {
+        "setup": "大型飓风正向 Texas–Louisiana refining corridor 移动，市场讨论释放 SPR 是否足以稳定汽油。",
+        "steps": [
+          "先拆供应链：SPR 位于 Gulf Coast 盐穴，能提供 crude，但不能替代停机的 FCC、hydrotreater 或电力系统。",
+          "再看物流：港口关闭和产品管道延迟会让已生产的汽油也无法及时进入 East Coast。",
+          "最后分阶段判断：上游复产、炼厂重启、产品合格检验和终端补库各有不同时间表。"
+        ],
+        "answer": "SPR 可缓解原油供应，却不能单独消除炼制与产品物流瓶颈；汽油风险取决于最慢恢复的环节。"
+      },
+      "practitioner_lens": "事件分析必须做 facility-by-facility 恢复表，并区分 crude outage、refinery outage 与 product logistics outage。",
+      "misreading": "把同一事件造成的多环节损失压缩成一个产量数字，或认为释放原油库存可以立即解决成品油断供。",
+      "boundary": "复合冲击的精确规模高度依赖路径、洪水、供电和设施损伤；模型情景必须随运营公告持续更新。"
+    }
+  ],
+  "figures": [
+    {
+      "id": "distillation-cuts",
+      "lesson_id": "refinery-config",
+      "src": "assets/figures/module-03/ch07-distillation-tower-cuts.jpg",
+      "alt": "原油分馏塔剖面图，显示不同沸点馏分在塔内不同高度冷凝并流向不同终端用途",
+      "reading_guide": "先沿温度从塔底到塔顶看：重质分子留在底部，diesel、kerosene、naphtha 和 gases 依次在更高位置离开。再注意这张图只表示 separation；要把重残余变成更多汽油和中间馏分，还需要 FCC、hydrocracker 或 coker。",
+      "caption": "Figure 7-3：加热原油从塔底附近进入，蒸气上升并按各馏分沸点在不同高度冷凝；它说明原油进入炼厂后首先被切成用途不同的物理馏分。",
+      "reference": {
+        "label": "Oil 101, Chapter 7 Refining, Figure 7-3, Morgan Downey",
+        "url": "https://oil101.morgandowney.com/chapters/refining",
+        "asset_url": "https://oil101.morgandowney.com/images/ch07-distillation-tower-cuts.jpg",
+        "accessed": "2026-07-11"
+      }
+    },
+    {
+      "id": "north-american-pipelines",
+      "lesson_id": "transport-net",
+      "src": "assets/figures/module-03/ch11-north-american-pipelines-map.png",
+      "alt": "北美主要原油与成品油管道地图，标出 Colonial、Enbridge Mainline、Keystone、Trans Mountain、DAPL、TAPS、Cushing 与美国墨西哥湾沿岸",
+      "reading_guide": "不要只看线路数量，而要区分 crude pipelines 与 product pipelines，并观察 Cushing 与 US Gulf Coast 为什么是网络节点。地图上的连接关系解释了为什么某地可以原油充足却无法把汽油直接送到另一市场。",
+      "caption": "Figure 11-4：北美主要原油和成品油管道及其大致容量；Cushing 是 WTI 定价与储存枢纽，US Gulf Coast 是最大的炼化和出口集群。",
+      "reference": {
+        "label": "Oil 101, Chapter 11 Transporting Oil, Figure 11-4, Morgan Downey",
+        "url": "https://oil101.morgandowney.com/chapters/transporting-oil",
+        "asset_url": "https://oil101.morgandowney.com/images/ch11-north-american-pipelines-map.png",
+        "accessed": "2026-07-11"
+      }
+    },
+    {
+      "id": "refinery-turnaround",
+      "lesson_id": "season-cycle",
+      "src": "assets/figures/module-03/ch13-refinery-maintenance-turnaround.jpg",
+      "alt": "炼厂计划停工期间，工人在大型工艺设备内部执行检查、清理和催化剂更换",
+      "reading_guide": "把这张图理解成“产能必须暂时退出市场”的证据。炼厂装置连续运行多年，但机械磨损和催化剂失活最终要求停机；turnaround 因而集中在需求肩季，并会暂时降低可用 conversion capacity。",
+      "caption": "Figure 13-3：计划 turnaround 中的炼厂维护。每套 process unit 都必须定期离线检查、清洁和更换催化剂。",
+      "reference": {
+        "label": "Oil 101, Chapter 13 Seasonality, Figure 13-3; source credited on author page to Okane nyatoh daniel / Wikimedia Commons (CC BY-SA 4.0)",
+        "url": "https://oil101.morgandowney.com/chapters/seasonality",
+        "asset_url": "https://oil101.morgandowney.com/images/ch13-refinery-maintenance-turnaround.jpg",
+        "accessed": "2026-07-11"
+      }
+    }
+  ],
+  "figure_candidates": [],
+  "comparison_tables": [
+    {
+      "title": "五类局部短缺如何判别",
+      "headers": ["短缺类型", "真正缺少的东西", "常见价格表现", "优先检查"],
+      "rows": [
+        ["Volume shortage", "区域内物理桶数", "原油与多种产品同时偏强", "产量、进口、总库存与需求"],
+        ["Conversion shortage", "特定炼厂装置能力", "目标产品 crack 强，中间料或原油可能弱", "FCC、hydrocracker、coker、HDT/HDS 状态"],
+        ["Specification shortage", "符合当地/当季规则的桶", "on-spec 升水，off-spec 折价", "RVP、sulfur、octane/cetane、freeze point"],
+        ["Logistics shortage", "运输或装卸吞吐", "消费地 basis 与 freight 上升，产地可能累库", "管道流量、船期、港口、河道与终端"],
+        ["Timing mismatch", "短缺窗口内可到达的桶", "近端升水强于远端", "travel time、deadline、库存 days of cover"]
+      ]
+    },
+    {
+      "title": "本模块常用规格与日历阈值",
+      "headers": ["对象", "原文阈值/时间", "对局部供应的含义"],
+      "rows": [
+        ["US Tier 3 gasoline sulfur", "10 ppm annual average", "需要足够 desulfurization 与合格 blendstocks"],
+        ["US summer gasoline RVP", "7.8 psi federal；CARB 6.5–7.0 psi", "高 RVP 冬季桶在截止日后可能成为 orphan barrel"],
+        ["US retail summer spec", "June 1；refinery/terminal May 1", "供应链上游比零售更早切换"],
+        ["US on-road ULSD sulfur", "15 ppm", "高硫柴油不能直接补充公路市场"],
+        ["Jet A / Jet A-1 freeze point", "最高 -40°C / -47°C", "同称 jet fuel 也存在国际航线适配差异"],
+        ["IMO global marine sulfur", "0.5%；ECA 0.1%", "船燃被分成 VLSFO、HSFO 与 MGO/ULSFO 池"],
+        ["Atlantic hurricane season", "June 1–November 30", "与驾驶旺季和秋季检修窗口重叠"]
+      ]
+    }
+  ],
+  "term_family": {
+    "root": "局部可用供应",
+    "tree": "局部可用供应 → 原料适配（crude slate/assay）→ 加工能力（separation/conversion/treatment/blending）→ 规格资格（ASTM/EN/ISO/RVP）→ 网络连通（tanker/pipeline/rail/truck）→ 可交付库存（working capacity/line fill/heel）→ 时间窗口（seasonality/turnaround/weather）",
+    "analogy": "把一桶油想成需要连续通过五道闸门的旅客：有票不代表能到终点；只要签证、换乘、道路或登机时间任一环节不成立，它就不是目的地当下可用的供应。",
+    "branches": [
+      {"name": "炼厂", "children": ["ADU/VDU", "FCC", "Hydrocracker", "Coker", "Hydrotreating", "Blending"]},
+      {"name": "规格", "children": ["RVP", "Octane/AKI", "Cetane", "Sulfur", "Freeze point"]},
+      {"name": "物流", "children": ["Tanker", "Pipeline", "Rail", "Barge", "Truck"]},
+      {"name": "库存", "children": ["Operating tankage", "Working capacity", "Line fill", "Dead stock"]},
+      {"name": "日历", "children": ["Driving season", "Heating season", "Turnaround", "Hurricane season"]}
+    ]
+  },
+  "glossary": [
+    {"term": "Crude slate", "full_en": "Crude slate", "cn": "炼厂原油篮子", "definition": "炼厂按装置设计和经济性能够处理的原油品级组合。", "example": "配有 coker 的 Gulf Coast 炼厂能更经济地处理 heavy sour crude。", "confusion": "不是当天市场上所有可以买到的原油清单。"},
+    {"term": "Product slate", "full_en": "Product slate", "cn": "产品结构", "definition": "炼厂最终产出的汽油、jet、diesel、resid 等产品组合及比例。", "example": "hydrocracker 可使产品结构更偏 jet 与 middle distillates。", "confusion": "不同于 crude slate，前者是输出、后者是输入。"},
+    {"term": "Refinery gain", "full_en": "Refinery or processing gain", "cn": "炼厂体积增益", "definition": "重分子裂化为低密度轻分子后，产品体积大于投入原油体积的现象。", "example": "42 US gallons 原油经典型美国炼厂可形成约 45 gallons 产品。", "confusion": "质量没有凭空增加，不能把它当成无成本创造能源。"},
+    {"term": "Nelson Complexity Index", "full_en": "Nelson Complexity Index", "cn": "纳尔逊复杂度指数", "definition": "以二次加工装置相对简单蒸馏的资本成本衡量炼厂复杂性的指标。", "example": "topping refinery 约 1，hydroskimmer 约 2，cracking refinery 约 9，含 coker 的 full-conversion complex 可接近 15。", "confusion": "指数相同不代表具体装置和产品收率完全相同。"},
+    {"term": "RVP", "full_en": "Reid Vapor Pressure", "cn": "雷德蒸气压", "definition": "衡量汽油挥发性的标准指标，也是美国夏冬汽油切换的核心法规约束。", "example": "联邦夏季汽油常见上限 7.8 psi，CARB 可低至 6.5–7.0 psi。", "confusion": "RVP 不是 octane，也不能由汽油名称直接推断。"},
+    {"term": "AKI", "full_en": "Anti-Knock Index", "cn": "抗爆指数", "definition": "美国泵上 octane 口径，等于 RON 与 MON 的算术平均。", "example": "US regular 为 87 AKI，约对应欧洲泵上 95 RON。", "confusion": "不能把 95 RON 误读成比 87 AKI 高 8 个同口径等级。"},
+    {"term": "Orphan barrel", "full_en": "Orphan barrel", "cn": "换季孤儿桶", "definition": "规格截止日后无法进入目标零售系统、必须调和、出口或折价的旧季节汽油。", "example": "May 1 后仍在终端的高 RVP 冬季汽油可能失去夏季销售资格。", "confusion": "不是物理消失的库存，而是当地当期不再合格的库存。"},
+    {"term": "Line fill", "full_en": "Pipeline line fill or line pack", "cn": "管存", "definition": "维持管道连续运行而必须始终充满在管线中的油。", "example": "长距离原油管道可容纳数百万桶，但不能像自由罐存一样抽空出售。", "confusion": "它是库存，却通常不是可随时动用的库存。"},
+    {"term": "Working capacity", "full_en": "Working storage capacity", "cn": "工作库容", "definition": "扣除无法正常泵出的 heel 等限制后，可用于日常收发作业的容量。", "example": "罐区报告 95% full 通常以 working capacity 而不是 shell capacity 为分母。", "confusion": "仍不等于未预订、与目标产品兼容的即时空闲容量。"},
+    {"term": "Batching", "full_en": "Pipeline batching", "cn": "管道顺序输送", "definition": "在同一产品管道中让 jet、diesel、gasoline 等批次首尾相接运输。", "example": "批次边界形成少量 interface cut，需返炼或降级到不敏感产品。", "confusion": "不是每种产品都有独立专用管线。"},
+    {"term": "DRA", "full_en": "Drag Reducing Agent", "cn": "减阻剂", "definition": "抑制管壁湍流涡流、在不新增泵站时提高管道吞吐的高分子添加剂。", "example": "原文给出的典型提升范围为 10%–40%。", "confusion": "它不能突破终端、泵站和下游接收能力的全部约束。"},
+    {"term": "Turnaround", "full_en": "Refinery turnaround", "cn": "炼厂计划检修", "definition": "装置为检查、清洁、维修和催化剂更换而按计划离线的维护窗口。", "example": "美国春季检修集中 February–April，秋季集中 September–October。", "confusion": "不是需求崩溃导致的永久关停，也不是所有装置同时停机。"},
+    {"term": "HDD", "full_en": "Heating Degree Days", "cn": "采暖度日", "definition": "每日平均温度低于 65°F 的差值累计，用于度量采暖需求强度。", "example": "日均 40°F 贡献 25 HDD，70°F 贡献 0。", "confusion": "HDD 是天气需求指标，不直接等于某种燃料销量。"},
+    {"term": "Worldscale", "full_en": "Worldscale", "cn": "油轮运价指数体系", "definition": "以标准航线名义美元/吨费率为基准、用 WS 百分比报价实际油轮运费的体系。", "example": "flat 18.50 美元/吨、WS 60 对应 11.10 美元/吨。", "confusion": "WS 100 不是每条航线相同的绝对美元运费。"}
+  ],
+  "extreme_detail": [
+    {"mechanism": "Refinery gain 的体积逻辑", "why_it_matters": "局部供应分析常把桶数增加误当成质量或能源增加。", "micro_example": "42 gallons feed 经裂化后约形成 45 gallons 较轻产品，因为轻烃密度更低。", "misreading": "认为炼厂无成本创造了 3 gallons 额外物质。", "takeaway": "区分 volumetric gain 与 mass conservation。"},
+    {"mechanism": "管道批次 interface cut", "why_it_matters": "产品管道并非无摩擦地输送多种燃料，边界混合会减少高规格可交付量。", "micro_example": "jet 后接 diesel 再接 gasoline 时，每个边界都有少量混合区，需要返炼或降级。", "misreading": "把管道铭牌吞吐全部视为目标产品净到货。", "takeaway": "批次计划、界面损失和终端接收能力都要计入。"},
+    {"mechanism": "Clean 与 dirty tanker 隔离", "why_it_matters": "海上有空船不代表有可运清洁成品油的空船。", "micro_example": "运过 crude/resid 的 tanker 改运 gasoline 需要昂贵 tank cleaning，通常不会临时切换。", "misreading": "只用全球 tanker 数量判断汽油海运替代能力。", "takeaway": "按 vessel class 与 service history 看可用船。"},
+    {"mechanism": "DRA 的局部增容", "why_it_matters": "管道可在不建新泵的情况下短期提量，但增容不是无限。", "micro_example": "少量高分子 DRA 抑制管壁湍流，原文给出 10%–40% throughput uplift。", "misreading": "认为加入 DRA 后整条供应链都同步增加 40%。", "takeaway": "下游终端、泵站和接收管线仍可能成为新瓶颈。"},
+    {"mechanism": "RVP 截止日的硬切换", "why_it_matters": "库存价值会因日期而突然分化，即使化学组成没有变化。", "micro_example": "May 1 之后终端的高 RVP 冬季汽油不能进入要求低 RVP 的夏季零售链。", "misreading": "把所有 gasoline inventory 当成全年同质供应。", "takeaway": "库存分析必须增加 season/spec 维度。"},
+    {"mechanism": "Working capacity 的分母", "why_it_matters": "罐区接近满库时，shell capacity 会高估真实缓冲。", "micro_example": "罐底 heel 无法正常泵出，95% full 通常已按扣除 heel 的 working capacity 计算。", "misreading": "用 shell capacity 减库存得到全部自由空间。", "takeaway": "进一步查未预订且与目标货物兼容的 operational capacity。"},
+    {"mechanism": "季节 yield 调整幅度有限", "why_it_matters": "炼厂能在汽油与 distillate 间调节，但不是任意转换。", "micro_example": "原文指出典型季节操作可在两类产品间移动约 2% yield，而需求摆动可达约 700 kbpd。", "misreading": "认为调高 FCC severity 就能无限满足夏季汽油需求。", "takeaway": "yield flexibility 只能吸收部分季节波动，仍需库存和进口。"},
+    {"mechanism": "低水位造成的隐性减载", "why_it_matters": "航道未完全关闭时，实际运力也可能大幅下降。", "micro_example": "2022 年 Rhine 低水位高峰时，Kaub 驳船装载约降至正常 draft 的 30%。", "misreading": "看到仍有驳船通行就判断物流正常。", "takeaway": "看每艘装载量、所需船次和 freight，而不只看是否开放。"}
+  ],
+  "cases": [
+    {
+      "title": "2005 Katrina 与 Rita：为什么释放原油不能立即补回汽油",
+      "scenario": "两场飓风冲击 Gulf Coast，使约四分之一美国 refining capacity 停运数周，并触发 emergency SPR release；全国多地零售汽油升至每加仑 3 美元以上。",
+      "background": "Gulf Coast 同时集中 offshore production、约 45% 美国炼油能力、港口和通往其他 PADD 的成品油物流。夏末仍处于汽油需求和风暴风险重叠期。",
+      "shock": "风暴同时影响 offshore crude、炼厂电力与设备、港口装卸和产品管道补货，多个可用性门一起收窄。",
+      "transmission": [
+        "平台停产和港口关闭削减炼厂原料到货",
+        "炼厂停机直接减少 gasoline 与 distillate 产出",
+        "产品物流补货受阻，East Coast 等消费地终端库存下降",
+        "SPR release 增加 crude availability，但无法替代离线炼厂装置",
+        "直到炼厂复工、质量检验、管道恢复和终端补库完成，零售紧张才真正缓解"
+      ],
+      "market_result": "原油政策库存提供缓冲，但汽油价格仍因 conversion 与 logistics shortage 上升；事件展示了 feedstock relief 与 product relief 的时间差。",
+      "lesson": "局部短缺应按供应链环节衡量，政策工具也必须与真正瓶颈匹配。",
+      "model_answer": [
+        "这不是单纯的 crude production shock；炼厂、港口和成品油运输同时受损，使合格汽油的可交付量比原油总量下降得更快。",
+        "SPR 释放的是 crude，只能帮助仍能运行并且能接收相应品级的炼厂；它不能取代停机的 conversion units，也不能让产品绕过关闭的物流节点。",
+        "判断恢复要依次追踪 refinery restart、on-spec product output、pipeline nominations 与 terminal inventory，而不能以风暴离岸或原油恢复作为终点。"
+      ]
+    },
+    {
+      "title": "RVP orphan barrel：库存没有消失，供应资格却消失了",
+      "scenario": "4 月末，一家终端仍有高 RVP 冬季汽油，而 May 1 起炼厂和终端必须满足联邦夏季 7.8 psi 或更严格的地方限值。",
+      "background": "冬季汽油可加入更多廉价高 RVP butane；夏季为减少蒸发排放，要排出 butane 并增加更贵的 alkylate 与 reformate。",
+      "shock": "截止日期把同一批物理库存从目标市场的合格供应集合中移除。",
+      "transmission": [
+        "冬季桶不能继续进入夏季零售链",
+        "终端寻找低 RVP blendstocks 进行 re-blend，或寻找出口市场",
+        "合格夏季汽油需求提前集中，on-spec premium 与 crack 上升"
+      ],
+      "market_result": "headline gasoline inventory 可能仍高，但可售夏季库存偏紧，旧规格桶折价。",
+      "lesson": "库存必须按规格和日期分层；总量不能替代 deliverability。",
+      "model_answer": [
+        "短缺对象是截止日后的 on-spec summer gasoline，而不是所有汽油分子；冬季桶仍存在，却不再拥有当地销售资格。",
+        "可行修复包括 re-blend、export 或提前降价清罐，但每种方案都需要 blendstock、终端设备、物流和时间。"
+      ]
+    }
+  ],
+  "core_model": {
+    "core_points": [
+      "先把缺口写成 product + specification + location + date，禁止只写“缺油”。",
+      "炼厂的有效能力由具体 process unit 决定；CDU 在线不代表 FCC、hydrocracker、HDT 或 blending 正常。",
+      "标准扩大正常时期的可替代性，也在紧张时期排除 off-spec 桶；合格库存小于总库存。",
+      "运输网络有方向、产品隔离、吞吐和在途时间；替代路线存在不等于能及时补足。",
+      "工作库存必须位于正确节点且可抽取，line fill、heel、战略原油和已预订罐容不是同一种缓冲。",
+      "季节性是正常基线，局部短缺通常来自换季、检修和天气在低余量窗口中的叠加。",
+      "政策工具要匹配瓶颈：原油释放不能直接修复炼厂停机或成品油管道中断。"
+    ],
+    "one_liner": "全球有多少油决定背景，正确的桶能否在正确时间穿过正确设施到达正确地点，才决定局部是否短缺。"
+  },
+  "self_checks": [
+    {"prompt": "合上页面，用五道门模型解释“全球原油库存高，但加州汽油仍可能紧张”。", "model_answer": "合格回答应依次提到 crude/refinery compatibility、California/CARB gasoline specification、PADD 5 地理隔离、产品运输能力、当季库存与截止日期，并说明总原油不能直接进入汽车。"},
+    {"prompt": "为什么一家炼厂 CDU 正常运行，jet fuel 仍可能短缺？", "model_answer": "应指出 CDU 只完成 separation；jet 产量还依赖适合的 kerosene/VGO 流、hydrocracker 或相关 conversion、hydrotreating 以及最终规格。关键装置停机时 headline throughput 会掩盖产品缺口。"},
+    {"prompt": "一批 95 RON 汽油为什么不能凭数字判断能否补充美国 87 regular？", "model_answer": "必须先统一 RON、MON 与 AKI 口径，使用 AKI=(RON+MON)/2；随后还要核对 RVP、sulfur、benzene、ethanol 与地区规则，并确认到货和终端调和时间。"},
+    {"prompt": "解释为什么 Colonial Pipeline 增加 nomination 后，纽约终端不会立刻收到更多汽油。", "model_answer": "管道产品以约 3–5 mph 前进，Gulf Coast 到 East Coast 全程约 18–20 天；同时还受 batching、上游注入、下游接收和管道剩余吞吐限制，所以调度变化存在明显在途时滞。"},
+    {"prompt": "罐区报告 90% full，为什么仍可能无法接收一船汽油？", "model_answer": "应检查剩余空间是否属于合适罐型、是否未被预订、是否能与该批规格混存，以及泊位、泵组和产品管线是否连接。working capacity 也已扣除 heel，不等同自由可接收容量。"},
+    {"prompt": "用自己的话说明 RVP orphan barrel 为什么是时间和规格共同造成的短缺。", "model_answer": "物理桶仍在终端，但截止日后高 RVP 冬季汽油失去当地夏季销售资格；若无法及时 re-blend、export 或清罐，它既不能补供应，还占用罐容，迫使市场争夺合格夏季桶。"},
+    {"prompt": "为什么飓风后释放 SPR 可能压低原油风险，却不能立即压低汽油风险？", "model_answer": "SPR 提供的是 crude feedstock；若炼厂 conversion units、供电、港口或 product pipeline 尚未恢复，额外原油无法变成并运出 on-spec gasoline。汽油恢复取决于最慢的加工和物流环节。"}
+  ],
+  "applications": [
+    {"situation": "新闻称某地区 refinery outage，但全国 crude stocks 很高", "action": "查受损 process units、目标产品 yield、区域 product stocks 与替代进口规格；不要用全国原油库存直接否定局部产品风险。"},
+    {"situation": "进入 4–6 月汽油换季窗口", "action": "跟踪 RVP deadlines、winter-grade 清库、alkylate/reformate 供应、refinery turnaround completion 和 on-spec gasoline inventory。"},
+    {"situation": "管道、海峡、港口或河道出现中断", "action": "画出原路线和替代路线，分别标 throughput、travel time、product compatibility、剩余容量与 landed cost，再判断短缺持续时间。"},
+    {"situation": "库存总量看似充足但现货升水快速上涨", "action": "把库存按 location、product、spec、working availability 与 withdrawal rate 拆开，寻找总量与 deliverability 的差异。"},
+    {"situation": "飓风进入 Gulf of Mexico 或欧洲出现极端低水位", "action": "同时更新 production、refinery operations、port/river status、pipeline nominations 和 terminal stocks，按最慢恢复环节建立多阶段情景。"}
+  ],
+  "review_prompts": [
+    "一周后：不看页面画出 feedstock → refinery units → specification → transport → terminal → consumer，并在每条连接上写一个可能瓶颈。",
+    "两周后：找一条真实炼厂停机新闻，判断受影响的是 distillation、conversion、treatment 还是 blending，并写出目标产品而非只写原油。",
+    "一个月后：任选一次 RVP 换季、飓风或河流低水位事件，用 product/spec/location/date 四元组和五道门模型写 300 字复盘。"
+  ],
+  "source_anomalies": [
+    {
+      "source": "Storage page current-events passage",
+      "issue": "同一作者页面的 2026 SPR 当期数字存在内部不一致：一段称 2026 年 5 月约 185 MMbbl、释放 220 MMbbl，后文又称 5 月 15 日 374 MMbbl、6 月 17 日约 350 MMbbl、累计释放约 65 MMbbl。",
+      "handling": "本模块不采用这些互相冲突的当期数值；仅保留不依赖该冲突的库存与物流机制。战略储备规模和 2026 事件数字移交后续全球供应模块，并应在那里回查权威时序数据。"
+    },
+    {
+      "source": "Storage page capacity captions",
+      "issue": "SPR design capacity 在同页出现 714 MMbbl 与图注 692 MMbbl 两种口径。",
+      "handling": "Module 03 不以该数值支撑任何结论，只讲战略原油不能直接替代离线炼厂和产品物流。"
+    }
+  ],
+  "source_coverage": [
+    {"source": "Refining", "section": "Feedstock, Slate, and Refinery Gain", "status": "covered", "lesson_id": "refinery-config"},
+    {"source": "Refining", "section": "The Four Stages of Refining", "status": "covered", "lesson_id": "refinery-config"},
+    {"source": "Refining", "section": "Separation: The Crude Distillation Unit", "status": "covered", "lesson_id": "refinery-config"},
+    {"source": "Refining", "section": "Conversion: Where Margin Is Made", "status": "covered", "lesson_id": "refinery-config"},
+    {"source": "Refining", "section": "Combining: Alkylation and Polymerization", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Refining", "section": "Modifying: Catalytic Reforming, Isomerization, Ethers", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Refining", "section": "Treatment: Hydroprocessing, Amine, Merox, Claus", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Refining", "section": "Bitumen, Lubricants, Waxes, and Grease", "status": "deferred", "defer_reason": "非燃料产品工艺不直接解释本模块的局部燃料短缺，移交产业纵深炼化专题。"},
+    {"source": "Refining", "section": "Blending: Where Finished Product Is Born", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Refining", "section": "Refinery Types and the Nelson Complexity Index", "status": "covered", "lesson_id": "refinery-config"},
+    {"source": "Refining", "section": "US Refining Geography and the PADDs", "status": "covered", "lesson_id": "five-gates"},
+    {"source": "Refining", "section": "Turnaround Season", "status": "covered", "lesson_id": "season-cycle"},
+
+    {"source": "Standards", "section": "Why Standards Matter", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Standards", "section": "Standards-Setting Organizations", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Standards", "section": "Crude Oil Tests", "status": "covered", "lesson_id": "refinery-config"},
+    {"source": "Standards", "section": "Octane: RON, MON, and AKI", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Standards", "section": "Gasoline Specifications", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Standards", "section": "Diesel Specifications", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Standards", "section": "Jet Fuel Specifications", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Standards", "section": "Residual and Bunker Fuel", "status": "covered", "lesson_id": "spec-frag"},
+
+    {"source": "Transporting Oil", "section": "Five Methods of Moving Oil", "status": "covered", "lesson_id": "transport-net"},
+    {"source": "Transporting Oil", "section": "Tanker Ships", "status": "covered", "lesson_id": "transport-net"},
+    {"source": "Transporting Oil", "section": "Chartering and Worldscale", "status": "covered", "lesson_id": "transport-net"},
+    {"source": "Transporting Oil", "section": "Pipelines", "status": "covered", "lesson_id": "transport-net"},
+    {"source": "Transporting Oil", "section": "Crude by Rail and the Bakken Boom", "status": "covered", "lesson_id": "transport-net"},
+    {"source": "Transporting Oil", "section": "Trucking: The Last Mile", "status": "covered", "lesson_id": "transport-net"},
+    {"source": "Transporting Oil", "section": "IMO 2020 and the Transformation of Bunker Fuel", "status": "covered", "lesson_id": "spec-frag"},
+    {"source": "Transporting Oil", "section": "Shipping Chokepoints", "status": "covered", "lesson_id": "transport-net"},
+    {"source": "Transporting Oil", "section": "LNG Carriers in Brief", "status": "deferred", "defer_reason": "LNG 船的 -162°C 储运体系属于天然气/LNG 专题，不用于本模块的液体燃料局部短缺主线。"},
+    {"source": "Transporting Oil", "section": "Trading Hubs", "status": "covered", "lesson_id": "storage-local"},
+    {"source": "Transporting Oil", "section": "Incoterms and Delivery Pricing", "status": "deferred", "defer_reason": "FOB/CIF/DDP 的合同风险分配移交价格形成与国际贸易专题；本模块只在 logistics boundary 中提醒 landed cost。"},
+
+    {"source": "Storage", "section": "Why Store Oil?", "status": "covered", "lesson_id": "storage-local"},
+    {"source": "Storage", "section": "Categories of Storage", "status": "covered", "lesson_id": "storage-local"},
+    {"source": "Storage", "section": "Tank Types", "status": "covered", "lesson_id": "storage-local"},
+    {"source": "Storage", "section": "Cushing, Oklahoma: The Pipeline Crossroads", "status": "covered", "lesson_id": "storage-local"},
+    {"source": "Storage", "section": "Salt Caverns", "status": "covered", "lesson_id": "storage-local"},
+    {"source": "Storage", "section": "The US Strategic Petroleum Reserve", "status": "deferred", "defer_reason": "机制性结论已用于 compound-shock，但完整历史与当期数字移交全球供应模块；原页 2026 数字互相冲突，已登记 source_anomalies。"},
+    {"source": "Storage", "section": "International Strategic Reserves", "status": "deferred", "defer_reason": "国家储备规模、IEA 协调机制与中国储备属于全球供应能力模块；本节当期数字还需权威来源复核。"},
+    {"source": "Storage", "section": "Iran’s Floating Shadow Storage", "status": "deferred", "defer_reason": "制裁、shadow fleet 与 2026 海峡事件属于全球供应和地缘专题，不作为本模块稳定机制的事实底座。"},
+    {"source": "Storage", "section": "The Contango Storage Play", "status": "deferred", "defer_reason": "完整 cash-and-carry、cost of carry 和 floating storage 逻辑属于 Module 05 库存与期限结构。"},
+    {"source": "Storage", "section": "Inventory Reports and the Five-Year Range", "status": "covered", "lesson_id": "storage-local"},
+    {"source": "Storage", "section": "AI and the 30 Percent Inventory Reduction", "status": "deferred", "defer_reason": "AI 库存效率估计依赖第三方行业披露，且不直接解释单次局部短缺；移交研究工作台专题并要求独立核验。"},
+    {"source": "Storage", "section": "Where Storage Sits in the Value Chain", "status": "covered", "lesson_id": "storage-local"},
+
+    {"source": "Seasonality", "section": "Four Overlapping Calendars", "status": "covered", "lesson_id": "season-cycle"},
+    {"source": "Seasonality", "section": "Gasoline: Memorial Day to Labor Day", "status": "covered", "lesson_id": "season-cycle"},
+    {"source": "Seasonality", "section": "Summer Grade and Winter Grade: The RVP Calendar", "status": "covered", "lesson_id": "season-cycle"},
+    {"source": "Seasonality", "section": "Heating Oil, Propane, and the HDD Framework", "status": "covered", "lesson_id": "season-cycle"},
+    {"source": "Seasonality", "section": "Natural Gas Storage: Inject and Withdraw", "status": "deferred", "defer_reason": "天然气注采季和 LNG 跨市场联动移交需求/LNG 模块；本模块只保留 HDD 作为季节需求方法。"},
+    {"source": "Seasonality", "section": "The Refinery Turnaround Calendar", "status": "covered", "lesson_id": "season-cycle"},
+    {"source": "Seasonality", "section": "Atlantic Hurricanes", "status": "covered", "lesson_id": "compound-shock"},
+    {"source": "Seasonality", "section": "North Sea Storms and Baltic Ice", "status": "covered", "lesson_id": "compound-shock"},
+    {"source": "Seasonality", "section": "Rivers and Canals: Low Water Bottlenecks", "status": "covered", "lesson_id": "compound-shock"},
+    {"source": "Seasonality", "section": "Why Crude Oil Itself Is Less Seasonal Than Its Products", "status": "covered", "lesson_id": "season-cycle"}
+  ],
+  "sources": [
+    {"label": "Oil 101 Chapter 7: Refining", "url": "https://oil101.morgandowney.com/chapters/refining", "coverage": "炼厂四阶段、关键装置、产品收率、复杂度、PADD 与检修"},
+    {"label": "Oil 101 Chapter 8: Standards", "url": "https://oil101.morgandowney.com/chapters/standards", "coverage": "标准组织、octane/cetane、汽柴油航煤与船燃规格"},
+    {"label": "Oil 101 Chapter 11: Transporting Oil", "url": "https://oil101.morgandowney.com/chapters/transporting-oil", "coverage": "油轮、Worldscale、管道、铁路、卡车、瓶颈与交易枢纽"},
+    {"label": "Oil 101 Chapter 12: Storage", "url": "https://oil101.morgandowney.com/chapters/storage", "coverage": "库存用途、罐型、working capacity、line fill、Cushing 与库存报告"},
+    {"label": "Oil 101 Chapter 13: Seasonality", "url": "https://oil101.morgandowney.com/chapters/seasonality", "coverage": "驾驶/采暖季、RVP 日历、turnaround、飓风、风暴与低水位"}
+  ]
+}

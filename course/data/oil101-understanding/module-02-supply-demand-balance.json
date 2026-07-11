@@ -1,0 +1,1035 @@
+{
+  "id": "02-supply-demand-balance",
+  "variant": "understanding",
+  "reading": "02",
+  "reading_title": "供需平衡如何形成",
+  "title": "原油供需不是两条曲线，而是一套不断换挡的物理系统",
+  "deck": "从地下资源、油井递减和补钻节奏出发，沿着炼厂、成品油与季节日历走到当期平衡，学会区分储量、产能、产量、需求和库存变化。",
+  "reading_intent": "读完这一模块，你应能解释一桶尚在地下的油为何不能被算作今天的供应，炼厂为何是原油需求与成品油需求之间的翻译器，以及季节、检修、天气和产品规格怎样令同一份年度供需表在不同月份呈现完全不同的松紧。你还应能用递减率、储量分类和产品结构检查新闻中的供需叙事，而不是只看一个总产量或总消费数字。",
+  "opening_question": "如果一个国家拥有巨量储量、美国页岩井可以快速投产、而夏季汽油需求又是可预期的，为什么市场仍会突然短缺，或者在没有新发现的情况下重新转为宽松？",
+  "quick_answer": [
+    "当期供应是已经取得权利、发现、开发、接入设施并维持压力后的实际流量，不是地下资源或账面储量。",
+    "油井天然递减，所以维持产量本身就需要持续投资；页岩井前端产量高、首年递减快，使补钻速度成为供应弹性的核心。",
+    "消费者购买的是汽油、柴油、航煤、LPG 等产品，炼厂通过加工量和产品收率把这些终端需求翻译为原油需求。",
+    "季节性首先发生在产品、规格和物流层面；汽油夏季、取暖燃料冬季、炼厂检修肩季相互抵消，因此原油总需求的季节性反而较平。",
+    "储量、产能和产量是三个不同时间尺度；R/P、RRR、PDP/PUD 都是有条件的会计或工程指标，不能单独预测近期供给。"
+  ],
+  "learning_objectives": [
+    "用流量恒等式拆解供需平衡，并识别炼厂、库存和物流在原油与成品油之间的作用",
+    "从勘探成功、开发周期、油藏压力和递减曲线解释供应为何具有时滞与惯性",
+    "区分 conventional 与 shale 的递减和补钻逻辑，判断产量维持所需的资本强度",
+    "从汽油、柴油、航煤、LPG 等产品需求反推炼厂运行与原油采购",
+    "把季节日历、RVP 规格、检修和天气冲击放进同一套月度平衡框架",
+    "区分 resources、reserves、capacity 与 production，并正确使用 P90、PUD、R/P 和 RRR"
+  ],
+  "main_thread": "原油平衡的起点不是抽象的供应曲线，而是一个有门槛、有时滞、会自然衰减的物理生产系统。地下先要同时具备 source rock、成熟、迁移、reservoir、trap、seal 与正确 timing，企业还要取得矿权、完成勘探、钻井、完井和地面接入，油才会从资源变成可销售流量。井一旦投产，油藏压力下降，产量沿 decline curve 下滑；因此今天的总供应等于现有井的递减后产量，加上新井、新项目和提高采收率带来的增量，再减去事故、天气、政策和设施约束造成的损失。需求端也不能从“人们需要油”直接跳到原油采购。终端购买的是汽油、柴油、航煤、LPG、船燃和其他产品，炼厂根据产品利润、规格与装置约束改变 crude runs 和 yield，才把产品需求翻译成原油需求。夏季汽油旺季、冬季取暖需求、春秋检修、RVP 换标、飓风与低水位又让月度流量偏离年度平均。当供应流入大于炼厂加工、出口与其他流出时，差额进入库存；反之库存被消耗。于是库存变化是供需错配留下的结果，而储量只是未来可能转化为供应的有条件资产。真正的分析顺序应是：先确认比较的是资源、储量、产能还是实际产量，再拆现有井递减与新增供应，然后从产品需求推炼厂加工，最后加入季节、规格、物流和政策约束，检查差额将落到哪个地点、哪种产品和哪个月份。",
+  "mental_model": "把市场想成一条有漏损、有缓冲、有换挡的管线：地下资源经过开发闸门成为产能，产能扣除递减与中断形成产量；成品油需求经过炼厂翻译形成原油需求；两端不同步的净差进入或离开库存。",
+  "mental_model_detail": {
+    "equation": "库存变化 = 原油供应流入 - 原油加工与其他流出；期末库存 = 期初库存 + 净流入",
+    "supply_bridge": "当期产量 = 现有井递减后产量 + 新井/新项目增量 + improved recovery 增量 - 计划与非计划中断",
+    "demand_bridge": "原油需求主要由炼厂 crude runs 决定；crude runs 又取决于成品油需求、产品价格、收率、规格、检修和装置可用率",
+    "decision_rule": "永远先问时间尺度与物理层级：这是地下资源、账面储量、名义产能，还是今天真正流过计量表的产量？这是终端产品需求，还是炼厂对原油的采购需求？"
+  },
+  "formulas": [
+    {
+      "name": "Teaching balance identity",
+      "formula": "Delta Inventory = Supply Inflows - Demand/Other Outflows",
+      "interpretation": "这是组织分析的恒等式，不自动告诉你哪一项发生变化；必须继续拆生产、进口、出口、炼厂加工和物流时点。"
+    },
+    {
+      "name": "Original Oil in Place",
+      "formula": "OOIP (bbl) = (7758 x A x h x phi x (1 - Sw)) / Bo",
+      "interpretation": "A 为英亩、h 为净油层厚度英尺、phi 为孔隙度、Sw 为束缚水饱和度、Bo 为地层体积系数；7758 是一 acre-foot 的桶数。OOIP 不是 reserves。"
+    },
+    {
+      "name": "Heating Degree Days",
+      "formula": "HDD = max(0, 65 F - daily average temperature)",
+      "interpretation": "日均 40 F 贡献 25 HDD，日均 70 F 贡献 0；它把天气转为取暖负荷的可累计尺度。"
+    },
+    {
+      "name": "Reserve Replacement Ratio",
+      "formula": "RRR = reserves added through extensions, discoveries, revisions and acquisitions / production",
+      "interpretation": "高于 100% 表示账面储量增长，长期低于 100% 表示储量基础被消耗，但收购和价格修订也会改变分子。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "balance-as-physical-flow",
+      "title": "先把供需表还原成一桶油的物理交接",
+      "concept": {
+        "en": "Physical supply-demand balance",
+        "cn": "物理供需平衡",
+        "definition": "在指定时间与地点内，可销售原油流入与炼厂加工、出口及其他流出之间的净差，最终表现为库存变化。"
+      },
+      "explanation": "Oil 101 把产业链分为 upstream、midstream 和 downstream，并强调每次交接都会发生计量、品质确认、定价与风险转移。上游把油从油藏带到井口，中游负责 gathering、管道、油轮与批量储存，下游把原油炼成产品并送到终端。因此所谓“全球供需”是大量局部物理流量相加后的结果。生产增加若被管道瓶颈困在产区，不能立刻等同于炼厂可获得供应；汽油销量增加也要先经过炼厂提高加工量或改变产品收率，才转化为新增原油需求。库存是这些节奏不同步时的缓冲，而不是与供给、需求并列的第三种独立力量。分析时应先选定边界：全球、国家、港口还是炼厂；原油还是某种成品油；日、月还是年。边界不同，同一事件可能一端累库、另一端短缺。",
+      "mechanism_chain": [
+        "油田产量经过 gathering、处理和运输进入可计量的商业流",
+        "炼厂根据装置可用率和成品油利润决定 crude runs",
+        "供应流入与炼厂加工、出口等流出在同一地点和周期内相减",
+        "净流入为正时库存增加，净流入为负时库存下降",
+        "若物流或品质不匹配，整体看似平衡也可能出现局部短缺"
+      ],
+      "worked_example": {
+        "setup": "某沿海地区原油生产稳定，但炼厂进入秋季检修，同时一批出口油轮延迟离港。",
+        "steps": [
+          "炼厂加工量下降，使原油流出减少；出口延迟又让港口流出进一步减少。",
+          "生产未变的情况下，净流入转正，港口与炼厂原油库存上升。",
+          "这次累库来自加工和出口时点，而不是油井突然增产或终端需求必然崩塌。"
+        ],
+        "answer": "库存变化告诉我们平衡结果，却不能替代流量拆解；必须寻找生产、加工、贸易和物流中的具体来源。"
+      },
+      "practitioner_lens": "看到供需数字先写清 geography、grade、time window 和单位，再谈宽松或紧张。",
+      "misreading": "把全球总量相等理解为每个地区、每种品质和每个月都能即时匹配，忽略交接点的物流与规格限制。",
+      "boundary": "这一恒等式适合组织物理流量，但不能单独解释价格变化；价格还受预期、库存位置、品质和金融持仓影响。"
+    },
+    {
+      "id": "resource-to-flow",
+      "title": "地下有油，不等于市场今天有供应",
+      "concept": {
+        "en": "Resource-to-production conversion",
+        "cn": "资源到产量的转化链",
+        "definition": "地质资源必须依次通过权利、发现、商业性、开发、接入和运营门槛，才成为当期可销售产量。"
+      },
+      "explanation": "勘探供应的第一道门甚至不是钻头，而是法律权利。企业要获得地表和矿权许可；美国、加拿大允许私人拥有矿权，在多数国家地下资源归政府。之后，source rock、成熟、migration、reservoir rock、trap、seal 与 timing 七个低概率地质事件必须同时成立。Oil window 大致位于 7,500 到 15,000 英尺、60 到 120 摄氏度；更深进入 gas window。即使 2D、3D 和 4D seismic 改善了地下成像，未勘探地区 wildcat well 的成功率仍只有约 10% 到 20%。发现后还要钻井、套管、完井、建设处理设施和运输连接。海上开发成本约为陆上的 4 到 5 倍，但油田更大、周期更长。由此可见，价格上涨可以提高开发意愿，却不能把资源瞬间变成流量；供应响应取决于项目所处阶段、合同结构和基础设施。",
+      "mechanism_chain": [
+        "政府或矿权所有者授予 lease、PSA、service contract 或 JV 等开发权利",
+        "地震勘探与钻井验证七个地质条件是否共同成立",
+        "发现经过商业评价、资本批准、完井和地面设施建设",
+        "油井接入 gathering、管道或海上外输系统后形成可销售产量",
+        "长周期项目使现价冲击与实际新增供应之间存在显著时滞"
+      ],
+      "worked_example": {
+        "setup": "一个新区有漂亮的 3D seismic 构造图，但尚未钻过 wildcat well，也没有管道。",
+        "steps": [
+          "团队先取得矿权并钻探，确认构造中是否真的存在可流动油气；原文指出 wildcat 成功率仍约 10% 到 20%。",
+          "若发现商业油藏，还需决定合同与资本结构，完成井、处理设施和外输连接。",
+          "在这些步骤完成前，该构造可以是 lead、prospect 或 resource，却不能计入当期市场供应。"
+        ],
+        "answer": "资源规模回答地下可能有什么，生产能力回答何时能稳定流出；两者之间隔着概率、资本、时间和设施。"
+      },
+      "practitioner_lens": "评估新增供应时，列出项目 stage、first-oil date、剩余 capex、外输条件与运营方，而不是只报发现规模。",
+      "misreading": "把大型发现公告或高 OOIP 数字直接加到下一年度供应预测中，跳过商业性、回收率和开发周期。",
+      "boundary": "本节解释物理转化门槛，不等于完整项目经济学；税制、成本、融资和油价情景仍会改变最终投资决定。"
+    },
+    {
+      "id": "decline-and-reinvestment",
+      "title": "供应不是静态产能：每口井都在递减",
+      "concept": {
+        "en": "Decline curve and replacement drilling",
+        "cn": "递减曲线与补偿性钻井",
+        "definition": "油井投产后随压力和流动状态变化而下降，企业必须用新井、人工举升或提高采收率抵消自然递减。"
+      },
+      "explanation": "油并非位于地下湖泊，而是存在岩石孔隙中，由油藏压力推向低压井筒。每生产一桶都会降低压力，过快开采可能永久损害最终采收。全球平均 recovery factor 约 30%，超过 60% 很少见。初期 primary recovery 依赖天然压力，压力下降后可用 pumpjack、ESP 或 gas lift；按井数，美国约 50 万口生产井中超过 90% 使用某种人工举升，但大量桶数仍来自少数高产自然流井。secondary recovery 用水或气维持压力，tertiary/EOR 再用热、气体或化学方法改变黏度、混相或波及效率。供需分析最重要的是 decline：常规井通常每年下降 5% 到 15%，可生产 20 到 30 年；页岩井首年下降 60% 到 80%，第二年再降 30% 到 40%，多数终身产量在前 24 个月实现。页岩因此响应快，却必须持续钻井才能保持平台产量。",
+      "mechanism_chain": [
+        "投产后采出流体使油藏压力与近井流动能力下降",
+        "单井产量沿 exponential、hyperbolic 或 harmonic decline curve 下滑",
+        "人工举升、waterflood 或 EOR 延缓下降并提高可采比例",
+        "若新增井和提高采收率增量小于 legacy decline，油田总产量仍会下降",
+        "页岩高首年递减令钻机、完井队和资本预算迅速传导到总供应"
+      ],
+      "worked_example": {
+        "setup": "两个教学井都从 1,000 bpd 起产：一个是页岩水平井，一个是常规垂直井。",
+        "steps": [
+          "页岩井首年大约损失三分之二产率，之后进入较长低产尾部；常规井每年只下降约 6% 到 8%。",
+          "若公司只停止一年补钻，页岩资产组合会快速暴露 legacy decline，而常规资产的下降更缓。",
+          "原文的 120 个月示例中，常规井累计产量反而超过页岩井，说明初始产率不能替代全周期评价。"
+        ],
+        "answer": "页岩的短周期提高了近端供应弹性，也制造了补钻 treadmill；预测总产量必须同时计算新井 cohort 与旧井递减。"
+      },
+      "practitioner_lens": "公司宣称产量增长时，拆成 base decline、new wells、acquisitions 和 improved recovery，避免把收购当作有机增量。",
+      "misreading": "看到钻井效率或单井初始产率上升，就假定总供应会永久增长，忽略高递减和优质库存消耗。",
+      "boundary": "递减率不是固定常数；井型、地质、节流、完井设计和采用的 Arps b-factor 都会改变预测。"
+    },
+    {
+      "id": "products-to-crude-demand",
+      "title": "消费者不买原油：炼厂把产品需求翻译成 crude runs",
+      "concept": {
+        "en": "Product-led crude demand",
+        "cn": "成品油驱动的原油需求",
+        "definition": "终端对不同石油产品的消费，经由炼厂加工量、产品收率和规格约束，转化为对特定原油的需求。"
+      },
+      "explanation": "一桶原油被炼成从轻气体到 petcoke 的一组产品，不存在单一、同质的“石油需求”。2024 年美国约 20.2 Mbpd 的产品需求中，汽油约 8.9 Mbpd、占 44%；distillate 约 3.8 Mbpd、占 19%；LPG/NGL 约 2.8 Mbpd、占 14%；jet fuel 约 1.7 Mbpd、占 8%。炼厂会根据各产品裂解利润与装置能力调整运行。汽油本身还是六到八种 blendstocks 的配方；normal butane 便宜、辛烷值高但 RVP 很高，冬季可加入，夏季必须由更昂贵的 alkylate 和 reformate 替代。柴油、航煤、船燃又有各自 sulfur、freeze point 与 flash point 标准。需求变化因此不仅改变总加工量，还改变轻重产品价值和原油品质偏好。某一产品短缺可以在原油总体供应充足时发生，也可能迫使炼厂增开特定装置而非简单多买任何原油。",
+      "mechanism_chain": [
+        "驾驶、航空、取暖、航运和石化活动形成分产品终端需求",
+        "产品价格与 crack spread 向炼厂传递边际价值",
+        "炼厂在装置、原油品质和规格约束下调整 crude runs 与 yield",
+        "加工量变化转化为原油采购需求，收率变化重排不同产品供应",
+        "若产品无法互换或跨区调运，产品短缺与原油宽松可同时存在"
+      ],
+      "worked_example": {
+        "setup": "进入美国夏季换标期，终端汽油需求上升，同时低 RVP 规则限制配方。",
+        "steps": [
+          "炼厂和终端必须减少 RVP 约 52 psi 的便宜 butane，增加低 RVP 的 alkylate 与 reformate。",
+          "汽油生产成本和低 RVP blendstock 的边际价值上升，汽油 crack 可能走强。",
+          "炼厂若提高利用率来补充合规汽油，会增加 crude runs；但若 alkylate 等瓶颈约束，单纯多买原油也未必解决短缺。"
+        ],
+        "answer": "原油需求由产品利润推动，却受炼厂配置限制；判断需求强弱必须同时看产品量、规格和装置。"
+      },
+      "practitioner_lens": "读需求报告时至少拆 gasoline、distillate、jet、LPG，并同步观察 refinery utilization 与 product cracks。",
+      "misreading": "把总 petroleum demand 当作同质数字，认为任何原油都能以固定比例变成市场最缺的产品。",
+      "boundary": "产品 supplied 常被用作需求代理，但会受库存、出口与统计时点影响；它不总等于当期最终消费。"
+    },
+    {
+      "id": "seasonal-balance",
+      "title": "四套日历叠加：年度平衡不等于每个月平衡",
+      "concept": {
+        "en": "Seasonal balance",
+        "cn": "季节性供需平衡",
+        "definition": "驾驶、取暖、炼厂检修和天气物流四类周期共同改变产品需求、加工量和局部供应。"
+      },
+      "explanation": "Oil 101 提出四套重叠日历：美国 driving season 从 4 月到 9 月、7 至 8 月高峰；heating season 从 10 月到次年 3 月、12 至 2 月高峰；炼厂多在 2 至 4 月和 9 至 10 月肩季检修；大西洋飓风季为 6 月 1 日至 11 月 30 日，严重风暴集中在 8 月中至 10 月中。汽油正常年份谷峰相差约 8% 到 10%，月度指数从 1 月 0.93 到 8 月 1.08；9 Mbpd 汽油池上 8% 的变化约等于 700,000 bpd。与此同时炼厂利用率由 3 月约 86% 升到 7 月约 95%，美国 crude throughput 夏季约 17 Mbpd，秋季检修时下降约 1 Mbpd。产品季节峰值、检修低谷和天气冲击相互抵消，使原油本身的季节性小于单个产品。季节性应被当作基线，用实际天气和运行偏差修正，而不是机械预测。",
+      "mechanism_chain": [
+        "夏季驾驶或冬季取暖令特定产品需求偏离年均值",
+        "炼厂在旺季前备货，并在肩季安排 turnaround",
+        "利用率和产品 yield 的变化改变当月 crude runs",
+        "RVP 截止日期、飓风、冰情与低水位进一步约束合规产品和物流",
+        "多个产品周期相互抵消后，原油 flat-price 季节性通常弱于 product cracks"
+      ],
+      "worked_example": {
+        "setup": "8 月美国汽油需求处于高位，墨西哥湾出现向炼化走廊移动的飓风。",
+        "steps": [
+          "正常季节基线已要求炼厂高利用率运行，可用闲置产能较少。",
+          "风暴若先关闭海上油田会减少原油供应；若洪水进一步关闭炼厂，则原油需求也会下降而汽油供应更紧。",
+          "因此同一飓风可能压低局部原油价差却推高 RBOB 和 gasoline crack，方向取决于生产与炼化受损的相对程度。"
+        ],
+        "answer": "天气不是单一供应冲击；必须沿上游、炼厂、管道和产品库存分别追踪，才知道平衡落在哪里。"
+      },
+      "practitioner_lens": "每月先写 normal seasonal baseline，再列 current deviation：HDD、利用率、RVP 时点、风暴路径与物流水位。",
+      "misreading": "用“夏季利多油价、冬季也利多油价”的口号代替产品分解，忽略不同季节峰值在原油层面会互相抵消。",
+      "boundary": "季节平均会被疫情、战争、异常天气和永久性需求变化打破；历史月份均值不是无条件交易信号。"
+    },
+    {
+      "id": "reserves-capacity-production",
+      "title": "储量、产能与产量：三个不能互换的数字",
+      "concept": {
+        "en": "Resources, reserves, capacity and production",
+        "cn": "资源、储量、产能与产量",
+        "definition": "资源是技术可采潜力，储量是当前技术与经济条件下可商业开采的子集，产能是设施可达到的流量，产量是实际流量。"
+      },
+      "explanation": "OOIP 是地下原始油量，resources 是技术上可采部分，reserves 再要求在现行价格、技术与合同条件下经济可产。Proved/P90 至少有 90% 概率达到所报可采量，probable/P50 约 50%，possible/P10 约 10%；1P、2P、3P 的口径不同。美国 proved reserves 还按开发状态分 PDP、PDNP 与 PUD，其中 PUD 必须计划在入账后五年内开发。价格、技术或计划变化可令储量在没有任何地下物理变化时增减。原文 OOIP 示例用 A=1,000 acres、h=50 ft、孔隙度 0.20、Sw=0.25、Bo=1.2，算得约 48.5 million bbl；再乘常规 primary+waterflood 约 30% 回收率，才接近可采量。R/P 只是当前储量除以当前年产量的快照，不是“还能生产多少年”的预测；美国约 15 年与委内瑞拉大于 300 年的差异同时包含会计、经济性、品质和产量水平。",
+      "mechanism_chain": [
+        "地质与工程数据估算 OOIP 和技术可采 resources",
+        "价格、技术、合同与开发计划筛出可入账 reserves",
+        "钻井和设施投资把 PUD 转为 PDP 与实际 capacity",
+        "运营、配额、维护和需求决定 capacity 中有多少成为 production",
+        "价格或计划变化可先改变储量账面值，随后才可能改变投资与未来产量"
+      ],
+      "worked_example": {
+        "setup": "一个油田采用原文 volumetric 输入：1,000 acres、50 ft 净厚度、20% 孔隙度、25% 束缚水、Bo 1.2。",
+        "steps": [
+          "代入 OOIP 公式得到约 48.5 million bbl，这是油藏中原始油量。",
+          "若采用约 30% recovery factor，工程可采量约为 14.6 million bbl，仍需通过经济与分类规则确认储量。",
+          "即使全部被列为 reserves，也不会在一年内流出；井数、设施、压力管理和开发计划决定生产曲线。"
+        ],
+        "answer": "从 OOIP 到当期产量至少经过回收率、经济性、分类、资本与生产节奏五层过滤。"
+      },
+      "practitioner_lens": "看到储量增长时拆 extensions/discoveries、improved recovery、purchases/sales 和 revisions，并检查 PDP 比例。",
+      "misreading": "把 proved reserves 当成装在地面油罐里的现货，或用 R/P 机械倒计时一个国家何时耗尽。",
+      "boundary": "储量框架受 SEC、PRMS、NI 51-101 等制度影响；跨国比较前必须确认定义、价格假设和审计质量。"
+    },
+    {
+      "id": "control-and-concentration",
+      "title": "谁控制边际桶：所有权、集中度与中断位置",
+      "concept": {
+        "en": "Supply control and concentration",
+        "cn": "供应控制与基础设施集中",
+        "definition": "市场弹性取决于边际产能由谁控制、能否被调度，以及生产和炼化设施是否集中在同一脆弱区域。"
+      },
+      "explanation": "全球产量的大部分由 National Oil Companies 控制：OPEC 全部产量以及约三分之一 non-OPEC 产量属于 NOC 体系，supermajors 在 2026 年仅控制约 12% 全球原油产量。OPEC+ 的配额覆盖约 40% 全球产量，因此政治决策可改变可用流量；但配额、名义产能和实际产量仍需分开。另一类集中风险来自基础设施。墨西哥湾约占美国原油生产 15%，而沿岸走廊集中约 45% 美国炼化产能。Katrina 与 Rita 曾令约四分之一美国炼化产能停运数周，Harvey 令约 23% 产能离线。若中断主要打击炼厂，原油可能因失去买方而局部宽松，成品油却紧张；若只打击海上生产，原油供应先收缩。物理贸易商、管道和终端可以跨区搬运桶，但水位、冰情、港口或运力会限制套利速度。供需弹性因此不是一个全球常数，而是控制权、闲置能力和连接性的组合。",
+      "mechanism_chain": [
+        "NOC、IOC、独立生产商和 OPEC+ 分别控制不同性质的现有与潜在供应",
+        "配额、资本纪律或政治决策改变可投放市场的边际桶",
+        "区域基础设施集中使天气或事故同时影响多个交接点",
+        "贸易商与中游资产尝试通过价差搬运原油和产品",
+        "当港口、管道、河流或炼厂形成瓶颈时，局部平衡与全球总量脱钩"
+      ],
+      "worked_example": {
+        "setup": "一场风暴路径指向路易斯安那，海上生产与沿岸炼厂都可能停运。",
+        "steps": [
+          "先分别估计受威胁的 offshore bpd 与 refinery capacity，而不是合成一个‘美国石油供应’数字。",
+          "若炼厂关闭比例更大，原油 runs 降幅可能超过上游 shut-in，区域原油库存上升而汽油供应下降。",
+          "再检查 Colonial Pipeline、LOOP、港口和其他地区炼厂能否替代；替代能力决定冲击持续时间。"
+        ],
+        "answer": "方向取决于供应链哪一段受损最多；基础设施地图比单一风暴等级更接近平衡答案。"
+      },
+      "practitioner_lens": "事件分析用 exposure map：production、refining、storage、pipeline、port 各列数量、恢复时间和替代路线。",
+      "misreading": "把 OPEC+ 配额、公司 reserves 或地区名义 capacity 直接当作可立即投放的无摩擦供应。",
+      "boundary": "所有权与集中度说明潜在控制力，但实际行为还受财政需求、制裁、合同、技术状态与价格策略影响。"
+    }
+  ],
+  "figures": [
+    {
+      "id": "seven-geological-events",
+      "lesson_id": "resource-to-flow",
+      "src": "assets/figures/module-02/ch06-seven-events.png",
+      "alt": "七个连续地质事件构成商业原油发现：source rock、maturation、migration、reservoir rock、trap、seal 与 timing",
+      "reading_guide": "从左到右逐关阅读，不要把它看成一张储量分布图。每一关都是必要但不充分条件：即使前六项都成立，形成与圈闭的时间错配仍可能让油气逸散；地质成功之后还未包含矿权、钻井经济性和外输设施。",
+      "caption": "商业发现需要七个低概率地质事件连续对齐；任何一环失败都可能没有可商业生产的油，这正是新增供应无法由资源面积直接推算的原因。",
+      "reference": {
+        "label": "Oil 101, Chapter 6, Figure 6-2: Seven low-probability geological events",
+        "url": "https://oil101.morgandowney.com/chapters/exploration-production",
+        "asset_url": "https://oil101.morgandowney.com/images/ch06-seven-events.png",
+        "accessed": "2026-07-11"
+      }
+    }
+  ],
+  "figure_candidates": [],
+  "comparison_tables": [
+    {
+      "title": "四种经常被混为一谈的供应数字",
+      "headers": [
+        "层级",
+        "它回答的问题",
+        "成为当期供应前还缺什么",
+        "典型误读"
+      ],
+      "rows": [
+        [
+          "OOIP / Resources",
+          "地下可能有多少、技术上可能采多少",
+          "回收率、经济性、权利与开发",
+          "发现大就等于马上增产"
+        ],
+        [
+          "Reserves",
+          "当前条件下可商业生产多少",
+          "资本、井和设施、生产计划",
+          "把 proved 当现货"
+        ],
+        [
+          "Production capacity",
+          "设施在给定条件下最多能流多少",
+          "运营决策、配额、维护与买方",
+          "名义产能等于实际出口"
+        ],
+        [
+          "Production",
+          "本期实际流过计量点多少",
+          "运输与炼厂吸收才能进入目标市场",
+          "全国增产等于每地都宽松"
+        ]
+      ]
+    },
+    {
+      "title": "常规井与页岩井的供给响应",
+      "headers": [
+        "维度",
+        "Conventional well",
+        "Shale horizontal well",
+        "对平衡的含义"
+      ],
+      "rows": [
+        [
+          "典型递减",
+          "约 5%-15%/年",
+          "首年约 60%-80%，第二年 30%-40%",
+          "页岩需要持续补钻"
+        ],
+        [
+          "生产寿命",
+          "常见 20-30 年",
+          "多数终身油量集中前 2-3 年",
+          "页岩近端弹性高、远端基础脆弱"
+        ],
+        [
+          "项目节奏",
+          "开发慢、单项目规模较大",
+          "单井周期短、可分批决策",
+          "价格变化传导速度不同"
+        ],
+        [
+          "核心预测变量",
+          "大项目 first oil 与 plateau",
+          "rig/completion pace、IP 与 base decline",
+          "不能用同一供给曲线描述"
+        ]
+      ]
+    },
+    {
+      "title": "美国油品季节日历",
+      "headers": [
+        "周期",
+        "主要月份",
+        "直接影响",
+        "原油层面的翻译"
+      ],
+      "rows": [
+        [
+          "Driving season",
+          "4-9 月，7-8 月峰值",
+          "汽油需求与低 RVP blendstock 紧张",
+          "旺季前后 crude runs 提高"
+        ],
+        [
+          "Heating season",
+          "10-3 月，12-2 月峰值",
+          "heating oil、propane 与 kerosene 需求",
+          "炼厂转向 middle distillates"
+        ],
+        [
+          "Turnaround",
+          "2-4 月、9-10 月",
+          "装置停工、利用率下降",
+          "原油加工需求阶段性减少"
+        ],
+        [
+          "Atlantic hurricanes",
+          "6/1-11/30，8 月中至 10 月中风险最高",
+          "海上生产、炼厂与物流同时受威胁",
+          "方向取决于哪一段损失更大"
+        ]
+      ]
+    }
+  ],
+  "term_family": {
+    "root": "可销售原油流量",
+    "tree": "OOIP -> Resources -> Reserves (1P/2P/3P) -> Development status (PDP/PDNP/PUD) -> Capacity -> Production -> Midstream delivery -> Refinery crude runs -> Product supply -> Final demand",
+    "analogy": "把地下油想成水库中的水：储量是按规则可取的水，产能是泵和管道的额定流量，产量是今天真正泵出的水，终端需求则决定下游愿意接多少。",
+    "branches": [
+      {
+        "name": "地下基础",
+        "children": [
+          "OOIP",
+          "Resources",
+          "1P/2P/3P",
+          "PDP/PDNP/PUD"
+        ]
+      },
+      {
+        "name": "供应流量",
+        "children": [
+          "Natural drive",
+          "Artificial lift",
+          "Waterflood",
+          "EOR",
+          "Decline curve"
+        ]
+      },
+      {
+        "name": "需求翻译",
+        "children": [
+          "Gasoline",
+          "Distillate",
+          "Jet fuel",
+          "LPG",
+          "Crude runs",
+          "Yield"
+        ]
+      },
+      {
+        "name": "日历与约束",
+        "children": [
+          "Driving season",
+          "HDD",
+          "RVP switch",
+          "Turnaround",
+          "Hurricane",
+          "Logistics"
+        ]
+      }
+    ]
+  },
+  "glossary": [
+    {
+      "term": "Upstream",
+      "full_en": "Upstream exploration and production",
+      "cn": "上游勘探开发",
+      "definition": "取得权利、寻找并生产原油和天然气的产业环节。",
+      "example": "地震勘探、钻井、完井和井口生产都属于 upstream。",
+      "confusion": "不包含长距离运输和炼油。"
+    },
+    {
+      "term": "Decline curve",
+      "full_en": "Production decline curve",
+      "cn": "产量递减曲线",
+      "definition": "描述单井或油田投产后产率随时间下降的关系。",
+      "example": "页岩井首年可下降 60%-80%，需要新井补偿。",
+      "confusion": "不是所有井都按同一固定百分比下降。"
+    },
+    {
+      "term": "Recovery factor",
+      "full_en": "Oil recovery factor",
+      "cn": "采收率",
+      "definition": "最终可采出油量占 OOIP 的比例。",
+      "example": "全球典型油藏平均约 30%，超过 60% 很少。",
+      "confusion": "OOIP 乘采收率仍不自动等于 SEC proved reserves。"
+    },
+    {
+      "term": "Crude runs",
+      "full_en": "Refinery crude oil input",
+      "cn": "炼厂原油加工量",
+      "definition": "炼厂在一段时间内投入常减压等装置处理的原油流量。",
+      "example": "美国夏季 throughput 约 17 Mbpd，秋季检修可下降约 1 Mbpd。",
+      "confusion": "炼厂名义 capacity 不等于实际 runs。"
+    },
+    {
+      "term": "RVP",
+      "full_en": "Reid Vapor Pressure",
+      "cn": "雷德蒸气压",
+      "definition": "衡量汽油挥发倾向的规格指标，决定季节性可用 blendstocks。",
+      "example": "夏季联邦相关市场可要求 7.8 psi，CARB 区域可低至 7.0 或 6.5 psi。",
+      "confusion": "RVP 不是辛烷值；butane 辛烷值可用但 RVP 很高。"
+    },
+    {
+      "term": "HDD",
+      "full_en": "Heating Degree Days",
+      "cn": "采暖度日",
+      "definition": "以 65 F 为基线累计低温偏差的取暖需求代理。",
+      "example": "日均 40 F 贡献 25 HDD。",
+      "confusion": "HDD 是负荷代理，不直接等于取暖油桶数。"
+    },
+    {
+      "term": "Proved reserves",
+      "full_en": "Proved reserves / 1P / P90",
+      "cn": "探明储量",
+      "definition": "在当前经济和技术条件下至少约 90% 概率可生产的储量口径。",
+      "example": "美国 SEC 文件只把 1P 作为储量资产口径。",
+      "confusion": "P90 表示至少达到该量的概率，不是误差只有 10%。"
+    },
+    {
+      "term": "PUD",
+      "full_en": "Proved Undeveloped reserves",
+      "cn": "探明未开发储量",
+      "definition": "尚未钻井但计划在入账后五年内开发的 proved reserves。",
+      "example": "若五年计划取消，PUD 可能被移出 proved。",
+      "confusion": "PUD 不具备 PDP 那样的当前生产与抵押质量。"
+    },
+    {
+      "term": "R/P ratio",
+      "full_en": "Reserves-to-Production ratio",
+      "cn": "储采比",
+      "definition": "探明储量除以当前年产量所得的静态年数。",
+      "example": "美国约 15 年并不代表 15 年后必然无油。",
+      "confusion": "不是耗尽倒计时，也不包含未来发现、价格和产量变化。"
+    },
+    {
+      "term": "RRR",
+      "full_en": "Reserve Replacement Ratio",
+      "cn": "储量替代率",
+      "definition": "新增和修订储量相对当年生产消耗的比例。",
+      "example": "高于 100% 表示账面储量基础增长。",
+      "confusion": "收购也能抬高 RRR，不一定代表有机勘探成功。"
+    }
+  ],
+  "extreme_detail": [
+    {
+      "mechanism": "Oil window 与 gas window",
+      "why_it_matters": "埋深和温度决定 kerogen 形成液态油还是进一步裂解为气。",
+      "micro_example": "原文给出 oil window 约 7,500-15,000 ft、60-120 C；更深约 15,000-25,000 ft、120-250 C 进入 gas window。",
+      "misreading": "把有机质丰富 source rock 直接等同于可产液态油藏。",
+      "takeaway": "地质成熟度只是七项必要条件之一。"
+    },
+    {
+      "mechanism": "井数与产量权重不同",
+      "why_it_matters": "多数井需要泵，不代表多数桶来自泵井。",
+      "micro_example": "美国约 50 万口生产井中超过 90% 使用 artificial lift，但新高产井和中东油田大量桶数可依赖天然压力。",
+      "misreading": "用井口数量推断全国边际产量来源。",
+      "takeaway": "同时看 well count 与 volume-weighted production。"
+    },
+    {
+      "mechanism": "RVP orphan barrel",
+      "why_it_matters": "规格截止日可让物理上存在的汽油突然失去本地销售资格。",
+      "micro_example": "5 月 1 日仍在终端的冬季汽油可能需要 re-blend、出口或折价出售；6 月 1 日零售端进入夏季要求。",
+      "misreading": "把所有汽油库存视为完全可互换。",
+      "takeaway": "有效供应必须满足当时当地规格。"
+    },
+    {
+      "mechanism": "炼厂检修的双向平衡",
+      "why_it_matters": "检修同时减少原油需求和成品油供应。",
+      "micro_example": "美国利用率从 7 月约 95% 降至 9 月约 90%，秋季 crude throughput 约少 1 Mbpd。",
+      "misreading": "只看到原油累库就判断终端需求一定弱。",
+      "takeaway": "原油与产品库存必须联读。"
+    },
+    {
+      "mechanism": "SEC 五年 PUD 规则",
+      "why_it_matters": "开发计划变化会让储量出表，即使地下地质没有变化。",
+      "micro_example": "不能在最初入账后五年内钻探的 PUD 必须从 proved reserves 移除。",
+      "misreading": "把负 revisions 全部解释为油藏物理恶化。",
+      "takeaway": "拆价格、计划与钻井结果三类 revision。"
+    },
+    {
+      "mechanism": "OPEC 储量修订的激励",
+      "why_it_matters": "配额与储量挂钩会给报告口径带来政治成分。",
+      "micro_example": "1982-1988 年六个 OPEC 成员在没有相应重大发现的情况下合计增加逾 3000 亿桶 stated proved reserves。",
+      "misreading": "假设各国 proved reserves 与 SEC 审计公司数字完全可比。",
+      "takeaway": "储量数字必须连同制度与审计质量阅读。"
+    }
+  ],
+  "cases": [
+    {
+      "title": "飓风为什么可能利多汽油、却不一定利多当地原油",
+      "scenario": "8 月一场大型飓风沿墨西哥湾炼化走廊登陆；海上平台停产，沿岸炼厂也因洪水关闭。",
+      "background": "墨西哥湾约占美国原油生产 15%，沿岸走廊集中约 45% 美国炼化能力，且 8 月处于汽油旺季与高利用率阶段。",
+      "shock": "上游 shut-in 减少原油流入，炼厂停工同时减少 crude runs 和汽油产出。",
+      "transmission": [
+        "分别量化生产损失与炼厂加工损失，不把二者抵消前就下结论",
+        "若炼厂 runs 降得更多，当地原油买盘减少，原油库存或差价可能转弱",
+        "汽油产量下降而旺季需求仍高，产品库存和 RBOB 更容易走强",
+        "管道、进口和其他地区炼厂的替代能力决定持续时间"
+      ],
+      "market_result": "同一风暴可以造成汽油紧张、炼厂原油需求下降和海上原油供应减少三种同时存在的状态。",
+      "lesson": "事件方向取决于供应链受损位置和相对规模，不能用‘飓风等于供应减少’一句话概括。",
+      "model_answer": [
+        "先建立 production 与 refining 两张 exposure 表，并比较 bpd 损失、恢复时间和库存缓冲。",
+        "再检查 Colonial Pipeline、港口进口与其他炼厂替代，判断原油和产品两个平衡各自的净缺口。"
+      ]
+    },
+    {
+      "title": "48.5 million bbl OOIP 为什么不能进入明年供应预测",
+      "scenario": "一个新发现按 volumetric method 估算 OOIP 为 48.5 million bbl，媒体称其将显著增加供应。",
+      "background": "OOIP 来自面积、厚度、孔隙度、水饱和度和 Bo，并未应用 recovery factor 或商业分类。",
+      "shock": "市场把地下原始油量误当成 proved reserves 和近期 production。",
+      "transmission": [
+        "先按约 30% 教学 recovery factor 得到约 14.6 million bbl 的工程可采量级",
+        "再检查价格、合同、开发状态与 P90/P50 口径，确定可入账 reserves",
+        "最后按井数、设施与 first-oil schedule 把总量铺成多年 production profile"
+      ],
+      "market_result": "下一年度供应增量可能为零，也可能只是多年开发曲线的一小部分。",
+      "lesson": "储量是存量机会，供应是时间化流量；从一个跳到另一个必须经过开发计划。",
+      "model_answer": [
+        "合格判断必须列出 recovery factor、reserve category、FID、first oil、plateau 和外输连接。",
+        "在这些信息缺失时，只能把发现记为长期资源上行，不应直接修改近期平衡。"
+      ]
+    }
+  ],
+  "core_model": {
+    "core_points": [
+      "供需分析先固定地点、品种和时间；全球总量平衡不保证局部可交付。",
+      "当期供应是 legacy production 扣除 decline，再加新井、新项目和 improved recovery，最后扣除中断。",
+      "终端需求先作用于汽油、柴油、航煤和 LPG，再由炼厂 runs、yield 与规格翻译成原油需求。",
+      "季节性是基线而非预测：驾驶、取暖、turnaround 和天气四套日历必须同时看。",
+      "Resources、reserves、capacity 与 production 是四层过滤，储量增长不等于即时增产。",
+      "库存变化是净流量结果；看到累库或去库后还要回到生产、加工、贸易和物流寻找原因。"
+    ],
+    "one_liner": "地下资源经过开发与递减变成供应，产品需求经过炼厂与季节变成原油需求，两端的时间差最终写进库存。"
+  },
+  "self_checks": [
+    {
+      "prompt": "合上页面，用自己的话解释为什么‘储量世界第一’不能推出‘下一季度供应最强’。",
+      "model_answer": "合格回答要区分 resources、proved reserves、capacity 与 production，并指出回收率、开发状态、资本、设施、配额和递减会决定储量何时以及是否转化为流量。"
+    },
+    {
+      "prompt": "画出一个页岩盆地维持产量不变所需的最短机制链。",
+      "model_answer": "应包含旧井首年高递减、legacy production 下滑、新钻井和完井形成新 cohort、增量恰好抵消 base decline；还要指出停钻会在较短时间内压低总产量。"
+    },
+    {
+      "prompt": "为什么夏季汽油需求增加不一定能靠炼厂简单多买原油解决？",
+      "model_answer": "需要说明夏季低 RVP 规格排出便宜 butane、增加 alkylate 和 reformate 需求，并受到装置能力、收率、检修和合规 blendstock 供应限制。"
+    },
+    {
+      "prompt": "一周原油累库时，至少列出四个不涉及终端需求恶化的可能原因。",
+      "model_answer": "可列炼厂检修导致 runs 下降、进口集中到港、出口船期延误、管道流向改变、天气关闭炼厂或统计时点错位，并说明还需用产品库存和物流验证。"
+    },
+    {
+      "prompt": "用 HDD 解释一次寒潮如何传导到 middle distillate 平衡。",
+      "model_answer": "应说明低于 65 F 的温度偏差累积 HDD，提高东北取暖油或日韩 kerosene 需求，拉动 distillate 库存与裂解价差，并可能与 jet fuel 争夺同一馏分。"
+    },
+    {
+      "prompt": "解释为什么飓风可能让当地原油偏弱而汽油偏强。",
+      "model_answer": "合格回答要比较海上产量 shut-in 与炼厂停工规模；若 refinery runs 降幅更大，原油买盘减少而汽油产出下降，因此两个市场可出现相反方向。"
+    },
+    {
+      "prompt": "R/P 为 15 年是否意味着第 16 年没有油？请给出反驳。",
+      "model_answer": "R/P 只是当前 proved reserves 除以当前年产量的静态快照；未来价格、技术、发现、修订和产量都会变化，且不同国家报告制度与经济性不可直接相比。"
+    }
+  ],
+  "applications": [
+    {
+      "situation": "公司宣布大型发现或储量大增",
+      "action": "先标记 OOIP、2P 还是 1P，再查 recovery factor、PDP/PUD、FID、first oil、plateau、外输和所需 capex；信息不足时不要改近端供应。"
+    },
+    {
+      "situation": "看到美国 rig count 下滑但当月产量仍创新高",
+      "action": "把时间错位纳入判断：检查已完井库存、单井初始产率、旧井 base decline 和 completion pace，判断产量拐点可能滞后多久。"
+    },
+    {
+      "situation": "EIA 报告夏季汽油需求走强",
+      "action": "同时检查 RVP 换标、汽油库存、炼厂利用率、FCC/alkylate 约束、gasoline crack 和 crude runs，确认终端需求是否已翻译为原油拉动。"
+    },
+    {
+      "situation": "飓风或洪水威胁墨西哥湾",
+      "action": "分别列 offshore production、refinery capacity、pipeline、port 和 product inventory 暴露，按恢复时间构造原油与成品油两张平衡表。"
+    },
+    {
+      "situation": "新闻用某国 R/P 或 OPEC reserves 预测长期供应",
+      "action": "核对储量定义、审计、1980s revisions、品质与成本，再结合产能、投资和配额；把 R/P 视为快照，不作耗尽倒计时。"
+    }
+  ],
+  "review_prompts": [
+    "一周后：不看笔记画出 Resources -> Reserves -> Capacity -> Production -> Refinery -> Products -> Final demand 的完整链条，并在每个箭头写一个约束。",
+    "两周后：找一份最新周度油品报告，把原油库存变化拆成生产、进口、出口、crude runs，并用汽油与 distillate 数据交叉验证。",
+    "一个月后：选择一个页岩生产商，把产量变化拆成 base decline、新井、并购和修订，判断其增长来自工程效率还是资本投入。",
+    "下一个季节切换：记录 RVP 截止日、炼厂利用率和 gasoline crack，写出正常季节基线与当年偏差。"
+  ],
+  "sources": [
+    {
+      "label": "Oil 101 Chapter 5: Industry Overview",
+      "url": "https://oil101.morgandowney.com/chapters/industry-overview",
+      "coverage": "产业链、公司类型、OPEC+、炼化规模与市场机构"
+    },
+    {
+      "label": "Oil 101 Chapter 6: Exploration and Production",
+      "url": "https://oil101.morgandowney.com/chapters/exploration-production",
+      "coverage": "资源到产量、油藏压力、采收率、递减、海上与页岩供应"
+    },
+    {
+      "label": "Oil 101 Chapter 9: Finished Products",
+      "url": "https://oil101.morgandowney.com/chapters/finished-products",
+      "coverage": "产品需求结构、汽油调和、柴油航煤船燃 LPG 与贸易"
+    },
+    {
+      "label": "Oil 101 Chapter 13: Seasonality",
+      "url": "https://oil101.morgandowney.com/chapters/seasonality",
+      "coverage": "驾驶和取暖季、RVP、检修、飓风与物流季节性"
+    },
+    {
+      "label": "Oil 101 Chapter 14: Reserves",
+      "url": "https://oil101.morgandowney.com/chapters/reserves",
+      "coverage": "OOIP、储量分类、估算、R/P、RRR、PV-10 与储量政治"
+    }
+  ],
+  "source_coverage": [
+    {
+      "source": "Industry Overview / H2-01",
+      "section": "An Industry in Three Segments",
+      "status": "covered",
+      "lesson_id": "balance-as-physical-flow :: An Industry in Three Segments"
+    },
+    {
+      "source": "Industry Overview / H2-02",
+      "section": "National Oil Companies Versus International Oil Companies",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: National Oil Companies Versus International Oil Companies"
+    },
+    {
+      "source": "Industry Overview / H2-03",
+      "section": "The NOC League Table",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: The NOC League Table"
+    },
+    {
+      "source": "Industry Overview / H2-04",
+      "section": "US Independents: The Shale Cohort",
+      "status": "covered",
+      "lesson_id": "decline-and-reinvestment :: US Independents: The Shale Cohort"
+    },
+    {
+      "source": "Industry Overview / H2-05",
+      "section": "Oilfield Services: The Contractors Who Actually Drill",
+      "status": "deferred",
+      "reason": "服务公司名单与设备分工属于上游产业纵深；本模块仅保留钻完井能力会约束补钻速度的机制。"
+    },
+    {
+      "source": "Industry Overview / H2-06",
+      "section": "Pure-Play Refiners",
+      "status": "covered",
+      "lesson_id": "products-to-crude-demand :: Pure-Play Refiners"
+    },
+    {
+      "source": "Industry Overview / H2-07",
+      "section": "Physical Trading Houses",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: Physical Trading Houses"
+    },
+    {
+      "source": "Industry Overview / H2-08",
+      "section": "Engineering, Procurement, and Construction",
+      "status": "deferred",
+      "reason": "EPC 公司与项目承包细节延期到中游与炼化产业专题；本模块保留建设周期限制供给响应的结论。"
+    },
+    {
+      "source": "Industry Overview / H2-09",
+      "section": "Vertical Integration and the Disaggregation Trend",
+      "status": "deferred",
+      "reason": "公司组织与估值差异不是本模块理解物理平衡的必要主线，后续公司分析专题展开。"
+    },
+    {
+      "source": "Industry Overview / H2-10",
+      "section": "OPEC and OPEC+",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: OPEC and OPEC+"
+    },
+    {
+      "source": "Industry Overview / H2-11",
+      "section": "The Downstream Footprint",
+      "status": "covered",
+      "lesson_id": "products-to-crude-demand :: The Downstream Footprint"
+    },
+    {
+      "source": "Industry Overview / H2-12",
+      "section": "Key Market Institutions",
+      "status": "deferred",
+      "reason": "EIA、IEA、CFTC、Platts 与 Argus 的发布制度将在研究工作台模块系统讲解；本模块只使用其数据在平衡中的角色。"
+    },
+    {
+      "source": "Exploration and Production / H2-13",
+      "section": "The Upstream Sector",
+      "status": "covered",
+      "lesson_id": "resource-to-flow :: The Upstream Sector"
+    },
+    {
+      "source": "Exploration and Production / H2-14",
+      "section": "Obtaining Rights to Explore and Drill",
+      "status": "covered",
+      "lesson_id": "resource-to-flow :: Obtaining Rights to Explore and Drill"
+    },
+    {
+      "source": "Exploration and Production / H2-15",
+      "section": "Types of E&P Agreements",
+      "status": "covered",
+      "lesson_id": "resource-to-flow :: Types of E&P Agreements"
+    },
+    {
+      "source": "Exploration and Production / H2-16",
+      "section": "How Oil Forms: Source Rock, Reservoir Rock, and Cap Rock",
+      "status": "covered",
+      "lesson_id": "resource-to-flow :: How Oil Forms: Source Rock, Reservoir Rock, and Cap Rock"
+    },
+    {
+      "source": "Exploration and Production / H2-17",
+      "section": "Reservoir Mechanics: Pressure Is Everything",
+      "status": "covered",
+      "lesson_id": "decline-and-reinvestment :: Reservoir Mechanics: Pressure Is Everything"
+    },
+    {
+      "source": "Exploration and Production / H2-18",
+      "section": "Exploration: Seismic Surveys",
+      "status": "covered",
+      "lesson_id": "resource-to-flow :: Exploration: Seismic Surveys"
+    },
+    {
+      "source": "Exploration and Production / H2-19",
+      "section": "Drilling",
+      "status": "deferred",
+      "reason": "钻井泥浆、测井、钻头、定向工具与 BOP 的设备级细节延期到上游专题；此处只保留钻井是资源转产量的开发门槛。"
+    },
+    {
+      "source": "Exploration and Production / H2-20",
+      "section": "Production Phases",
+      "status": "covered",
+      "lesson_id": "decline-and-reinvestment :: Production Phases"
+    },
+    {
+      "source": "Exploration and Production / H2-21",
+      "section": "Decline Curves and Field Life",
+      "status": "covered",
+      "lesson_id": "decline-and-reinvestment :: Decline Curves and Field Life"
+    },
+    {
+      "source": "Exploration and Production / H2-22",
+      "section": "Offshore Production",
+      "status": "covered",
+      "lesson_id": "resource-to-flow :: Offshore Production"
+    },
+    {
+      "source": "Exploration and Production / H2-23",
+      "section": "The Shale Revolution",
+      "status": "covered",
+      "lesson_id": "decline-and-reinvestment :: The Shale Revolution"
+    },
+    {
+      "source": "Finished Products / H2-24",
+      "section": "The 19 Products of Crude Oil",
+      "status": "covered",
+      "lesson_id": "products-to-crude-demand :: The 19 Products of Crude Oil"
+    },
+    {
+      "source": "Finished Products / H2-25",
+      "section": "Gasoline: A Cocktail, Not a Single Product",
+      "status": "covered",
+      "lesson_id": "products-to-crude-demand :: Gasoline: A Cocktail, Not a Single Product"
+    },
+    {
+      "source": "Finished Products / H2-26",
+      "section": "Jet Fuel and the Arrival of SAF",
+      "status": "covered",
+      "lesson_id": "products-to-crude-demand :: Jet Fuel and the Arrival of SAF"
+    },
+    {
+      "source": "Finished Products / H2-27",
+      "section": "Diesel: On-Road, Off-Road, Marine, and Home Heat",
+      "status": "covered",
+      "lesson_id": "products-to-crude-demand :: Diesel: On-Road, Off-Road, Marine, and Home Heat"
+    },
+    {
+      "source": "Finished Products / H2-28",
+      "section": "Residual Fuel and the Bunker Market After IMO 2020",
+      "status": "covered",
+      "lesson_id": "products-to-crude-demand :: Residual Fuel and the Bunker Market After IMO 2020"
+    },
+    {
+      "source": "Finished Products / H2-29",
+      "section": "LPG",
+      "status": "covered",
+      "lesson_id": "products-to-crude-demand :: LPG"
+    },
+    {
+      "source": "Finished Products / H2-30",
+      "section": "Lubricant Base Oils and the Group I to V Classification",
+      "status": "deferred",
+      "reason": "Group I-V、添加剂和 OEM 规格属于下游产品纵深，对本模块总量平衡只占小体量。"
+    },
+    {
+      "source": "Finished Products / H2-31",
+      "section": "Waxes",
+      "status": "deferred",
+      "reason": "蜡品用途和小众市场延期到成品油产品图谱，不影响本模块核心需求桥接。"
+    },
+    {
+      "source": "Finished Products / H2-32",
+      "section": "Petroleum Coke",
+      "status": "deferred",
+      "reason": "燃料级、阳极级与针状焦差异延期到炼化纵深；此处只确认重端产品不能与交通燃料互换。"
+    },
+    {
+      "source": "Finished Products / H2-33",
+      "section": "Bitumen and Asphalt",
+      "status": "covered",
+      "lesson_id": "seasonal-balance :: Bitumen and Asphalt"
+    },
+    {
+      "source": "Finished Products / H2-34",
+      "section": "Kerosene and Niche Products",
+      "status": "covered",
+      "lesson_id": "seasonal-balance :: Kerosene and Niche Products"
+    },
+    {
+      "source": "Finished Products / H2-35",
+      "section": "Carbon Black and Sulfur",
+      "status": "deferred",
+      "reason": "副产品化学与下游用途延期到炼化专题，不作为交通燃料供需的主变量。"
+    },
+    {
+      "source": "Finished Products / H2-36",
+      "section": "Global Refined Product Trade Flows",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: Global Refined Product Trade Flows"
+    },
+    {
+      "source": "Seasonality / H2-37",
+      "section": "Four Overlapping Calendars",
+      "status": "covered",
+      "lesson_id": "seasonal-balance :: Four Overlapping Calendars"
+    },
+    {
+      "source": "Seasonality / H2-38",
+      "section": "Gasoline: Memorial Day to Labor Day",
+      "status": "covered",
+      "lesson_id": "seasonal-balance :: Gasoline: Memorial Day to Labor Day"
+    },
+    {
+      "source": "Seasonality / H2-39",
+      "section": "Summer Grade and Winter Grade: The RVP Calendar",
+      "status": "covered",
+      "lesson_id": "seasonal-balance :: Summer Grade and Winter Grade: The RVP Calendar"
+    },
+    {
+      "source": "Seasonality / H2-40",
+      "section": "Heating Oil, Propane, and the HDD Framework",
+      "status": "covered",
+      "lesson_id": "seasonal-balance :: Heating Oil, Propane, and the HDD Framework"
+    },
+    {
+      "source": "Seasonality / H2-41",
+      "section": "The Refinery Turnaround Calendar",
+      "status": "covered",
+      "lesson_id": "seasonal-balance :: The Refinery Turnaround Calendar"
+    },
+    {
+      "source": "Seasonality / H2-42",
+      "section": "Atlantic Hurricanes",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: Atlantic Hurricanes"
+    },
+    {
+      "source": "Seasonality / H2-43",
+      "section": "North Sea Storms and Baltic Ice",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: North Sea Storms and Baltic Ice"
+    },
+    {
+      "source": "Seasonality / H2-44",
+      "section": "Rivers and Canals: Low Water Bottlenecks",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: Rivers and Canals: Low Water Bottlenecks"
+    },
+    {
+      "source": "Seasonality / H2-45",
+      "section": "Why Crude Oil Itself Is Less Seasonal Than Its Products",
+      "status": "covered",
+      "lesson_id": "seasonal-balance :: Why Crude Oil Itself Is Less Seasonal Than Its Products"
+    },
+    {
+      "source": "Reserves / H2-46",
+      "section": "What Are Oil Reserves?",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: What Are Oil Reserves?"
+    },
+    {
+      "source": "Reserves / H2-47",
+      "section": "The Three Ps",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: The Three Ps"
+    },
+    {
+      "source": "Reserves / H2-48",
+      "section": "PDP, PDNP, PUD: The Development Status Categories",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: PDP, PDNP, PUD: The Development Status Categories"
+    },
+    {
+      "source": "Reserves / H2-49",
+      "section": "Reserve Recategorization (\"Re-Catting\")",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: Reserve Recategorization (\"Re-Catting\")"
+    },
+    {
+      "source": "Reserves / H2-50",
+      "section": "Reserve Estimation Methods",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: Reserve Estimation Methods"
+    },
+    {
+      "source": "Reserves / H2-51",
+      "section": "Peak Oil and Hubbert's Curve",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: Peak Oil and Hubbert's Curve"
+    },
+    {
+      "source": "Reserves / H2-52",
+      "section": "OPEC's 1982-1988 Reserve Revisions",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: OPEC's 1982-1988 Reserve Revisions"
+    },
+    {
+      "source": "Reserves / H2-53",
+      "section": "Reserves to Production Ratio by Country",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: Reserves to Production Ratio by Country"
+    },
+    {
+      "source": "Reserves / H2-54",
+      "section": "Reserve Replacement Ratio",
+      "status": "covered",
+      "lesson_id": "reserves-capacity-production :: Reserve Replacement Ratio"
+    },
+    {
+      "source": "Reserves / H2-55",
+      "section": "SEC PV-10 and Reserve-Based Lending",
+      "status": "deferred",
+      "reason": "PV-10、bank price deck 与 borrowing-base redetermination 延期到公司信用分析专题；本模块保留价格和分类会改变可融资供应的结论。"
+    },
+    {
+      "source": "Reserves / H2-56",
+      "section": "EUR and Drilling Inventory",
+      "status": "covered",
+      "lesson_id": "decline-and-reinvestment :: EUR and Drilling Inventory"
+    },
+    {
+      "source": "Reserves / H2-57",
+      "section": "Giant Fields Still Dominate Global Reserves",
+      "status": "covered",
+      "lesson_id": "control-and-concentration :: Giant Fields Still Dominate Global Reserves"
+    }
+  ]
+}

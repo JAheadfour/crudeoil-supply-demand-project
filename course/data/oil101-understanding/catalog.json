@@ -1,0 +1,77 @@
+{
+  "title": "Oil 101 原油市场理解平台",
+  "modules": [
+    {
+      "reading": "01",
+      "id": "01-barrel-journey",
+      "file": "module-01-barrel-journey",
+      "title": "先看懂一桶油",
+      "description": "从原油品质、勘探开采到运输、储存、炼制和终端消费，先建立完整物理地图。",
+      "checks": 7
+    },
+    {
+      "reading": "02",
+      "id": "02-supply-demand-balance",
+      "file": "module-02-supply-demand-balance",
+      "title": "供需平衡如何形成",
+      "description": "把储量、产能、产量、炼厂需求、季节性和库存变化放进同一张动态平衡表。",
+      "checks": 7
+    },
+    {
+      "reading": "03",
+      "id": "03-local-shortages",
+      "file": "module-03-local-shortages",
+      "title": "局部短缺从哪里来",
+      "description": "理解管道、港口、炼厂、季节性和油品标准怎样制造地区与品种错配。",
+      "checks": 7
+    },
+    {
+      "reading": "04",
+      "id": "04-what-is-oil-price",
+      "file": "module-04-what-is-oil-price",
+      "title": "油价究竟是什么价格",
+      "description": "从 crude assay 走到 WTI、Brent、现货升贴水、公式定价、运费净回值和零售价。",
+      "checks": 8
+    },
+    {
+      "reading": "05",
+      "id": "05-inventory-curve",
+      "file": "module-05-inventory-curve",
+      "title": "库存、期限结构与价格信号",
+      "description": "读懂 Contango、Backwardation、持有成本、库容约束和 2020 年 WTI 负价格。",
+      "checks": 5
+    },
+    {
+      "reading": "06",
+      "id": "06-risk-management",
+      "file": "module-06-risk-management",
+      "title": "市场参与者如何管理风险",
+      "description": "从企业真实敞口出发，理解期货、掉期、期权、基差、保证金和压力测试。",
+      "checks": 8
+    },
+    {
+      "reading": "07",
+      "id": "07-producers-opec-shale",
+      "file": "module-07-producers-opec-shale",
+      "title": "谁决定长期供给",
+      "description": "把上游投资、储量、递减、页岩油、OPEC+ 闲置产能与地缘瓶颈连起来。",
+      "checks": 7
+    },
+    {
+      "reading": "08",
+      "id": "08-products-petrochem-transition",
+      "file": "module-08-products-petrochem-transition",
+      "title": "每桶油最后去了哪里",
+      "description": "理解燃料、石化、发动机技术、环境标准、LNG 与能源转型如何重塑需求。",
+      "checks": 7
+    },
+    {
+      "reading": "09",
+      "id": "09-industry-synthesis-lab",
+      "file": "module-09-industry-synthesis-lab",
+      "title": "行业判断实验室",
+      "description": "把新闻冲击翻译成物理流、瓶颈、库存、价格结构、参与者反应与反证条件。",
+      "checks": 7
+    }
+  ]
+}

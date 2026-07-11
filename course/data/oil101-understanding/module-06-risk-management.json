@@ -1,0 +1,502 @@
+{
+  "id": "06-risk-management",
+  "variant": "understanding",
+  "reading": "06",
+  "reading_title": "市场参与者如何管理风险",
+  "title": "把油价的不确定性变成企业可以承受的现金流",
+  "deck": "从企业真实敞口出发，理解 futures、swaps、options、basis risk、流动性、VaR、stress test、ISDA 与 hedge accounting 如何共同组成一套风险管理系统。",
+  "reading_intent": "学完本模块，你应当能够从生产商、炼厂、航空公司或贸易商的经营问题出发，先定义真正要保护的数量、地点、品种、时间和现金流，再选择期货、掉期或期权。你还应能解释为什么一笔经济上有效的 hedge 仍可能因为 basis、roll、margin、counterparty 或 accounting 出问题，并能判断一种看似便宜、灵活的新工具是否真的适合企业套保。",
+  "opening_question": "一家航空公司正确判断油价将上涨，也买了对冲，为什么仍可能在现金、会计或董事会层面失败？反过来，一家生产商的 hedge 亏钱，为什么反而可能说明它正在按设计工作？",
+  "quick_answer": [
+    "Hedging 的目标不是预测并击败市场，而是让坏价格路径不至于破坏预算、偿债、资本开支和持续经营。",
+    "先定义 physical exposure，再选 instrument；方向正确但 benchmark、location、grade、timing 或 volume 不匹配，仍会留下 basis risk。",
+    "Futures 与 swaps 可以锁定近似固定价，但会带来 mark-to-market、margin 与信用安排；options 用 premium 换非对称保护。",
+    "风险管理不能只看最终 P&L，还要看途中能否支付 margin call、能否持续 roll、会计是否匹配、交易对手是否履约。",
+    "VaR 描述常态阈值，stress test 描述极端情景下要筹多少钱；两者缺一不可。"
+  ],
+  "learning_objectives": [
+    "从企业经营目标反推 hedge direction、benchmark、tenor、volume 与 hedge ratio",
+    "解释 futures、OTC swaps 和 options 的现金流、收益形状、保证金与信用差异",
+    "识别 basis risk、roll risk、liquidity risk、counterparty risk 与 accounting risk",
+    "用 VaR、Expected Shortfall 和 stress testing 区分常态风险与尾部融资需求",
+    "读懂 WTI、Brent、CFD、EFP、EFS 与 perpetual futures 在真实执行中的适用边界",
+    "把一套 hedge 评价为经营保护方案，而不是孤立的衍生品盈亏"
+  ],
+  "main_thread": "油价风险管理的起点不是衍生品，而是企业在现实业务中已经被迫持有的价格敞口：生产商未来会卖油，天然怕价格下跌；航空公司未来必须买燃料，天然怕价格上涨；炼厂同时买原油、卖成品油，真正关心的是 input-output margin；贸易商持有库存并承担运输时间，关心的是价格、地点与期限的组合。Hedge 的任务，是在纸面市场建立方向相反且经济特征尽量相似的头寸，使 physical 与 paper 的损益相互抵消，把不可预测的市场价格压缩成可预算的经营结果。但这种压缩从来不是免费或完美的：期货每天结算，可能在经济收益尚未实现前先索要现金；掉期可定制，却引入 bilateral credit、ISDA 与 collateral；期权保留有利方向，却要支付 premium，卖出期权还会把尾部风险重新引入。即便方向选对，Midland 与 Cushing、Forties 与 Brent、当地 rack 与 NY Harbor 也可能脱节；长期敞口用短期合约反复滚动，还会把 price hedge 变成 roll 与 liquidity trade。因此完整的风险管理必须同时回答六个问题：保护什么经营目标，用什么 benchmark 和工具，保护多少与多久，途中现金如何筹，极端情景如何活下来，以及交易、会计、法律和董事会治理是否一致。",
+  "mental_model": "先画出 physical exposure，再叠加反向 paper payoff；两者不能抵消的部分就是 residual risk，而企业能否在抵消实现前活下来取决于 liquidity、credit、accounting 与 governance。",
+  "mental_model_detail": {
+    "equation": "经营净结果 = Physical P&L + Hedge P&L - premium / bid-offer / funding / operational costs",
+    "exposure_vector": "Exposure = direction × volume × benchmark × grade × location × pricing window × tenor",
+    "decision_rule": "先确定不能承受的经营结果，再选择能覆盖相同风险向量的工具；最后分别做 basis、cash-margin、stress、counterparty 和 accounting 检查。"
+  },
+  "formulas": [
+    {
+      "name": "Futures daily mark-to-market",
+      "formula": "Daily P&L = direction × contracts × contract size × (settlement_t - settlement_t-1)",
+      "meaning": "多头 direction=+1，空头 direction=-1；WTI CL 每张 1,000 bbl，因此 10 张合约每变动 $1/bbl 就产生 $10,000 当日现金损益。",
+      "caveat": "最终 hedge 可能有效，但每日 variation margin 先把未实现损益变成真实现金流。"
+    },
+    {
+      "name": "Average-price swap settlement",
+      "formula": "Consumer swap receipt = max-free algebra: (floating monthly average - fixed price) × quantity",
+      "meaning": "消费者 pay fixed / receive floating；若实货也按同一平均指数购买，swap 收款抵消实货涨价，使有效成本接近 fixed price。",
+      "caveat": "实际采购指数、时间窗或数量不一致时，只能锁住 benchmark，不会自动消灭 basis。"
+    },
+    {
+      "name": "Option intrinsic value",
+      "formula": "Call intrinsic = max(F-K, 0); Put intrinsic = max(K-F, 0); option value = intrinsic + time value",
+      "meaning": "K 是 strike，F 是结算时 underlying；买方最大损失通常是 upfront premium，卖方则承担非对称尾部。",
+      "caveat": "到期 payoff 不能代替持有期估值；到期前还受 volatility、time、rates 与 Greeks 影响。"
+    },
+    {
+      "name": "Daily volatility breakeven",
+      "formula": "Daily breakeven ≈ σ × P / √256 = σ × P / 16",
+      "meaning": "在 $80 oil、35% implied vol 下，日均所需波动约为 0.35×80/16=$1.75/bbl；周度可用 √52≈7.2，约 $3.89/bbl。",
+      "caveat": "这是 delta-hedged long-gamma 的 sanity check，不保证每次 rehedge 都能按模型价格成交。"
+    },
+    {
+      "name": "3:2:1 crack spread",
+      "formula": "3:2:1 gross crack ≈ (2 × gasoline price + 1 × distillate price - 3 × crude price) / 3",
+      "meaning": "用三桶原油对应两桶汽油和一桶馏分油，近似锁定典型美国炼厂的单位原油 gross margin。",
+      "caveat": "真实炼厂还有 jet、LPG、coke、asphalt、grade diffs、energy 与 utility costs，简单 crack 不是净利润。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "exposure",
+      "title": "先定义经营敞口，再谈买什么合约",
+      "concept": {
+        "en": "Hedging objective and exposure mapping",
+        "cn": "套保目标与敞口映射",
+        "definition": "把企业未来不可避免的买卖行为拆成方向、数量、基准、品种、地点、计价窗口和期限，再用反向纸面头寸压缩经营结果的波动。"
+      },
+      "explanation": "风险管理不是先在工具菜单里挑 swap、future 或 option，而是先问企业哪一种坏结果会妨碍经营。E&P producer 要保证 debt service、reserve-based lending borrowing base 与 capex，常卖 swaps 或买 puts，原文给出的典型 tenor 是 24–36 个月；airline 要稳定 jet fuel budget，可能明确覆盖未来 12 个月预算的 50%；refiner 不是单纯怕 crude 上涨，而是怕产品售价相对原油成本收窄，所以更应 hedge crack spread；physical trader 则把库存与在途货的每一个 physical position 配上 paper offset。Integrated major 可能因 upstream 与 downstream 天然反向而少做价格套保。可见，同一个“油价上涨”对不同公司不是同一种风险。只有先写清 exposure vector，hedge ratio 才有含义，工具选择才不会反客为主。",
+      "mechanism_chain": [
+        "企业未来必须买入或卖出实货，因此天然持有未选择的 price exposure",
+        "管理层把不能承受的现金流区间、预算期和业务约束写成 hedging objective",
+        "目标被翻译为 direction、volume、benchmark、location、pricing window 与 tenor",
+        "纸面市场建立反向 payoff，缩窄 physical 加 paper 的结果分布",
+        "剩余不匹配被识别为 basis、volume、timing 或 operational residual risk"
+      ],
+      "worked_example": {
+        "setup": "一家航空公司预计未来 12 个月消耗 1,200,000 单位 jet fuel，董事会只要求覆盖预算量的 50%，避免油价冲击破坏航线计划。",
+        "steps": [
+          "先把目标量定为 600,000，而不是对全部预测消耗过度套保；再把月度实际耗用曲线分配到各 pricing month。",
+          "选择与采购合同尽量一致的 jet/gasoil average-price swaps 或 calls，而不是因为 WTI 最活跃就直接买同名义量 WTI。",
+          "对未覆盖的 50%、预测误差及 jet-versus-gasoil differential 单独记录，明确它们是主动保留的 residual risk。"
+        ],
+        "answer": "合格方案从预算与采购方式反推 hedge，而不是从对油价的观点反推仓位；50% hedge ratio 代表经营选择，不代表预测置信度。"
+      },
+      "practitioner_lens": "风险委员会首先审批 objective、limits、tenor 和 hedge ratio，交易员才在授权边界内执行。",
+      "misreading": "把 hedging 当成管理层对油价方向的押注，并用 hedge 单独赚钱与否评价计划成败。",
+      "boundary": "如果未来交易本身不再 probable、销量高度不确定或上下游天然对冲已足够，机械增加衍生品可能制造 over-hedge。"
+    },
+    {
+      "id": "linear-hedge",
+      "title": "Futures 与 swaps 锁价格，也重写现金流路径",
+      "concept": {
+        "en": "Linear hedge, mark-to-market and cash settlement",
+        "cn": "线性套保、逐日盯市与现金结算",
+        "definition": "Futures 和 swaps 的损益近似随 benchmark 一比一变化，可把浮动价格转为固定价格，但结算频率、保证金和信用结构不同。"
+      },
+      "explanation": "Exchange-traded futures 标准化、通过 clearinghouse 集中清算，并在每个交易日按 settlement price mark-to-market。初始保证金通常只是 notional 的 5–10%；原文示例中约 $5,000 margin 控制约 $70,000 exposure，接近 14:1，所以小幅价格变化会变成相对 margin 很大的现金流。OTC swap 则允许企业定制 benchmark、数量和平均计价窗口，通常 cash settled。Airline 买 jet swap 是 pay fixed / receive floating；producer 卖 crude swap 是 receive fixed / pay floating。多数 commodity swaps 用一个月每日 benchmark 的简单平均 Asian settlement，bullet swap 才对单日结算。Swaps 减少 daily exchange margin 的标准化压力，却把交易带入 ISDA、bilateral credit、collateral 和 discounting。风险管理者必须同时看最终经济价格和途中现金路径，因为企业可能在最终对冲盈利前先被 margin call 击穿。",
+      "mechanism_chain": [
+        "企业用 futures 或 swap 建立与 physical exposure 反向的线性价格敏感度",
+        "benchmark 变动使 paper P&L 与 physical P&L 大致抵消",
+        "futures 每日把未实现损益转换为 variation margin 现金，swap 按约定周期累积并净额结算",
+        "若 treasury 无法在 adverse path 中筹资，头寸会在经济对冲兑现前被平仓",
+        "因此 hedge effectiveness 必须与 liquidity plan、credit line 和 collateral policy 一起设计"
+      ],
+      "worked_example": {
+        "setup": "1 月 10 日，航空公司为 3 月的 20,000 metric tonnes Platts NWE jet fuel 买入 average-price swap，fixed price 为 $1,510/mt；3 月 20 个 business-day prints 的平均值为 $1,550.25/mt。",
+        "steps": [
+          "Fixed leg 名义金额为 $1,510×20,000=$30,200,000；floating leg 为 $1,550.25×20,000=$31,005,000。",
+          "两条 gross cash flow 不互相汇出，back office 净额后由银行向航空公司支付 $805,000。",
+          "如果实货按同一 3 月平均价采购，实货多付的 $40.25/mt 被 swap 收款抵消，有效 benchmark cost 约为 $1,510/mt。"
+        ],
+        "answer": "Hedge 的成功表现为采购价格被固定，而不是 swap 永远赚钱；若平均价低于 $1,510，航空公司会向银行付款，但仍得到了预算确定性。"
+      },
+      "practitioner_lens": "检查 futures 时看 daily liquidity；检查 swap 时看 pricing index、averaging window、ISDA、CSA 与 counterparty limit。",
+      "misreading": "认为清算所消除了所有风险，或认为 swap 没有每日 exchange margin 就没有流动性与信用成本。",
+      "boundary": "线性工具会同时放弃有利价格变化；当企业只想防灾但保留 upside/downside benefit 时，应考虑 options。"
+    },
+    {
+      "id": "options",
+      "title": "Options 用 premium 购买非对称保护",
+      "concept": {
+        "en": "Convexity, implied volatility and option structures",
+        "cn": "凸性、隐含波动率与期权结构",
+        "definition": "期权买方以 upfront premium 换取 right but not obligation，使坏方向受保护、好方向得以保留；组合结构则在成本和尾部保护之间重新分配。"
+      },
+      "explanation": "Consumer 通常买 call 限制燃料上涨，producer 买 put 建立收入 floor；买方最大损失通常是 premium，而 writer 收取 premium，却承担可能很大的尾部损失并需动态 margin。Option value 分 intrinsic value 与 time value；ATM 的 time value 最高并随 expiry 发生 theta decay。Oil exchange options 多为 American style，OTC hedging 常用按期间均价结算的 Asian options，因为它更贴合均匀生产或消费，而且 averaging 降低有效 volatility 和 premium。Black-76 用 underlying、strike、time、volatility、risk-free rate 与 call/put 六项定价，只有 implied volatility 需要从市场价反推。Delta 管方向，Gamma 管 delta 如何变化，Vega 管 implied vol，Theta 管时间损耗，Rho 对短期 oil options 通常最小。Zero-cost collar 并非免费保险：卖 call 的 premium 支付 bought put，同时把上涨空间交出去；three-way collar 再卖 lower put，极端下跌时保护会重新消失。",
+      "mechanism_chain": [
+        "企业确定只想截断某一侧灾难结果，而不愿完全固定价格",
+        "买入 call 或 put 并支付 premium，得到非对称 payoff",
+        "market、time 与 implied vol 变化通过 Delta、Gamma、Vega、Theta 改变 option value",
+        "为降低 premium，企业卖出另一 strike，形成 collar 或 spread",
+        "卖出的 option 把 cap、floor 或 tail exposure 带回组合，必须重新做 stress test"
+      ],
+      "worked_example": {
+        "setup": "WTI futures 为 $70/bbl。生产商比较 $60、$70、$80 strike 的 puts 与 calls，并考虑用 zero-cost collar 保护未来销售。",
+        "steps": [
+          "$80 put 的 intrinsic value 为 $10，$70 put 为 ATM 且 intrinsic=0，$60 put 为 OTM 且全部 premium 是 time value；calls 的 ITM/OTM 方向相反。",
+          "生产商买一个 downside put，并卖一个 higher-strike call，使收到的 call premium 抵消 put premium。",
+          "到期价低于 put strike 时 floor 生效；处于两 strikes 之间时结构不支付；高于 call strike 时生产商放弃超出 cap 的上涨收益。"
+        ],
+        "answer": "Zero-cost 指 no upfront net premium，不表示没有经济成本；它用有利方向的收益换取不利方向的保护。"
+      },
+      "practitioner_lens": "不要只看到期 payoff 图；还要看 surface、skew、tenor、Greeks、margin 与极端 gap 下的动态对冲能力。",
+      "misreading": "把 zero-cost collar 当作没有代价的保险，或把卖出 deep OTM put 当成几乎不可能触发的免费 premium。",
+      "boundary": "Black-76 假设 log-normal moves 与 continuous rehedging；oil 在 outage、OPEC surprise 或 geopolitics 后会 gap，实际 hedge cost 可显著偏离模型。"
+    },
+    {
+      "id": "basis-roll",
+      "title": "方向对了仍会输：Basis、Roll 与执行管道",
+      "concept": {
+        "en": "Basis risk, roll risk and execution plumbing",
+        "cn": "基差风险、展期风险与执行管道",
+        "definition": "Hedge instrument 与 physical exposure 在 grade、location、time、pricing method 或 maturity 上不能逐项匹配时，未抵消部分会独立波动。"
+      },
+      "explanation": "Basis risk 几乎永远不为零。Permian producer 用 Cushing-deliverable NYMEX WTI hedge Midland barrels，2018–2019 pipeline capacity 紧张时 Midland 曾持续比 Cushing 低 $10–18/bbl；即使 WTI price hedge 完整，physical differential 仍造成收入损失。North Sea Forties 对 ICE Brent、local rack 对 NY Harbor ULSD 也一样。长期敞口若用 front-month futures stack hedge，还要反复 roll：long hedge 在 backwardation 中卖高买低可获益，在 contango 中卖低买高会付出 roll cost，short position 符号相反。真实市场还靠 CFD 锁 Dated Brent 对 21-day BFOETM 的短窗 basis，靠 EFP 在 futures 与 physical cargo 间换仓，靠 EFS 在 futures 与 OTC swap 间传递流动性。WTI 与 Brent 虽同为 1,000 bbl contract，却有不同 expiry、settlement、delivery 与 benchmark plumbing；名称相似不代表可互换。",
+      "mechanism_chain": [
+        "企业用高流动性的 benchmark hedge 一个较不流动的 physical exposure",
+        "benchmark 与 physical price 的 differential 因物流、品质、地点或时间窗独立变化",
+        "paper leg 抵消 outright move，却留下 basis P&L",
+        "若 maturity 不匹配，持续 roll 又叠加 curve-shape 与 funding cash flow",
+        "通过 basis swap、CFD、EFP 或 EFS 可继续压缩 residual，但执行复杂度和成本上升"
+      ],
+      "worked_example": {
+        "setup": "Gulf Coast refiner 已有 500 张 June WTI long futures，随后确定要买 500,000 bbl June-loading LLS cargo；生产商持有该 LLS cargo 并希望锁 forward sale。",
+        "steps": [
+          "双方协商 EFP：refiner 把 500 张 long WTI futures 转给 producer，同时按约定 WTI differential 接收 LLS title。",
+          "Producer 得到 long LLS / short WTI 的 hedged forward sale；refiner 得到 physical LLS 且不再留有 WTI futures position。",
+          "Futures leg 报告给 exchange 并清算，但大额 physical-futures 转换无需冲击公开 order book。"
+        ],
+        "answer": "EFP 不是新的方向押注，而是把已有 paper hedge 转成所需 physical position，同时保留透明的差价关系。"
+      },
+      "practitioner_lens": "把 residual basis 单独命名、历史测量并设 limit；不要用‘相关性很高’代替合同级匹配。",
+      "misreading": "认为同属原油或相关系数长期很高就能 penny-for-penny 抵消，忽略 location、grade、window 与 expiry。",
+      "boundary": "CFD、EFP、EFS 和远期实货需要专业法律、信用与运营能力；它们不是面向普通投机账户的快捷订单类型。"
+    },
+    {
+      "id": "risk-metrics",
+      "title": "VaR 管常态阈值，Stress Test 管活命资金",
+      "concept": {
+        "en": "Value at Risk, Expected Shortfall and stress testing",
+        "cn": "风险价值、预期损失与压力测试",
+        "definition": "VaR 给定期限与置信度下的损失阈值，ES 描述超过阈值后的平均损失，stress test 则直接询问特定极端事件会造成多少 P&L、margin 与 collateral demand。"
+      },
+      "explanation": "One-day 95% VaR of $10 million 的准确含义是：模型认为明日 mark-to-market loss 有 95% 概率小于 $10m；它没有告诉你最差 5% 会亏多少。Historical simulation、parametric covariance/normal 与 Monte Carlo 会得到不同答案，而差异本身暴露 tail assumption。Expected Shortfall 计算进入那 5% tail 后的平均损失，补上 VaR 对尾部严重程度的沉默。但两者仍依赖历史、相关性和分布；quiet market 会压低 VaR、鼓励更多 position-taking，形成 pro-cyclicality，commodity correlations 又常在 stress 中断裂。因此风险委员会还要运行具体情景：例如 90m bbl SPR release、global recession 导致 -4m bpd demand、Hormuz disruption 使 shipping insurance 撤出，或 hurricane 让 25% US refining 停六周。情景输出不是发生概率，而是 treasury 当天必须筹到的现金。",
+      "mechanism_chain": [
+        "历史波动与相关性被输入 VaR/ES 模型，形成常态损失阈值",
+        "平静期降低估计波动，使 limit 看起来宽松并支持更大仓位",
+        "极端事件使价格跳跃、correlation break、vol surface 与 basis 同时变化",
+        "正常模型低估 tail，同时 margin 与 collateral demand 快速兑现",
+        "具体 stress scenario 重估全 book，提前暴露 funding gap 与 concentration"
+      ],
+      "worked_example": {
+        "setup": "某 oil trading book 报告 one-day 95% VaR=$10m，风险委员会同时测试 Hormuz disruption。",
+        "steps": [
+          "先正确解释 VaR：不是‘最大只亏 $10m’，而是模型允许约 5% 的日子超过该阈值。",
+          "再把 Hormuz scenario 映射到 crude/product curves、calendar spreads、vol surface、freight/insurance 与 basis shocks。",
+          "对全 book 重估，并报告 total P&L、variation margin、OTC collateral 与 same-day liquidity need，而不是给事件贴一个主观概率。"
+        ],
+        "answer": "VaR 用于日常限额比较，stress test 用于回答极端情况下企业需要筹多少钱才能不被迫平仓。"
+      },
+      "practitioner_lens": "任何 risk number 都要附 horizon、confidence、method、lookback、liquidity assumption 与模型外 scenario。",
+      "misreading": "把 95% VaR 当成 95% 情况下的最大损失，甚至把 $10m 当成绝对 worst case。",
+      "boundary": "VaR、ES 和 stress 都不是预言；情景遗漏、错误 correlation 与无法成交的 liquidity assumption 会让精确数字制造虚假安全感。"
+    },
+    {
+      "id": "governance",
+      "title": "好工具也需要信用、会计与治理把它变成好 Hedge",
+      "concept": {
+        "en": "Counterparty, hedge accounting and governance",
+        "cn": "交易对手、套期会计与治理",
+        "definition": "企业套保只有在法律净额、抵押品、会计指定、独立估值、限额与董事会授权一致时，才是一套可持续的经营系统。"
+      },
+      "explanation": "Cleared futures 和 cleared swaps 把 individual counterparty exposure 转移给 clearinghouse，却要求 initial 与 variation margin；bilateral OTC 则由 ISDA Master Agreement 定义 default、netting、dispute 与 early termination，CSA 规定 eligible collateral、threshold 与 exchange frequency。Netting 使数百笔交易按 net mark-to-market 而非 gross positives 计算信用敞口，novation 则经三方同意转移合同。Accounting 也会改变企业能否承受 hedge：ASC 815 与 IFRS 9 允许 qualifying cash-flow hedge 的 mark 先进入 OCI，等 forecast transaction 发生再进 earnings；fair-value hedge 则让 derivative 与 hedged item 同进 P&L。企业必须 inception designation、document relationship 并证明 effectiveness；历史上常见 80–125% correlation threshold，IFRS 9 后更 principles-based。若 forecast transaction 不再 probable 或 effectiveness 失败而 dedesignate，OCI 可能转入 P&L。经济 hedge 仍有效，财报却会突然波动。",
+      "mechanism_chain": [
+        "交易被执行后产生 market exposure、counterparty exposure 与 accounting entries",
+        "ISDA/CSA、clearing 与 netting 决定违约和 collateral cash flow",
+        "hedge designation 把 derivative 与 forecast transaction 或 asset/liability 建立会计关系",
+        "middle office 独立确认、reconcile、mark 与 monitor effectiveness",
+        "若 collateral、documentation、limit 或 designation 失效，经济保护可能被迫中断或转化为 earnings shock"
+      ],
+      "worked_example": {
+        "setup": "生产商用 swaps 保护未来 forecast sales，价格下跌时 swaps 盈利，但部分 forecast production 因运营事故不再 probable。",
+        "steps": [
+          "原先 qualifying cash-flow hedge 的 mark-to-market 留在 OCI，并计划在 physical sale 发生时重分类到 revenue。",
+          "销量不再 probable 后，相应 hedge relationship 需要 dedesignate；OCI balance 可能重分类到 P&L，后续 marks 直接影响 earnings。",
+          "Treasury 同时检查是否出现 over-hedge，并按授权平仓或重新指定，而不是只解释 derivative gain。"
+        ],
+        "answer": "会计波动不必然等于经济 hedge 失败，但它会真实影响报表、covenant 与沟通，因此必须在交易前纳入设计。"
+      },
+      "practitioner_lens": "每笔 trade 要经过 confirmation、independent price、daily reconciliation、risk booking、accounting booking 与 collateral forecast。",
+      "misreading": "把法律、会计和 middle-office 流程视为交易后的行政工作，认为方向和 payoff 正确就足够。",
+      "boundary": "本课提供概念框架，不替代现行 exchange rulebook、ISDA legal advice 或企业对 ASC 815/IFRS 9 的专业会计判断。"
+    },
+    {
+      "id": "perpetuals",
+      "title": "Perpetual Futures 是 24/7 补充，不是成熟实货 Hedge 的替代品",
+      "concept": {
+        "en": "Perpetual futures, funding rate and borrowed price",
+        "cn": "永续期货、资金费率与借来的价格",
+        "definition": "Perpetual contract 没有 expiry，以定期 funding payments 把 mark price 拉向外部 oracle/index，而不是靠 physical delivery 收敛。"
+      },
+      "explanation": "Perpetual swap 没有最后交割日，因此不能像 NYMEX WTI 那样通过 Cushing delivery 强迫 paper 与 physical convergence。它通常每八小时在 longs 与 shorts 间交换 funding：perp 高于 reference 时 longs pay shorts，低于 reference 时相反；liquidation 依据 external oracle/index，以减少自身 order-book spike 的误伤。Oil perps 的真实吸引力是 24/7，能在 CME 周末关闭时先做 price discovery。但作者附录强调，headline volume 不等于 executable depth：一项微观结构研究在 mid-price ±0.02% 范围内估计 CME WTI depth 约 $19m，而 on-chain venue 约 $150k，不到 1%。Offshore leverage 可达 20–100x，并依靠 auto-liquidation 而非人工 margin call。更根本的问题是 borrowed price：没有交割锚的 perp 必须许可或复制外部 futures benchmark；当 CME 关闭时，oracle 缺乏实时 physical anchor。因此它目前更像 weekend speculation 和补充 price signal，不是 production、inventory 或 cargo hedge 的成熟替代。",
+      "mechanism_chain": [
+        "Perpetual 没有 expiry，失去传统 futures 的 delivery convergence",
+        "Venue 引用 oracle/index 并用 funding rate 激励 mark price 靠近 reference",
+        "周末传统市场关闭时，perp order book 暂时承担边际 price discovery",
+        "高 leverage 与薄 depth 使 adverse move 触发 auto-liquidation cascade",
+        "缺少 physical delivery、licensed benchmark 或 institutional plumbing 时，commercial hedger 承担新的 oracle、integrity 与 basis risk"
+      ],
+      "worked_example": {
+        "setup": "周末发生重大地缘冲击，CME WTI 已休市，某 on-chain oil perp 高于最近 futures reference 且多头拥挤。",
+        "steps": [
+          "Funding 转正并由 longs pay shorts，试图压制 perp premium；但 reference 本身在周末没有新的 CME price。",
+          "若冲击使 mark 快速上跳或回落，高 leverage accounts 会被自动平仓，成交价格可能由薄 order book 与 liquidation flow 主导。",
+          "周一 CME 重开后，perp 必须重新贴近更深的 benchmark market；周末 signal 可参考，但不应直接当作企业 physical hedge execution price。"
+        ],
+        "answer": "Funding 是 incentive，不是 physical arbitrage；24/7 可见性有价值，却不能自动提供交割锚、机构级深度或可审计的企业套保。"
+      },
+      "practitioner_lens": "先问 benchmark license、oracle construction、depth、custody、jurisdiction、auto-liquidation 与 hedge-accounting eligibility，再讨论 24/7 优势。",
+      "misreading": "把 perpetual 的高 reported volume 和全天交易等同于 CME 级可执行深度与 commercial hedging readiness。",
+      "boundary": "产品、监管和流动性变化很快；任何具体 leverage、venue 或许可状态都必须按交易日重新核对。"
+    }
+  ],
+  "figures": [
+    {
+      "id": "hedged-vs-unhedged-distribution",
+      "lesson_id": "exposure",
+      "src": "assets/figures/module-06/ch20-hedged-vs-unhedged.png",
+      "alt": "Oil 101 图示比较未套保的宽结果分布与套保后的窄结果分布，并标出两端破产区域",
+      "reading_guide": "先不要把横轴当成 derivative P&L，而要把它看成企业最终经营结果。观察 hedge 前后中心位置基本不变，变化的是分布宽度：右侧暴利被削弱，左侧灾难损失也被截断。图真正表达的是 outcome compression，而不是 hedge 提高 expected price。",
+      "caption": "Hedging 不负责抬高预期价格，而是用放弃部分 windfall 的方式缩窄结果分布，降低落入 bankruptcy zone 的概率。",
+      "reference": {
+        "label": "Oil 101, Chapter 20, Figure 20-1: Hedging does not change the expected price",
+        "url": "https://oil101.morgandowney.com/chapters/risk-management",
+        "asset_url": "https://oil101.morgandowney.com/images/ch20-hedged-vs-unhedged.png",
+        "accessed": "2026-07-11"
+      }
+    }
+  ],
+  "comparison_tables": [
+    {
+      "title": "企业类型决定 Hedge 的对象",
+      "headers": ["Firm type", "真正要保护的经营变量", "常见工具", "关键 residual risk"],
+      "rows": [
+        ["E&P producer", "Debt service、capex、RBL borrowing base、PDP value", "Sell swaps；buy puts；collars / three-ways，常见 24–36 months", "Basis、volume、dedesignation、sold-put tail"],
+        ["Integrated major", "项目级现金流；整体常有 upstream/downstream natural hedge", "Minimal，偶有 project-specific hedge", "天然对冲并不等于每个项目现金流稳定"],
+        ["Refiner", "Product revenue minus crude input cost", "3:2:1 / 2:1:1 crack swaps and options", "Actual yield、grade diffs、energy/utilities"],
+        ["Airline", "Jet fuel budget 与航线现金流", "Jet/gasoil swaps、calls、collars", "Jet-versus-gasoil、volume forecast、average window"],
+        ["Physical trader", "Inventory 与 transit margin", "Futures、EFP、time spreads", "Location、timing、logistics、margin liquidity"],
+        ["Industrial consumer", "Plastics/petchem/asphalt/lube input cost", "Fixed-price supply、benchmark swaps", "Product-specific differential 与 pass-through"]
+      ]
+    },
+    {
+      "title": "Futures、Swaps 与 Options 的风险交换",
+      "headers": ["Instrument", "获得什么", "付出或新增什么", "最适合"],
+      "rows": [
+        ["Exchange future", "标准化线性 exposure、深度与 clearing", "Daily variation margin、fixed size/expiry、可能 physical delivery", "Liquid benchmark hedge 与短中期动态调整"],
+        ["OTC average-price swap", "Custom benchmark/volume/tenor，近似 fixed price", "ISDA/CSA、credit、collateral、bid-offer，通常失去有利方向", "Ratable monthly production/consumption"],
+        ["Bought call/put", "一侧 floor/cap，保留另一侧 benefit", "Upfront premium、theta decay、volatility price", "防灾而不愿完全固定价格"],
+        ["Zero-cost collar", "No upfront net premium 的价格区间", "卖出一侧 cap/floor 作为经济成本", "预算受限且可接受 band"],
+        ["Three-way collar", "用 sold lower put 融资更紧的 collar", "极端下跌时 protection 重新消失", "能承受 cliff risk 的 producer"],
+        ["Perpetual future", "24/7、无 monthly roll", "Funding、oracle、thin depth、auto-liquidation、无 physical convergence", "目前以补充 price signal/speculation 为主"]
+      ]
+    },
+    {
+      "title": "NYMEX WTI 与 ICE Brent：同为 1,000 bbl，管道完全不同",
+      "headers": ["Spec", "NYMEX WTI (CL)", "ICE Brent (B)"],
+      "rows": [
+        ["Minimum tick", "$0.01/bbl = $10/contract", "$0.01/bbl = $10/contract"],
+        ["Daily settlement", "2-minute VWAP ending 2:30 PM ET", "3-minute VWAP ending 7:30 PM London"],
+        ["Last trading day", "Delivery month 前一月 25 日之前第 3 business day", "Delivery month 前第 2 个月最后 business day"],
+        ["Expiry settlement", "Physical delivery default at Cushing", "Cash default vs ICE Brent Index，或 physical into 21-day BFOETM"],
+        ["Quality anchor", "Par 37°–42° API，sulfur <0.42% wt", "BFOETM streams，Forties 有 sulfur de-escalator"],
+        ["Execution bridge", "EFP 转换 futures 与 physical", "EFP 进入 21-day BFOETM；CFD 连接 dated 与 forward"]
+      ]
+    },
+    {
+      "title": "VaR、ES 与 Stress Test 各自回答什么",
+      "headers": ["Measure", "回答的问题", "不回答的问题"],
+      "rows": [
+        ["VaR", "给定 horizon/confidence 下的损失阈值", "超过阈值后到底有多惨"],
+        ["Expected Shortfall", "进入 tail 后的平均损失", "未建模事件与真实可成交性"],
+        ["Stress test", "特定事件下 P&L、margin、collateral 与 funding need", "事件发生概率与完整情景集合"],
+        ["Liquidity forecast", "现金何时、以何种 collateral 形式被要求", "经济 hedge 最终一定盈利与否"]
+      ]
+    }
+  ],
+  "term_family": {
+    "root": "Risk transfer",
+    "tree": "经营敞口 → 线性工具（futures/swaps）或凸性工具（options）→ residual risk（basis/roll/volume/timing）→ survival layer（margin/liquidity/counterparty）→ governance layer（ISDA/accounting/limits/operations）",
+    "analogy": "把企业想成一艘必须航行的船：hedge 不是让海面变平，而是缩小船体受浪的幅度；basis 是不同方向的浪，margin 是途中必须立刻排出的水，governance 是保证舱门、泵和船员都按同一图纸工作。",
+    "branches": [
+      {"name": "Linear", "children": ["Futures", "Average-price swap", "Crack spread"]},
+      {"name": "Convex", "children": ["Call", "Put", "Collar", "Three-way", "Call/put spread"]},
+      {"name": "Residual", "children": ["Basis", "Roll", "Volume", "Timing", "Model"]},
+      {"name": "Survival", "children": ["Initial margin", "Variation margin", "CSA collateral", "Stress liquidity"]},
+      {"name": "Governance", "children": ["ISDA", "Netting", "Hedge accounting", "Limits", "Middle office"]}
+    ]
+  },
+  "glossary": [
+    {"term": "Hedge ratio", "full_en": "Hedge ratio", "cn": "套保比例", "definition": "被 paper position 覆盖的预期 physical volume 或 price sensitivity 比例。", "example": "航空公司明确 hedge 未来 12 个月 budget volume 的 50%。", "confusion": "不是管理层认为价格上涨概率为 50%。"},
+    {"term": "Mark-to-market", "full_en": "Daily mark-to-market", "cn": "逐日盯市", "definition": "按每日 exchange settlement 重估头寸并把盈亏转成 variation margin 现金。", "example": "10 张 WTI 每变动 $1/bbl，现金 P&L 变化 $10,000。", "confusion": "经济 hedge 最终有效不代表途中没有现金要求。"},
+    {"term": "Average-price swap", "full_en": "Asian-settled swap", "cn": "均价掉期", "definition": "以期间每日 benchmark 的算术平均值与 fixed price 结算差额的 OTC swap。", "example": "3 月 20 个 jet fuel prints 平均 $1,550.25，与 $1,510 fixed 结算。", "confusion": "Asian 在这里描述 averaging，不是交易地点。"},
+    {"term": "Implied volatility", "full_en": "Implied volatility", "cn": "隐含波动率", "definition": "把观察到的 option price 代回 Black-76 后反推出的 volatility input。", "example": "Oil vol 正常约 25–40%，冲击时会显著上升。", "confusion": "不是未来 realized volatility 的保证值。"},
+    {"term": "Delta", "full_en": "Option delta", "cn": "方向敏感度", "definition": "Option value 对 underlying price 小幅变化的一阶敏感度，oil desks 常折算为 barrels。", "example": "1m bbl 的 ATM call delta 约 +500,000 bbl。", "confusion": "Delta 会随 price 与 time 变化，不是永久 hedge ratio。"},
+    {"term": "Gamma", "full_en": "Option gamma", "cn": "Delta 变化率", "definition": "Underlying 变化时 delta 如何变化的敏感度，ATM 附近通常最大。", "example": "OPEC surprise 造成 gap 后，原 delta hedge 必须重新调整。", "confusion": "Long gamma 并不自动赚钱，还要克服 theta 与交易成本。"},
+    {"term": "Basis risk", "full_en": "Basis risk", "cn": "基差风险", "definition": "Physical exposure 与 hedge benchmark 不能同步变化而留下的 residual risk。", "example": "Midland producer 用 Cushing WTI hedge，仍承受 Midland-Cushing differential。", "confusion": "高 correlation 不等于 basis risk 为零。"},
+    {"term": "Roll risk", "full_en": "Roll risk", "cn": "展期风险", "definition": "长期敞口用短期合约覆盖时，每次移仓受期限结构和流动性影响的风险。", "example": "Long hedge 在 contango 中通常卖低买高并支付 roll cost。", "confusion": "不是只有 outright price 改变才会产生 hedge loss。"},
+    {"term": "Value at Risk", "full_en": "Value at Risk (VaR)", "cn": "风险价值", "definition": "给定 horizon 与 confidence 下，模型损失分布的分位数阈值。", "example": "One-day 95% VaR=$10m 表示约 5% 模型日损可能超过 $10m。", "confusion": "不是最大可能损失。"},
+    {"term": "Expected Shortfall", "full_en": "Expected Shortfall (ES)", "cn": "预期尾部损失", "definition": "损失超过 VaR threshold 后的条件平均损失。", "example": "在最差 5% 情况中，计算平均会亏多少。", "confusion": "仍依赖模型分布，不等于 black-swan 上限。"},
+    {"term": "ISDA Master Agreement", "full_en": "ISDA Master Agreement", "cn": "ISDA 主协议", "definition": "治理 bilateral OTC derivatives 的 default、netting、dispute 与 early termination 的标准法律框架。", "example": "多笔 swaps 对同一 counterparty 通过 close-out netting 合并 exposure。", "confusion": "签了 ISDA 不等于无需 CSA collateral 或 credit limit。"},
+    {"term": "Credit Support Annex", "full_en": "Credit Support Annex (CSA)", "cn": "信用支持附件", "definition": "规定 eligible collateral、threshold、frequency 与 margin transfer 的 ISDA 附件。", "example": "Market move 超过 threshold 后双方按 CSA 交换 collateral。", "confusion": "它管理信用支持，不决定 hedge 的经济 benchmark。"},
+    {"term": "EFP", "full_en": "Exchange for Physical", "cn": "期货转现货", "definition": "双边协商把 offsetting futures 与 physical position 互换，并向 exchange 报告清算。", "example": "500 WTI longs 换取 500,000 bbl LLS cargo title。", "confusion": "不是在公开 order book 上同时扫两条腿。"},
+    {"term": "Perpetual funding rate", "full_en": "Perpetual funding rate", "cn": "永续资金费率", "definition": "定期在 longs 与 shorts 间支付、用于把无到期合约拉向 external reference 的费用。", "example": "Perp 高于 reference 时通常 longs pay shorts。", "confusion": "Funding incentive 不是 physical delivery arbitrage。"}
+  ],
+  "extreme_detail": [
+    {"mechanism": "Futures margin path dependency", "why_it_matters": "企业可能方向正确、最终有 offsetting physical gain，却因中途现金不足被迫平仓。", "micro_example": "10 WTI contracts at $80：Day 2 settlement $82 收 $20k；Day 3 跌至 $78 付 $40k，累计 -$20k；Day 5 回到 $81 时累计 +$10k。", "misreading": "只比较 entry 与 final price，忽略 Day 3 的 $40k margin call。", "takeaway": "Hedge policy 必须匹配 same-day liquidity facility。"},
+    {"mechanism": "Option vol 与 tail protection 同时变贵", "why_it_matters": "企业最需要保险时 implied vol 往往已上升。", "micro_example": "原文称 crude vol 常见约 25–40%；2008 超 100%，2020-04-20 OVX intraday 超 300%，2022-03 超 70%。", "misreading": "等待危机新闻确认后再买保护，仍期待平静期 premium。", "takeaway": "Protection budget 应在 shock 前按 policy 分批建立。"},
+    {"mechanism": "Three-way collar 的 lower-put cliff", "why_it_matters": "Sold lower put 为结构融资，却在最深下跌区间重新暴露 producer。", "micro_example": "Bought put 先建立 floor，价格跌破更低 sold-put strike 后，新增下跌损失逐步抵消保护。", "misreading": "只看 zero upfront cost 和中间保护带，不看最左侧 payoff。", "takeaway": "每个 sold option 都要单独做 beyond-strike stress。"},
+    {"mechanism": "Basis 可以压倒 outright hedge", "why_it_matters": "Benchmark 对冲只保护共同变化，不保护 local differential。", "micro_example": "2018–2019 Permian bottleneck 期间 Midland 曾比 Cushing WTI 低 $10–18/bbl；WTI short hedge 无法补回全部 local discount。", "misreading": "看到 producer 已 100% 用 WTI hedge，就认定全部销售价格固定。", "takeaway": "报告 hedge ratio 时同时报告 basis-at-risk。"},
+    {"mechanism": "MGRM 的 stack-and-roll liquidity mismatch", "why_it_matters": "长期 physical gain 与短期 futures cash loss 的确认时间不同。", "micro_example": "1993 年 long-dated fixed-price sales 用 rolling front-month longs hedge；curve 转 contango 且价格下跌后，margin calls 约 $1.3bn。", "misreading": "只说公司看错油价，忽略 roll、accounting 与 forced liquidation。", "takeaway": "Tenor、cash settlement、accounting 与 funding 必须与 underlying exposure 同步。"},
+    {"mechanism": "WTI contract 的 physical anchor", "why_it_matters": "1,000 bbl contract 最终连接 Cushing，决定临期 paper price 的约束。", "micro_example": "Par delivery 要求 API 37°–42°、sulfur <0.42% wt；tick $0.01/bbl 等于 $10/contract。", "misreading": "把 CL 当作永远 cash-only 的屏幕数字。", "takeaway": "持仓跨过 expiry 前必须确认 delivery capability 与 current rulebook。"},
+    {"mechanism": "Perpetual auto-liquidation", "why_it_matters": "匿名、全球、24/7 市场没有传统 broker credit 与 clearing default waterfall，只能依赖已存 collateral。", "micro_example": "20–100x leverage 下价格很小的 adverse move 就可耗尽 margin，系统自动平仓并可能触发连锁 liquidation。", "misreading": "认为没有人工 margin call 代表风险更低或永不欠款。", "takeaway": "Auto-liquidation 保护 venue，却把 execution path risk 转给持仓者。"}
+  ],
+  "cases": [
+    {
+      "title": "Metallgesellschaft 1993：经济 Hedge 败在期限、现金与治理",
+      "scenario": "MGRM 向客户提供最长十年的 fixed-price heating oil 与 gasoline sales，并用 rolling front-month NYMEX long futures 对冲。",
+      "background": "在 backwardation 时，long roll 可卖出较高 front、买入较低 next month，策略一度持续产生 roll gain。",
+      "shock": "1993 年底 curve 转为 contango 且 oil price 下跌，short-dated futures 产生 roll loss 与巨大 variation margin，而长期客户合同的经济收益尚未兑现。",
+      "transmission": [
+        "长期 fixed-price sales 与短期 futures maturity 不匹配",
+        "Curve flip 使每月 roll 从收益变为成本",
+        "Futures losses 立即要求现金，physical gains 留待未来",
+        "德国会计处理未同步确认 physical hedge value",
+        "Parent company 面对约 $1.3bn margin calls 强制平仓，锁定 mark-to-market loss"
+      ],
+      "market_result": "一套方向上有经济逻辑的 hedge 因 roll、liquidity、accounting 与 governance 不匹配而崩溃。",
+      "lesson": "Long-dated exposure 用 stack of short-dated instruments 覆盖时，首先是一笔 roll 与 funding trade，其次才是 price hedge。",
+      "model_answer": [
+        "不能把失败简化为油价判断错误；核心是长期 physical benefit 与短期 futures cash call 在期限和会计确认上错位。",
+        "改进方案必须同时限制 tenor mismatch、预留 margin liquidity、测试 contango roll、使 accounting treatment 与 economic hedge 对齐，并设置 stop/authority。"
+      ]
+    },
+    {
+      "title": "Pemex 2020：Hedge 盈利不是目的，但危机支付证明了用途",
+      "scenario": "Mexico 长期通过 Hacienda hedge 为 Maya 等 grades 的年度产量购买 OTM puts，规模最高约 300m bbl/year。",
+      "background": "计划自 1990 年起持续运行，平静年份 premium 看起来像成本。",
+      "shock": "2020 pandemic demand collapse 使 crude prices 急跌，puts 进入价内。",
+      "transmission": [
+        "Sovereign producer 事前支付 premium 买入 downside convexity",
+        "Physical sale revenue 随价格崩跌",
+        "Put payout 在坏状态中提供 treasury cash",
+        "约 $2.5bn gain 把 existential shock 转成可处理的 cash-flow event"
+      ],
+      "market_result": "对冲在最需要资金时支付，缓冲 physical revenue decline。",
+      "lesson": "评价 insurance 不能只统计多年净 premium，而要问它是否在企业不能承受的状态中交付现金。",
+      "model_answer": [
+        "Quiet-year option loss 不等于坏 hedge，因为 premium 是购买灾难状态付款的确定成本。",
+        "2020 payout 的意义不是证明管理层预测准确，而是证明事前定义的 downside protection 与 treasury objective 一致。"
+      ]
+    }
+  ],
+  "core_model": {
+    "core_points": [
+      "Hedge 从经营目标开始：producer、consumer、refiner 与 trader 保护的不是同一个价格。",
+      "线性工具锁近似固定价，期权压缩单侧尾部；每种保护都交换了 upside、premium、margin 或 credit。",
+      "Exposure 必须按 benchmark、grade、location、time、volume 和 tenor 匹配，否则方向正确仍有 basis/roll loss。",
+      "最终 offset 不够；企业必须在途中 margin、collateral 与 accounting volatility 下活下来。",
+      "VaR/ES 量化模型分布，stress test 量化具体灾难的 funding need。",
+      "工具、ISDA/CSA、hedge accounting、limits、middle office 与 board policy 是同一系统。",
+      "24/7 perpetual 提供补充价格发现，但 funding/oracle 不能替代 physical convergence 与 institutional depth。"
+    ],
+    "one_liner": "先把不可承受的经营结果定义清楚，再用匹配的 paper payoff 缩窄它，并确保企业在 basis、margin、tail、credit 和 accounting 的途中风险中活得到 hedge 兑现。"
+  },
+  "self_checks": [
+    {"prompt": "合上页面，解释为什么‘hedge 亏钱’本身不能证明风险管理失败。", "model_answer": "合格回答要把 derivative 与 physical 合并看：当 producer 的 short swap 因油价上涨亏损时，physical sale revenue 通常增加。应比较企业净经营结果是否被稳定，并计入 premium、basis、margin 与执行成本。"},
+    {"prompt": "用自己的话解释 airline 的 pay-fixed/receive-floating swap 如何锁定采购价。", "model_answer": "合格回答要指出 fuel benchmark 上涨会抬高实货采购成本，同时使 floating leg 高于 fixed、产生 swap 收款；若 quantity、index 与 pricing window 匹配，两者抵消后有效 benchmark cost 接近 fixed。"},
+    {"prompt": "为什么 zero-cost collar 不是免费保险？three-way 又多了什么风险？", "model_answer": "Collar 用 sold option premium 支付 bought option，因此经济成本是放弃一侧有利价格。Three-way 再卖更远 OTM option，降低当前成本，却使价格越过第三个 strike 后尾部保护减弱或消失。"},
+    {"prompt": "Midland producer 已用 WTI 100% hedge，为什么仍可能比预算少收很多？", "model_answer": "WTI futures 锁的是 Cushing benchmark；producer 卖的是 Midland barrels。管道瓶颈可让 Midland-Cushing differential 扩大，paper leg 只抵消 outright WTI move，local basis discount 仍落在 physical revenue 上。"},
+    {"prompt": "准确解释 one-day 95% VaR=$10m，并说明还缺哪两类信息。", "model_answer": "它表示在模型假设下，约 95% 的日损小于 $10m，约 5% 可能更差；还缺 tail 内平均损失即 ES，以及具体 extreme scenario 下 P&L、margin、collateral 与 liquidity requirement。"},
+    {"prompt": "为什么一笔最终经济上盈利的 futures hedge 仍可能让公司破产？", "model_answer": "Daily mark-to-market 会把 adverse path 立即转成 variation margin，而 physical offset 可能数月后才实现。若 treasury 没有 committed liquidity，clearinghouse 会在公司等到最终收益前强制平仓。"},
+    {"prompt": "说明 hedge accounting 与 economic hedge 的区别。", "model_answer": "Economic hedge 讨论 physical 与 derivative cash flow 是否抵消；hedge accounting 决定 marks 何时进入 OCI 或 P&L。Designation 或 effectiveness 失败可造成 earnings shock，即使经济关系尚未完全消失。"},
+    {"prompt": "为什么 oil perpetual 的 funding rate 不能等同于 WTI physical convergence？", "model_answer": "Funding 只是 longs 与 shorts 间的激励付款，reference 仍需从外部 oracle 借用；WTI expiry 则要求 make/take delivery at Cushing。没有 barrels、delivery 与深度，perp 可能在薄市场中偏离。"}
+  ],
+  "applications": [
+    {"situation": "公司宣布明年已 hedge 70% production", "action": "不要停在比例；查 fixed price/collar strikes、benchmark、grade/location basis、monthly volumes、tenor、counterparties、margin terms 与是否含 sold puts。"},
+    {"situation": "新闻说某 airline hedge 亏损巨大", "action": "把 derivative loss 与同期 fuel purchase savings 合并；再检查 basis、over-hedge、premium、cash margin 与 accounting presentation。"},
+    {"situation": "Treasury 想用最活跃的 WTI 替代本地 crude hedge", "action": "先构造历史 local-minus-WTI basis distribution，识别 pipeline/refinery outage regimes，再决定可接受 residual 或叠加 basis swap。"},
+    {"situation": "Option proposal 标注 zero cost", "action": "画出所有 strikes 之外的 payoff，单独 stress 每个 sold leg；确认 cap、floor、lower-put cliff、margin 和 early termination。"},
+    {"situation": "Risk report 只给 VaR 且处于低波动期", "action": "要求 ES、lookback/method、concentration、liquidity assumptions，并运行 correlation break、curve shift、basis shock 与 margin funding scenarios。"},
+    {"situation": "周末 oil perp 大幅波动", "action": "把它视为补充 price-discovery signal；核对 oracle、funding、depth 与 liquidation flow，等 regulated benchmark 重开后再判断是否可执行。"}
+  ],
+  "review_prompts": [
+    "一周后：任选 producer、airline、refiner，画出 physical exposure、合适 paper payoff 和至少三种 residual risk。",
+    "两周后：用一份真实 10-Q hedge disclosure，重建 volumes、fixed prices/collar strikes、tenors、basis 与 counterparties，不评价油价方向。",
+    "一个月后：设计一个 Hormuz stress，列出 crude、products、spreads、vol、freight、margin 与 collateral 的传导，并给出 treasury funding question。",
+    "六周后：比较一个 traditional futures hedge 与 perpetual position，逐项写出 convergence、depth、margin、oracle、regulation 与 accounting eligibility。"
+  ],
+  "sources": [
+    {"label": "Oil 101 Chapter 18: Forward Oil Markets: Futures and Swaps", "url": "https://oil101.morgandowney.com/chapters/futures-swaps", "coverage": "Paper/wet barrels、curve、spreads、futures margin、OTC swaps、airline worked example、EFP/EFS/block trades"},
+    {"label": "Oil 101 Chapter 19: Forward Oil Markets: Options", "url": "https://oil101.morgandowney.com/chapters/options", "coverage": "Option payoff、moneyness、styles、Black-76、Greeks、vol surface、gamma breakeven、structures"},
+    {"label": "Oil 101 Chapter 20: Managing Oil Price Risk", "url": "https://oil101.morgandowney.com/chapters/risk-management", "coverage": "Corporate objectives、instruments、basis/roll、VaR/ES、stress、ISDA、accounting、cases、governance"},
+    {"label": "Oil 101 Appendix 1: More on the Two Most Important Forward Markets", "url": "https://oil101.morgandowney.com/appendices/forward-markets-mechanics", "coverage": "WTI/Brent contract plumbing、BFOETM、Dated/MOC、CFD、EFP、EFS 与 specs"},
+    {"label": "Oil 101 Appendix: Perpetual Futures", "url": "https://oil101.morgandowney.com/appendices/perpetual-futures", "coverage": "Funding/oracle、24/7 use、institutional response、depth/leverage caveats 与 borrowed benchmark"}
+  ],
+  "source_coverage": [
+    {"source": "futures-swaps", "section": "Paper Barrels and Wet Barrels", "lesson_id": "linear-hedge", "coverage_note": "Paper derivative 与 physical convergence 的连接。"},
+    {"source": "futures-swaps", "section": "The Forward Curve and Its Two Shapes", "lesson_id": "basis-roll", "coverage_note": "Curve shape 用于 roll 与期限风险；cost-of-carry 细节由 Module 05 主讲。"},
+    {"source": "futures-swaps", "section": "April 20, 2020: The Day Oil Went Negative", "defer_reason": "负油价与 Cushing storage convergence 已由 Module 05 深讲；本模块仅保留 physical anchor 对 risk-management 的含义。"},
+    {"source": "futures-swaps", "section": "Marginal Finding and Development Cost at the Back of the Curve", "defer_reason": "属于长期价格形成与 investment signal，非本模块企业套保主线；保留来源映射避免丢失。"},
+    {"source": "futures-swaps", "section": "Spreads: How Oil Traders Actually Trade", "lesson_id": "basis-roll", "coverage_note": "Flat-price 与 spread exposure、basis risk。"},
+    {"source": "futures-swaps", "section": "The 3:2:1 and 2:1:1 Crack Spreads", "lesson_id": "exposure", "coverage_note": "Refiner 应 hedge margin 而非 crude outright，并保留公式与边界。"},
+    {"source": "futures-swaps", "section": "The Spreads Family Tree", "lesson_id": "basis-roll", "coverage_note": "用 grade/location/time/product arrows 理解 hedge residual。"},
+    {"source": "futures-swaps", "section": "Exchange-Traded Futures", "lesson_id": "linear-hedge", "coverage_note": "Long/short、clearing、5–10% initial margin、14:1 leverage、五日 MTM 和主要合约规格。"},
+    {"source": "futures-swaps", "section": "Over-the-Counter (OTC) Swap Contracts", "lesson_id": "linear-hedge", "coverage_note": "Customized bilateral average-price swaps 与 airline $805k worked example。"},
+    {"source": "futures-swaps", "section": "EFP, EFS, and Block Trades", "lesson_id": "basis-roll", "coverage_note": "Exchange、physical 与 OTC execution bridge。"},
+    {"source": "futures-swaps", "section": "The Live Curve Today", "defer_reason": "动态曲线观察属于 Module 05 与未来 research workbench；本模块只使用 curve 对 roll risk 的影响。"},
+    {"source": "options", "section": "Options as Insurance", "lesson_id": "options", "coverage_note": "Call/put、premium 与 asymmetric buyer/writer risk。"},
+    {"source": "options", "section": "Intrinsic Value, Time Value, and Moneyness", "lesson_id": "options", "coverage_note": "$70 WTI moneyness 表与 intrinsic formulas。"},
+    {"source": "options", "section": "Option Styles", "lesson_id": "options", "coverage_note": "American、Asian、European、Bermudan 及 futures assignment/cash settlement。"},
+    {"source": "options", "section": "Pricing: Black-76 and Implied Volatility", "lesson_id": "options", "coverage_note": "六项输入、模型 caveats、implied vol 与 OVX thresholds。"},
+    {"source": "options", "section": "The Greeks", "lesson_id": "options", "coverage_note": "Delta/Gamma/Vega/Theta/Rho 与 1m bbl numerical anchors。"},
+    {"source": "options", "section": "Volatility Skew, Smile, and Surface", "lesson_id": "options", "coverage_note": "Put skew、tail-protection demand 与 professional surface view。"},
+    {"source": "options", "section": "Daily Breakeven and Gamma Trading", "lesson_id": "options", "coverage_note": "σ×P/√256 formula、$1.75 daily 与 $3.89 weekly worked values。"},
+    {"source": "options", "section": "Common Option Structures", "lesson_id": "options", "coverage_note": "Collar、three-way、call/put spread、straddle 的成本与 tail trade-off。"},
+    {"source": "risk-management", "section": "Why Commodities Are Volatile", "lesson_id": "exposure", "coverage_note": "Oil 约 35–40% annualized vol 与 storage/supply response 逻辑。"},
+    {"source": "risk-management", "section": "The Case for Hedging", "lesson_id": "exposure", "coverage_note": "Cash-flow predictability、bankruptcy/borrowing/budget benefits 与 not-hedging choice。"},
+    {"source": "risk-management", "section": "Corporate Hedging Objectives by Firm Type", "lesson_id": "exposure", "coverage_note": "完整转化为企业类型对照表。"},
+    {"source": "risk-management", "section": "Hedging Instruments", "lesson_id": "options", "coverage_note": "Swap、collar、three-way 与 spreads 的 payoff trade-off。"},
+    {"source": "risk-management", "section": "Basis Risk", "lesson_id": "basis-roll", "coverage_note": "Midland-Cushing $10–18、rack-NYMEX、Forties-Brent 三类 basis。"},
+    {"source": "risk-management", "section": "Roll Risk: The Metallgesellschaft Lesson", "lesson_id": "basis-roll", "coverage_note": "Stack-and-roll、contango flip、$1.3bn margin 与 accounting mismatch；另作完整 case。"},
+    {"source": "risk-management", "section": "Value at Risk and Expected Shortfall", "lesson_id": "risk-metrics", "coverage_note": "95% VaR、三种方法、ES 与 pro-cyclicality/correlation caveats。"},
+    {"source": "risk-management", "section": "Stress Testing", "lesson_id": "risk-metrics", "coverage_note": "具体 supply/demand/Hormuz/hurricane scenarios 与 funding output。"},
+    {"source": "risk-management", "section": "Counterparty Risk and the ISDA Framework", "lesson_id": "governance", "coverage_note": "Clearing、ISDA、CSA、netting、novation 与 margin lines。"},
+    {"source": "risk-management", "section": "Hedge Accounting", "lesson_id": "governance", "coverage_note": "ASC 815/IFRS 9、OCI/P&L、cash-flow/fair-value hedge、80–125% historical threshold 与 dedesignation。"},
+    {"source": "risk-management", "section": "Historical Corporate Hedging Blowups and One Famous Gain", "lesson_id": "governance", "coverage_note": "MGRM、CAO、Amaranth、SemGroup、Pemex teaching set；MGRM/Pemex 展开为 cases。"},
+    {"source": "risk-management", "section": "Portfolio Theory and the Efficient Frontier", "lesson_id": "exposure", "coverage_note": "Hedge 目标是给定风险下改善 capital allocation，不是增加 expected oil price。"},
+    {"source": "risk-management", "section": "Peer Benchmarking: What Other Producers Are Doing", "lesson_id": "exposure", "coverage_note": "10-K/10-Q hedge-book benchmarking 作为 application trigger。"},
+    {"source": "risk-management", "section": "Why Some Companies Do Not Hedge", "lesson_id": "exposure", "coverage_note": "Supermajor diversification/transaction-cost/long-cycle NPV 与 natural hedge 的适用边界。"},
+    {"source": "risk-management", "section": "Operational Reality", "lesson_id": "governance", "coverage_note": "Execution、confirmation、reconciliation、independent marks、booking、margin、board/audit governance。"},
+    {"source": "forward-mechanics", "section": "NYMEX WTI Crude Oil Futures (CL)", "lesson_id": "basis-roll", "coverage_note": "1,000 bbl、tick、expiry、Cushing delivery、quality specs、TAS 与 negative-price system change。"},
+    {"source": "forward-mechanics", "section": "ICE Brent Crude Oil Futures", "lesson_id": "basis-roll", "coverage_note": "Settlement/expiry 与 cash vs physical election；规格汇入对照表。"},
+    {"source": "forward-mechanics", "section": "BFOETM: the basket, the 2018 and 2023 reforms", "lesson_id": "basis-roll", "coverage_note": "BFOETM streams、Midland 2023、21-day assignment 与 quality adjustment，作为 Brent basis 背景。"},
+    {"source": "forward-mechanics", "section": "Dated Brent and the Platts Market on Close", "lesson_id": "basis-roll", "coverage_note": "Dated、21-day BFOETM 与 ICE futures 三层 price plumbing。"},
+    {"source": "forward-mechanics", "section": "Contracts for Differences (CFDs)", "lesson_id": "basis-roll", "coverage_note": "Dated-to-forward short-window basis hedge 与 two-week liquidity caveat。"},
+    {"source": "forward-mechanics", "section": "Exchange for Physical (EFP)", "lesson_id": "basis-roll", "coverage_note": "500 contracts/500,000 bbl LLS worked example。"},
+    {"source": "forward-mechanics", "section": "Exchange for Swap (EFS)", "lesson_id": "basis-roll", "coverage_note": "1m bbl Dubai exposure 用 1,000 Brent futures 转 OTC Dubai hedge 的机制。"},
+    {"source": "forward-mechanics", "section": "Contract spec reference", "lesson_id": "basis-roll", "coverage_note": "WTI/Brent specs 对照，并明确交易前以 current rulebook 为准。"},
+    {"source": "perpetual-futures", "section": "What a Perpetual Is", "lesson_id": "perpetuals", "coverage_note": "No expiry、8-hour funding、mark/oracle、cash/stablecoin、leverage 与 user base。"},
+    {"source": "perpetual-futures", "section": "How Oil Perps Reached the Market", "lesson_id": "perpetuals", "coverage_note": "Venue evolution、reported volume 与 CME-vs-on-chain depth comparison；具体 venue 状态标为动态。"},
+    {"source": "perpetual-futures", "section": "Why the Clock Is the Real Attraction", "lesson_id": "perpetuals", "coverage_note": "Weekend/holiday price discovery 是真实使用价值。"},
+    {"source": "perpetual-futures", "section": "The Institutional Response", "defer_reason": "监管审批、交易所诉讼与产品发布按日变化；正文只保留‘尚无成熟 US-regulated commercial oil hedge flow’的边界，并要求实时核对。"},
+    {"source": "perpetual-futures", "section": "Why Oil Has Not Gone Perpetual, and the Skeptic's View", "lesson_id": "perpetuals", "coverage_note": "No physical convergence、thin depth、high leverage、auto-liquidation 与 clearing/credit differences。"},
+    {"source": "perpetual-futures", "section": "The Borrowed Price", "lesson_id": "perpetuals", "coverage_note": "Licensed benchmark、oracle integrity、weekend reference gap 与 institutional adoption caveats。"}
+  ]
+}
