@@ -1,6 +1,6 @@
 const root = document.querySelector("[data-module-root]");
 const moduleNamePattern = /^module-\d{2}-[a-z0-9-]+$/;
-const MODULE_DATA_VERSION = "20260711-2";
+const MODULE_DATA_VERSION = "20260711-3";
 
 function resolveModuleUrl() {
   if (!root) return null;
@@ -20,6 +20,7 @@ const escapeHtml = (value = "") => String(value)
 
 const asArray = (value) => Array.isArray(value) ? value : [];
 const list = (items, className = "") => `<ol class="${className}">${asArray(items).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol>`;
+const bullets = (items, className = "") => `<ul class="${className}">${asArray(items).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 
 function loadProgress(moduleId) {
   try {
@@ -68,6 +69,65 @@ function renderLesson(lesson, figures) {
         <div class="warning misread"><h4>常见误读</h4><p>${escapeHtml(lesson.misreading)}</p></div>
         <div class="warning boundary"><h4>适用边界</h4><p>${escapeHtml(lesson.boundary)}</p></div>
       </div>
+    </section>`;
+}
+
+function renderTeachingLesson(lesson, figures) {
+  const scene = lesson.scene || {};
+  const example = lesson.worked_example || {};
+  const terms = asArray(lesson.terms_in_context).map((term) => `
+    <article class="term-in-context">
+      <h4>${escapeHtml(term.cn)} <span>${escapeHtml(term.term)}</span></h4>
+      <p>${escapeHtml(term.plain_definition)}</p>
+      <p><strong>为什么重要：</strong>${escapeHtml(term.why_it_matters)}</p>
+    </article>`).join("");
+  const deepDive = asArray(lesson.deep_dive).map((item) => `
+    <details class="deep-dive">
+      <summary>${escapeHtml(item.title)}</summary>
+      <p>${escapeHtml(item.explanation)}</p>
+    </details>`).join("");
+
+  return `
+    <section class="content-band lesson-section teaching-lesson" id="${escapeHtml(lesson.id)}">
+      <p class="eyebrow">这一节要解决什么困惑</p>
+      <h2>${escapeHtml(lesson.title)}</h2>
+      <p class="reader-question">${escapeHtml(lesson.reader_question)}</p>
+      <h3>先看真实场景</h3>
+      <div class="scene-block">
+        <p>${escapeHtml(scene.setting)}</p>
+        <p><strong>现场是谁在参与：</strong>${escapeHtml(scene.actors)}</p>
+        <p><strong>他们正在做什么：</strong>${escapeHtml(scene.action)}</p>
+      </div>
+      <h3>一句话答案</h3>
+      <p class="plain-answer">${escapeHtml(lesson.plain_answer)}</p>
+      <h3>一步步讲机制</h3>
+      <p>${escapeHtml(lesson.explanation)}</p>
+      ${list(lesson.mechanism_chain, "mechanism-chain")}
+      <div class="example-block">
+        <h3>用数字走一遍</h3>
+        <p><strong>例子里是谁在做决定：</strong>${escapeHtml(example.actor)}</p>
+        <p><strong>题目设定：</strong>${escapeHtml(example.setup)}</p>
+        <div class="example-subsection">
+          <p class="example-label"><strong>已知条件</strong></p>
+          ${bullets(example.inputs, "example-inputs")}
+        </div>
+        <div class="example-subsection">
+          <p class="example-label"><strong>怎么计算</strong></p>
+          ${list(example.steps, "case-flow")}
+        </div>
+        <p><strong>结论：</strong>${escapeHtml(example.answer)}</p>
+      </div>
+      ${figures.map(renderFigure).join("")}
+      <h3>它为什么影响市场</h3>
+      <p>${escapeHtml(lesson.practitioner_lens)}</p>
+      <h3>专业语言对照</h3>
+      <div class="terms-in-context">${terms}</div>
+      <div class="warning-grid">
+        <div class="warning misread"><h4>容易误会什么</h4><p>${escapeHtml(lesson.misreading)}</p></div>
+        <div class="warning boundary"><h4>这个结论的边界</h4><p>${escapeHtml(lesson.boundary)}</p></div>
+      </div>
+      <h3>深入一层</h3>
+      ${deepDive}
     </section>`;
 }
 
@@ -171,7 +231,10 @@ function renderFormulas(formulas) {
 
 function renderModule(module) {
   const lessonLinks = module.lessons.map((lesson) => `<a href="#${escapeHtml(lesson.id)}">${escapeHtml(lesson.title)}</a>`).join("");
-  const lessonHtml = module.lessons.map((lesson) => renderLesson(lesson, asArray(module.figures).filter((figure) => figure.lesson_id === lesson.id))).join("");
+  const lessonHtml = module.lessons.map((lesson) => {
+    const figures = asArray(module.figures).filter((figure) => figure.lesson_id === lesson.id);
+    return lesson.reader_question ? renderTeachingLesson(lesson, figures) : renderLesson(lesson, figures);
+  }).join("");
   const checks = module.self_checks.map((item, index) => `
     <div class="check-item" data-self-check="${index}">
       <p><strong>${index + 1}.</strong> ${escapeHtml(item.prompt)}</p>

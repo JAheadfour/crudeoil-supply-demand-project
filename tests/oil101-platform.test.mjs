@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
+import vm from "node:vm";
 import { test } from "node:test";
 
 const read = (path) => readFileSync(path, "utf8");
@@ -33,6 +34,20 @@ const preDefinitionFields = (lesson) => [
   lesson.worked_example?.answer,
   lesson.practitioner_lens,
 ].filter((value) => typeof value === "string" && value.trim());
+const loadPlatformSandbox = () => {
+  const sandbox = {
+    URLSearchParams,
+    document: { querySelector: () => null },
+    window: { addEventListener() {}, location: { search: "" } },
+    navigator: {},
+    localStorage: { getItem: () => null, setItem() {} },
+    fetch: () => Promise.reject(new Error("Unexpected fetch during platform unit test")),
+    console,
+  };
+  sandbox.globalThis = sandbox;
+  vm.runInNewContext(read("docs/assets/platform.js"), sandbox, { filename: "docs/assets/platform.js" });
+  return sandbox;
+};
 
 test("homepage exposes the thematic learning route and full course shell", () => {
   const html = read("docs/index.html");
@@ -141,13 +156,140 @@ test("service worker replaces stale caches and never stores failed module respon
   const platform = read("docs/assets/platform.js");
   const moduleHtml = read("docs/learn/module.html");
   const dedicatedHtml = read("docs/learn/inventory-curve.html");
+  const dataVersion = platform.match(/MODULE_DATA_VERSION = "([^"]+)"/)?.[1];
   assert.match(sw, /skipWaiting/);
   assert.match(sw, /clients\.claim/);
   assert.match(sw, /response\.ok/);
   assert.match(platform, /MODULE_DATA_VERSION/);
   assert.match(platform, /[?&]v=/);
-  assert.match(moduleHtml, /platform\.js\?v=20260711-2/);
-  assert.match(dedicatedHtml, /platform\.js\?v=20260711-2/);
+  assert.match(moduleHtml, new RegExp(`platform\\.js\\?v=${escapeRegExp(dataVersion)}`));
+  assert.match(dedicatedHtml, new RegExp(`platform\\.js\\?v=${escapeRegExp(dataVersion)}`));
+});
+
+test("teaching lessons render beginner-first sections in the intended order", () => {
+  const module = JSON.parse(read("docs/data/oil101-understanding/module-01-barrel-journey.json"));
+  const source = read("docs/assets/platform.js");
+  const { renderTeachingLesson } = loadPlatformSandbox();
+  const lesson = module.lessons.find((item) => item.id === "refinery-transformation");
+  const figures = module.figures.filter((figure) => figure.lesson_id === lesson.id);
+  const html = renderTeachingLesson(lesson, figures);
+  const checkpoints = [
+    "这一节要解决什么困惑",
+    "先看真实场景",
+    "一句话答案",
+    "一步步讲机制",
+    "用数字走一遍",
+    'class="figure-block"',
+    "它为什么影响市场",
+    "专业语言对照",
+    "容易误会什么",
+    "这个结论的边界",
+    "深入一层",
+  ];
+
+  let previousIndex = -1;
+  for (const marker of checkpoints) {
+    const index = html.indexOf(marker);
+    assert.ok(index > previousIndex, `${marker} should appear after the previous teaching block`);
+    previousIndex = index;
+  }
+  assert.match(source, /lesson\.reader_question\s*\?\s*renderTeachingLesson\(lesson,\s*figures\)\s*:\s*renderLesson\(lesson,\s*figures\)/);
+  assert.match(html, /class="content-band lesson-section teaching-lesson"/);
+});
+
+test("teaching lessons render actor, inputs, calculation, conclusion, and escape source content", () => {
+  const { renderTeachingLesson } = loadPlatformSandbox();
+  const html = renderTeachingLesson({
+    id: "lesson<script>",
+    title: "标题<img onerror=1>",
+    reader_question: "问题<script>alert(1)</script>",
+    scene: {
+      setting: "地点<svg>",
+      actors: "人物<b>甲</b>",
+      action: "动作<i>发生</i>",
+    },
+    plain_answer: "答案<iframe>",
+    explanation: "解释<math>",
+    mechanism_chain: ["第一步<u>", "第二步<em>"],
+    worked_example: {
+      actor: "甲方分析师<img>",
+      inputs: ["已知 A<1>", "已知 B&2"],
+      setup: "起点<3>",
+      steps: ["计算 1<script>", "计算 2<style>"],
+      answer: "结论<final>",
+    },
+    practitioner_lens: "市场意义<lens>",
+    terms_in_context: [{
+      term: "Stream<script>",
+      cn: "物流批次<cn>",
+      plain_definition: "定义<def>",
+      why_it_matters: "重要性<why>",
+    }],
+    misreading: "误读<bad>",
+    boundary: "边界<limit>",
+    deep_dive: [{
+      title: "深入标题<deep>",
+      explanation: "深入解释<detail>",
+    }],
+  }, []);
+
+  assert.match(html, /例子里是谁在做决定/);
+  assert.match(html, /已知条件/);
+  assert.match(html, /怎么计算/);
+  assert.match(html, /结论/);
+  assert.match(html, /甲方分析师&lt;img&gt;/);
+  assert.match(html, /已知 A&lt;1&gt;/);
+  assert.match(html, /结论&lt;final&gt;/);
+  assert.doesNotMatch(html, /<script>alert\(1\)<\/script>/);
+  assert.doesNotMatch(html, /<img onerror=1>/);
+});
+
+test("teaching lessons tolerate missing optional arrays without leaking undefined", () => {
+  const { renderTeachingLesson } = loadPlatformSandbox();
+  const html = renderTeachingLesson({
+    id: "optional-arrays",
+    title: "数组兼容",
+    reader_question: "为什么这里也要能稳住可选字段？",
+    scene: {
+      setting: "场景说明",
+      actors: "现场角色",
+      action: "正在发生的动作",
+    },
+    plain_answer: "因为模块 02-09 还在走旧路径，而新路径必须对空数组温柔一点。",
+    explanation: "可选字段为空时，渲染器也应该给出稳定 HTML。",
+    mechanism_chain: null,
+    worked_example: {
+      actor: "测试者",
+      inputs: null,
+      setup: "已知条件",
+      steps: null,
+      answer: "仍然能给出结论",
+    },
+    practitioner_lens: "不要把可选字段当成必填字段。",
+    misreading: "空数组不等于页面报错。",
+    boundary: "缺少补充块时，核心内容仍可读。",
+  }, []);
+
+  assert.equal(typeof html, "string");
+  assert.doesNotMatch(html, /undefined|null/);
+  assert.match(html, /专业语言对照/);
+  assert.match(html, /深入一层/);
+});
+
+test("teaching renderer and lesson shells keep cache-busting versions aligned", () => {
+  const platform = read("docs/assets/platform.js");
+  const sw = read("docs/sw.js");
+  const moduleHtml = read("docs/learn/module.html");
+  const dedicatedHtml = read("docs/learn/inventory-curve.html");
+  const dataVersion = platform.match(/MODULE_DATA_VERSION = "([^"]+)"/)?.[1];
+  const moduleScriptVersion = moduleHtml.match(/platform\.js\?v=([0-9-]+)/)?.[1];
+  const dedicatedScriptVersion = dedicatedHtml.match(/platform\.js\?v=([0-9-]+)/)?.[1];
+  const cacheName = sw.match(/CACHE_NAME = 'oil101-understanding-v(\d+)'/)?.[1];
+
+  assert.equal(dataVersion, "20260711-3");
+  assert.equal(moduleScriptVersion, dataVersion);
+  assert.equal(dedicatedScriptVersion, dataVersion);
+  assert.equal(cacheName, "6");
 });
 
 test("catalog links all nine complete and mirrored course modules", () => {

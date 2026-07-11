@@ -124,6 +124,25 @@ h1 { margin: 0; font-size: 42px; }
 .mechanism-chain li::before { counter-increment: chain; content: counter(chain); position: absolute; left: 0; top: 9px; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--green-soft); color: var(--green); font-weight: 760; }
 .example-block { margin: 20px 0; padding: 18px; border-left: 3px solid var(--amber); background: #fffaf0; }
 .example-block h4, .warning h4 { margin: 0 0 8px; }
+.teaching-lesson p,
+.teaching-lesson li,
+.teaching-lesson h4,
+.teaching-lesson summary { overflow-wrap: anywhere; }
+.reader-question { max-width: 680px; font-size: 21px; font-weight: 700; }
+.scene-block { margin: 0 0 16px; border-left: 3px solid var(--blue); padding: 14px 18px; background: #f6f9fb; }
+.scene-block p:last-child { margin-bottom: 0; }
+.plain-answer { max-width: 700px; font-size: 19px; font-weight: 650; }
+.example-subsection { margin: 14px 0; }
+.example-label { margin-bottom: 8px; }
+.example-inputs { margin: 0; padding-left: 20px; }
+.example-inputs li { margin-bottom: 6px; }
+.terms-in-context { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 18px; }
+.term-in-context { border-top: 2px solid var(--green); padding-top: 10px; min-width: 0; }
+.term-in-context h4 { margin: 0 0 6px; font-size: 17px; }
+.term-in-context h4 span { color: var(--muted); font-weight: 500; }
+.deep-dive { border-top: 1px solid var(--line); padding: 12px 0; }
+.deep-dive summary { cursor: pointer; font-weight: 700; }
+.deep-dive p:last-child { margin-bottom: 0; }
 .warning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .warning { padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
 .warning.misread { border-top: 3px solid var(--red); }
@@ -190,9 +209,11 @@ h1 { margin: 0; font-size: 42px; }
   .course-rail { position: static; max-height: none; margin-bottom: 24px; padding: 0 0 14px; border-right: 0; border-bottom: 1px solid var(--line); }
   .course-rail nav { display: flex; gap: 14px; overflow-x: auto; scrollbar-width: thin; }
   .course-rail a { flex: 0 0 auto; }
-  .warning-grid, .glossary-grid, .detail-list { grid-template-columns: 1fr; }
+  .warning-grid, .glossary-grid, .detail-list, .terms-in-context { grid-template-columns: 1fr; }
   .content-band p { font-size: 16px; }
   .opening-question { font-size: 18px; }
+  .reader-question, .plain-answer { font-size: 18px; }
+  .scene-block { padding: 12px 14px; }
   .data-table { display: block; overflow-x: auto; white-space: normal; }
 }
 
