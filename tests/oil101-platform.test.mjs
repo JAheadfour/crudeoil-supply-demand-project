@@ -146,6 +146,32 @@ test("catalog links all nine complete and mirrored course modules", () => {
   }
 });
 
+test("module 01 teaches oil concepts before using industry shorthand", () => {
+  const module = JSON.parse(read("docs/data/oil101-understanding/module-01-barrel-journey.json"));
+  const unexplainedShorthand = /\b(stream|blend|grade|assay|custody|gathering|PONA)\b/i;
+
+  assert.equal(module.lessons.length, 8);
+  for (const lesson of module.lessons) {
+    assert.ok(lesson.reader_question.length >= 20, lesson.id);
+    assert.ok(lesson.scene.setting.length >= 30, lesson.id);
+    assert.ok(lesson.scene.actors.length >= 15, lesson.id);
+    assert.ok(lesson.scene.action.length >= 40, lesson.id);
+    assert.ok(lesson.plain_answer.length >= 40, lesson.id);
+    assert.doesNotMatch(
+      `${lesson.reader_question} ${lesson.scene.setting} ${lesson.scene.action} ${lesson.plain_answer}`,
+      unexplainedShorthand,
+      lesson.id
+    );
+    assert.ok(lesson.mechanism_chain.length >= 3, lesson.id);
+    assert.match(JSON.stringify(lesson.worked_example), /\d/, lesson.id);
+    assert.ok(lesson.terms_in_context.length >= 2, lesson.id);
+    assert.ok(lesson.terms_in_context.every((term) =>
+      term.term && term.cn && term.plain_definition && term.why_it_matters
+    ), lesson.id);
+    assert.ok(lesson.deep_dive.length >= 1, lesson.id);
+  }
+});
+
 test("product files contain no unfinished markers", () => {
   const files = [
     "docs/index.html",
