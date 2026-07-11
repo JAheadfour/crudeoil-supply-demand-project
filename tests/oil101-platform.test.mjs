@@ -107,6 +107,20 @@ test("offline bundle includes the product shell, lesson data, and figure", () =>
   assert.match(sw, /cache\.put/);
 });
 
+test("service worker replaces stale caches and never stores failed module responses", () => {
+  const sw = read("docs/sw.js");
+  const platform = read("docs/assets/platform.js");
+  const moduleHtml = read("docs/learn/module.html");
+  const dedicatedHtml = read("docs/learn/inventory-curve.html");
+  assert.match(sw, /skipWaiting/);
+  assert.match(sw, /clients\.claim/);
+  assert.match(sw, /response\.ok/);
+  assert.match(platform, /MODULE_DATA_VERSION/);
+  assert.match(platform, /[?&]v=/);
+  assert.match(moduleHtml, /platform\.js\?v=20260711-2/);
+  assert.match(dedicatedHtml, /platform\.js\?v=20260711-2/);
+});
+
 test("catalog links all nine complete and mirrored course modules", () => {
   const catalog = JSON.parse(read("docs/data/oil101-understanding/catalog.json"));
   assert.equal(catalog.modules.length, 9);

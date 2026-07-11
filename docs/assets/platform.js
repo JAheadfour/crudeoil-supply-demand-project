@@ -1,12 +1,13 @@
 const root = document.querySelector("[data-module-root]");
 const moduleNamePattern = /^module-\d{2}-[a-z0-9-]+$/;
+const MODULE_DATA_VERSION = "20260711-2";
 
 function resolveModuleUrl() {
   if (!root) return null;
-  if (root.dataset.moduleUrl) return root.dataset.moduleUrl;
+  if (root.dataset.moduleUrl) return `${root.dataset.moduleUrl}?v=${MODULE_DATA_VERSION}`;
   const moduleName = new URLSearchParams(window.location.search).get("module");
   return moduleNamePattern.test(moduleName || "")
-    ? `../data/oil101-understanding/${moduleName}.json`
+    ? `../data/oil101-understanding/${moduleName}.json?v=${MODULE_DATA_VERSION}`
     : null;
 }
 
