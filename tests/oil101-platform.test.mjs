@@ -199,6 +199,10 @@ test("teaching lessons render beginner-first sections in the intended order", ()
 
 test("teaching lessons render actor, inputs, calculation, conclusion, and escape source content", () => {
   const { renderTeachingLesson } = loadPlatformSandbox();
+  const inputs = [
+    { source: "已知 A<1>", escaped: "已知 A&lt;1&gt;" },
+    { source: "已知 B&2", escaped: "已知 B&amp;2" },
+  ];
   const html = renderTeachingLesson({
     id: "lesson<script>",
     title: "标题<img onerror=1>",
@@ -213,7 +217,7 @@ test("teaching lessons render actor, inputs, calculation, conclusion, and escape
     mechanism_chain: ["第一步<u>", "第二步<em>"],
     worked_example: {
       actor: "甲方分析师<img>",
-      inputs: ["已知 A<1>", "已知 B&2"],
+      inputs: inputs.map(({ source }) => source),
       setup: "起点<3>",
       steps: ["计算 1<script>", "计算 2<style>"],
       answer: "结论<final>",
@@ -238,7 +242,9 @@ test("teaching lessons render actor, inputs, calculation, conclusion, and escape
   assert.match(html, /怎么计算/);
   assert.match(html, /结论/);
   assert.match(html, /甲方分析师&lt;img&gt;/);
-  assert.match(html, /已知 A&lt;1&gt;/);
+  for (const input of inputs) {
+    assert.ok(html.includes(input.escaped), `worked-example input should be escaped: ${input.source}`);
+  }
   assert.match(html, /结论&lt;final&gt;/);
   assert.doesNotMatch(html, /<script>alert\(1\)<\/script>/);
   assert.doesNotMatch(html, /<img onerror=1>/);

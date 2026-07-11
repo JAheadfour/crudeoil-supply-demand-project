@@ -61,6 +61,13 @@ try {
   await mobile.goto(`${baseUrl}/learn/module.html?module=module-01-barrel-journey`, { waitUntil: "networkidle" });
   assert.equal(await mobile.locator(".error-state").count(), 0);
   assert.equal(await mobile.locator(".teaching-lesson").count(), 8);
+  assert.ok(await mobile.getByText("先看真实场景", { exact: true }).count() >= 1);
+  assert.ok(await mobile.getByText("用数字走一遍", { exact: true }).count() >= 1);
+  assert.ok(await mobile.getByText("专业语言对照", { exact: true }).count() >= 1);
+  assert.ok(await mobile.locator("details.deep-dive").count() >= 8);
+  assert.ok(await mobile.getByText("油田开发方案评审团队").count() >= 1);
+  assert.ok(await mobile.getByText("稳健方案最终能采出 35%，激进方案降为 28%。").count() >= 1);
+  assert.ok(await mobile.getByText("更高的早期日产量可能换来更低的最终供应；投资者应同时看当前产量和最终能采出的比例。").count() >= 1);
   assert.ok(await mobile.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
 
   await mobile.goto(`${baseUrl}/learn/module.html?module=module-05-inventory-curve`, { waitUntil: "networkidle" });

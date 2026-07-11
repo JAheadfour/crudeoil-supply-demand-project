@@ -175,3 +175,57 @@ Interpretation:
 
 - `sw.js` still uses `caches.match(..., { ignoreSearch: true })` by design. This task only applied the requested targeted refresh through cache/version bumps; future asset/data updates will need the same coordinated bump unless the caching strategy is changed later on purpose.
 - `git diff --check` is clean apart from CRLF warnings from the local working-copy settings.
+
+## Review Fix Evidence
+
+- Mobile Module 01 smoke now mirrors the desktop teaching-contract checks: exact teaching labels, at least 8 deep dives, visible actor/input/conclusion content, exactly 8 lessons, no error state, and no horizontal overflow.
+- The renderer escaping test now iterates over every worked-example input and verifies both `<`/`>` and `&` escaping.
+- No production files were changed for these review fixes.
+
+Node suite:
+
+```powershell
+& 'C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' --test tests/oil101-platform.test.mjs
+```
+
+Exact result summary:
+
+```text
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 232.6872
+```
+
+Playwright smoke:
+
+```powershell
+$env:NODE_PATH='C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\.pnpm\node_modules'
+$env:PLAYWRIGHT_PATH='C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\playwright'
+$env:PLAYWRIGHT_BROWSER_PATH='C:\Program Files\Google\Chrome\Application\chrome.exe'
+& 'C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' tests/ui-smoke.mjs
+```
+
+Exact output:
+
+```text
+UI SMOKE OK: 9 modules, desktop + mobile
+```
+
+Whitespace check:
+
+```powershell
+git diff --check
+```
+
+Exact output (exit code 0):
+
+```text
+warning: in the working copy of '.superpowers/sdd/task-3-report.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/oil101-platform.test.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/ui-smoke.mjs', LF will be replaced by CRLF the next time Git touches it
+```
