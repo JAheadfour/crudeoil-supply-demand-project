@@ -140,3 +140,79 @@ FLOORS OK
 ## Commit
 
 `58fda7c` (`Rewrite Module 01 for oil-industry beginners`)
+
+## Review-Fix Section: 2026-07-11
+
+### Finding-To-Fix Map
+
+- Finding 1, final synthesis: rewrote `logistics-availability` in both JSON mirrors from a route/capacity-only lesson into the final economic-usability synthesis. It now teaches that nominal supply becomes usable supply only when grade, location, timing, compatible facility, operational constraints, specification window, turnaround state, and delivery terms line up. The lesson keeps the same ID and now has an integrated port/refinery scene, a worked example with declared costs, new terms, and a deep dive on operating/spec/turnaround/delivery constraints.
+- Finding 2, source coverage IDs: audited all 87 `source_coverage` rows and preserved the count. Updated semantic targets for `Fields, Streams, and Blends` and `Streams, Blends, and Grades` to `liquids-family`; also moved `The Downstream Footprint` and `Turnaround Season` to `logistics-availability` because the final lesson now owns compatible facility and turnaround usability.
+- Finding 3, worked-example number order: audited all eight examples. Added missing declared inputs before calculation for `assay-quality` (`15美元/桶`, then computed `69美元/桶` after margin arithmetic), `refinery-transformation` (`80美元/桶`, `7美元/桶`), `products-specifications` (`2.80美元/gallon`), and the rewritten final lesson. Each example now flows inputs -> arithmetic -> interpretation.
+- Finding 4, premature API jargon: removed the module-level API formula. Removed API arithmetic from `liquids-family`; that example now teaches commercial batch scale and fixed-cost dilution. Preserved the API formula only inside `assay-quality.deep_dive`, after light/heavy physical meaning and the API term card are established.
+- Finding 5, mixed units: removed the named mixed-unit strings `10亿桶 barrels`, `50,000桶/日 bpd`, `39.2API`, `600,000桶 bpd`, and `US$`. Remaining validator-facing units use one convention per phrase, such as `bpd`, `$75/bbl`, or `gallons`.
+
+### Review Audit Evidence
+
+Command:
+
+```powershell
+& 'C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' -e "...review audit..."
+```
+
+Output:
+
+```text
+mirror_equal true
+coverage_count 87
+lesson_ids reservoir-to-well,physical-chain,liquids-family,assay-quality,molecular-barrel,refinery-transformation,products-specifications,logistics-availability
+module_level_api_formula false
+mixed_unit_phrases none
+coverage_target Fields, Streams, and Blends => liquids-family
+coverage_target Streams, Blends, and Grades => liquids-family
+coverage_target The Downstream Footprint => logistics-availability
+coverage_target Turnaround Season => logistics-availability
+sha256 f31a6fc36659f0c73a16abf58b8a2f412a5611b429e854d84021bac3f04a148c
+```
+
+### Verification Evidence
+
+Command:
+
+```powershell
+& 'C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' --test tests\oil101-platform.test.mjs
+```
+
+Output:
+
+```text
+tests 13
+pass 13
+fail 0
+duration_ms 182.6866
+```
+
+Command:
+
+```powershell
+& 'C:\Users\justi\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -c "import json,sys; sys.path.insert(0,r'C:\Users\justi\.codex\skills\book-to-platform\scripts'); from build_course_app import validate_module; m=json.load(open(r'course/data/oil101-understanding/module-01-barrel-journey.json',encoding='utf-8')); e=validate_module(m,'understanding'); print(chr(10).join(e) if e else 'FLOORS OK')"
+```
+
+Output:
+
+```text
+FLOORS OK
+```
+
+Command:
+
+```powershell
+git diff --check
+```
+
+Output:
+
+```text
+warning: in the working copy of '.superpowers/sdd/task-2-report.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'course/data/oil101-understanding/module-01-barrel-journey.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/data/oil101-understanding/module-01-barrel-journey.json', LF will be replaced by CRLF the next time Git touches it
+```
