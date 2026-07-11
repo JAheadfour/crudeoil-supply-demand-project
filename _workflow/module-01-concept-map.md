@@ -134,3 +134,105 @@ Coverage note: this concept order reorganizes the teaching path for beginners, b
 - The public web source layers note that the legacy 2009 PDF download path redirected to login during capture, so Task 1 relies on Morgan Downey's current public web chapters only.
 - Some source chapters mix timeless mechanisms with time-sensitive examples or league tables; Task 1 records the dependency map without resolving those dated details through old JSON prose.
 - Standards and product sections contain downstream specification detail that exceeds the beginner core path; these remain mapped for coverage but should stay in later `deep_dive` layers during content rewrite.
+
+## Source Coverage Appendix
+
+Audit note: The table below copies `source_coverage` exactly from the current Module 01 JSON as metadata only. It is an audit checklist, not teaching prose.
+
+| # | Source | Section | Target |
+| --- | --- | --- | --- |
+| 1 | crude-oil-assay | What Is a Crude Oil Assay? | lesson:assay-quality |
+| 2 | crude-oil-assay | Fields, Streams, and Blends | lesson:physical-chain |
+| 3 | crude-oil-assay | Density: The Most Important Property | lesson:assay-quality |
+| 4 | crude-oil-assay | Sweet versus Sour: Sulfur Content | lesson:assay-quality |
+| 5 | crude-oil-assay | The Crude Quality Matrix | lesson:assay-quality |
+| 6 | crude-oil-assay | Acidity, Metals, and the Rest of the Assay Sheet | lesson:assay-quality |
+| 7 | crude-oil-assay | Why the Assay Matters for Prices | lesson:assay-quality |
+| 8 | components | What Makes Up Oil Liquids? | lesson:liquids-family |
+| 9 | components | What Is Actually In a Barrel | lesson:products-specifications |
+| 10 | components | Conventional Crude Oil | lesson:liquids-family |
+| 11 | components | Streams, Blends, and Grades | lesson:physical-chain |
+| 12 | components | Condensates | lesson:liquids-family |
+| 13 | components | Natural Gas Liquids In Detail | lesson:liquids-family |
+| 14 | components | Fractionation and Ethane Rejection | lesson:liquids-family |
+| 15 | components | Naphtha: The Other Petchem Feed | lesson:molecular-barrel |
+| 16 | components | Unconventional Crude Oil | lesson:liquids-family |
+| 17 | components | Refinery Gain | lesson:refinery-transformation |
+| 18 | components | 2nd Edition Update: The Shale and NGL Revolution | lesson:liquids-family |
+| 19 | chemistry | The Building Blocks: Carbon and Hydrogen | lesson:molecular-barrel |
+| 20 | chemistry | Carbon Count, Boiling Point, and Physical State | lesson:molecular-barrel |
+| 21 | chemistry | The Four Molecular Structures: PONA | lesson:molecular-barrel |
+| 22 | chemistry | Typical PONA by Crude Grade | lesson:molecular-barrel |
+| 23 | chemistry | Saturated vs Unsaturated | lesson:molecular-barrel |
+| 24 | chemistry | Heteroatoms: Sulfur, Nitrogen, Oxygen, Metals | lesson:assay-quality |
+| 25 | chemistry | Combustion Chemistry | lesson:products-specifications |
+| 26 | chemistry | Octane and Cetane: Measuring Fuel Quality | lesson:products-specifications |
+| 27 | chemistry | Cracking and Combining | lesson:refinery-transformation |
+| 28 | chemistry | Why Chemistry Drives Pricing | lesson:assay-quality |
+| 29 | industry-overview | An Industry in Three Segments | lesson:physical-chain |
+| 30 | industry-overview | National Oil Companies Versus International Oil Companies | defer:公司所有制与竞争格局属于后续‘谁能改变全球供应格局’模块；本课仅保留物理功能分类。 |
+| 31 | industry-overview | The NOC League Table | defer:企业产量排名会随时间变化，后续供应权力模块按原文重新核对。 |
+| 32 | industry-overview | US Independents: The Shale Cohort | defer:页岩企业与并购放入上游纵深及供应格局模块。 |
+| 33 | industry-overview | Oilfield Services: The Contractors Who Actually Drill | defer:服务公司商业模式和名单放入上游纵深；本课只说明 operator 不一定拥有 rigs。 |
+| 34 | industry-overview | Pure-Play Refiners | defer:公司层 crack-spread 暴露放入炼化纵深模块。 |
+| 35 | industry-overview | Physical Trading Houses | defer:贸易商套利与资产组合放入市场参与者模块。 |
+| 36 | industry-overview | Engineering, Procurement, and Construction | defer:EPC 商业模式不影响第一课的 barrel flow，留给产业纵深。 |
+| 37 | industry-overview | Vertical Integration and the Disaggregation Trend | lesson:physical-chain |
+| 38 | industry-overview | OPEC and OPEC+ | defer:完整移至‘谁能改变全球供应格局’模块。 |
+| 39 | industry-overview | The Downstream Footprint | lesson:refinery-transformation |
+| 40 | industry-overview | Key Market Institutions | defer:EIA/IEA/CFTC/PRA 的数据角色在供需、价格与研究工作台模块展开。 |
+| 41 | ch06-exploration | The Upstream Sector | lesson:reservoir-to-well |
+| 42 | ch06-exploration | Obtaining Rights to Explore and Drill | defer:矿权、landman 与 rule of capture 放入上游纵深模块。 |
+| 43 | ch06-exploration | Types of E&P Agreements | defer:concession、PSA、service contract、JV 与 production contract 属产业制度纵深。 |
+| 44 | ch06-exploration | How Oil Forms: Source Rock, Reservoir Rock, and Cap Rock | lesson:reservoir-to-well |
+| 45 | ch06-exploration | Reservoir Mechanics: Pressure Is Everything | lesson:reservoir-to-well |
+| 46 | ch06-exploration | Exploration: Seismic Surveys | defer:2D/3D/4D seismic 与 wildcat success rate 放入上游纵深。 |
+| 47 | ch06-exploration | Drilling | lesson:reservoir-to-well |
+| 48 | ch06-exploration | Production Phases | lesson:reservoir-to-well |
+| 49 | ch06-exploration | Decline Curves and Field Life | lesson:reservoir-to-well |
+| 50 | ch06-exploration | Offshore Production | defer:platform typology、water depth 与 FPSO 经济性放入上游纵深。 |
+| 51 | ch06-exploration | The Shale Revolution | defer:本课只保留 tight oil 与 NGL 的 liquids 身份；fracturing 五步和 shale treadmill 在供应格局模块详讲。 |
+| 52 | refining | Feedstock, Slate, and Refinery Gain | lesson:refinery-transformation |
+| 53 | refining | The Four Stages of Refining | lesson:refinery-transformation |
+| 54 | refining | Separation: The Crude Distillation Unit | lesson:refinery-transformation |
+| 55 | refining | Conversion: Where Margin Is Made | lesson:refinery-transformation |
+| 56 | refining | Combining: Alkylation and Polymerization | lesson:refinery-transformation |
+| 57 | refining | Modifying: Catalytic Reforming, Isomerization, Ethers | lesson:refinery-transformation |
+| 58 | refining | Treatment: Hydroprocessing, Amine, Merox, Claus | lesson:refinery-transformation |
+| 59 | refining | Bitumen, Lubricants, Waxes, and Grease | lesson:products-specifications |
+| 60 | refining | Blending: Where Finished Product Is Born | lesson:products-specifications |
+| 61 | refining | Refinery Types and the Nelson Complexity Index | lesson:refinery-transformation |
+| 62 | refining | US Refining Geography and the PADDs | defer:PADD capacity、regional crude diet 与 crack spreads 放入局部短缺和炼化纵深模块。 |
+| 63 | refining | Turnaround Season | defer:turnaround 的季节、跨地区排期与库存影响放入局部短缺模块。 |
+| 64 | finished-products | The 19 Products of Crude Oil | lesson:products-specifications |
+| 65 | finished-products | Gasoline: A Cocktail, Not a Single Product | lesson:products-specifications |
+| 66 | finished-products | Jet Fuel and the Arrival of SAF | lesson:products-specifications |
+| 67 | finished-products | Diesel: On-Road, Off-Road, Marine, and Home Heat | lesson:products-specifications |
+| 68 | finished-products | Residual Fuel and the Bunker Market After IMO 2020 | lesson:products-specifications |
+| 69 | finished-products | LPG | lesson:liquids-family |
+| 70 | finished-products | Lubricant Base Oils and the Group I to V Classification | defer:本课保留产品地图；base-oil groups 与 additive stack 放入下游纵深。 |
+| 71 | finished-products | Waxes | lesson:products-specifications |
+| 72 | finished-products | Petroleum Coke | lesson:products-specifications |
+| 73 | finished-products | Bitumen and Asphalt | lesson:products-specifications |
+| 74 | finished-products | Kerosene and Niche Products | lesson:products-specifications |
+| 75 | finished-products | Carbon Black and Sulfur | lesson:products-specifications |
+| 76 | finished-products | Global Refined Product Trade Flows | lesson:logistics-availability |
+| 77 | transporting-oil | Five Methods of Moving Oil | lesson:logistics-availability |
+| 78 | transporting-oil | Tanker Ships | lesson:logistics-availability |
+| 79 | transporting-oil | Chartering and Worldscale | lesson:logistics-availability |
+| 80 | transporting-oil | Pipelines | lesson:logistics-availability |
+| 81 | transporting-oil | Crude by Rail and the Bakken Boom | lesson:logistics-availability |
+| 82 | transporting-oil | Trucking: The Last Mile | lesson:logistics-availability |
+| 83 | transporting-oil | IMO 2020 and the Transformation of Bunker Fuel | lesson:products-specifications |
+| 84 | transporting-oil | Shipping Chokepoints | defer:具体 chokepoint 情景与冲击传导放入局部短缺和事件分析模块；本课保留容量约束原则。 |
+| 85 | transporting-oil | LNG Carriers in Brief | defer:LNG 是专用低温气体物流，放入能源转型/LNG 专题。 |
+| 86 | transporting-oil | Trading Hubs | lesson:logistics-availability |
+| 87 | transporting-oil | Incoterms and Delivery Pricing | lesson:logistics-availability |
+
+## Source Anomaly Table
+
+Audit note: `source_anomalies` is empty in the current Module 01 JSON.
+
+| Source | Section | Status | Note |
+| --- | --- | --- | --- |
+| - | - | none recorded | Module 01 currently carries no `source_anomalies` records. |

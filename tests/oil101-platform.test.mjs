@@ -4,6 +4,16 @@ import { test } from "node:test";
 
 const read = (path) => readFileSync(path, "utf8");
 const dataPath = "docs/data/oil101-understanding/module-05-inventory-curve.json";
+const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const termPattern = (label) =>
+  /[A-Za-z0-9]/.test(label)
+    ? new RegExp(`(^|[^A-Za-z0-9])${escapeRegExp(label)}($|[^A-Za-z0-9])`, "i")
+    : new RegExp(escapeRegExp(label), "i");
+const numberPattern = /\d[\d,]*(?:\.\d+)?/;
+const recognizedUnitPattern =
+  /\b(?:bbl|bbls|barrel|barrels|bpd|kbpd|mbpd|tonne|tonnes|ton|tons|gallon|gallons|psi|API|RVP|octane|cetane|hours?|days?|kg|%|WS)\b|°API|US\$|\$/i;
+const actorOrContextPattern = /(?:一名|一位|一家|一座|一批|一桶|一条|一艘|一个|两个|比较|全球|cargo|field|refinery|terminal|trader|operator|well|basin|油田|炼厂|终端|交易员|油藏|货轮|油井|地区|枢纽|在\s*\S+)/i;
+const calculationPattern = /(?:=|≈|~|×|÷|\+|-|plus|minus|less|more|higher|lower|约|折价|差|增加|减少)/i;
 
 test("homepage exposes the thematic learning route and full course shell", () => {
   const html = read("docs/index.html");
@@ -146,9 +156,9 @@ test("catalog links all nine complete and mirrored course modules", () => {
   }
 });
 
-test("module 01 teaches oil concepts before using industry shorthand", () => {
+test("module 01 only uses newly introduced lesson terms after terms_in_context defines them", () => {
   const module = JSON.parse(read("docs/data/oil101-understanding/module-01-barrel-journey.json"));
-  const unexplainedShorthand = /\b(stream|blend|grade|assay|custody|gathering|PONA)\b/i;
+  const definedLabels = new Set();
 
   assert.equal(module.lessons.length, 8);
   for (const lesson of module.lessons) {
@@ -157,18 +167,39 @@ test("module 01 teaches oil concepts before using industry shorthand", () => {
     assert.ok(lesson.scene.actors.length >= 15, lesson.id);
     assert.ok(lesson.scene.action.length >= 40, lesson.id);
     assert.ok(lesson.plain_answer.length >= 40, lesson.id);
-    assert.doesNotMatch(
-      `${lesson.reader_question} ${lesson.scene.setting} ${lesson.scene.action} ${lesson.plain_answer}`,
-      unexplainedShorthand,
-      lesson.id
-    );
     assert.ok(lesson.mechanism_chain.length >= 3, lesson.id);
-    assert.match(JSON.stringify(lesson.worked_example), /\d/, lesson.id);
     assert.ok(lesson.terms_in_context.length >= 2, lesson.id);
     assert.ok(lesson.terms_in_context.every((term) =>
       term.term && term.cn && term.plain_definition && term.why_it_matters
     ), lesson.id);
+    const predefinitionText = [
+      lesson.reader_question,
+      lesson.scene.setting,
+      lesson.scene.actors,
+      lesson.scene.action,
+      lesson.plain_answer,
+    ].join(" ");
+    const currentLabels = [...new Set(lesson.terms_in_context.flatMap((term) =>
+      [term.term, term.cn].filter((label) => typeof label === "string" && label.trim())
+    ))];
+    for (const label of currentLabels) {
+      if (definedLabels.has(label)) {
+        continue;
+      }
+      assert.doesNotMatch(predefinitionText, termPattern(label), `${lesson.id}: ${label}`);
+    }
+    const example = lesson.worked_example;
+    assert.match(example.setup, actorOrContextPattern, `${lesson.id}: setup actor/context`);
+    assert.match(example.setup, numberPattern, `${lesson.id}: setup numeric value`);
+    assert.match(example.setup, recognizedUnitPattern, `${lesson.id}: setup recognized unit`);
+    assert.ok(example.steps.length >= 2, `${lesson.id}: example steps`);
+    assert.ok(example.steps.every((step) => step.length >= 20), `${lesson.id}: step detail`);
+    assert.match(example.steps.join(" "), calculationPattern, `${lesson.id}: explicit calculation/operator`);
+    assert.ok(example.answer.length >= 25, `${lesson.id}: substantive answer`);
     assert.ok(lesson.deep_dive.length >= 1, lesson.id);
+    for (const label of currentLabels) {
+      definedLabels.add(label);
+    }
   }
 });
 
