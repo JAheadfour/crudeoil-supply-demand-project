@@ -14,8 +14,12 @@ const termPattern = (label) =>
 const numberPattern = /\d[\d,]*(?:\.\d+)?/;
 const recognizedUnitPattern =
   /\b(?:bbl|bbls|barrel|barrels|bpd|kbpd|mbpd|tonne|tonnes|ton|tons|gallon|gallons|psi|API|RVP|octane|cetane|hours?|days?|kg|m3|m³|liters?|litres?|L|days?)\b|°API|US\$|\$|%/i;
-const explicitCalculationPattern =
-  /^(?=.*=)(?=.*\d[\d,]*(?:\.\d+)?)(?=.*(?:\d[\d,]*(?:\.\d+)?[\s]*%|\d[\d,]*(?:\.\d+)?[\s]*(?:bbl|bbls|barrel|barrels|bpd|kbpd|mbpd|tonne|tonnes|ton|tons|gallon|gallons|psi|API|RVP|octane|cetane|hour|hours|day|days|kg|m3|m³|liters?|litres?|L)|°API|US\$|\$))/i;
+const calculationUnitPattern = String.raw`(?:[\u4ebf\u4e07]?(?:\u6876|\u7f8e\u5143|bbls?|barrels?|bpd|kbpd|mbpd|tonnes?|tons?|gallons?|psi|API|RVP|octane|cetane|hours?|days?|kg|m3|m\u00c2\u00b3|liters?|litres?|L|%))`;
+const calculationOperandPattern = String.raw`\d[\d,]*(?:\.\d+)?(?:\s*${calculationUnitPattern})?`;
+const explicitCalculationPattern = new RegExp(
+  String.raw`${calculationOperandPattern}\s*[\u00d7\u00f7+\-]\s*${calculationOperandPattern}\s*=\s*\d[\d,]*(?:\.\d+)?\s*${calculationUnitPattern}(?:\s*\/\s*(?:\u6876|bbls?|barrels?|\u7f8e\u5143|bpd|kbpd|mbpd))?`,
+  "i"
+);
 const preDefinitionFields = (lesson) => [
   lesson.reader_question,
   ...Object.values(lesson.scene || {}),
