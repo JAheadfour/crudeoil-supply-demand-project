@@ -1,1121 +1,1416 @@
 {
-    "id":  "01-barrel-journey",
-    "variant":  "understanding",
-    "reading":  "01",
-    "reading_title":  "先看懂一桶油",
-    "title":  "一桶油如何从岩石孔隙走到终端产品",
-    "deck":  "沿着一桶油的真实物理旅程，把地质、井口处理、原油品质、炼厂分子改造、成品油规格与物流约束连成一张图。",
-    "reading_intent":  "这一模块不要求你先记住几十种装置，而是建立以后分析原油市场时必须调用的底图：市场交易的不是抽象的“油”，而是具有特定分子组成、质量规格、加工去向和交付地点的一桶实物。学完后，你应能从一条供应新闻一路追问到油藏压力、stream 与 blend、assay、适配炼厂、product slate 和运输瓶颈，并解释为什么两桶同样计作一桶的液体，经济价值可能相差数美元。",
-    "opening_question":  "一桶地下原油为什么不能直接加入汽车？从井口到加油枪之间，究竟是谁改变了它的形态、品质、所有权和价值？",
-    "quick_answer":  [
-                         "原油并不储存在地下湖泊中，而是被困在储集岩孔隙里；压差使其流向井筒，过快开采会损害最终可采量。",
-                         "井口流体先分出水和伴生气并稳定轻端，多个 stream 再混成满足交易规格的 blend 或 grade；买 WTI 并不是买某一个油田的油。",
-                         "assay 是炼厂的采购说明书。API gravity、sulfur、TAN、metals、viscosity、salt 与 BS\u0026W 一起决定收率、设备要求和折价。",
-                         "炼厂先按沸点 separation，再通过 cracking、combining、modifying、treatment 和 blending 改造分子；refinery gain 是体积膨胀，不是凭空增加质量。",
-                         "油必须通过专门的管道、船舶、铁路和卡车到达能处理它的设施；品质、地点、时间和运力共同决定一桶油是否真的可用。"
-                     ],
-    "learning_objectives":  [
-                                "完整复述 reservoir → wellhead → separation → stream/blend → transport → refinery → products → terminal 的物理链条",
-                                "用 carbon count、PONA 与 heteroatoms 解释轻重、甜酸和产品收率差异",
-                                "读懂 assay 中 API gravity、sulfur、TAN、viscosity、metals、salt 与 BS\u0026W 的经济含义",
-                                "区分 refinery 的 separation、conversion、treatment 和 blending，并解释 processing gain",
-                                "判断某桶油的真正可用性为何同时取决于炼厂配置、产品规格和物流网络"
-                            ],
-    "main_thread":  "把一桶油理解成一条不断被测量、分离、混合、改造和移交的物理链。故事起点不是地面上的黑色液体，而是源岩中的有机质在合适温压下生成烃类，迁移后被储集岩和盖层共同困住。油通过孔隙和连通孔喉，在油藏压力推动下进入井筒；到达井口时通常仍是油、气、水三相混合物。现场设施分水、闪蒸伴生气并稳定挥发性轻端，形成性质相对稳定的 stream；不同 stream 在管线或终端混合成满足商业规格的 blend/grade。assay 随后把这桶油翻译成炼厂语言：它有多轻、含多少硫和酸、会产出多少汽油柴油、会不会腐蚀设备或毒害催化剂。炼厂先按沸点把混合物切成馏分，再用裂化、加氢、重整、烷基化和调和把自然给定的分子分布改造成市场需要的产品。最后，汽油、柴油、航煤、LPG、沥青、石油焦等沿各自物流链走向消费者。每次交接都可能遇到品质不匹配、装置不适配、管道容量、船型、季节规格或交付条款约束，所以“全球有油”从来不等于“此刻此地有一桶可用的油”。",
-    "mental_model":  "一桶油的经济价值 = 分子禀赋 × 可加工能力 × 产品规格 × 物流可达性；四项中任何一项受限，名义供应都可能变成折价桶或无效供应。",
-    "mental_model_detail":  {
-                                "equation":  "Reservoir → Wellhead three-phase fluid → Stabilized stream → Blend/grade + assay → Transport → Separation → Conversion/treatment/blending → Finished products",
-                                "market_translation":  "上游创造流量但也消耗油藏压力；中游把桶送到具体地点并管理品质；下游依据 assay 和装置配置把分子转成产品。价格差不是标签游戏，而是每个环节的可处理性、损耗、资本与容量约束的货币表达。",
-                                "decision_rule":  "遇到任何原油新闻，依次问五个问题：这是什么液体和品质？从哪里来？要到哪里去？哪类装置能处理？最终产品在当地是否合规且有需求？"
-                            },
-    "formulas":  [
-                     {
-                         "name":  "API gravity",
-                         "formula":  "°API = 141.5 / SG - 131.5；SG = 141.5 / (°API + 131.5)",
-                         "variables":  "SG 为 60°F、1 atm 下相对水的 specific gravity；API 数字越大，液体越轻。",
-                         "worked_note":  "WTI 39.6°API 对应 SG≈0.827、密度约 827 kg/m³；159 L 的一桶 WTI 约重 131 kg。"
-                     },
-                     {
-                         "name":  "炼厂体积增益",
-                         "formula":  "Refinery gain ≈ 产品总体积 - 原油输入体积",
-                         "variables":  "裂化后质量守恒，但较轻分子的单位质量体积更大；全球平均约为原油输入的 2%。",
-                         "worked_note":  "典型美国炼厂把 42 美制加仑原油加工成约 45 加仑产品，不能把这理解为凭空创造石油质量。"
-                     },
-                     {
-                         "name":  "燃烧示例",
-                         "formula":  "CH4 + 2 O2 → CO2 + 2 H2O + heat；C8H18 + 12.5 O2 → 8 CO2 + 9 H2O + heat",
-                         "variables":  "iso-octane 的理论空气燃料质量比约为 14.7:1；缺氧或低温会产生 CO、未燃烃和 soot。",
-                         "worked_note":  "燃料价值来自氧化放热，但污染物和排放约束会反过来改变炼厂 treatment 与成品油规格。"
-                     }
-                 ],
-    "lessons":  [
-                    {
-                        "id":  "physical-chain",
-                        "title":  "先画物理链：一桶油由谁接手、在哪里改名",
-                        "concept":  {
-                                        "en":  "Upstream, midstream and downstream",
-                                        "cn":  "上游、中游与下游",
-                                        "definition":  "上游寻找并生产烃类，中游负责集输、处理、储存和大宗运输，下游把原油转成合规产品并送往终端。"
-                                    },
-                        "explanation":  "这三个词不是公司宣传口径，而是追踪一桶实物与风险转移的坐标。上游的资产是矿权、地震资料、井、平台与 gathering line，核心风险是地质不确定性、衰减和油价；中游拥有管道、船、处理厂、终端与罐区，更像容量受限的收费道路；下游拥有炼厂、产品管线、分销终端与零售网络，利润取决于原料成本和产品价值之间的 margin。井口流体不会直接进入长输管道，它先在 field facility 被计量，分离水和伴生气并降低 vapor pressure。此时得到的是一个物理 stream；多个 stream 在终端按目标 API、sulfur 等规格混成 blend，市场再用 grade 名称交易。所有权、custody、质量检验和价格通常就在这些 handoff 点发生变化。",
-                        "mechanism_chain":  [
-                                                "油藏流体经井筒到达地面，仍混有气体和大量地层水",
-                                                "现场分离和稳定设施移除水、闪蒸伴生气与过度挥发的轻端",
-                                                "单一油田或 gathering system 形成性质较稳定的 stream",
-                                                "多个 stream 在管道起点或 tank farm 混成满足规格的 blend/grade",
-                                                "grade 进入运输和炼厂体系，并在交接点完成计量、assay 与风险转移"
-                                            ],
-                        "worked_example":  {
-                                               "setup":  "一名交易员购买一批在 Cushing 交付的 WTI，并把它误认为来自某一座固定油田。",
-                                               "steps":  [
-                                                             "先追溯井口：来自多个美国轻甜油 stream 的流体分别完成脱水、脱气和稳定处理，再进入共同管网。",
-                                                             "这些 stream 在 Cushing 的终端和罐区按可交割质量区间汇集；只要组合后的桶满足 grade 规格，就可以作为 WTI 交付。",
-                                                             "因此交割桶的精细 assay 会随当前进入枢纽的 stream mix 缓慢变化，交易名称稳定并不意味着分子来源恒定。"
-                                                         ],
-                                               "answer":  "WTI 是在特定地点满足特定规格的一种商业 grade/assembly，不是一座油田的专属产物。"
-                                           },
-                        "practitioner_lens":  "看到产量、运输或炼厂新闻时，先标出 barrel 的 custody transfer 点，很多价差正是在交接处形成。",
-                        "misreading":  "把 upstream、midstream、downstream 当作互不相干的公司分类，会看不见同一桶油在交接点发生的品质、地点与风险变化。",
-                        "boundary":  "纵向一体化公司可能跨越三段，physical trading house 也会持有储罐、船舶甚至炼厂；分类描述的是功能，不保证一家企业只属于一格。"
-                    },
-                    {
-                        "id":  "reservoir-to-well",
-                        "title":  "地下不是油湖：压力、孔隙与可采率决定第一桶油",
-                        "concept":  {
-                                        "en":  "Petroleum system and reservoir mechanics",
-                                        "cn":  "成藏系统与油藏力学",
-                                        "definition":  "商业油藏要求 source rock、maturation、migration、reservoir、trap、seal 与 timing 同时成立，并靠孔隙连通性和压差让油流向井筒。"
-                                    },
-                        "explanation":  "原油起于缺氧环境沉积的海洋有机质形成 kerogen。埋藏加深后，约 7,500–15,000 英尺、60–120°C 的 oil window 把重分子裂解为液态烃；更深的 gas window 会继续裂解成 methane。生成油还必须迁移进入多孔 reservoir rock，并被 impermeable cap rock 封住。即使发现油，original oil in place 也不等于 reserves：全球平均 recovery factor 约 30%，超过 60% 很少见。油不是从空洞中抽走，而是从微小 pore throat 穿过岩石，在 reservoir pressure 高于 wellbore pressure 时流动。抽采过快会提前消耗压力、造成窜流或旁通，把本来可能采出的油永久留在地下。因此“一口井能流多少”和“最终能采多少”不是同一个目标。",
-                        "mechanism_chain":  [
-                                                "kerogen 在合适温度和压力下生成液态 hydrocarbons",
-                                                "油从 source rock 迁移并进入具有 porosity 与 permeability 的 reservoir rock",
-                                                "trap 与 cap rock 阻止其继续逸散，形成可钻探 accumulation",
-                                                "井筒建立低压通道，天然气膨胀、水体或重力推动油流入井筒",
-                                                "随着开采导致压力下降，生产转向 artificial lift、waterflood 或 EOR"
-                                            ],
-                        "worked_example":  {
-                                               "setup":  "两个油田都报告 10 亿桶 original oil in place，管理层却不能把它们都当成 10 亿桶供应。",
-                                               "steps":  [
-                                                             "油田 A 具有良好连通孔隙和强 water drive，若 recovery factor 为 40%，理论可采约 4 亿桶。",
-                                                             "油田 B 的孔喉连通差、压力支持弱，若 recovery factor 只有 15%，可采约 1.5 亿桶，即使地下原始体积相同也差 2.5 亿桶。",
-                                                             "若油田 B 为追逐短期流量而过快开采，water/gas breakthrough 还可能进一步降低最终 recovery。"
-                                                         ],
-                                               "answer":  "地下资源量必须经过流动能力、压力管理、技术和经济条件过滤后，才可能成为市场供应。"
-                                           },
-                        "practitioner_lens":  "读上游产量时同时找 recovery factor、decline rate、water cut、人工举升和注水情况，不能只看井口初产。",
-                        "misreading":  "把储层想成装满油的洞穴，会错误地认为钻中以后可以像抽水箱一样取出全部液体，并忽略开采速度对最终回收率的破坏。",
-                        "boundary":  "7,500–15,000 英尺的 oil window 和 30% 平均回收率是全球教学尺度，不是每个盆地和油藏的固定参数；地温梯度与岩性会改变范围。"
-                    },
-                    {
-                        "id":  "molecular-barrel",
-                        "title":  "一桶不是一种分子：碳数和 PONA 预告它会变成什么",
-                        "concept":  {
-                                        "en":  "Carbon count and PONA",
-                                        "cn":  "碳数分布与四类分子结构",
-                                        "definition":  "碳数主要决定沸点和常温物态，PONA（Paraffins、Olefins、Naphthenes、Aromatics）描述分子形状、饱和性与反应倾向。"
-                                    },
-                        "explanation":  "原油通常含 84–87% carbon、11–14% hydrogen、0–6% sulfur，其余 nitrogen、oxygen、metals 与 salts 合计通常低于 1%（均按重量）。但它不是单一化合物，一桶可能包含数千种 hydrocarbon。常温常压下，C1–C4 多为气体，C5–C24 多为液体，C25 以上逐渐成为固体；碳链越长，沸点通常越高，重油因此更偏向 gasoil、resid、wax 与 coke。结构也重要：paraffins 和 naphthenes 以单键为主、较稳定；aromatics 含 benzene ring，olefins 含双键，反应性更强。天然原油中的 olefins 通常只是 trace，因为它们难以在地质年代中存活，炼厂裂化才大量制造它们。PONA 让炼厂在进塔前就能估计燃料稳定性、汽油辛烷、化工原料价值和 residue 风险。",
-                        "mechanism_chain":  [
-                                                "碳原子数量和连接方式决定分子质量、形状、饱和性与反应性",
-                                                "分子间作用和尺寸差异形成不同 boiling point 与常温物态",
-                                                "distillation 按沸程把混合物分成 gases、naphtha、middle distillates、gasoil 与 resid",
-                                                "PONA 与 heteroatoms 决定这些馏分是否稳定、需不需要 cracking 或 treatment",
-                                                "最终 product slate 与 processing cost 反映回原油采购价差"
-                                            ],
-                        "worked_example":  {
-                                               "setup":  "比较分子式同为 C8H18 的 n-octane 与 iso-octane。",
-                                               "steps":  [
-                                                             "n-octane 是直链结构，Research Octane Number 约 20，容易在 spark-ignition engine 中提前自燃并发生 knock。",
-                                                             "iso-octane 是支链异构体，原子数完全相同却更抗爆，因此被定义为 octane 100 的参考物。",
-                                                             "炼厂通过 isomerization 和 catalytic reforming 改变原子排列，提高汽油 pool 的 octane，而不是增加碳原子总量。"
-                                                         ],
-                                               "answer":  "化学式相同不代表燃料性能相同；分子形状本身就是可被炼厂创造和定价的价值。"
-                                           },
-                        "practitioner_lens":  "看到 light/heavy 标签时继续追问 PONA、asphaltenes 与 heteroatoms，因为 API 相近的两桶油仍可能给炼厂完全不同的麻烦。",
-                        "misreading":  "把“轻油”直接等同于“天然高辛烷汽油”会混淆原油沸程分布与成品油抗爆性能，后者还依赖分子支化和调和。",
-                        "boundary":  "PONA 表给出的是 indicative range，实验室对 heavy aromatics、resins 与 asphaltenes 的边界不同，不能把区间当作交易合同的硬规格。"
-                    },
-                    {
-                        "id":  "assay-quality",
-                        "title":  "Assay 是炼厂的采购说明书，而不只是轻甜重酸四个标签",
-                        "concept":  {
-                                        "en":  "Crude oil assay and quality matrix",
-                                        "cn":  "原油化验与质量矩阵",
-                                        "definition":  "assay 记录一批原油的预期馏分收率及密度、硫、酸、金属、黏度、盐、水等性质，用于判断装置适配和 willingness to pay。"
-                                    },
-                        "explanation":  "API gravity 与 sulfur 是最常用的二维地图，但不是完整答案。API 是反向密度指标：数字越大越轻；light 通常高于 31°API，medium 约 22–31°，heavy 约 10–22°，extra-heavy 低于 10°，后者甚至比水密且往往需要 diluent 才能进管道。sweet 通常低于 0.5 wt% sulfur，0.5–2.0% 为 medium-sour，2.0% 以上为 sour。轻甜桶更容易得到汽油、柴油和航煤；重酸桶需要 coker、hydrocracker 和深度 hydrotreating。再往下看，TAN 超过约 0.7 会被视为高酸风险，多数炼厂偏好低于 0.5；vanadium/nickel 会毒害催化剂；pour point 约束寒冷天气输送；salt 必须先脱除；BS\u0026W 通常要求低于 1%。off-spec cargo 会导致延误、改港或大幅折价，distressed cargo 则因没有现成买家进一步打折。",
-                        "mechanism_chain":  [
-                                                "assay 把原油分子与杂质特征转成可比较的物理化学指标",
-                                                "指标决定天然 fraction yield、腐蚀风险、催化剂寿命和 hydrogen demand",
-                                                "炼厂将这些要求与自身 ADU、coker、hydrocracker、hydrotreater 等配置匹配",
-                                                "预期产品收入减去加工、损耗和约束成本，形成对 cargo 的 willingness to pay",
-                                                "无法匹配规格或地点的桶变成 off-spec/distressed cargo，并通过 differential 清算"
-                                            ],
-                        "worked_example":  {
-                                               "setup":  "一座简单 hydroskimming refinery 在 WTI 39.6°API、0.24% sulfur 与 Maya 22°API、3.4% sulfur 之间采购。",
-                                               "steps":  [
-                                                             "WTI 的轻端和中间馏分比例更高，硫处理负担较低，简单装置也能生产较多高价值产品。",
-                                                             "Maya 会留下更多 vacuum resid，并带来更高 sulfur、metals 与 coke tendency；没有 coker 和足够 hydrotreating 时，炼厂只能卖低价 resid 或降低负荷。",
-                                                             "即便 Maya 报价更低，若折价不足以覆盖低收率、额外 hydrogen、催化剂与 resid 处置成本，简单炼厂仍会选择 WTI。"
-                                                         ],
-                                               "answer":  "原油价格不能脱离具体炼厂讨论；便宜的重酸油只对有能力把折价变成高价值产品的复杂炼厂真正便宜。"
-                                           },
-                        "practitioner_lens":  "看到某 grade 贴水扩大，先判断是全球质量重估，还是目标炼厂检修、coking/hydrogen capacity 紧张造成的 buyer-base 收缩。",
-                        "misreading":  "只凭 API 和 sulfur 给所有原油排一条固定价值榜，会漏掉 TAN、metals、RVP、pour point、carbon residue、salt、BS\u0026W 与具体炼厂配置。",
-                        "boundary":  "light sweet 通常价值更高，但极轻 condensate 可能超出炼厂最优 crude slate，缺乏 middle distillate；某些复杂炼厂反而靠重酸折价赚取更高 margin。"
-                    },
-                    {
-                        "id":  "liquids-family",
-                        "title":  "统计里的 oil liquids 是一个家族，不等于 conventional crude",
-                        "concept":  {
-                                        "en":  "Oil liquids supply components",
-                                        "cn":  "石油液体供应构成",
-                                        "definition":  "总 liquids 口径把 conventional crude、tight oil、condensates、NGLs、unconventional heavy、biofuels 与 refinery gain 等来源合并计算。"
-                                    },
-                        "explanation":  "截至作者 2026 版页面，全球 oil liquids 约 103–104 mmbpd，但 conventional crude + condensate 约 71 mmbpd；NGLs 约 14、US tight oil 约 9、unconventional heavy 约 4、biofuels 约 3、refinery gain 约 2。把总量全部叫“原油产量”会掩盖化学和用途差异。condensate 通常高于 45°API，在地层温压下为气体、到地面降温降压后凝结；lease condensate 在 EIA 中计作 crude，plant condensate/C5+ 则计作 NGL。NGL 在 gas plant 从天然气中分离，Y-grade 经 deethanizer、depropanizer、debutanizer 和 splitter 变成 ethane、propane、normal butane、iso-butane 与 natural gasoline。ethane 是否 recovery 还取决于它作为 petchem feed 与留在 sales gas 中提供 BTU 的相对价值。因此同样增加 100 万桶 liquids，对炼厂原料和交通燃料供应的影响可能完全不同。",
-                        "mechanism_chain":  [
-                                                "油气井共同产出 crude/condensate、associated gas 与水",
-                                                "井口和 gas plant 按压力、温度与沸点把液态烃从 methane stream 中分离",
-                                                "mixed NGL 经过 fractionation 形成五种独立交易的 purity products",
-                                                "各产品进入 gasoline blending、petrochemicals、heating 或 heavy-oil diluent 等不同用途",
-                                                "统计将异质液体折成 bpd 后相加，但市场必须重新拆回可替代性"
-                                            ],
-                        "worked_example":  {
-                                               "setup":  "全球 liquids 同比增加 100 万 bpd，其中大部分来自 ethane 和 propane，而 conventional crude 不变。",
-                                               "steps":  [
-                                                             "ethane 主要进入 steam cracker 制乙烯，propane 可用于 LPG、PDH 或加热，它们并不能直接替代 ADU 的中质原油 feed。",
-                                                             "炼厂若仍缺少 diesel/jet-rich crude，交通燃料边际可能继续偏紧，即便 headline liquids supply 明显增加。",
-                                                             "分析者应把新增量按 molecule、processing route 和 end use 重分组，再判断它是否缓解目标市场。"
-                                                         ],
-                                               "answer":  "总 liquids 增长不自动等于可炼原油或道路燃料供应同步增长，口径必须服务于所问的问题。"
-                                           },
-                        "practitioner_lens":  "引用 global liquids growth 时必须同时给出 component breakdown，尤其区分 crude、condensate、NGL 与 refinery gain。",
-                        "misreading":  "把 refinery gain 当作上游新增产量，或把 ethane/propane 增长直接当作汽柴油供给增长，都会制造虚假的供需宽松。",
-                        "boundary":  "作者页面的 2025/2026 数字是更新后的近似分解，不同机构对 condensate、biofuels 和 processing gain 的统计边界可能不同。"
-                    },
-                    {
-                        "id":  "refinery-transformation",
-                        "title":  "炼厂先分离，再改造、净化和调和；四步不能混成“炼油”二字",
-                        "concept":  {
-                                        "en":  "Separation, conversion, treatment and blending",
-                                        "cn":  "炼厂四阶段",
-                                        "definition":  "separation 按沸点切分，conversion 改变分子大小或排列，treatment 去除杂质，blending 把多个 blendstock 配成最终规格。"
-                                    },
-                        "explanation":  "原油先 desalting/dewatering，再加热到约 400°C 进入 atmospheric distillation unit。蒸气在塔内向上变冷，不同沸程在不同 tray 凝结：轻气和 naphtha 靠上，kerosene、diesel 与 gasoil 居中，resid 留在底部。VDU 通过降低压力来降低重分子沸点，在不发生失控 thermal cracking 的情况下分出 VGO 和 vacuum resid。到此只是“自然给什么就切出什么”。conversion 才创造配置价值：FCC 把 VGO 裂成 gasoline、olefins 与 light cycle oil；hydrocracker 在高压 hydrogen 下偏向 jet/diesel；coker 把 vacuum resid 变成轻产品和 petroleum coke；alkylation 把小 olefins 与 isobutane 合成高辛烷 alkylate；reformer 与 isomerization 重排结构。随后 hydroprocessing 去 sulfur/nitrogen，Claus unit 回收 elemental sulfur，最后在线 blending 才诞生满足 octane、RVP、sulfur、freeze point 等要求的 finished product。",
-                        "mechanism_chain":  [
-                                                "desalter 去除 salt 和水，避免下游碳钢腐蚀",
-                                                "ADU/VDU 按 boiling range 分出 naphtha、middle distillate、VGO 与 resid",
-                                                "FCC、hydrocracker、coker、alkylation、reformer 等改变分子大小和结构",
-                                                "hydrotreating、amine、Merox 与 Claus 系统去除或回收 sulfur、nitrogen 与 odorants",
-                                                "blender 按非线性规格组合 blendstocks，形成可以合法销售的 gasoline、diesel 和 jet"
-                                            ],
-                        "worked_example":  {
-                                               "setup":  "一桶重酸 Maya 进入有 coker 与深度 hydrotreating 的 Gulf Coast complex refinery。",
-                                               "steps":  [
-                                                             "ADU 与 VDU 先切出轻馏分、VGO 和大量 vacuum resid；若只有 topping，resid 会成为低价燃料油或沥青。",
-                                                             "coker 对 resid 进行约 22 小时 delayed coking，回收 naphtha/gasoil 并把碳、金属集中到 petroleum coke；hydrocracker/FCC 再升级 gasoil。",
-                                                             "hydrogen 系统去除 sulfur/nitrogen，reformer、alkylation 和 blending 把多个流股配成汽油、柴油与航煤规格。",
-                                                             "炼厂因此能把 Maya 的采购折价转化为 light products，coker 的经济价值体现在 light-heavy differential 中。"
-                                                         ],
-                                               "answer":  "复杂度不是装置数量的炫耀，而是把自然不需要的重分子转成市场需要产品、同时处理杂质的能力。"
-                                           },
-                        "practitioner_lens":  "比较炼厂时同时看 Nelson Complexity、coking、hydrocracking、hydrogen 与 product demand，单看 nameplate crude capacity 不够。",
-                        "misreading":  "把 distillation 说成“把原油炼成汽油”会错误地把分离和分子转化混为一谈，也解释不了复杂炼厂为何愿意买重酸油。",
-                        "boundary":  "illustrative yield 取决于 crude slate、装置配置、季节与地区需求；不能把某张典型收率表当作所有炼厂的固定配方。"
-                    },
-                    {
-                        "id":  "products-specifications",
-                        "title":  "产品不是几个名字，而是十九类用途与一整套规格窗口",
-                        "concept":  {
-                                        "en":  "Finished products and specification blending",
-                                        "cn":  "成品油与规格调和",
-                                        "definition":  "finished product 是通过沸程、化学测试、性能与监管指标共同定义的商业品，而不是某个蒸馏切口的天然同义词。"
-                                    },
-                        "explanation":  "作者按从轻到重列出 19 类产品，从 methane、ethane、propane、butanes、pentanes、naphtha，到 gasoline、jet/kerosene、diesel、heating oil、gasoil、lubes、waxes、VGO、resid、bitumen、petcoke、carbon black 与 sulfur。它们既有重叠沸程，也靠用途和规格分开。gasoline 是六到八种 blendstock 的 cocktail，octane、RVP、sulfur 与 aromatics 必须同时合规；夏季 9.0 psi 联邦 RVP 上限在部分地区降到 7.8，CARB 可到 7.0–6.5，冬季则可回升到 11.5 甚至 15 psi，因此高 RVP butane 是冬季 swing component。Jet A 与 Jet A-1 的 freeze point 分别约 -40°C 与 -47°C，航空安全使 jet 成为最国际协调的液体燃料。on-road ULSD 是 15 ppm sulfur；IMO 2020 又把全球 marine sulfur cap 从 3.5% 降到 0.5%。这些规格会倒逼炼厂的 hydrogen、blendstock 与物流安排。",
-                        "mechanism_chain":  [
-                                                "炼厂切分和转化得到多个具有不同 octane、RVP、sulfur、freeze point 的 blendstocks",
-                                                "监管、发动机与气候条件定义当地 finished-product specification",
-                                                "blender 用成本最低的组合逼近多个约束，且某些性质并非线性平均",
-                                                "季节切换或新法规改变可用 blendstock 的 shadow value",
-                                                "原油品质和装置配置随之重新定价，因为它们提供的分子不再同等有用"
-                                            ],
-                        "worked_example":  {
-                                               "setup":  "一家终端在春季仍持有高 RVP winter gasoline，而夏季规格生效在即。",
-                                               "steps":  [
-                                                             "冬季为增加便宜 volume 和 octane 加入 normal butane；其 RVP 约 52 psi，使成品蒸气压较高。",
-                                                             "夏季上限收紧后，这批 late-winter barrel 不能直接进入 summer distribution system，成为 orphan barrel。",
-                                                             "终端只能用 very-low-RVP alkylate/reformate 把它 blend down，或在截止日前折价出售；低 RVP blendstock 的边际价值因此提前上升。"
-                                                         ],
-                                               "answer":  "成品油短缺可能不是总分子不足，而是合规分子在正确季节和地点不足。"
-                                           },
-                        "practitioner_lens":  "看到 product inventory 时同步核对 grade、sulfur、RVP、freeze point 与季节切换，headline barrels 可能并非可互换库存。",
-                        "misreading":  "把所有 gasoline、diesel 或 bunker fuel 视为可无成本互换，会忽略规格隔离、添加剂、税收染色与法规造成的真实市场分割。",
-                        "boundary":  "本模块只建立产品地图；SAF pathways、renewable diesel credit stack、lubricant Group I–V 与 petcoke 质量市场会在下游纵深模块展开。"
-                    },
-                    {
-                        "id":  "logistics-availability",
-                        "title":  "最后一公里之前：地点和容量决定一桶油是否存在于市场",
-                        "concept":  {
-                                        "en":  "Physical logistics and deliverability",
-                                        "cn":  "实物物流与可交付性",
-                                        "definition":  "一桶油只有在品质相容、运输方式可用、目的设施可接收且交付条款明确时，才构成某地某时点的有效供应。"
-                                    },
-                        "explanation":  "超过一半全球 crude 在某阶段走海运。VLCC 载约 200–320k DWT、典型约 200 万桶；Suezmax 可满载通过 Suez，VLCC 往往需部分装载或绕 Cape。clean tanker 的涂层/不锈钢罐用于汽柴油和航煤，dirty tanker 用于 crude/resid，切换服务需要昂贵清舱。陆上管道又有自己的物理规则：Colonial 全长约 5,500 miles，产品以 3–5 mph 运行，走完全程约 18–20 天；不同产品 batch 相邻会形成 interface cut，DRA 可在不增加泵的情况下提升约 10–40% throughput。rail 在 pipeline 不足时提供弹性，truck 承担高成本 last mile。枢纽把 pipeline、terminal 与 storage 集中起来，Cushing、USGC、ARA、Singapore 等地点因此既是物理节点也是定价节点。FOB、CIF、DDP 则规定运输成本和风险在谁手里。",
-                        "mechanism_chain":  [
-                                                "生产地与炼厂/消费地空间分离，产生跨区域运输需求",
-                                                "cargo 品质、船型、管道 batch 和 terminal 接收能力筛选可行路线",
-                                                "capacity、travel time、chokepoint 与接口污染限制边际流量",
-                                                "物流稀缺通过 freight、location differential 和 delivery premium 进入价格",
-                                                "FOB/CIF/DDP 等条款决定风险和费用在交接点如何转移"
-                                            ],
-                        "worked_example":  {
-                                               "setup":  "一批 Ras Tanura 至 Ningbo 的 VLCC cargo 按 illustrative Worldscale flat rate $18.50/tonne、WS 60 报价，cargo 约 270,000 tonnes。",
-                                               "steps":  [
-                                                             "有效运费为 $18.50 × 0.60 = $11.10/tonne。",
-                                                             "总 freight 约为 $11.10 × 270,000 = $2.997 million，即约 $3.0M/voyage。",
-                                                             "若 chokepoint 风险或可用船舶收紧使 WS 上升，目的地 crude differential 必须调整，才能让相同 cargo 继续有套利空间。"
-                                                         ],
-                                               "answer":  "运费不是附在油价后的无关费用，它会直接决定某一品质的桶能否经济地抵达目标炼厂。"
-                                           },
-                        "practitioner_lens":  "分析区域短缺时先画 pipe/port/terminal route，再看 freight 与 Incoterms；不要用全球总供应绕过本地 deliverability。",
-                        "misreading":  "认为同一种 grade 在全球任何地点都具有同一可用价值，会漏掉航程、船型、管道方向、terminal 规格和交付风险。",
-                        "boundary":  "DWT×7.5、VLCC 两百万桶和各方式市场份额均为粗略转换或典型值，实际载量受密度、吃水、loadline、港口和航道限制。"
-                    }
-                ],
-    "figures":  [
-                    {
-                        "id":  "fractional-distillation",
-                        "lesson_id":  "refinery-transformation",
-                        "src":  "../assets/figures/module-01/crude-fractional-distillation.jpg",
-                        "alt":  "Oil 101 原图：原油分馏塔剖面，显示不同沸点馏分在塔内不同高度离开及对应终端用途",
-                        "reading_guide":  "先从塔底向塔顶读温度：heated crude 在靠近底部进入，长碳链、高沸点分子留在下部，短碳链、低沸点分子继续上升。再看各侧线产品的高度与用途。注意这张图展示的是 separation：它说明哪些分子天然落在哪个沸程，却没有展示 FCC、hydrocracker、coker 等随后改变分子的 conversion units。",
-                        "caption":  "Figure 7-3: Crude oil fractional distillation。加热原油进入塔底附近，蒸气上升并在匹配各馏分沸点的高度冷凝；轻端从上部离开，中间馏分位于中部，重质残渣留在塔底。",
-                        "reference":  {
-                                          "label":  "Morgan Downey, Oil 101, Chapter 7 Refining, Figure 7-3",
-                                          "url":  "https://oil101.morgandowney.com/chapters/refining",
-                                          "asset_url":  "https://oil101.morgandowney.com/images/ch07-distillation-tower-cuts.jpg",
-                                          "accessed":  "2026-07-11"
-                                      }
-                    }
-                ],
-    "figure_candidates":  [
-
-                          ],
-    "comparison_tables":  [
-                              {
-                                  "title":  "从原油品质到炼厂含义",
-                                  "headers":  [
-                                                  "维度",
-                                                  "低负担一端",
-                                                  "高负担一端",
-                                                  "真正影响"
-                                              ],
-                                  "rows":  [
-                                               [
-                                                   "API gravity",
-                                                   "Light \u003e31°",
-                                                   "Heavy 10–22°；extra-heavy \u003c10°",
-                                                   "天然轻产品收率、泵送与 resid 数量"
-                                               ],
-                                               [
-                                                   "Sulfur",
-                                                   "Sweet \u003c0.5 wt%",
-                                                   "Sour \u003e2.0 wt%",
-                                                   "hydrogen、腐蚀、SOx 与 hydrotreating 负担"
-                                               ],
-                                               [
-                                                   "TAN",
-                                                   "多数炼厂偏好 \u003c0.5",
-                                                   "\u003e约0.7 常被标记高酸",
-                                                   "高温 naphthenic acid corrosion"
-                                               ],
-                                               [
-                                                   "Metals",
-                                                   "trace 且低",
-                                                   "V/Ni 可达高 ppm",
-                                                   "FCC catalyst poisoning，并集中进入 coke"
-                                               ],
-                                               [
-                                                   "Viscosity/pour point",
-                                                   "易流动、低凝点",
-                                                   "高黏、waxy、低温凝胶",
-                                                   "加热、diluent 与管道可输送性"
-                                               ],
-                                               [
-                                                   "BS\u0026W/salt",
-                                                   "BS\u0026W 通常 \u003c1%",
-                                                   "水、泥沙、盐偏高",
-                                                   "无效体积、desalter 负担和腐蚀"
-                                               ]
-                                           ]
-                              },
-                              {
-                                  "title":  "四个炼厂阶段不要混淆",
-                                  "headers":  [
-                                                  "阶段",
-                                                  "改变什么",
-                                                  "代表装置",
-                                                  "没有解决什么"
-                                              ],
-                                  "rows":  [
-                                               [
-                                                   "Separation",
-                                                   "按沸点把混合物切开",
-                                                   "Desalter、ADU、VDU",
-                                                   "不主动提高轻产品分子比例"
-                                               ],
-                                               [
-                                                   "Conversion",
-                                                   "打断、组合或重排分子",
-                                                   "FCC、hydrocracker、coker、alkylation、reformer",
-                                                   "不自动保证 sulfur/RVP 等成品规格"
-                                               ],
-                                               [
-                                                   "Treatment",
-                                                   "移除 sulfur、nitrogen、metals、odorants",
-                                                   "HDT/HDS、amine、Merox、Claus",
-                                                   "不等于最终产品已经调和完成"
-                                               ],
-                                               [
-                                                   "Blending",
-                                                   "组合多个 blendstock 满足多项规格",
-                                                   "Inline blender、tank farm、additive injection",
-                                                   "不能凭空弥补缺失装置或不合格原料"
-                                               ]
-                                           ]
-                              }
-                          ],
-    "term_family":  {
-                        "root":  "一桶油的可用价值",
-                        "tree":  "可用价值 → 地下可采性（source/reservoir/seal/pressure）→ 原油身份（stream/blend/grade/assay）→ 分子处理（separation/conversion/treatment/blending）→ 终端规格（gasoline/diesel/jet/resid）→ 可交付性（pipeline/tanker/terminal/Incoterms）",
-                        "analogy":  "把一桶油想成需要连续过六道海关的旅客：地质决定能不能出发，assay 是护照，炼厂配置是签证，产品规格是目的地规则，物流是航班；任何一道不过，它都到不了目标消费者。",
-                        "branches":  [
-                                         {
-                                             "name":  "身份",
-                                             "children":  [
-                                                              "Stream",
-                                                              "Blend",
-                                                              "Grade",
-                                                              "Assay"
-                                                          ]
-                                         },
-                                         {
-                                             "name":  "分子",
-                                             "children":  [
-                                                              "Carbon count",
-                                                              "PONA",
-                                                              "Heteroatoms"
-                                                          ]
-                                         },
-                                         {
-                                             "name":  "加工",
-                                             "children":  [
-                                                              "Separation",
-                                                              "Conversion",
-                                                              "Treatment",
-                                                              "Blending"
-                                                          ]
-                                         },
-                                         {
-                                             "name":  "交付",
-                                             "children":  [
-                                                              "Pipeline",
-                                                              "Tanker",
-                                                              "Terminal",
-                                                              "FOB/CIF/DDP"
-                                                          ]
-                                         }
-                                     ]
-                    },
-    "glossary":  [
-                     {
-                         "term":  "Crude oil assay",
-                         "full_en":  "Crude oil assay",
-                         "cn":  "原油化验报告",
-                         "definition":  "描述原油性质、馏分收率和杂质的采购与加工基础文件。",
-                         "example":  "炼厂用 API、sulfur、TAN、metals 与 yield data 估算一船 cargo 的净回值。",
-                         "confusion":  "它不是只有 API 和 sulfur 的两行标签，也不是成品油质量证书。"
-                     },
-                     {
-                         "term":  "Stream",
-                         "full_en":  "Crude oil stream",
-                         "cn":  "原油流股",
-                         "definition":  "来自特定油田、平台或 gathering system 的物理连续流。",
-                         "example":  "某 North Sea field 的稳定原油进入共同管线前是一个 stream。",
-                         "confusion":  "stream 不等于市场上最终命名并交易的 blend/grade。"
-                     },
-                     {
-                         "term":  "Blend",
-                         "full_en":  "Crude oil blend",
-                         "cn":  "原油混合物",
-                         "definition":  "在终端或管道起点把多个 stream 混合以达到目标规格和商业体量。",
-                         "example":  "Brent Blend 现在汇集多个 North Sea fields，而非只来自最初 Brent stream。",
-                         "confusion":  "混合不是造假；在满足公开规格时它正是标准商业产品。"
-                     },
-                     {
-                         "term":  "API gravity",
-                         "full_en":  "American Petroleum Institute gravity",
-                         "cn":  "API 度",
-                         "definition":  "由 specific gravity 反向换算的密度指标，数字越高液体越轻。",
-                         "example":  "WTI 39.6°API 对应 SG 约 0.827。",
-                         "confusion":  "高 API 通常而非永远更贵；极轻 condensate 也可能超出炼厂 sweet spot。"
-                     },
-                     {
-                         "term":  "TAN",
-                         "full_en":  "Total Acid Number",
-                         "cn":  "总酸值",
-                         "definition":  "中和一克原油所需 KOH 的毫克数，用来衡量 naphthenic acid 风险。",
-                         "example":  "多数炼厂偏好 TAN\u003c0.5，约0.7以上常被视为高酸，Doba 可超过2.0。",
-                         "confusion":  "TAN 不是 sulfur，也不能由 heavy/light 标签精确推断。"
-                     },
-                     {
-                         "term":  "PONA",
-                         "full_en":  "Paraffins, Olefins, Naphthenes, Aromatics",
-                         "cn":  "烃类结构四分法",
-                         "definition":  "按链、环、饱和性与反应性描述原油或馏分分子组成的框架。",
-                         "example":  "light sweet 通常 paraffin-rich，heavy sour 的 aromatics、resins 和 asphaltenes 更高。",
-                         "confusion":  "天然原油中的 olefins 通常只是 trace，大量 olefins 多由 cracking 制造。"
-                     },
-                     {
-                         "term":  "Refinery gain",
-                         "full_en":  "Refinery processing gain",
-                         "cn":  "炼厂加工体积增益",
-                         "definition":  "重质高密度分子裂化成轻质低密度分子后出现的产品体积增加。",
-                         "example":  "42 gallons crude 在典型美国炼厂可形成约45 gallons products。",
-                         "confusion":  "质量没有增加，也不能把 gain 当作油田产出的新原油。"
-                     },
-                     {
-                         "term":  "Product slate",
-                         "full_en":  "Refinery product slate",
-                         "cn":  "炼厂产品组合",
-                         "definition":  "某炼厂在给定 crude slate、配置和运行条件下产出的各类产品组合。",
-                         "example":  "有 coker 的 refinery 可减少 resid、提高 gasoline 和 distillate 比例。",
-                         "confusion":  "product slate 不是只由 crude 决定，装置、季节和市场需求同样重要。"
-                     },
-                     {
-                         "term":  "VLCC",
-                         "full_en":  "Very Large Crude Carrier",
-                         "cn":  "超大型原油运输船",
-                         "definition":  "约200,000–320,000 DWT、典型装载约200万桶 crude 的 tanker class。",
-                         "example":  "Middle East–Asia 主干航线大量使用 VLCC。",
-                         "confusion":  "实际桶数受 crude density、loadline、draft 和港口限制。"
-                     },
-                     {
-                         "term":  "Off spec",
-                         "full_en":  "Off-specification cargo",
-                         "cn":  "规格外货物",
-                         "definition":  "交付原油偏离合同或 assay 容许范围的状态。",
-                         "example":  "硫、BS\u0026W 或 vapor pressure 超限可能迫使 cargo 改港或折价。",
-                         "confusion":  "off spec 描述质量违约；distressed cargo 强调没有现成买家，两者不完全相同。"
-                     }
-                 ],
-    "extreme_detail":  [
-                           {
-                               "mechanism":  "温度校正与密度",
-                               "why_it_matters":  "同一质量的原油在暖地体积更大，交易和库存必须统一基准。",
-                               "micro_example":  "assay 的 density、SG 与 API 通常引用 60°F、1 atm；thermohydrometer 同时读取温度以校正。",
-                               "misreading":  "把冷热港口的观测桶数差直接当作物质增加或短少。",
-                               "takeaway":  "比较 API 与体积前先确认 reference temperature。"
-                           },
-                           {
-                               "mechanism":  "油田 water cut",
-                               "why_it_matters":  "成熟油田井口流体可以含远多于油的水，处理能力会约束可售原油。",
-                               "micro_example":  "作者指出脱水前可超过每产一桶油伴随十桶水；这些水不属于可销售 crude。",
-                               "misreading":  "把 gross well fluid 当作 oil production。",
-                               "takeaway":  "从井口到 sales stream 必须经过三相分离和计量。"
-                           },
-                           {
-                               "mechanism":  "Hydrogen balance",
-                               "why_it_matters":  "重酸油升级不仅需要装置，还需要大量可用 hydrogen。",
-                               "micro_example":  "catalytic reformer 是典型炼厂的主要 hydrogen source，但其 platinum catalyst 要求 feed sulfur 低于约1 ppm。",
-                               "misreading":  "只看到 hydrocracker/hydrotreater nameplate 就认为能无限处理 sour feed。",
-                               "takeaway":  "检查 hydrogen production、purity 与 consumption 的全厂平衡。"
-                           },
-                           {
-                               "mechanism":  "Pipeline interface cut",
-                               "why_it_matters":  "同一产品管线可批次运输多种燃料，但边界会混合并产生降级成本。",
-                               "micro_example":  "jet→diesel→gasoline 依次推进时，batch 边缘的混合物需送回 refinery 或降级为较不敏感产品。",
-                               "misreading":  "认为 clean product pipeline 中不同 grade 可像独立管道一样零损耗切换。",
-                               "takeaway":  "boutique fuel 越多，batch scheduling 与 interface burden 越高。"
-                           },
-                           {
-                               "mechanism":  "Ethane rejection",
-                               "why_it_matters":  "NGL supply 不是纯地质结果，还受到日常相对价格选择。",
-                               "micro_example":  "当 Mont Belvieu ethane 作为 petchem feed 的价值低于其留在 sales gas 中的 BTU value，processor 会 reject ethane。",
-                               "misreading":  "把 NGL recovery 变化完全解释为井口产量变化。",
-                               "takeaway":  "同时看气价、ethane 价和 cracker demand。"
-                           },
-                           {
-                               "mechanism":  "Clean/dirty tanker lock-in",
-                               "why_it_matters":  "船舶名义吨位不能无成本在产品与原油服务间转换。",
-                               "micro_example":  "clean tanker 的 coated/stainless tanks 防止污染 gasoline/jet；转去装 crude 后再恢复 clean service 需要昂贵 tank cleaning。",
-                               "misreading":  "把所有 tanker DWT 当作完全可替代运力。",
-                               "takeaway":  "分析 freight 紧张要按 cargo service 和 vessel class 分桶。"
-                           }
-                       ],
-    "cases":  [
-                  {
-                      "title":  "同样一桶便宜重油，为什么只有复杂炼厂敢买",
-                      "scenario":  "Maya heavy-sour 相对 WTI 大幅折价。一座 topping/hydroskimming refinery 和一座 Gulf Coast coking refinery 同时评估这批 cargo。请判断谁更可能提高 bid，并说明完整机制。",
-                      "background":  "Maya 约22°API、3.4% sulfur，天然 resid 比例、metals 与 hydrotreating 负担都高于 WTI。",
-                      "shock":  "市场上 heavy-sour 折价扩大，但 coking/hydrogen capacity 并未在所有炼厂同步增加。",
-                      "transmission":  [
-                                           "简单炼厂 distillation 后留下大量低价 resid，且 sulfur treatment 可能成为瓶颈",
-                                           "复杂炼厂用 coker 把 vacuum resid 变成 naphtha/gasoil/coke，再用 FCC/hydrocracker 升级",
-                                           "hydrogen 与 treatment 系统移除 sulfur/nitrogen，允许产品进入合规 pool",
-                                           "只要采购折价大于新增加工、hydrogen、catalyst 与 coke disposal cost，复杂炼厂的 margin 改善"
-                                       ],
-                      "market_result":  "复杂炼厂通常会提高对折价重酸桶的 willingness to pay；简单炼厂即使看到低 headline price，也可能无法经济接收。",
-                      "lesson":  "crude differential 是 assay 与 refinery configuration 的匹配价格，不是原油自身固定不变的品质排名。",
-                      "model_answer":  [
-                                           "先指出 Maya 的低 API、高 sulfur、metals 和高 resid yield 会给简单炼厂造成低产品价值与处理瓶颈。",
-                                           "再说明 coker、hydrocracker/FCC、hydrogen 与 hydrotreating 如何把折价分子转成合规 light products，并以产品净回值减加工成本判断 bid。",
-                                           "最后保留边界：若 coker turnaround、hydrogen 紧张、petcoke 出路差或产品价差弱，复杂炼厂也会降低对 Maya 的报价。"
-                                       ]
-                  }
-              ],
-    "core_model":  {
-                       "core_points":  [
-                                           "地下 oil in place 先被 geology、pressure、recovery factor 与 decline 过滤，才成为可持续生产流量。",
-                                           "stream 是物理流，blend 是多个流的混合，grade 是带地点与规格的商业身份，assay 是炼厂读懂该身份的技术文件。",
-                                           "carbon count 决定沸程的大方向，PONA 和 heteroatoms 决定稳定性、产品性能与加工负担。",
-                                           "refinery 先 separation，再 conversion、treatment 与 blending；processing gain 是体积效应而非质量创造。",
-                                           "产品桶必须满足用途和监管规格；同名产品在不同季节、地区和 sulfur/RVP 条件下并不完全可替代。",
-                                           "全球供应只有通过合适船型、管道、terminal 与交付条款到达兼容设施后，才是某地的有效供应。"
-                                       ],
-                       "one_liner":  "不要问“世界上有多少油”，先问“什么分子、什么规格、在哪个地点、由哪套装置、通过哪条路，能变成谁需要的产品”。"
-                   },
-    "self_checks":  [
-                        {
-                            "prompt":  "合上页面，用不超过两分钟完整讲述一桶油从 reservoir 到 gasoline terminal 的旅程。",
-                            "model_answer":  "合格复述应包含孔隙与压差、井口油气水分离、stream/blend/grade、assay、运输、ADU/VDU、conversion、treatment、blending 和 terminal 交付，不能直接从钻井跳到汽油。"
-                        },
-                        {
-                            "prompt":  "为什么 WTI 39.6°API 不等于一桶水的159 kg？请写出换算逻辑。",
-                            "model_answer":  "应使用 SG=141.5/(39.6+131.5)≈0.827，再乘水密度得到约827 kg/m³；159 L 一桶约重131 kg，并说明引用的是60°F基准密度。"
-                        },
-                        {
-                            "prompt":  "解释为什么一桶 heavy sour crude 既可能便宜，也可能给复杂炼厂带来更高利润。",
-                            "model_answer":  "应同时说出较低天然 light-product yield、sulfur/metals/TAN 处理负担造成折价，以及 coker、hydrocracker、hydrogen 与 treatment 能把该折价转成高价值产品；利润取决于折价是否覆盖增量成本。"
-                        },
-                        {
-                            "prompt":  "全球 oil liquids 增长100万 bpd 时，你为什么不能立即判断柴油市场宽松？",
-                            "model_answer":  "应先拆分新增量来自 crude、condensate、ethane、propane、biofuels 还是 refinery gain，再判断其 processing route 和 end use；NGL 增长可能主要服务 petchem/LPG，不能直接替代 diesel-rich crude。"
-                        },
-                        {
-                            "prompt":  "用自己的话区分 distillation 与 cracking，并各举一个装置和产物例子。",
-                            "model_answer":  "distillation 是按沸点分离现有分子，例如 ADU 得到 naphtha/kerosene/gasoil；cracking 是打断大分子，例如 FCC 把 VGO 变成 gasoline-range molecules、olefins 和 cycle oil。"
-                        },
-                        {
-                            "prompt":  "某地区 headline gasoline inventory 很高，为什么仍可能出现夏季合规汽油紧张？",
-                            "model_answer":  "应检查库存的 RVP、sulfur、ethanol 与地区 boutique specification；冬季高RVP orphan barrels 不能直接在夏季销售，需要低RVP blendstock调低或折价退出，因此总桶数不代表合规桶数。"
-                        },
-                        {
-                            "prompt":  "一船 crude 已经生产出来，为什么还可能不是目标炼厂的有效供应？",
-                            "model_answer":  "应列出至少三类约束：assay/grade 与装置不匹配、合适 tanker/pipeline/terminal capacity 不可用、航程或 chokepoint 延误、以及 FOB/CIF 等交付风险和成本改变经济性。"
-                        }
-                    ],
-    "applications":  [
-                         {
-                             "situation":  "新闻称某国“新增100万桶石油供应”",
-                             "action":  "先拆 liquids component 与 assay：是 conventional crude、condensate、NGL、biofuel 还是 refinery gain；再问它能进入哪类装置和产品市场。"
-                         },
-                         {
-                             "situation":  "某 heavy-sour grade 折价突然扩大",
-                             "action":  "检查目标地区 coker/hydrocracker turnaround、hydrogen capacity、petcoke 出路、sour freight 和 heavy crude avails，判断是品质价值变化还是 buyer-base 暂时收缩。"
-                         },
-                         {
-                             "situation":  "炼厂宣布意外停工",
-                             "action":  "沿双向链分析：上游 crude 可能失去买家并累库，成品油供给可能下降；再按停工装置判断受影响的是 gasoline、jet、diesel 还是 resid upgrading。"
-                         },
-                         {
-                             "situation":  "某地库存充足但 spot price 飙升",
-                             "action":  "把库存拆成 grade/spec/location，检查 pipeline direction、terminal connectivity、可用 tanker class、seasonal fuel spec 与可操作库存，而不是用全国总量否定局部短缺。"
-                         }
-                     ],
-    "review_prompts":  [
-                           "一周后：不看资料画出 reservoir 到 retail terminal 的九个节点，并在每个 handoff 写出会改变的品质、风险或所有权。",
-                           "两周后：选 WTI 与 Maya，用 API、sulfur、PONA、resid yield 和炼厂配置写一页‘为什么价差存在’的解释。",
-                           "一个月后：找一条真实供应新闻，按 molecule → assay → refinery → product spec → logistics 五步分析，最后写出会推翻判断的两个条件。"
-                       ],
-    "sources":  [
-                    {
-                        "label":  "Oil 101 Chapter 2: A Crude Oil Assay",
-                        "url":  "https://oil101.morgandowney.com/chapters/crude-oil-assay",
-                        "coverage":  "stream/blend/grade、API、sulfur、TAN、metals、viscosity、RVP、pour point、BS\u0026W 与 assay 定价"
-                    },
-                    {
-                        "label":  "Oil 101 Chapter 3: Components of Oil Liquids",
-                        "url":  "https://oil101.morgandowney.com/chapters/components",
-                        "coverage":  "liquids 口径、42-gallon barrel、condensates、NGL fractionation、naphtha、unconventional crude 与 refinery gain"
-                    },
-                    {
-                        "label":  "Oil 101 Chapter 4: Chemistry of Oil",
-                        "url":  "https://oil101.morgandowney.com/chapters/chemistry",
-                        "coverage":  "carbon count、PONA、heteroatoms、燃烧、octane/cetane 与 cracking chemistry"
-                    },
-                    {
-                        "label":  "Oil 101 Chapter 5: Industry Overview",
-                        "url":  "https://oil101.morgandowney.com/chapters/industry-overview",
-                        "coverage":  "upstream/midstream/downstream、参与者与物理链 handoff"
-                    },
-                    {
-                        "label":  "Oil 101 Chapter 6: Exploration and Production",
-                        "url":  "https://oil101.morgandowney.com/chapters/exploration-production",
-                        "coverage":  "petroleum system、reservoir pressure、drilling、production phases、recovery、decline 与 shale 基础"
-                    },
-                    {
-                        "label":  "Oil 101 Chapter 7: Refining",
-                        "url":  "https://oil101.morgandowney.com/chapters/refining",
-                        "coverage":  "refinery gain、四阶段、ADU/VDU、FCC、hydrocracker、coker、alkylation、reforming、treatment 与 blending"
-                    },
-                    {
-                        "label":  "Oil 101 Chapter 9: Finished Products",
-                        "url":  "https://oil101.morgandowney.com/chapters/finished-products",
-                        "coverage":  "19类产品、gasoline/RVP、jet、diesel、bunker、LPG、lubes、wax、petcoke、bitumen 与 product trade"
-                    },
-                    {
-                        "label":  "Oil 101 Chapter 11: Transporting Oil",
-                        "url":  "https://oil101.morgandowney.com/chapters/transporting-oil",
-                        "coverage":  "tanker classes、Worldscale、pipelines、rail、truck、chokepoints、hubs 与 Incoterms"
-                    }
-                ],
-    "source_coverage":  [
-                            {
-                                "source":  "crude-oil-assay",
-                                "section":  "What Is a Crude Oil Assay?",
-                                "id":  "assay-quality"
-                            },
-                            {
-                                "source":  "crude-oil-assay",
-                                "section":  "Fields, Streams, and Blends",
-                                "id":  "physical-chain"
-                            },
-                            {
-                                "source":  "crude-oil-assay",
-                                "section":  "Density: The Most Important Property",
-                                "id":  "assay-quality"
-                            },
-                            {
-                                "source":  "crude-oil-assay",
-                                "section":  "Sweet versus Sour: Sulfur Content",
-                                "id":  "assay-quality"
-                            },
-                            {
-                                "source":  "crude-oil-assay",
-                                "section":  "The Crude Quality Matrix",
-                                "id":  "assay-quality"
-                            },
-                            {
-                                "source":  "crude-oil-assay",
-                                "section":  "Acidity, Metals, and the Rest of the Assay Sheet",
-                                "id":  "assay-quality"
-                            },
-                            {
-                                "source":  "crude-oil-assay",
-                                "section":  "Why the Assay Matters for Prices",
-                                "id":  "assay-quality"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "What Makes Up Oil Liquids?",
-                                "id":  "liquids-family"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "What Is Actually In a Barrel",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "Conventional Crude Oil",
-                                "id":  "liquids-family"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "Streams, Blends, and Grades",
-                                "id":  "physical-chain"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "Condensates",
-                                "id":  "liquids-family"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "Natural Gas Liquids In Detail",
-                                "id":  "liquids-family"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "Fractionation and Ethane Rejection",
-                                "id":  "liquids-family"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "Naphtha: The Other Petchem Feed",
-                                "id":  "molecular-barrel"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "Unconventional Crude Oil",
-                                "id":  "liquids-family"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "Refinery Gain",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "components",
-                                "section":  "2nd Edition Update: The Shale and NGL Revolution",
-                                "id":  "liquids-family"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "The Building Blocks: Carbon and Hydrogen",
-                                "id":  "molecular-barrel"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "Carbon Count, Boiling Point, and Physical State",
-                                "id":  "molecular-barrel"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "The Four Molecular Structures: PONA",
-                                "id":  "molecular-barrel"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "Typical PONA by Crude Grade",
-                                "id":  "molecular-barrel"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "Saturated vs Unsaturated",
-                                "id":  "molecular-barrel"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "Heteroatoms: Sulfur, Nitrogen, Oxygen, Metals",
-                                "id":  "assay-quality"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "Combustion Chemistry",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "Octane and Cetane: Measuring Fuel Quality",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "Cracking and Combining",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "chemistry",
-                                "section":  "Why Chemistry Drives Pricing",
-                                "id":  "assay-quality"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "An Industry in Three Segments",
-                                "id":  "physical-chain"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "National Oil Companies Versus International Oil Companies",
-                                "defer_reason":  "公司所有制与竞争格局属于后续‘谁能改变全球供应格局’模块；本课仅保留物理功能分类。"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "The NOC League Table",
-                                "defer_reason":  "企业产量排名会随时间变化，后续供应权力模块按原文重新核对。"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "US Independents: The Shale Cohort",
-                                "defer_reason":  "页岩企业与并购放入上游纵深及供应格局模块。"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "Oilfield Services: The Contractors Who Actually Drill",
-                                "defer_reason":  "服务公司商业模式和名单放入上游纵深；本课只说明 operator 不一定拥有 rigs。"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "Pure-Play Refiners",
-                                "defer_reason":  "公司层 crack-spread 暴露放入炼化纵深模块。"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "Physical Trading Houses",
-                                "defer_reason":  "贸易商套利与资产组合放入市场参与者模块。"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "Engineering, Procurement, and Construction",
-                                "defer_reason":  "EPC 商业模式不影响第一课的 barrel flow，留给产业纵深。"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "Vertical Integration and the Disaggregation Trend",
-                                "id":  "physical-chain"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "OPEC and OPEC+",
-                                "defer_reason":  "完整移至‘谁能改变全球供应格局’模块。"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "The Downstream Footprint",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "industry-overview",
-                                "section":  "Key Market Institutions",
-                                "defer_reason":  "EIA/IEA/CFTC/PRA 的数据角色在供需、价格与研究工作台模块展开。"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "The Upstream Sector",
-                                "id":  "reservoir-to-well"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "Obtaining Rights to Explore and Drill",
-                                "defer_reason":  "矿权、landman 与 rule of capture 放入上游纵深模块。"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "Types of E\u0026P Agreements",
-                                "defer_reason":  "concession、PSA、service contract、JV 与 production contract 属产业制度纵深。"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "How Oil Forms: Source Rock, Reservoir Rock, and Cap Rock",
-                                "id":  "reservoir-to-well"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "Reservoir Mechanics: Pressure Is Everything",
-                                "id":  "reservoir-to-well"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "Exploration: Seismic Surveys",
-                                "defer_reason":  "2D/3D/4D seismic 与 wildcat success rate 放入上游纵深。"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "Drilling",
-                                "id":  "reservoir-to-well"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "Production Phases",
-                                "id":  "reservoir-to-well"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "Decline Curves and Field Life",
-                                "id":  "reservoir-to-well"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "Offshore Production",
-                                "defer_reason":  "platform typology、water depth 与 FPSO 经济性放入上游纵深。"
-                            },
-                            {
-                                "source":  "ch06-exploration",
-                                "section":  "The Shale Revolution",
-                                "defer_reason":  "本课只保留 tight oil 与 NGL 的 liquids 身份；fracturing 五步和 shale treadmill 在供应格局模块详讲。"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Feedstock, Slate, and Refinery Gain",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "The Four Stages of Refining",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Separation: The Crude Distillation Unit",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Conversion: Where Margin Is Made",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Combining: Alkylation and Polymerization",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Modifying: Catalytic Reforming, Isomerization, Ethers",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Treatment: Hydroprocessing, Amine, Merox, Claus",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Bitumen, Lubricants, Waxes, and Grease",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Blending: Where Finished Product Is Born",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Refinery Types and the Nelson Complexity Index",
-                                "id":  "refinery-transformation"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "US Refining Geography and the PADDs",
-                                "defer_reason":  "PADD capacity、regional crude diet 与 crack spreads 放入局部短缺和炼化纵深模块。"
-                            },
-                            {
-                                "source":  "refining",
-                                "section":  "Turnaround Season",
-                                "defer_reason":  "turnaround 的季节、跨地区排期与库存影响放入局部短缺模块。"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "The 19 Products of Crude Oil",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Gasoline: A Cocktail, Not a Single Product",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Jet Fuel and the Arrival of SAF",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Diesel: On-Road, Off-Road, Marine, and Home Heat",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Residual Fuel and the Bunker Market After IMO 2020",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "LPG",
-                                "id":  "liquids-family"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Lubricant Base Oils and the Group I to V Classification",
-                                "defer_reason":  "本课保留产品地图；base-oil groups 与 additive stack 放入下游纵深。"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Waxes",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Petroleum Coke",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Bitumen and Asphalt",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Kerosene and Niche Products",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Carbon Black and Sulfur",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "finished-products",
-                                "section":  "Global Refined Product Trade Flows",
-                                "id":  "logistics-availability"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Five Methods of Moving Oil",
-                                "id":  "logistics-availability"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Tanker Ships",
-                                "id":  "logistics-availability"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Chartering and Worldscale",
-                                "id":  "logistics-availability"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Pipelines",
-                                "id":  "logistics-availability"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Crude by Rail and the Bakken Boom",
-                                "id":  "logistics-availability"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Trucking: The Last Mile",
-                                "id":  "logistics-availability"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "IMO 2020 and the Transformation of Bunker Fuel",
-                                "id":  "products-specifications"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Shipping Chokepoints",
-                                "defer_reason":  "具体 chokepoint 情景与冲击传导放入局部短缺和事件分析模块；本课保留容量约束原则。"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "LNG Carriers in Brief",
-                                "defer_reason":  "LNG 是专用低温气体物流，放入能源转型/LNG 专题。"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Trading Hubs",
-                                "id":  "logistics-availability"
-                            },
-                            {
-                                "source":  "transporting-oil",
-                                "section":  "Incoterms and Delivery Pricing",
-                                "id":  "logistics-availability"
-                            }
-                        ]
+  "id": "01-barrel-journey",
+  "variant": "understanding",
+  "reading": "01",
+  "reading_title": "先看懂一桶油的真实旅程",
+  "title": "一桶油如何从岩石里的液体变成可用产品",
+  "deck": "沿着一桶油的真实物理旅程，理解它怎样从地下岩石里的流体，变成可计量、可运输、可加工、可销售的商品。",
+  "reading_intent": "原油不是从地下抽出来就能卖给汽车。它先要从岩石孔隙流进井筒，到地面后分掉水和天然气，再被测量、混合、运输和加工。每一步都会改变这一桶油能否被使用、由谁承担风险，以及它值多少钱。本模块为懂经济金融但不熟悉油气现场的读者建立一张底图：以后看到产量、库存、价差、炼厂利润或运输瓶颈时，能追问这桶液体在哪里、质量如何、能否到达合适设施，以及限制条件由谁付钱。",
+  "opening_question": "为什么“地下有油”并不等于市场马上得到一桶可用供应？",
+  "quick_answer": [
+    "地下阶段：油在岩石微小空隙中移动，压力和连通性决定能采出多少。",
+    "地面阶段：井口流体要分掉水和气，稳定、计量后才可能外输。",
+    "市场阶段：质量、炼厂能力、地点、时间和运力共同决定这桶油值多少钱。"
+  ],
+  "learning_objectives": [
+    "解释地下液体为什么不是油湖，以及压力和连通通道怎样影响供应。",
+    "区分井口混合物流、稳定后液体和可销售桶数。",
+    "说明多股液体怎样汇成市场可识别的商业批次。",
+    "用质量数据解释炼厂出价、折价和毛利变化。",
+    "判断一桶油是否可用时，同时检查质量、设施、地点、时间和运力。"
+  ],
+  "main_thread": "一桶油的价值不是在井口一次性决定的。地下有机质在合适温度和压力下变成烃类后，必须进入能容纳液体并让液体流动的岩层，再被封闭结构挡住，才可能形成可开发目标。钻井只是打开通道；真正决定供应的是地下压力、通道连通性、生产速度，以及油水气在地面能否被安全分开。井场得到的稳定液体仍不是抽象的“油”，它要经过计量、质量检查和混合，形成市场愿意识别的商业批次。炼厂接手后，先按沸点把混合物切成轻重不同的部分，再用转化、处理和调和把自然给定的分子组合改造成汽油、柴油、航煤、液化气、沥青、石油焦等产品。最后，管道、船、铁路、卡车和储罐决定这桶东西能否在需要的时间到达能处理它的地方。因此，油价、库存和利润不是纸面数字游戏，而是地下物理、地面设备、产品规格和物流容量共同约束后的货币表达。",
+  "mental_model": "一桶油的经济可用性 = 地下可流动量 × 地面可处理量 × 质量适配度 × 炼厂能力 × 物流可达性。任一环节卡住，名义资源都会变成折价供应、延迟供应或无效供应。",
+  "mental_model_detail": {
+    "equation": "地下生成与聚集 -> 井内通道 -> 地面分离与稳定 -> 商业批次 -> 质量说明 -> 炼厂加工 -> 成品规格 -> 物流交付",
+    "market_translation": "上游把地下流体变成可计量供应，中游把液体送到可交易地点并管理质量，下游把分子转成合规产品。价格差来自每一段的损耗、容量、时间和风险。",
+    "decision_rule": "遇到任何原油新闻，依次问：地下能采出多少？地面能处理多少？这批液体质量如何？哪类设施能用？它能否准时到达合适地点？"
+  },
+  "formulas": [
+    {
+      "name": "质量指数换算",
+      "formula": "API gravity = 141.5 / SG - 131.5；SG = 141.5 / (API gravity + 131.5)",
+      "variables": "SG 是相对水的密度比例；指数数字越高，液体越轻。",
+      "worked_note": "39.6 API 对应 SG 约 0.827，159 L 的一桶液体约重 131 kg，而同体积水约重 159 kg。"
+    },
+    {
+      "name": "炼厂体积增益",
+      "formula": "产品总体积 - 原油输入体积 = 炼厂体积增益",
+      "variables": "重分子被切成较轻分子后，质量守恒但体积通常增加。",
+      "worked_note": "42 gallons 原油加工后可得到约 45 gallons 产品；这改变销售体积，但不是凭空创造质量。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "reservoir-to-well",
+      "title": "地下没有一座装满原油的湖",
+      "reader_question": "钻头打到地下以后，为什么不能像插进水桶一样把原油全部抽出来？",
+      "scene": {
+        "setting": "把视线放到地下数千米的砂岩层。岩石看起来坚硬，内部却布满肉眼看不见的微小空隙，油、水和气被困在这些空间里。",
+        "actors": "生油层、能存油的岩体、不透的封闭层、井内通道，以及控制生产节奏的工程师。",
+        "action": "地下压力把液体推向压力较低的井内通道；工程师调节流速，避免水或气沿捷径过早冲到井边。"
+      },
+      "plain_answer": "地下的油更像被困在硬海绵里的液体。市场最终得到多少，不只看地下有多少油，还看液体能否穿过岩石、压力能维持多久，以及生产速度是否破坏原来的流动路径。",
+      "concept": {
+        "en": "Petroleum system and reservoir mechanics",
+        "cn": "成藏系统与油藏流动机制",
+        "definition": "有机质在合适温压下生成烃类，迁入可容纳和传导液体的岩层，再被封闭结构挡住；生产时靠压力差让液体向井内流动。"
+      },
+      "explanation": "找油的起点不是地面设备，而是地下是否同时具备生成、迁移、容纳和封闭四件事。古代海洋生物遗骸在缺氧环境中沉积，埋深增加后受热受压，重分子逐渐变成液态烃。若这些液体没有进入可以容纳它们的岩层，或者上方没有不透的结构阻挡，它们就会继续散失。即使形成了可开发目标，地下原始数量也不是未来供应量。液体要通过互相连通的细小通道流向井边；每采出一桶，局部压力都会下降。流速太快，水或气可能先沿高连通路径冲来，把部分油绕在后面。经济含义很直接：储量新闻要先打折成可采供应，生产节奏还会改变油田一生的现金流，而不只是改变本月产量。对投资者来说，地下故事会传导到递减率、资本开支和单位成本；对贸易商来说，它决定某个产区的供应能否稳定进入管道，而不是只在公告中存在。",
+      "mechanism_chain": [
+        "有机质在合适温度和压力下变成液态烃类。",
+        "液体迁入能容纳它的岩层，并被上方不透结构挡住。",
+        "钻井降低井边压力，远处液体被压力差推向井内。",
+        "生产过快会让压力提前衰竭，水或气可能先占据通道。",
+        "部分液体被绕过并留在岩石中，未来供应和资产价值下降。"
+      ],
+      "worked_example": {
+        "actor": "油田开发方案评审团队",
+        "inputs": [
+          "地下原始石油 10亿桶。",
+          "稳健方案最终能采出 35%，激进方案降为 28%。"
+        ],
+        "setup": "一个新油田估计地下原始石油为 10亿桶 barrels，团队比较两种生产节奏。",
+        "steps": [
+          "稳健方案可采供应 = 10亿桶 × 35% = 3.5亿桶。",
+          "激进方案可采供应 = 10亿桶 × 28% = 2.8亿桶。",
+          "两种节奏相差 3.5亿桶 - 2.8亿桶 = 0.7亿桶。"
+        ],
+        "answer": "更高的早期日产量可能换来更低的最终供应；投资者应同时看当前产量和最终能采出的比例。"
+      },
+      "practitioner_lens": "看到公司宣布提高井口产量时，要追问压力、含水、递减和最终能采出的比例是否同步恶化。",
+      "terms_in_context": [
+        {
+          "term": "Source rock",
+          "cn": "源岩",
+          "plain_definition": "在地质历史中生成油气的富有机质岩层。",
+          "why_it_matters": "没有这个起点，后面的钻井和设备都没有可采液体。"
+        },
+        {
+          "term": "Reservoir rock",
+          "cn": "储集岩",
+          "plain_definition": "能在细小空间中容纳液体，并允许液体慢慢流动的岩层。",
+          "why_it_matters": "它决定地下资源能否变成井口供应。"
+        },
+        {
+          "term": "Recovery factor",
+          "cn": "采收率",
+          "plain_definition": "地下原始石油中最终能够被带到地面的比例。",
+          "why_it_matters": "同样的地下数量，市场供应可能差很多。"
+        }
+      ],
+      "misreading": "发现 10亿桶地下石油，不等于未来市场会得到 10亿桶供应。",
+      "boundary": "实际开发还受岩性、流体性质、井网、技术、法规和油价影响；这里的比例是教学示例，不是固定预测。",
+      "deep_dive": [
+        {
+          "title": "完整成藏条件",
+          "explanation": "源、熟化、迁移、可容纳岩层、封闭结构和时机必须一起成立，少一环就可能没有商业发现。"
+        }
+      ]
+    },
+    {
+      "id": "physical-chain",
+      "title": "井口出来的不是可以直接卖的纯油",
+      "reader_question": "如果井已经把液体带到地面，为什么还要在现场分离和稳定？",
+      "scene": {
+        "setting": "井场地面有阀门、短管线、分离罐和计量仪表。刚上来的不是单一液体，而是油、水、气和少量杂质混在一起。",
+        "actors": "井场操作员、地面处理设备、计量人员、管道接收方和负责安全的现场主管。",
+        "action": "设备先让气体释放、让水沉降，再把剩余液体调到适合储罐和管道的状态，同时记录数量和质量。"
+      },
+      "plain_answer": "从井里出来的混合物要先变成稳定、可计量、含水和挥发性受控的液体，才可能进入商业运输。否则管道、储罐和买方都无法确认数量、风险和价格。",
+      "concept": {
+        "en": "Wellsite separation and stabilization",
+        "cn": "井场分离与稳定",
+        "definition": "井口混合物流到地面后，通过设备分出水和天然气，并控制轻端挥发性，使液体能够安全储存、计量和外输。"
+      },
+      "explanation": "地下压力降低后，原先溶在液体中的一部分气会跑出来；同时，地层水也会跟着被带到地面。若不先处理，运输方拿到的就不是清楚的一桶油，而是一桶会冒气、带水、数量还会变化的混合物。现场设备利用密度差和压力变化，把气相、水相和液相分开。液体还要减少过于轻、容易挥发的部分，使它在储罐和管道中更安全。计量点的重要性在这里出现：收入通常按被认可的净液体数量和质量结算，不按未经处理的总量结算。对市场分析也一样，新闻里的“井口流量”如果没有说明含水、含气和稳定后的数量，就可能高估可销售供应。现场处理能力还会限制产量：水处理、气体去向或计量争议卡住时，地下能流出的液体也不能全部变成现金流。买方也会把这些不确定性写进接收要求，最后变成折价、等待或额外处理费。",
+      "mechanism_chain": [
+        "混合物从井内来到地面，压力下降使部分气体释放。",
+        "处理设备利用密度和停留时间让水从液体中分出。",
+        "过于挥发的轻组分被移走或控制，液体更适合储存和运输。",
+        "计量仪表记录净数量，质量检查决定能否被管道接收。"
+      ],
+      "worked_example": {
+        "actor": "井场计量值班工程师",
+        "inputs": [
+          "井口总流量 10,000桶/日。",
+          "水占 8%，气体折算液体体积占 3%。"
+        ],
+        "setup": "某井场报告井口总流量 10,000桶/日，其中 8% 是水，另有 3% 在稳定时作为气体离开。",
+        "steps": [
+          "水量 = 10,000 bpd × 8% = 800 bpd。",
+          "气体折算量 = 10,000 bpd × 3% = 300 bpd。",
+          "稳定液体 = 10,000 bpd - 800 bpd - 300 bpd = 8,900 bpd。"
+        ],
+        "answer": "卖方能结算的不是 10,000桶/日，而更接近 8,900桶/日；这会改变收入、管道容量和库存判断。"
+      },
+      "practitioner_lens": "读产量数据时，要区分未经处理的总流量、稳定后液体和最终销售量。含水上升常常意味着同一设备处理更多无收入体积。",
+      "terms_in_context": [
+        {
+          "term": "Wellstream",
+          "cn": "井口混合流",
+          "plain_definition": "从井里出来、尚未分开油水气的混合物流。",
+          "why_it_matters": "它常大于可销售液体，不能直接当收入桶数。"
+        },
+        {
+          "term": "Separator",
+          "cn": "分离器",
+          "plain_definition": "利用压力、停留时间和密度差，把气、水和液态油分开的现场设备。",
+          "why_it_matters": "它把地下流体变成管道和买方能处理的对象。"
+        },
+        {
+          "term": "Stabilization",
+          "cn": "稳定处理",
+          "plain_definition": "移走或控制过轻、易挥发部分，使液体适合储罐和外输。",
+          "why_it_matters": "不稳定液体会带来安全、计量和接收风险。"
+        }
+      ],
+      "misreading": "把井口总流量当成销售桶数，会高估收入和可进入管道的供应。",
+      "boundary": "不同地区的计量、含水限制和气体处理方式不同；本课只建立净液体和混合物流的区别。",
+      "deep_dive": [
+        {
+          "title": "成熟油田为什么常有更多水",
+          "explanation": "压力维持和长期开采会让更多地层水随液体进入井内，设备可能被水占用，而销售油量不一定增加。"
+        }
+      ]
+    },
+    {
+      "id": "liquids-family",
+      "title": "许多井的液体要汇成市场认识的商业批次",
+      "reader_question": "为什么买方常买一个有名字的油种，而不是某一口井今天流出的那一桶？",
+      "scene": {
+        "setting": "多个井场的稳定液体沿短管线、卡车或小管道进入终端罐区。每股液体略有差异，但市场需要足够大、质量可预期的批次。",
+        "actors": "生产商、管道调度员、终端罐区、质量检验人员、贸易商和炼厂采购员。",
+        "action": "终端把多股液体按目标质量区间合并，抽样检测后形成可以买卖和交付的商业批次，并让运输成本能被足够体积分摊。"
+      },
+      "plain_answer": "单井液体数量小、质量会慢慢变化。市场把多股相近液体合并成有名称、有质量范围、有交付地点的批次，才能降低交易成本并支撑长距离运输。",
+      "concept": {
+        "en": "Commercial crude grade formation",
+        "cn": "商业油种形成",
+        "definition": "多个来源的稳定液体在终端或管道系统中合并，并以约定质量范围、名称和地点进入市场交易。"
+      },
+      "explanation": "单井或单个小油田很难直接服务全球买方。它可能每天只有几百到几千桶，质量还会随着井龄和混合比例缓慢变化。终端的工作是把相近液体集中到足够大的批次，并通过抽样和质量范围让买卖双方知道自己交付或接收的是什么。这样做有两个经济作用：第一，积累足够体积，让管道、油轮和储罐的固定成本被更多桶分摊；第二，平滑某一来源的极端质量，减少买方接到异常批次的风险。一个有名字的商业批次并不等于某座油田的纯粹产物，它更像符合规则的集合。交易者关心名称，是因为名称背后绑定了质量范围、地点、结算和替代选择。如果某个来源突然变差，终端可能要降低掺入比例、寻找稀释来源或要求折价，这会把现场质量变化传导成价差和库存安排。体量越稳定，运输和融资安排越容易，市场流动性也越好。",
+      "mechanism_chain": [
+        "井场先把可销售液体送入收集系统。",
+        "终端把相近液体集中到储罐或管道入口。",
+        "抽样检测确认合并后仍落在约定质量范围内。",
+        "足够大的批次降低运输和交易成本。",
+        "买卖双方围绕名称、地点和质量范围定价。"
+      ],
+      "worked_example": {
+        "actor": "终端罐区调度工程师",
+        "inputs": [
+          "第一股 10,000桶/日，质量指数 44。",
+          "第二股 20,000桶/日，质量指数 40。",
+          "第三股 20,000桶/日，质量指数 36。"
+        ],
+        "setup": "一个终端把三股相近的稳定液体合并成 50,000桶/日 bpd 的商业批次。",
+        "steps": [
+          "合并体积 = 10,000桶 + 20,000桶 + 20,000桶 = 50,000桶。",
+          "加权质量指数 = (10,000桶/日 × 44 + 20,000桶/日 × 40 + 20,000桶/日 × 36) ÷ 50,000桶/日 = 39.2API。",
+          "若买方要求区间为 38 到 41，这个批次可以进入该销售池。",
+          "若某股液体突然变重或含杂质升高，整个批次可能被折价或改送其他买方。"
+        ],
+        "answer": "市场买的是可交付、可检验、体积足够的商业批次，而不是单井液体的完美复制品。"
+      },
+      "practitioner_lens": "看到一个原油名称时，要同时查它的质量范围和交付地点；名称稳定不代表来源比例永远稳定。",
+      "terms_in_context": [
+        {
+          "term": "Gathering system",
+          "cn": "集输系统",
+          "plain_definition": "把多个井场的稳定液体收集到终端、管道入口或处理设施的小型物流网络。",
+          "why_it_matters": "它决定小井场能否汇成有市场意义的供应。"
+        },
+        {
+          "term": "Blend",
+          "cn": "混合油",
+          "plain_definition": "多股性质相近或互补的液体合并后的商业批次。",
+          "why_it_matters": "混合可以扩大体积、平滑质量，并支撑远距离运输。"
+        },
+        {
+          "term": "Grade",
+          "cn": "商业牌号",
+          "plain_definition": "带有名称、质量范围和交付地点的市场识别对象。",
+          "why_it_matters": "报价和合同通常围绕它，而不是围绕单口井。"
+        }
+      ],
+      "misreading": "认为一个有名称的原油必然来自单一油田，会误解质量变化和地点价差。",
+      "boundary": "有些来源确实非常集中，有些商业批次则来自许多来源；具体构成要看当期终端流入和规则。",
+      "deep_dive": [
+        {
+          "title": "轻质液体和气体液体的边界",
+          "explanation": "非常轻的井口液体、气体处理厂分出的液体和传统原油在化学上可相近，但统计口径、管道资格和价格基准可能不同。"
+        }
+      ]
+    },
+    {
+      "id": "assay-quality",
+      "title": "两桶黑色液体为什么价格可以差很多",
+      "reader_question": "如果都叫原油，炼厂为什么愿意为某些桶多付钱，却要求另一些桶打折？",
+      "scene": {
+        "setting": "炼厂采购员收到一份样品检测表，上面不是一句“好油”或“差油”，而是一组关于轻重、含硫、酸、金属、水盐和产品收率的数据。",
+        "actors": "炼厂采购员、实验室、生产商、运输方和负责设备可靠性的工程师。",
+        "action": "采购员把检测数据翻译成预期产品收入、处理成本、腐蚀风险、催化剂风险和可能的折价。"
+      },
+      "plain_answer": "原油价值取决于它能产出多少高价值产品，以及会给设备和合规带来多少成本。轻、低硫、杂质少且适合本厂设备的桶通常更值钱。",
+      "concept": {
+        "en": "Crude quality and refinery value",
+        "cn": "原油质量与炼厂价值",
+        "definition": "炼厂根据密度、含硫、酸、金属、水盐、挥发性和预期产品收率判断一批原油能创造多少毛利。"
+      },
+      "explanation": "炼厂买入的不是颜色，而是一组分子和杂质。较轻的液体通常含更多较短分子，较容易产出汽油、柴油和航煤等高价值产品；较重的液体会留下更多残渣，需要更复杂设备才能升级。硫会带来腐蚀和污染控制成本，最终燃料还必须满足法规。酸和盐会腐蚀管线与设备，金属会伤害催化剂，水和沉积物会占用体积并影响处理。检测表的作用，是让采购员在付款前估算：这桶原料能卖出多少产品，处理它要花多少钱，若超出本厂能力会不会造成停工或转运。价格差不是标签偏见，而是产品收入减去处理成本、设备风险和物流选择后的结果。同一批原油在复杂设施旁边可能只是小折扣，在简单设施附近却可能变成无人愿接的风险桶。因此，质量数据会同时影响采购价格、可选买方数量、运输路线和库存周转速度。",
+      "mechanism_chain": [
+        "样品检测先把一批液体翻译成轻重、含硫和杂质数据。",
+        "炼厂按数据估计汽油、柴油、航煤和重质残渣的产出。",
+        "硫、酸、盐、水和金属增加处理成本或设备风险。",
+        "若数据落在本厂舒适范围外，采购员要求折价或拒收。"
+      ],
+      "worked_example": {
+        "actor": "炼厂原料采购经理",
+        "inputs": [
+          "某批液体报价 75美元/桶。",
+          "预计产品收入 88美元/桶，处理和风险成本 9美元/桶。"
+        ],
+        "setup": "采购员比较两批到厂价格相同的原油，产品收入预期为 88美元/桶 US$，但处理成本不同。",
+        "steps": [
+          "所需折扣 = 75美元 - 69美元 = 6美元。",
+          "第一批毛利 = 88美元/桶 - 75美元/桶 - 9美元/桶 = 4美元/桶。",
+          "第二批若成本为 15美元/桶，毛利 = 88美元/桶 - 75美元/桶 - 15美元/桶 = -2美元/桶。",
+          "若要达到 4美元/桶毛利，第二批买价最多为 88美元/桶 - 15美元/桶 - 4美元/桶 = 69美元/桶。"
+        ],
+        "answer": "质量差会直接变成买价折扣；看起来同样的一桶液体，对不同炼厂可能是利润也可能是亏损。"
+      },
+      "practitioner_lens": "分析价差时，不要只问轻还是重，还要问硫、酸、盐、水、金属和本地复杂设备是否紧张。",
+      "terms_in_context": [
+        {
+          "term": "Assay",
+          "cn": "原油化验单",
+          "plain_definition": "记录一批原油关键性质和预期产品收率的检测资料。",
+          "why_it_matters": "它是炼厂出价和判断风险的基础。"
+        },
+        {
+          "term": "API gravity",
+          "cn": "API度",
+          "plain_definition": "用相对密度换算出的行业指数，数字越高表示液体越轻。",
+          "why_it_matters": "它帮助判断可能产出多少轻质高价值产品。"
+        },
+        {
+          "term": "Sulfur content",
+          "cn": "含硫量",
+          "plain_definition": "原油中硫占重量的比例。",
+          "why_it_matters": "硫会增加处理成本、腐蚀风险和环保约束。"
+        }
+      ],
+      "misreading": "“轻油一定贵、重油一定差”过于简单；真正价格还取决于当地炼厂能力和产品市场。",
+      "boundary": "质量数据随批次、温度、采样和混合比例变化；涉及未来全球份额的说法应按具体年份和来源重新核对。",
+      "deep_dive": [
+        {
+          "title": "酸、金属和盐为何麻烦",
+          "explanation": "酸和盐主要带来腐蚀，金属会降低催化剂效率，水和沉积物会增加无效处理量。"
+        }
+      ]
+    },
+    {
+      "id": "molecular-barrel",
+      "title": "炼厂先按分子大小理解一桶油",
+      "reader_question": "为什么加热同一桶原油，会从不同高度得到气体、汽油、柴油和沥青原料？",
+      "scene": {
+        "setting": "实验室和炼厂都把原油看成许多大小不同的烃类分子混合物。短分子容易汽化，长分子需要更高温度，有些几乎不愿离开塔底。",
+        "actors": "化验员、炼厂工程师、不同长度和结构的烃类分子，以及需要不同燃料的终端用户。",
+        "action": "加热时，较短分子先变成蒸气并在塔上部冷凝，较长分子在更热的下部或塔底留下，产品价值也随轻重分布改变。"
+      },
+      "plain_answer": "原油不是一种分子，而是成千上万种分子的混合物。分子越短通常沸点越低，越容易成为轻质产品；分子越长越接近重质燃料、蜡、沥青或焦。",
+      "concept": {
+        "en": "Carbon count and boiling range",
+        "cn": "碳数与沸程",
+        "definition": "烃类分子的碳原子数量和结构决定其沸点、物理状态和适合进入的产品池。"
+      },
+      "explanation": "炼厂能切开原油，是因为混合物里的分子并不同步汽化。只有一到四个碳原子的分子在常温常压下多为气体；五到十几个碳的分子更容易成为轻质液体和汽油组分；再长一些会进入航煤、柴油和润滑油范围；更长的分子则倾向于残渣、蜡、沥青和焦。结构也重要：同样数量的原子，直链和支链排列会改变燃烧表现和调和价值。这个分子视角把质量与经济连接起来：一桶天然含有更多短到中等长度分子的原油，简单加工就能得到更多高需求产品；一桶长分子占比高的原油，需要更复杂设备把大分子切小，否则会留下低价值重质部分。因此，分子分布决定了采购员愿意支付的上限，也决定了炼厂要不要为升级装置承担资本和运行成本。它还解释了为什么同一油价环境下，不同炼厂的利润弹性会很不一样。",
+      "mechanism_chain": [
+        "原油中存在长度和结构不同的烃类分子。",
+        "加热时，短分子先汽化，长分子需要更高温度。",
+        "蒸气在不同高度冷凝，形成轻、中、重不同部分。",
+        "天然分子分布决定炼厂要投入多少设备才能得到目标产品。"
+      ],
+      "worked_example": {
+        "actor": "炼厂生产计划工程师",
+        "inputs": [
+          "一桶原油 42 gallons。",
+          "轻质原料可直接得到 45% 汽油范围液体，重质原料只有 25%。"
+        ],
+        "setup": "计划员比较两种原油在简单切分后的汽油范围体积，一桶按 42 gallons 计算。",
+        "steps": [
+          "轻质原料汽油范围 = 42 gallons × 45% = 18.9 gallons。",
+          "重质原料汽油范围 = 42 gallons × 25% = 10.5 gallons。",
+          "差额 = 18.9 gallons - 10.5 gallons = 8.4 gallons。"
+        ],
+        "answer": "分子分布会改变同一桶原油的产品收入；重质桶若没有后续升级设备，价值会明显下降。"
+      },
+      "practitioner_lens": "看炼厂利润时，要把“原油价格便宜”与“需要多少后续改造”一起看。",
+      "terms_in_context": [
+        {
+          "term": "Hydrocarbon",
+          "cn": "碳氢化合物",
+          "plain_definition": "由碳和氢组成的分子，是原油和多数燃料释放能量的核心。",
+          "why_it_matters": "炼厂实际处理的是这些分子的长度和结构。"
+        },
+        {
+          "term": "Boiling range",
+          "cn": "沸程",
+          "plain_definition": "一组分子从开始汽化到主要汽化完成的大致温度范围。",
+          "why_it_matters": "它决定分馏时各部分从塔的哪里出来。"
+        }
+      ],
+      "misreading": "分馏不是把原油变成产品的全部过程；它只是先按沸点把自然已有的分子分开。",
+      "boundary": "真实炼厂还会考虑芳香性、环状结构、双键、杂原子和当地产品需求；本节只建立最基本的大小与沸点直觉。",
+      "deep_dive": [
+        {
+          "title": "同分子式也可能不同价值",
+          "explanation": "直链和支链分子可以有相同化学式，却在发动机抗爆、调和和反应性上差异很大。"
+        }
+      ]
+    },
+    {
+      "id": "refinery-transformation",
+      "title": "炼厂不是过滤器，而是分开、改造、清理再调成产品",
+      "reader_question": "如果分馏已经把轻重切开，炼厂为什么还需要那么多昂贵装置？",
+      "scene": {
+        "setting": "炼厂里，高塔、反应器、加氢设备、储罐和调和系统连续运行。原油先被加热切分，随后一部分大分子被切小，杂质被清除，多个组分被配成成品。",
+        "actors": "炼厂调度员、工艺工程师、采购员、各类加工装置和产品销售团队。",
+        "action": "调度员按原料质量、设备能力和产品价格安排加工路径，把低价值部分尽量转成市场更需要的产品。"
+      },
+      "plain_answer": "分馏只能把已有分子分开，不能自动让产品结构符合需求。炼厂的利润来自把过重、过脏或规格不合的部分改造成更有价值、能合法销售的产品。",
+      "concept": {
+        "en": "Refining stages and margin creation",
+        "cn": "炼制阶段与利润形成",
+        "definition": "炼厂通过分离、转化、处理和调和，把原油输入转成满足市场规格的成品组合，并从产品价值与原料成本差额中获利。"
+      },
+      "explanation": "一座简单炼厂只能把原油按沸点切开，天然有什么就得到什么。如果原料里汽油和柴油范围分子少，简单切分无法凭空增加。复杂炼厂多花资本建设反应设备，是为了改变分子：把大分子切成小分子，把小气体接成汽油范围分子，或重新排列结构以改善燃料表现。另一组设备负责清除硫、氮、金属和气味来源，使燃料符合法规并保护后续设备。最后，调和系统把多个半成品按蒸气压、辛烷、硫、凝点等约束配成可销售产品。炼厂毛利因此取决于三件事：原油买价、产品售价和设备能否低成本地把差的输入转成好的输出。设备越复杂，越可能利用便宜原料，但也需要更高能耗、氢气、维护和停工管理。检修或故障会立刻减少这种能力，使原本合算的原料变得不合算，也会改变周边库存的真实价值。",
+      "mechanism_chain": [
+        "原油先脱盐、脱水并加热，按沸点切成轻重不同部分。",
+        "重质部分若需求低，就进入改变分子的设备。",
+        "含硫、含氮或带金属的部分需要清理，才能满足法规和保护设备。",
+        "多个半成品按质量要求调成汽油、柴油、航煤等成品。"
+      ],
+      "worked_example": {
+        "actor": "炼厂运行调度工程师",
+        "inputs": [
+          "原油输入 42 gallons。",
+          "加工后产品总体积约 45 gallons，产品平均净值 2.10美元/gallon。"
+        ],
+        "setup": "一座复杂炼厂加工一桶 42 gallons 原油，因分子变轻产生体积增益。",
+        "steps": [
+          "体积增益 = 45 gallons - 42 gallons = 3 gallons。",
+          "产品收入 = 45 gallons × 2.10美元/gallon = 94.5美元。",
+          "总成本 = 80美元/桶 + 7美元/桶 = 87美元/桶。",
+          "毛利 = 94.5美元/桶 - 87美元/桶 = 7.5美元/桶。"
+        ],
+        "answer": "体积增益和复杂设备可以提高收入，但只有产品价值超过原料与运行成本时才创造利润。"
+      },
+      "practitioner_lens": "看炼厂受益于便宜重油时，要确认它是否有足够改变分子和清除杂质的能力。",
+      "terms_in_context": [
+        {
+          "term": "Distillation",
+          "cn": "塔内切割法",
+          "plain_definition": "利用沸点差异，把原油中的轻重部分切开的过程。",
+          "why_it_matters": "它决定每部分进入后续加工或直接销售的起点。"
+        },
+        {
+          "term": "Conversion",
+          "cn": "转化加工",
+          "plain_definition": "通过裂化、组合或重排改变分子大小和结构的加工环节。",
+          "why_it_matters": "它是复杂炼厂把低价值部分升级的关键。"
+        },
+        {
+          "term": "Refinery gain",
+          "cn": "炼厂体积增益",
+          "plain_definition": "加工后液体产品体积大于原油输入体积的现象。",
+          "why_it_matters": "它影响产品桶数和收入，但不代表质量凭空增加。"
+        }
+      ],
+      "misreading": "把炼厂想成筛子会低估资本和技术作用；真正利润常来自改变分子和满足规格。",
+      "boundary": "不同炼厂配置差异极大。教学数字接近常见美国例子，不能代表所有地区或每一批原油。",
+      "deep_dive": [
+        {
+          "title": "为什么图上的塔只解释第一步",
+          "explanation": "分馏图说明不同沸点部分从哪里离开，但没有展示后续裂化、加氢、重整和调和。"
+        }
+      ]
+    },
+    {
+      "id": "products-specifications",
+      "title": "成品油不是一个名字，而是一组必须达标的配方",
+      "reader_question": "炼厂产出汽油、柴油和航煤后，为什么还要反复调和和检测？",
+      "scene": {
+        "setting": "产品罐区里，不同半成品被按配方送入调和管线。实验室检测蒸气压、辛烷、硫、低温流动性等指标，合格后才能出厂。",
+        "actors": "调和工程师、实验室、法规机构、批发客户、机场、车队和终端消费者。",
+        "action": "工程师在成本最低的前提下调整配方，使每批产品同时满足法规、季节、设备和客户用途。"
+      },
+      "plain_answer": "市场买的不是模糊的燃料名，而是能通过具体测试的产品。规格决定某批液体能在哪个季节、哪个地区、给哪类用户销售，也会改变库存价值。",
+      "concept": {
+        "en": "Finished product specifications",
+        "cn": "成品油规格",
+        "definition": "成品燃料和重质产品必须满足一组物理、化学和法规测试，才能进入对应市场。"
+      },
+      "explanation": "一桶原油可以变成很多产品：轻端气体、汽油范围液体、航煤、柴油、润滑油原料、蜡、沥青、石油焦和硫等。每一种产品都有用途，也有边界。汽油不是单一分子，而是多个半成品的组合，既要有足够抗爆表现，又不能在夏季过度挥发造成污染；柴油要兼顾硫、低温流动和发动机要求；航煤对安全和低温表现更敏感。规格把物理液体变成法律和商业上可销售的商品。若一个终端在换季时还存着不合新规格的燃料，它不是普通库存，而是需要降价、重调或转移的麻烦库存。经济含义是：产品库存数字要结合规格读，季节切换、地区标准和调和组分价格都可能影响价差。产品规格还决定谁承担风险：炼厂、终端、批发商或最终用户都可能因不合格批次而被迫重调或等待。所以成品油价格常常提前反映规格切换，而不是等消费高峰真正到来。",
+      "mechanism_chain": [
+        "炼厂先得到多个半成品，而不是天然合格终端产品。",
+        "调和系统按目标用途把半成品组合起来。",
+        "实验室检测挥发性、燃烧表现、硫、低温性质等指标。",
+        "不合格批次需要重调、降级、转卖或延迟出货。"
+      ],
+      "worked_example": {
+        "actor": "产品调和值班工程师",
+        "inputs": [
+          "终端有 100,000 gallons 冬季汽油。",
+          "进入夏季前需加入低挥发组分 25%。"
+        ],
+        "setup": "一座终端发现 100,000 gallons 库存需要重调后才能进入夏季销售系统。",
+        "steps": [
+          "需要低挥发组分 = 100,000 gallons × 25% = 25,000 gallons。",
+          "新增组分成本 = 25,000 gallons × 2.80美元/gallon = 70,000美元。",
+          "若不重调，库存可能被折价或无法在当地销售。"
+        ],
+        "answer": "规格不是文书细节，它能把看似可用的库存变成需要额外成本处理的库存。"
+      },
+      "practitioner_lens": "看汽油或柴油库存时，要问这是哪个地区、哪个季节、哪种规格；桶数相同，市场价值可能不同。",
+      "terms_in_context": [
+        {
+          "term": "Blendstock",
+          "cn": "配方半成品",
+          "plain_definition": "尚未单独作为终端燃料销售、但可被配入成品的半成品液体。",
+          "why_it_matters": "其价格和可得性决定成品燃料的最低成本配方。"
+        },
+        {
+          "term": "RVP",
+          "cn": "雷德蒸气压",
+          "plain_definition": "衡量汽油等液体容易挥发程度的测试指标。",
+          "why_it_matters": "夏季挥发限制会改变汽油配方和季节价差。"
+        },
+        {
+          "term": "Product slate",
+          "cn": "产品组合",
+          "plain_definition": "炼厂从一组原料中产出的汽油、柴油、航煤、重质产品等比例。",
+          "why_it_matters": "它决定炼厂收入对不同产品价格的敏感度。"
+        }
+      ],
+      "misreading": "只看“汽油库存增加”可能误判市场宽松；若规格或地区不对，这些桶不一定能满足眼前需求。",
+      "boundary": "具体规格由国家、地区、季节和用途决定；本课只说明规格如何把物理产品变成可销售产品。",
+      "deep_dive": [
+        {
+          "title": "重质产品也有市场",
+          "explanation": "沥青、石油焦、蜡、润滑油原料和硫不是废物，但需求、环保约束和物流渠道与轻质燃料不同。"
+        }
+      ]
+    },
+    {
+      "id": "logistics-availability",
+      "title": "有油还不够，必须有路把它送到合适地点",
+      "reader_question": "为什么一个产区明明有很多原油，当地价格却可能很低，消费区还可能觉得供应紧？",
+      "scene": {
+        "setting": "产区、港口、管道、铁路装车台、卡车、储罐和炼厂之间隔着距离、容量和规则。液体必须沿允许的路线移动，不能瞬间出现在需要它的地方。",
+        "actors": "管道公司、船东、铁路和卡车承运人、终端运营商、贸易商、炼厂和监管机构。",
+        "action": "各方在容量、批次、清洁要求、航线和装卸窗口之间排程；任何瓶颈都会把物理限制变成价差。"
+      },
+      "plain_answer": "物流网络决定一桶油能否到达买方。产区过剩若遇到管道、船、铁路、卡车或储罐限制，价格会在当地打折；消费区则按到厂成本和可达性定价。",
+      "concept": {
+        "en": "Oil logistics constraints",
+        "cn": "石油物流约束",
+        "definition": "管道、油轮、铁路、卡车、储罐和终端共同决定原油与产品能否按时、按质、按量移动。"
+      },
+      "explanation": "石油物流不是把桶从 A 搬到 B 的简单动作。船适合跨洋大批量移动，但受港口、水深、船型和运费影响；管道单位成本低、连续性强，却受容量、方向和批次安排限制；铁路和卡车灵活，但成本高，更常用于缺管道或最后一段；储罐能缓冲时间差，却也会满。产品和原油还不能随便混用设备，清洁产品怕污染，重质或脏货需要不同舱罐。运输成本和稀缺容量最终进入地区价差：产地到不了外部市场时，当地卖方要降价；买方拿不到适合原料时，则可能支付更高到厂价。物流因此把地理、时间和设施约束转成价格信号。分析库存时也要看地点：错误地点的库存不能自动解决消费地短缺，反而可能压低产区价格。路线一旦新增或中断，价差和流向会比地质供应更快变化。",
+      "mechanism_chain": [
+        "生产地和消费地通常不在同一地点。",
+        "每种运输方式都有容量、成本、适用品类和时间限制。",
+        "储罐能缓冲但不能无限吸收过剩。",
+        "当外运能力小于产量，卖方需要折价、转用高成本方式或减产。",
+        "当合适路线恢复或新增，地区价差可能迅速收窄。"
+      ],
+      "worked_example": {
+        "actor": "产区现货贸易经理",
+        "inputs": [
+          "产区日产 600,000桶/日。",
+          "外运管道能力 500,000桶/日，替代铁路成本高 4美元/桶。"
+        ],
+        "setup": "一个内陆产区每天生产 600,000桶 bpd，但主要外运管道只能带走 500,000桶。",
+        "steps": [
+          "待解决缺口 = 600,000 bpd - 500,000 bpd = 100,000 bpd。",
+          "若全部改走铁路，额外成本 = 100,000桶 × 4美元/桶 = 400,000美元。",
+          "若铁路和储罐也不足，卖方只能接受更大折价或减少产量。"
+        ],
+        "answer": "瓶颈不是物流脚注，而是每天改变现金流和地区价格的约束。"
+      },
+      "practitioner_lens": "看地区价差时，要画出可用路线、容量、储罐余量和替代运输成本。",
+      "terms_in_context": [
+        {
+          "term": "Pipeline batch",
+          "cn": "管道批次",
+          "plain_definition": "同一条管道中按顺序输送的某一段液体。",
+          "why_it_matters": "批次安排决定不同产品或油种能否及时到达。"
+        },
+        {
+          "term": "Freight differential",
+          "cn": "运费价差",
+          "plain_definition": "因运输成本、路线稀缺或装卸限制造成的地区价格差。",
+          "why_it_matters": "它把距离和容量约束转成可观察价格。"
+        },
+        {
+          "term": "Storage tank",
+          "cn": "临储大罐",
+          "plain_definition": "在生产、运输和消费之间临时存放液体的设施。",
+          "why_it_matters": "它能缓冲时间错配，但满罐会放大折价。"
+        }
+      ],
+      "misreading": "地质上供应丰富不等于市场上随时可用；没有路线、容量或储罐，油会被困在错误地点。",
+      "boundary": "具体路线能力、运费和法规会随时间变化；本课只保留容量约束和替代成本的机制。",
+      "deep_dive": [
+        {
+          "title": "船舶大小如何影响库存",
+          "explanation": "一艘大型远洋油轮可装约 200万桶，单次到港就能影响周度地区库存读数。"
+        }
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "fractional-distillation",
+      "lesson_id": "refinery-transformation",
+      "src": "../assets/figures/module-01/crude-fractional-distillation.jpg",
+      "alt": "Oil 101 原图：原油分馏塔剖面，显示不同沸点馏分在塔内不同高度离开及对应终端用途",
+      "reading_guide": "先从塔底向塔顶看温度和重量关系：加热后的原油在下部进入，重的长分子留在低处，轻的短分子继续上升并在高处离开。再看每个出口连接的用途，理解“先按沸点切开”这一件事。注意这张图不证明最终产品比例固定，也不展示后续改变分子、清除硫和调和成品的装置。",
+      "caption": "分馏塔示意图：同一桶原油被加热后，轻端在上部离开，中间馏分在中部离开，重质残渣留在底部；它说明切分顺序，不等于完整炼厂流程。",
+      "reference": {
+        "label": "Morgan Downey, Oil 101, Chapter 7 Refining, Figure 7-3",
+        "url": "https://oil101.morgandowney.com/chapters/refining",
+        "asset_url": "https://oil101.morgandowney.com/images/ch07-distillation-tower-cuts.jpg",
+        "accessed": "2026-07-11"
+      }
+    }
+  ],
+  "figure_candidates": [],
+  "comparison_tables": [
+    {
+      "title": "从原油品质到炼厂含义",
+      "headers": [
+        "维度",
+        "低负担一端",
+        "高负担一端",
+        "真正影响"
+      ],
+      "rows": [
+        [
+          "API gravity",
+          "Light >31°",
+          "Heavy 10–22°；extra-heavy <10°",
+          "天然轻产品收率、泵送与 resid 数量"
+        ],
+        [
+          "Sulfur",
+          "Sweet <0.5 wt%",
+          "Sour >2.0 wt%",
+          "hydrogen、腐蚀、SOx 与 hydrotreating 负担"
+        ],
+        [
+          "TAN",
+          "多数炼厂偏好 <0.5",
+          ">约0.7 常被标记高酸",
+          "高温 naphthenic acid corrosion"
+        ],
+        [
+          "Metals",
+          "trace 且低",
+          "V/Ni 可达高 ppm",
+          "FCC catalyst poisoning，并集中进入 coke"
+        ],
+        [
+          "Viscosity/pour point",
+          "易流动、低凝点",
+          "高黏、waxy、低温凝胶",
+          "加热、diluent 与管道可输送性"
+        ],
+        [
+          "BS&W/salt",
+          "BS&W 通常 <1%",
+          "水、泥沙、盐偏高",
+          "无效体积、desalter 负担和腐蚀"
+        ]
+      ]
+    },
+    {
+      "title": "四个炼厂阶段不要混淆",
+      "headers": [
+        "阶段",
+        "改变什么",
+        "代表装置",
+        "没有解决什么"
+      ],
+      "rows": [
+        [
+          "Separation",
+          "按沸点把混合物切开",
+          "Desalter、ADU、VDU",
+          "不主动提高轻产品分子比例"
+        ],
+        [
+          "Conversion",
+          "打断、组合或重排分子",
+          "FCC、hydrocracker、coker、alkylation、reformer",
+          "不自动保证 sulfur/RVP 等成品规格"
+        ],
+        [
+          "Treatment",
+          "移除 sulfur、nitrogen、metals、odorants",
+          "HDT/HDS、amine、Merox、Claus",
+          "不等于最终产品已经调和完成"
+        ],
+        [
+          "Blending",
+          "组合多个 blendstock 满足多项规格",
+          "Inline blender、tank farm、additive injection",
+          "不能凭空弥补缺失装置或不合格原料"
+        ]
+      ]
+    }
+  ],
+  "term_family": {
+    "root": "一桶油的可用价值",
+    "tree": "可用价值 → 地下可采性（source/reservoir/seal/pressure）→ 原油身份（stream/blend/grade/assay）→ 分子处理（separation/conversion/treatment/blending）→ 终端规格（gasoline/diesel/jet/resid）→ 可交付性（pipeline/tanker/terminal/Incoterms）",
+    "analogy": "把一桶油想成需要连续过六道海关的旅客：地质决定能不能出发，assay 是护照，炼厂配置是签证，产品规格是目的地规则，物流是航班；任何一道不过，它都到不了目标消费者。",
+    "branches": [
+      {
+        "name": "身份",
+        "children": [
+          "Stream",
+          "Blend",
+          "Grade",
+          "Assay"
+        ]
+      },
+      {
+        "name": "分子",
+        "children": [
+          "Carbon count",
+          "PONA",
+          "Heteroatoms"
+        ]
+      },
+      {
+        "name": "加工",
+        "children": [
+          "Separation",
+          "Conversion",
+          "Treatment",
+          "Blending"
+        ]
+      },
+      {
+        "name": "交付",
+        "children": [
+          "Pipeline",
+          "Tanker",
+          "Terminal",
+          "FOB/CIF/DDP"
+        ]
+      }
+    ]
+  },
+  "glossary": [
+    {
+      "term": "Crude oil assay",
+      "full_en": "Crude oil assay",
+      "cn": "原油化验报告",
+      "definition": "描述原油性质、馏分收率和杂质的采购与加工基础文件。",
+      "example": "炼厂用 API、sulfur、TAN、metals 与 yield data 估算一船 cargo 的净回值。",
+      "confusion": "它不是只有 API 和 sulfur 的两行标签，也不是成品油质量证书。"
+    },
+    {
+      "term": "Stream",
+      "full_en": "Crude oil stream",
+      "cn": "原油流股",
+      "definition": "来自特定油田、平台或 gathering system 的物理连续流。",
+      "example": "某 North Sea field 的稳定原油进入共同管线前是一个 stream。",
+      "confusion": "stream 不等于市场上最终命名并交易的 blend/grade。"
+    },
+    {
+      "term": "Blend",
+      "full_en": "Crude oil blend",
+      "cn": "原油混合物",
+      "definition": "在终端或管道起点把多个 stream 混合以达到目标规格和商业体量。",
+      "example": "Brent Blend 现在汇集多个 North Sea fields，而非只来自最初 Brent stream。",
+      "confusion": "混合不是造假；在满足公开规格时它正是标准商业产品。"
+    },
+    {
+      "term": "API gravity",
+      "full_en": "American Petroleum Institute gravity",
+      "cn": "API 度",
+      "definition": "由 specific gravity 反向换算的密度指标，数字越高液体越轻。",
+      "example": "WTI 39.6°API 对应 SG 约 0.827。",
+      "confusion": "高 API 通常而非永远更贵；极轻 condensate 也可能超出炼厂 sweet spot。"
+    },
+    {
+      "term": "TAN",
+      "full_en": "Total Acid Number",
+      "cn": "总酸值",
+      "definition": "中和一克原油所需 KOH 的毫克数，用来衡量 naphthenic acid 风险。",
+      "example": "多数炼厂偏好 TAN<0.5，约0.7以上常被视为高酸，Doba 可超过2.0。",
+      "confusion": "TAN 不是 sulfur，也不能由 heavy/light 标签精确推断。"
+    },
+    {
+      "term": "PONA",
+      "full_en": "Paraffins, Olefins, Naphthenes, Aromatics",
+      "cn": "烃类结构四分法",
+      "definition": "按链、环、饱和性与反应性描述原油或馏分分子组成的框架。",
+      "example": "light sweet 通常 paraffin-rich，heavy sour 的 aromatics、resins 和 asphaltenes 更高。",
+      "confusion": "天然原油中的 olefins 通常只是 trace，大量 olefins 多由 cracking 制造。"
+    },
+    {
+      "term": "Refinery gain",
+      "full_en": "Refinery processing gain",
+      "cn": "炼厂加工体积增益",
+      "definition": "重质高密度分子裂化成轻质低密度分子后出现的产品体积增加。",
+      "example": "42 gallons crude 在典型美国炼厂可形成约45 gallons products。",
+      "confusion": "质量没有增加，也不能把 gain 当作油田产出的新原油。"
+    },
+    {
+      "term": "Product slate",
+      "full_en": "Refinery product slate",
+      "cn": "炼厂产品组合",
+      "definition": "某炼厂在给定 crude slate、配置和运行条件下产出的各类产品组合。",
+      "example": "有 coker 的 refinery 可减少 resid、提高 gasoline 和 distillate 比例。",
+      "confusion": "product slate 不是只由 crude 决定，装置、季节和市场需求同样重要。"
+    },
+    {
+      "term": "VLCC",
+      "full_en": "Very Large Crude Carrier",
+      "cn": "超大型原油运输船",
+      "definition": "约200,000–320,000 DWT、典型装载约200万桶 crude 的 tanker class。",
+      "example": "Middle East–Asia 主干航线大量使用 VLCC。",
+      "confusion": "实际桶数受 crude density、loadline、draft 和港口限制。"
+    },
+    {
+      "term": "Off spec",
+      "full_en": "Off-specification cargo",
+      "cn": "规格外货物",
+      "definition": "交付原油偏离合同或 assay 容许范围的状态。",
+      "example": "硫、BS&W 或 vapor pressure 超限可能迫使 cargo 改港或折价。",
+      "confusion": "off spec 描述质量违约；distressed cargo 强调没有现成买家，两者不完全相同。"
+    }
+  ],
+  "extreme_detail": [
+    {
+      "mechanism": "温度校正与密度",
+      "why_it_matters": "同一质量的原油在暖地体积更大，交易和库存必须统一基准。",
+      "micro_example": "assay 的 density、SG 与 API 通常引用 60°F、1 atm；thermohydrometer 同时读取温度以校正。",
+      "misreading": "把冷热港口的观测桶数差直接当作物质增加或短少。",
+      "takeaway": "比较 API 与体积前先确认 reference temperature。"
+    },
+    {
+      "mechanism": "油田 water cut",
+      "why_it_matters": "成熟油田井口流体可以含远多于油的水，处理能力会约束可售原油。",
+      "micro_example": "作者指出脱水前可超过每产一桶油伴随十桶水；这些水不属于可销售 crude。",
+      "misreading": "把 gross well fluid 当作 oil production。",
+      "takeaway": "从井口到 sales stream 必须经过三相分离和计量。"
+    },
+    {
+      "mechanism": "Hydrogen balance",
+      "why_it_matters": "重酸油升级不仅需要装置，还需要大量可用 hydrogen。",
+      "micro_example": "catalytic reformer 是典型炼厂的主要 hydrogen source，但其 platinum catalyst 要求 feed sulfur 低于约1 ppm。",
+      "misreading": "只看到 hydrocracker/hydrotreater nameplate 就认为能无限处理 sour feed。",
+      "takeaway": "检查 hydrogen production、purity 与 consumption 的全厂平衡。"
+    },
+    {
+      "mechanism": "Pipeline interface cut",
+      "why_it_matters": "同一产品管线可批次运输多种燃料，但边界会混合并产生降级成本。",
+      "micro_example": "jet→diesel→gasoline 依次推进时，batch 边缘的混合物需送回 refinery 或降级为较不敏感产品。",
+      "misreading": "认为 clean product pipeline 中不同 grade 可像独立管道一样零损耗切换。",
+      "takeaway": "boutique fuel 越多，batch scheduling 与 interface burden 越高。"
+    },
+    {
+      "mechanism": "Ethane rejection",
+      "why_it_matters": "NGL supply 不是纯地质结果，还受到日常相对价格选择。",
+      "micro_example": "当 Mont Belvieu ethane 作为 petchem feed 的价值低于其留在 sales gas 中的 BTU value，processor 会 reject ethane。",
+      "misreading": "把 NGL recovery 变化完全解释为井口产量变化。",
+      "takeaway": "同时看气价、ethane 价和 cracker demand。"
+    },
+    {
+      "mechanism": "Clean/dirty tanker lock-in",
+      "why_it_matters": "船舶名义吨位不能无成本在产品与原油服务间转换。",
+      "micro_example": "clean tanker 的 coated/stainless tanks 防止污染 gasoline/jet；转去装 crude 后再恢复 clean service 需要昂贵 tank cleaning。",
+      "misreading": "把所有 tanker DWT 当作完全可替代运力。",
+      "takeaway": "分析 freight 紧张要按 cargo service 和 vessel class 分桶。"
+    }
+  ],
+  "cases": [
+    {
+      "title": "同样一桶便宜重油，为什么只有复杂炼厂敢买",
+      "scenario": "Maya heavy-sour 相对 WTI 大幅折价。一座 topping/hydroskimming refinery 和一座 Gulf Coast coking refinery 同时评估这批 cargo。请判断谁更可能提高 bid，并说明完整机制。",
+      "background": "Maya 约22°API、3.4% sulfur，天然 resid 比例、metals 与 hydrotreating 负担都高于 WTI。",
+      "shock": "市场上 heavy-sour 折价扩大，但 coking/hydrogen capacity 并未在所有炼厂同步增加。",
+      "transmission": [
+        "简单炼厂 distillation 后留下大量低价 resid，且 sulfur treatment 可能成为瓶颈",
+        "复杂炼厂用 coker 把 vacuum resid 变成 naphtha/gasoil/coke，再用 FCC/hydrocracker 升级",
+        "hydrogen 与 treatment 系统移除 sulfur/nitrogen，允许产品进入合规 pool",
+        "只要采购折价大于新增加工、hydrogen、catalyst 与 coke disposal cost，复杂炼厂的 margin 改善"
+      ],
+      "market_result": "复杂炼厂通常会提高对折价重酸桶的 willingness to pay；简单炼厂即使看到低 headline price，也可能无法经济接收。",
+      "lesson": "crude differential 是 assay 与 refinery configuration 的匹配价格，不是原油自身固定不变的品质排名。",
+      "model_answer": [
+        "先指出 Maya 的低 API、高 sulfur、metals 和高 resid yield 会给简单炼厂造成低产品价值与处理瓶颈。",
+        "再说明 coker、hydrocracker/FCC、hydrogen 与 hydrotreating 如何把折价分子转成合规 light products，并以产品净回值减加工成本判断 bid。",
+        "最后保留边界：若 coker turnaround、hydrogen 紧张、petcoke 出路差或产品价差弱，复杂炼厂也会降低对 Maya 的报价。"
+      ]
+    }
+  ],
+  "core_model": {
+    "core_points": [
+      "地下 oil in place 先被 geology、pressure、recovery factor 与 decline 过滤，才成为可持续生产流量。",
+      "stream 是物理流，blend 是多个流的混合，grade 是带地点与规格的商业身份，assay 是炼厂读懂该身份的技术文件。",
+      "carbon count 决定沸程的大方向，PONA 和 heteroatoms 决定稳定性、产品性能与加工负担。",
+      "refinery 先 separation，再 conversion、treatment 与 blending；processing gain 是体积效应而非质量创造。",
+      "产品桶必须满足用途和监管规格；同名产品在不同季节、地区和 sulfur/RVP 条件下并不完全可替代。",
+      "全球供应只有通过合适船型、管道、terminal 与交付条款到达兼容设施后，才是某地的有效供应。"
+    ],
+    "one_liner": "不要问“世界上有多少油”，先问“什么分子、什么规格、在哪个地点、由哪套装置、通过哪条路，能变成谁需要的产品”。"
+    ,
+    "premises": [
+      "物理供应必须先满足可流动、可处理、可运输和可加工条件，才会进入价格和库存统计的有效口径。",
+      "隐含假设：买方关心的是特定地点、时间和设施下可使用的桶，而不是全球名义总量。"
+    ],
+    "breaks_when": [
+      "讨论对象是纯金融敞口、政策配额或公司估值，而不是一桶实物从地下到产品市场的可用性。",
+      "运输、质量或设施数据缺失到无法判断具体地点和时间时，这套框架只能作为提问顺序，不能直接给出结论。"
+    ]
+  },
+  "self_checks": [
+    {
+      "prompt": "为什么地下资源量不能直接等同于未来市场供应？",
+      "model_answer": "因为液体要能穿过岩石并维持压力才能流入井内，生产节奏还会影响最终能采出的比例。地下数量只是起点，不是销售桶数。"
+    },
+    {
+      "prompt": "为什么井口总流量常常高于可销售液体？",
+      "model_answer": "井口流体含有水和会释放的气体，现场分离和稳定后，净液体数量才更接近可计量、可结算、可进管道的供应。"
+    },
+    {
+      "prompt": "一个有名称的油种为什么不一定来自单一油田？",
+      "model_answer": "市场需要足够大的、质量可预期的商业批次，所以终端会把多股相近液体合并并按质量范围交易。"
+    },
+    {
+      "prompt": "炼厂为什么会要求某些原油折价？",
+      "model_answer": "若原油较重、含硫或杂质高，可能减少高价值产品、增加处理成本、腐蚀风险或催化剂损失，买方会把这些成本折进价格。"
+    },
+    {
+      "prompt": "分馏塔图能说明什么，又不能说明什么？",
+      "model_answer": "它说明不同沸点部分在不同高度离开，帮助理解第一步切分；它不能说明后续裂化、加氢、调和后的最终产品比例固定。"
+    },
+    {
+      "prompt": "为什么产品库存要结合规格看？",
+      "model_answer": "同样是汽油或柴油，地区、季节和测试指标不同会决定是否能合法销售，不合规格库存可能需要重调、降价或转移。"
+    },
+    {
+      "prompt": "判断一桶油是否可用时，至少要同时问哪几件事？",
+      "model_answer": "要问质量是否适合、路线和储罐是否可用、时间是否匹配、设施能否处理，以及加工后的产品是否有合规需求。"
+    }
+  ],
+  "applications": [
+    {
+      "situation": "新闻称某国“新增100万桶石油供应”",
+      "action": "先拆 liquids component 与 assay：是 conventional crude、condensate、NGL、biofuel 还是 refinery gain；再问它能进入哪类装置和产品市场。"
+    },
+    {
+      "situation": "某 heavy-sour grade 折价突然扩大",
+      "action": "检查目标地区 coker/hydrocracker turnaround、hydrogen capacity、petcoke 出路、sour freight 和 heavy crude avails，判断是品质价值变化还是 buyer-base 暂时收缩。"
+    },
+    {
+      "situation": "炼厂宣布意外停工",
+      "action": "沿双向链分析：上游 crude 可能失去买家并累库，成品油供给可能下降；再按停工装置判断受影响的是 gasoline、jet、diesel 还是 resid upgrading。"
+    },
+    {
+      "situation": "某地库存充足但 spot price 飙升",
+      "action": "把库存拆成 grade/spec/location，检查 pipeline direction、terminal connectivity、可用 tanker class、seasonal fuel spec 与可操作库存，而不是用全国总量否定局部短缺。"
+    }
+  ],
+  "review_prompts": [
+    "一周后：不看资料画出 reservoir 到 retail terminal 的九个节点，并在每个 handoff 写出会改变的品质、风险或所有权。",
+    "两周后：选 WTI 与 Maya，用 API、sulfur、PONA、resid yield 和炼厂配置写一页‘为什么价差存在’的解释。",
+    "一个月后：找一条真实供应新闻，按 molecule → assay → refinery → product spec → logistics 五步分析，最后写出会推翻判断的两个条件。"
+  ],
+  "sources": [
+    {
+      "label": "Oil 101 Chapter 2: A Crude Oil Assay",
+      "url": "https://oil101.morgandowney.com/chapters/crude-oil-assay",
+      "coverage": "stream/blend/grade、API、sulfur、TAN、metals、viscosity、RVP、pour point、BS&W 与 assay 定价"
+    },
+    {
+      "label": "Oil 101 Chapter 3: Components of Oil Liquids",
+      "url": "https://oil101.morgandowney.com/chapters/components",
+      "coverage": "liquids 口径、42-gallon barrel、condensates、NGL fractionation、naphtha、unconventional crude 与 refinery gain"
+    },
+    {
+      "label": "Oil 101 Chapter 4: Chemistry of Oil",
+      "url": "https://oil101.morgandowney.com/chapters/chemistry",
+      "coverage": "carbon count、PONA、heteroatoms、燃烧、octane/cetane 与 cracking chemistry"
+    },
+    {
+      "label": "Oil 101 Chapter 5: Industry Overview",
+      "url": "https://oil101.morgandowney.com/chapters/industry-overview",
+      "coverage": "upstream/midstream/downstream、参与者与物理链 handoff"
+    },
+    {
+      "label": "Oil 101 Chapter 6: Exploration and Production",
+      "url": "https://oil101.morgandowney.com/chapters/exploration-production",
+      "coverage": "petroleum system、reservoir pressure、drilling、production phases、recovery、decline 与 shale 基础"
+    },
+    {
+      "label": "Oil 101 Chapter 7: Refining",
+      "url": "https://oil101.morgandowney.com/chapters/refining",
+      "coverage": "refinery gain、四阶段、ADU/VDU、FCC、hydrocracker、coker、alkylation、reforming、treatment 与 blending"
+    },
+    {
+      "label": "Oil 101 Chapter 9: Finished Products",
+      "url": "https://oil101.morgandowney.com/chapters/finished-products",
+      "coverage": "19类产品、gasoline/RVP、jet、diesel、bunker、LPG、lubes、wax、petcoke、bitumen 与 product trade"
+    },
+    {
+      "label": "Oil 101 Chapter 11: Transporting Oil",
+      "url": "https://oil101.morgandowney.com/chapters/transporting-oil",
+      "coverage": "tanker classes、Worldscale、pipelines、rail、truck、chokepoints、hubs 与 Incoterms"
+    }
+  ],
+  "source_coverage": [
+    {
+      "source": "crude-oil-assay",
+      "section": "What Is a Crude Oil Assay?",
+      "id": "assay-quality"
+    },
+    {
+      "source": "crude-oil-assay",
+      "section": "Fields, Streams, and Blends",
+      "id": "physical-chain"
+    },
+    {
+      "source": "crude-oil-assay",
+      "section": "Density: The Most Important Property",
+      "id": "assay-quality"
+    },
+    {
+      "source": "crude-oil-assay",
+      "section": "Sweet versus Sour: Sulfur Content",
+      "id": "assay-quality"
+    },
+    {
+      "source": "crude-oil-assay",
+      "section": "The Crude Quality Matrix",
+      "id": "assay-quality"
+    },
+    {
+      "source": "crude-oil-assay",
+      "section": "Acidity, Metals, and the Rest of the Assay Sheet",
+      "id": "assay-quality"
+    },
+    {
+      "source": "crude-oil-assay",
+      "section": "Why the Assay Matters for Prices",
+      "id": "assay-quality"
+    },
+    {
+      "source": "components",
+      "section": "What Makes Up Oil Liquids?",
+      "id": "liquids-family"
+    },
+    {
+      "source": "components",
+      "section": "What Is Actually In a Barrel",
+      "id": "products-specifications"
+    },
+    {
+      "source": "components",
+      "section": "Conventional Crude Oil",
+      "id": "liquids-family"
+    },
+    {
+      "source": "components",
+      "section": "Streams, Blends, and Grades",
+      "id": "physical-chain"
+    },
+    {
+      "source": "components",
+      "section": "Condensates",
+      "id": "liquids-family"
+    },
+    {
+      "source": "components",
+      "section": "Natural Gas Liquids In Detail",
+      "id": "liquids-family"
+    },
+    {
+      "source": "components",
+      "section": "Fractionation and Ethane Rejection",
+      "id": "liquids-family"
+    },
+    {
+      "source": "components",
+      "section": "Naphtha: The Other Petchem Feed",
+      "id": "molecular-barrel"
+    },
+    {
+      "source": "components",
+      "section": "Unconventional Crude Oil",
+      "id": "liquids-family"
+    },
+    {
+      "source": "components",
+      "section": "Refinery Gain",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "components",
+      "section": "2nd Edition Update: The Shale and NGL Revolution",
+      "id": "liquids-family"
+    },
+    {
+      "source": "chemistry",
+      "section": "The Building Blocks: Carbon and Hydrogen",
+      "id": "molecular-barrel"
+    },
+    {
+      "source": "chemistry",
+      "section": "Carbon Count, Boiling Point, and Physical State",
+      "id": "molecular-barrel"
+    },
+    {
+      "source": "chemistry",
+      "section": "The Four Molecular Structures: PONA",
+      "id": "molecular-barrel"
+    },
+    {
+      "source": "chemistry",
+      "section": "Typical PONA by Crude Grade",
+      "id": "molecular-barrel"
+    },
+    {
+      "source": "chemistry",
+      "section": "Saturated vs Unsaturated",
+      "id": "molecular-barrel"
+    },
+    {
+      "source": "chemistry",
+      "section": "Heteroatoms: Sulfur, Nitrogen, Oxygen, Metals",
+      "id": "assay-quality"
+    },
+    {
+      "source": "chemistry",
+      "section": "Combustion Chemistry",
+      "id": "products-specifications"
+    },
+    {
+      "source": "chemistry",
+      "section": "Octane and Cetane: Measuring Fuel Quality",
+      "id": "products-specifications"
+    },
+    {
+      "source": "chemistry",
+      "section": "Cracking and Combining",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "chemistry",
+      "section": "Why Chemistry Drives Pricing",
+      "id": "assay-quality"
+    },
+    {
+      "source": "industry-overview",
+      "section": "An Industry in Three Segments",
+      "id": "physical-chain"
+    },
+    {
+      "source": "industry-overview",
+      "section": "National Oil Companies Versus International Oil Companies",
+      "defer_reason": "公司所有制与竞争格局属于后续‘谁能改变全球供应格局’模块；本课仅保留物理功能分类。"
+    },
+    {
+      "source": "industry-overview",
+      "section": "The NOC League Table",
+      "defer_reason": "企业产量排名会随时间变化，后续供应权力模块按原文重新核对。"
+    },
+    {
+      "source": "industry-overview",
+      "section": "US Independents: The Shale Cohort",
+      "defer_reason": "页岩企业与并购放入上游纵深及供应格局模块。"
+    },
+    {
+      "source": "industry-overview",
+      "section": "Oilfield Services: The Contractors Who Actually Drill",
+      "defer_reason": "服务公司商业模式和名单放入上游纵深；本课只说明 operator 不一定拥有 rigs。"
+    },
+    {
+      "source": "industry-overview",
+      "section": "Pure-Play Refiners",
+      "defer_reason": "公司层 crack-spread 暴露放入炼化纵深模块。"
+    },
+    {
+      "source": "industry-overview",
+      "section": "Physical Trading Houses",
+      "defer_reason": "贸易商套利与资产组合放入市场参与者模块。"
+    },
+    {
+      "source": "industry-overview",
+      "section": "Engineering, Procurement, and Construction",
+      "defer_reason": "EPC 商业模式不影响第一课的 barrel flow，留给产业纵深。"
+    },
+    {
+      "source": "industry-overview",
+      "section": "Vertical Integration and the Disaggregation Trend",
+      "id": "physical-chain"
+    },
+    {
+      "source": "industry-overview",
+      "section": "OPEC and OPEC+",
+      "defer_reason": "完整移至‘谁能改变全球供应格局’模块。"
+    },
+    {
+      "source": "industry-overview",
+      "section": "The Downstream Footprint",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "industry-overview",
+      "section": "Key Market Institutions",
+      "defer_reason": "EIA/IEA/CFTC/PRA 的数据角色在供需、价格与研究工作台模块展开。"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "The Upstream Sector",
+      "id": "reservoir-to-well"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "Obtaining Rights to Explore and Drill",
+      "defer_reason": "矿权、landman 与 rule of capture 放入上游纵深模块。"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "Types of E&P Agreements",
+      "defer_reason": "concession、PSA、service contract、JV 与 production contract 属产业制度纵深。"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "How Oil Forms: Source Rock, Reservoir Rock, and Cap Rock",
+      "id": "reservoir-to-well"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "Reservoir Mechanics: Pressure Is Everything",
+      "id": "reservoir-to-well"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "Exploration: Seismic Surveys",
+      "defer_reason": "2D/3D/4D seismic 与 wildcat success rate 放入上游纵深。"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "Drilling",
+      "id": "reservoir-to-well"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "Production Phases",
+      "id": "reservoir-to-well"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "Decline Curves and Field Life",
+      "id": "reservoir-to-well"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "Offshore Production",
+      "defer_reason": "platform typology、water depth 与 FPSO 经济性放入上游纵深。"
+    },
+    {
+      "source": "ch06-exploration",
+      "section": "The Shale Revolution",
+      "defer_reason": "本课只保留 tight oil 与 NGL 的 liquids 身份；fracturing 五步和 shale treadmill 在供应格局模块详讲。"
+    },
+    {
+      "source": "refining",
+      "section": "Feedstock, Slate, and Refinery Gain",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "refining",
+      "section": "The Four Stages of Refining",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "refining",
+      "section": "Separation: The Crude Distillation Unit",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "refining",
+      "section": "Conversion: Where Margin Is Made",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "refining",
+      "section": "Combining: Alkylation and Polymerization",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "refining",
+      "section": "Modifying: Catalytic Reforming, Isomerization, Ethers",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "refining",
+      "section": "Treatment: Hydroprocessing, Amine, Merox, Claus",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "refining",
+      "section": "Bitumen, Lubricants, Waxes, and Grease",
+      "id": "products-specifications"
+    },
+    {
+      "source": "refining",
+      "section": "Blending: Where Finished Product Is Born",
+      "id": "products-specifications"
+    },
+    {
+      "source": "refining",
+      "section": "Refinery Types and the Nelson Complexity Index",
+      "id": "refinery-transformation"
+    },
+    {
+      "source": "refining",
+      "section": "US Refining Geography and the PADDs",
+      "defer_reason": "PADD capacity、regional crude diet 与 crack spreads 放入局部短缺和炼化纵深模块。"
+    },
+    {
+      "source": "refining",
+      "section": "Turnaround Season",
+      "defer_reason": "turnaround 的季节、跨地区排期与库存影响放入局部短缺模块。"
+    },
+    {
+      "source": "finished-products",
+      "section": "The 19 Products of Crude Oil",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Gasoline: A Cocktail, Not a Single Product",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Jet Fuel and the Arrival of SAF",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Diesel: On-Road, Off-Road, Marine, and Home Heat",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Residual Fuel and the Bunker Market After IMO 2020",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "LPG",
+      "id": "liquids-family"
+    },
+    {
+      "source": "finished-products",
+      "section": "Lubricant Base Oils and the Group I to V Classification",
+      "defer_reason": "本课保留产品地图；base-oil groups 与 additive stack 放入下游纵深。"
+    },
+    {
+      "source": "finished-products",
+      "section": "Waxes",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Petroleum Coke",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Bitumen and Asphalt",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Kerosene and Niche Products",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Carbon Black and Sulfur",
+      "id": "products-specifications"
+    },
+    {
+      "source": "finished-products",
+      "section": "Global Refined Product Trade Flows",
+      "id": "logistics-availability"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Five Methods of Moving Oil",
+      "id": "logistics-availability"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Tanker Ships",
+      "id": "logistics-availability"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Chartering and Worldscale",
+      "id": "logistics-availability"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Pipelines",
+      "id": "logistics-availability"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Crude by Rail and the Bakken Boom",
+      "id": "logistics-availability"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Trucking: The Last Mile",
+      "id": "logistics-availability"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "IMO 2020 and the Transformation of Bunker Fuel",
+      "id": "products-specifications"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Shipping Chokepoints",
+      "defer_reason": "具体 chokepoint 情景与冲击传导放入局部短缺和事件分析模块；本课保留容量约束原则。"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "LNG Carriers in Brief",
+      "defer_reason": "LNG 是专用低温气体物流，放入能源转型/LNG 专题。"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Trading Hubs",
+      "id": "logistics-availability"
+    },
+    {
+      "source": "transporting-oil",
+      "section": "Incoterms and Delivery Pricing",
+      "id": "logistics-availability"
+    }
+  ]
 }
