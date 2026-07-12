@@ -4,30 +4,29 @@
   "reading": "04",
   "reading_title": "油价究竟是什么价格",
   "title": "一桶油为什么没有一个唯一价格",
-  "deck": "从一桶油的品质指纹、交付地点与合同基准出发，读懂 WTI、Brent、OSP、净回值、Platts MOC、单位换算和零售价之间的完整定价链。",
-  "reading_intent": "学完本模块，你面对“油价今天是多少”时，会先追问是哪种原油或产品、什么品质、哪个地点、何种交付条件、哪个时间窗口以及使用什么计价单位。你将能把新闻里的 benchmark flat price 与真实货物的 quality differential、location differential、freight、OSP、税费分开，并用原油 assay 和标准规格解释为什么两桶看似相似的油会相差数美元。",
-  "opening_question": "同一天 WTI、Dated Brent、Dubai、Maya、美国加油站汽油和欧洲泵价都在谈“油价”，为什么它们既会一起动，又可能长期相差很大？",
+  "deck": "把“油价”从一个新闻数字拆回真实货物：什么质量、在哪交付、何时计价、谁付运费、引用哪把公共尺子，以及怎样从原油发票走到加油站泵价。",
+  "reading_intent": "本模块训练一个反射：听到油价，先不要问涨跌，而要问这是谁的价格。原油不是单一商品；它有轻重、含硫、酸度、金属、盐水、凝点和蒸气压等质量指纹。价格也不是悬在空中的数字；它必须落到地点、时间、交付责任、计价单位和公开参照上。学完后，你应能把WTI、Brent、Dubai、具体品级升贴水、生产商月度调整、运费净回值、价格报告机构评估和零售泵价放到同一条逻辑链上，而不是把所有数字都叫“油价”。",
+  "opening_question": "同一天里，为什么WTI、Dated Brent、Dubai、Maya、柴油批发价和加油站汽油价会一起受全球冲击影响，却又不是同一个价格？",
   "quick_answer": [
-    "市场没有脱离货物的抽象油价；每个价格都对应一种品质、一个地点、一段时间和一套交付规则。",
-    "Benchmark 是共同参照尺，不是全球每一桶油的成交价；真实货物通常按“基准价 + 品质/地点/OSP 调整”计价。",
-    "Assay 决定炼厂能从一桶原油得到什么、需要付出多少处理成本，因此 API gravity、sulfur、TAN、metals 等最终都会进入升贴水。",
-    "Spot activity 为 term contract 提供价格锚；Price Reporting Agency 通过 MOC 等方法把分散的 OTC 报价压缩成每日 assessment。",
-    "从井口到零售泵价，每一级都加入运输、加工、分销和税费；把泵价变化全归因于原油是一种常见误读。"
+    "每个油价都必须绑定货物、质量、地点、时间、交付条款和单位；缺一项就可能比较错对象。",
+    "公开基准提供共同尺子，具体货物还要按质量、地点、运费和生产商调整形成升贴水。",
+    "质量差来自炼厂能得到什么产品、要付出多少处理成本；轻重、含硫只是第一层，酸度、金属、盐水和产品规格也会进价差。",
+    "价格报告机构把分散的场外实物信息压缩成每日可结算读数，但它不是简单的最后一笔成交。",
+    "零售价是原油、炼制、配送、零售和税的叠加，不能直接拿来证明原油稀缺程度。"
   ],
   "learning_objectives": [
-    "用“品种、品质、地点、时间、条款、单位”六要素描述任意一个油价",
-    "区分 term contract、spot contract、futures benchmark、physical assessment 与 OSP",
-    "用 API gravity、sulfur 和其他 assay 指标解释原油品质升贴水",
-    "读懂 formula pricing、freight netback 与跨地区套利的基本逻辑",
-    "解释 Platts MOC 如何形成可写入合同的每日价格，以及它为什么不是简单的最后一笔成交",
-    "把井口价、FOB、炼厂到岸价、rack price、零售价和税费放在同一条交付链上"
+    "用货物、质量、地点、时间、条款和单位六栏描述任意一个油价。",
+    "解释为什么公开基准是共同参照，而不是所有实物货物的最终成交价。",
+    "用原油化验和产品规格说明质量升贴水的物理来源。",
+    "读懂公式定价、官方售价调整和运费净回值怎样把地点和质量写进发票。",
+    "区分交易所价格、实物评估价、批发价和含税零售价各自回答的问题。"
   ],
-  "main_thread": "所谓“油价”不是一个悬在市场上空的单一数字，而是一份关于货物身份与交付承诺的压缩表达。原油先由 field 的多个 well 汇成 stream，再由多个 stream 形成可交易的 blend；assay 用密度、硫、酸度、黏度、金属、盐和水等指标描述这桶油能产出什么、会给炼厂带来什么成本。为了让不同买卖双方能够交易，市场再选取 WTI、Brent、Dubai/Oman 等流动性较好的 benchmark 作为共同尺子，把具体货物写成基准价加减品质、地点、运费和月度 OSP 的公式。现货交易和 Price Reporting Agency 的 MOC assessment 给长期供货合同提供每日锚点，而交付链继续把井口价变成 FOB、炼厂门口价、批发 rack price 和含税零售价。最终可用的分析顺序是：先确认价格对象，再拆基准与升贴水；先算炼厂得到的产品价值与处理代价，再看运费和目的地；最后才讨论美元、税收和宏观因素。只报“布伦特 80 美元”而不说明以上条件，只完成了定价故事的第一层。",
-  "mental_model": "油价 = 对一份具体交付承诺的报价；Benchmark 提供公共尺，Assay 与地点决定升贴水，合同与评估窗口把分散交易变成可结算数字。",
+  "main_thread": "“油价”是一份具体交付承诺的价格。第一步先确认价格对象：哪种液体或产品、什么质量范围、在哪交付、哪段时间计价、谁承担运输和风险、用什么单位付款。第二步再看共同尺子：市场用WTI、Brent、Dubai/Oman、Murban、ASCI或成品油评估等公开读数降低谈价成本。第三步把具体货物放回物理世界：原油来自油田和油流的汇集，有化验档案；轻重影响产品收率，含硫和酸度等杂质影响处理成本；成品油还必须满足地区和季节规格。第四步处理地点和时间：装船、到厂、批发、零售各层价格包含的服务不同，吨、桶、加仑也不能乱换。第五步才进入合同机制：公式定价、月度官方调整、运费净回值和收盘评估把分散实物市场变成可结算数字。沿着这条线，许多看似矛盾的现象会变清楚：重质高硫油会相对折价，但复杂炼厂满负荷抢货时折价会收窄；目的地价格高不代表船一定过去，因为运费可能吃掉价差；欧洲泵价高也不必然说明欧洲原油更稀缺，因为税和零售层级可能主导差异。",
+  "mental_model": "油价 = 具体货物交付承诺的价格；公共基准给共同尺子，质量和地点给升贴水，合同方法把分散交易压成可结算数字。",
   "mental_model_detail": {
-    "equation": "具体货物价格 = Benchmark assessment + Quality differential + Location/Freight differential + OSP or contract constant",
-    "market_translation": "Benchmark 负责让不同参与者谈同一种价格语言；assay 和标准回答货物是否可替代；运费与交付点回答货物搬到买家手上要花多少；OSP 或 constant 则吸收生产商每月根据需求、炼厂利润和竞争格局做出的剩余调整。",
-    "decision_rule": "看到任何油价，先写出 commodity/specification、location/incoterm、pricing period、benchmark、unit 六栏；有一栏说不清，就还不能把它与另一个价格直接比较。"
+    "equation": "具体货物价格 = 公共价格锚 + 质量调整 + 地点/运费调整 + 生产商或合同调整 + 单位与税费层级",
+    "market_translation": "公共价格锚解释全球共振，质量调整解释炼厂产品收入和处理成本，地点调整解释货物流动难易，评估窗口解释每日结算读数，零售层级解释消费者最终付款。",
+    "decision_rule": "看到任何价格，先填六栏：货物/品级、质量规格、交付地点、计价或交货时间、交付责任、单位/币种。填不全，就不做横向比较。"
   },
   "formulas": [
     {
@@ -59,309 +58,687 @@
   "lessons": [
     {
       "id": "price-object",
-      "title": "先确认你说的是哪一个价格",
+      "title": "先问这句话指的是哪一份交货承诺",
+      "reader_question": "新闻说“油价今天是80美元”，我为什么不能立刻拿它去和另一条油价新闻比较？",
+      "scene": {
+        "setting": "想象一张交易确认单放在桌上。纸面上不是写着抽象的“油”，而是写着某种液体、某个交货点、某段计价日期、多少数量、由谁负责运输和用什么单位结算。",
+        "actors": "炼厂采购员、生产商销售员、码头调度员、银行信用人员，以及负责把确认单录入系统的贸易运营人员。",
+        "action": "采购员先确认货物能不能被炼厂接收，再确认交货点有没有罐容和管线，最后才把公开报价、升贴水和数量相乘，形成一张可以付款的发票。"
+      },
+      "plain_answer": "油价不是脱离货物存在的一个数字，而是一份可履行承诺的价格。少说了货物身份、地点、时间、条款或单位，两个数字就可能在描述完全不同的东西。",
       "concept": {
         "en": "Physical oil price object",
         "cn": "实物油价格对象",
-        "definition": "由货物规格、交付地点、交付时间、合同条件和计价单位共同定义的一项可履约报价。"
+        "definition": "由货物身份、质量约束、交货地点、交货或计价时间、交付责任和计价单位共同定义的一项可履行报价。"
       },
-      "explanation": "批发油品主要通过 term supply contract 与 spot supply contract 交易。Term contract 预先约定一系列交货日期，承担了多数实物贸易量；spot contract 则为近期货物寻找当下最高出价者。两者不是“固定价对浮动价”的简单区别，因为长期合同也往往引用每日 spot benchmark 或 assessment 来浮动结算。真正决定可比性的，是价格对象是否相同：Cushing 交割的 WTI、北海装船的 Dated Brent、纽约港 RBOB 与欧洲 metric tonne 计价的 gasoil，都不是同一货物。Spot market 虽然交易量不是全部，却把边际供需压缩成实时价格，从而成为 term contract、OTC swap 和库存估值的锚。",
+      "explanation": "先把“油价”看成一张带地址的货物标签。地下或油田出来的液体要经过汇集、检测、储运和交付，才会变成市场可以写入合同的对象。长期供货安排通常先锁定未来一连串交货日期和数量，近期现货交易则让边际买家和卖家暴露当下供需。两者并不割裂：长期合同为了避免每次重新谈绝对价，常把每天形成的公开价格读数作为锚，再加减针对具体货物的调整。于是，同一天屏幕上看到的数值可能分别是内陆管道点的轻质原油、北海装船货、纽约港汽油调和料、欧洲以吨计价的柴油，或加油站含税汽油。它们会一起受全球供需和美元影响，但不能不加说明地横向比较。",
       "mechanism_chain": [
-        "买卖双方先约定可交付货物的规格、地点、时间与数量",
-        "近期 spot bid、offer 与成交暴露该地点的边际供需",
-        "交易所或 Price Reporting Agency 把这些信息形成 benchmark/assessment",
-        "Term contract 再引用该锚并加入升贴水完成结算"
+        "交易先确定可交付的液体或产品：原油、汽油、柴油、航煤或船燃不是同一种货物。",
+        "同一种货物还要落到地点和时间：内陆罐区、出口码头、炼厂门口和零售油枪承担的服务不同。",
+        "交付责任决定谁支付运输、保险、装卸和质量偏离造成的费用。",
+        "公开价格只给出共同锚，具体发票还要把数量、单位、质量和地点调整写进去。"
       ],
       "worked_example": {
-        "setup": "一家炼厂签下一年每月一船 Bonny Light 的 term contract，合同写明按 Dated Brent 加减 differential 结算。",
-        "steps": [
-          "每次装船对应的 pricing period 先取得 Dated Brent assessment，而不是在签约当天锁死全年绝对价格。",
-          "再根据 Bonny Light 相对 benchmark 的品质、装港供需和生产商 OSP 加减 differential，形成该船货的实际发票价。"
+        "actor": "墨西哥湾沿岸炼厂采购员",
+        "inputs": [
+          "采购数量：100000桶原油。",
+          "公开价格锚：80美元/桶。",
+          "该批货质量和地点调整：+1.50美元/桶。",
+          "另一批交货更可靠原油的相对价差：+0.80美元/桶。"
         ],
-        "answer": "长期供货解决数量与时间的可靠性，spot-derived benchmark 仍负责每日价格发现；因此 term 与 spot 是互相连接的。"
+        "setup": "炼厂考虑买入100000桶某出口码头装船原油，合同写明用80美元/桶的公开价格锚，再加1.50美元/桶的调整项。（教学单位标注：100000 barrels。）",
+        "steps": [
+          "按每桶口径，发票单价 = 80 + 1.50 = 81.50美元/桶。",
+          "总货款 = 100000桶 × 81.50美元/桶 = 8150000美元。",
+          "如果采购员误把80美元/桶当成最终发票价，会少预留100000桶 × 1.50美元/桶 = 150000美元。"
+        ],
+        "answer": "这150000美元会改变采购员的选择：如果另一批油只贵0.80美元/桶但交货更可靠，表面便宜的第一批货未必真便宜。"
       },
-      "practitioner_lens": "报价旁至少补齐 grade、location、delivery basis、pricing period 和 unit，才允许进入比较表。",
-      "misreading": "把“长期合同”理解为一年内固定同一个绝对油价，忽略它通常引用每日现货或期货基准浮动结算。",
-      "boundary": "极少数固定价合同、政府管制价或内部转移定价可能不直接跟随公开 benchmark，必须以合同文本为准。"
+      "practitioner_lens": "看到任何报价，先把货物、质量、地点、日期、交付责任、单位六栏补齐；有一栏空着，就先不要做价差判断。",
+      "terms_in_context": [
+        {
+          "term": "Term supply contract",
+          "cn": "定期供应协议",
+          "plain_definition": "预先约定一串未来交货日期和数量的实物供货安排。",
+          "why_it_matters": "它解决供应可靠性，但结算价仍常随每日公开价格锚浮动。"
+        },
+        {
+          "term": "Spot supply contract",
+          "cn": "即期供应协议",
+          "plain_definition": "围绕近期可交付货物进行的实物买卖安排。",
+          "why_it_matters": "它暴露边际供需，常成为长期合同和库存估值的价格锚。"
+        }
+      ],
+      "misreading": "把“长期合同”理解成一年内固定同一个绝对油价，是常见误读；很多长期供货锁的是数量和交期，价格仍随每日公开读数和调整项变化。",
+      "boundary": "少数政府管制价、内部转移价或真正固定价合同可能不直接引用公开锚；判断时以合同文本和交付责任为准。",
+      "deep_dive": [
+        {
+          "title": "为什么现货量不一定最大却能定价",
+          "explanation": "边际交易回答“现在多一桶货值多少”。即使大部分体量在长期安排中流动，只要长期安排引用近期公开读数，边际现货信息就会传导到更大体量。"
+        }
+      ]
     },
     {
       "id": "benchmark-system",
-      "title": "Benchmark 是尺子，不是全球统一成交价",
-      "concept": {
-        "en": "Benchmark pricing and OSP",
-        "cn": "基准定价与官方售价调整",
-        "definition": "用流动性较高、规则明确的市场价格作为公共参照，再以 differential 或 Official Selling Price 调整具体货物。"
+      "title": "基准是共同尺子，不是每一桶的最终成交价",
+      "reader_question": "如果市场已经有WTI、Brent和Dubai，为什么实际货物还要加减一堆升贴水？",
+      "scene": {
+        "setting": "把世界地图摊开：一个价格点在俄克拉荷马内陆罐区，一个在北海和可装船货物相连，一个服务中东到亚洲的含硫原油贸易。每个点背后都有可交割货物和物流网络。",
+        "actors": "交易所、价格报告机构、国家石油公司、国际贸易商、装船港和接货炼厂。",
+        "action": "市场先用流动性高、规则清楚的价格点统一语言，再按目的地、替代品、质量和月度供需，把具体货物调成自己的发票价。"
       },
-      "explanation": "1980 年代以前，国际油价常由大公司或 OPEC 生产商宣布一个维持数周或数月的 posted price；此后定价转向 benchmark system。NYMEX WTI 是 Cushing 实物交割的美国 light-sweet 标尺，ICE Brent 及 Dated Brent 连接北海和全球海运贸易，Dubai/Oman 服务亚洲进口的 Middle East sour barrel。作者给出的 2026 格局还包括 WTI Houston/MEH、Murban、ESPO 与 ASCI；2023 年 WTI Midland 加入 BFOETM basket，把美国页岩油更直接地接入 Brent 定价。生产商并未因此失去定价权，而是把权力放进每月调整的 OSP：同一 Arab Light 卖往亚洲可参考 Oman/Dubai，卖往美国 Gulf Coast 又可参考 ASCI。",
+      "plain_answer": "基准提供共同变化部分，具体货物的质量、地点和买家群体决定升贴水。一个全球冲击会推着多个基准同向动，但某一地区管线、装船或炼厂需求变化会先体现在具体差价里。",
+      "concept": {
+        "en": "Benchmark pricing and official selling adjustment",
+        "cn": "基准定价与官方售价调整",
+        "definition": "用代表性强且方法清楚的公开价格作参照，再用生产商或市场形成的调整项表达具体货物相对价值。"
+      },
+      "explanation": "20世纪80年代以后，国际原油定价逐渐从生产商宣布固定牌价，转为引用可观察的公开价格。一个好的价格锚要有清楚的地点、货物范围、交割或评估规则，并有足够参与者愿意围绕它交易。内陆轻质低硫原油、北海及相关可装船货物、中东含硫原油、阿布扎比轻质含硫原油、美国海湾出口货，都可以在不同区域承担共同尺子的功能。生产商并没有因此完全放弃定价权；他们常按目的地每月公布相对调整，让同一种原油卖往亚洲和美国海湾时引用不同参照。这样做的原因很朴素：同一船货到不同买家手里，替代品、运距、炼厂配置和区域需求都不同。",
       "mechanism_chain": [
-        "高流动性基准集中分散市场的买卖信息",
-        "具体货物选择与目的地最相关的 benchmark",
-        "品质、地点和相对需求被写成 differential 或 OSP",
-        "基准变动带动共同部分，升贴水变化表达局部物理市场"
+        "市场选择有实物锚和流动性的价格点，降低每一笔货物单独谈价的成本。",
+        "具体货物选择与目的地最相关的参照，而不是机械套用全世界最有名的数字。",
+        "生产商或市场把相对质量、区域买盘和运输可达性写成调整项。",
+        "公共锚变动解释共同波动，调整项变动解释局部紧张或局部过剩。"
       ],
       "worked_example": {
-        "setup": "同一生产商把 Arab Light 分别卖给亚洲炼厂和美国 Gulf Coast 炼厂。",
-        "steps": [
-          "亚洲货物以 Oman/Dubai 平均价为区域 sour crude 参照，美国货物则以 ASCI 反映 Gulf Coast sour market。",
-          "生产商再分别公布目的地 OSP，因此两份合同即使装载同种 crude，也可能面对不同基准和 differential。"
+        "actor": "中东生产商销售团队",
+        "inputs": [
+          "卖往亚洲的参照价格：78美元/桶。",
+          "亚洲目的地调整项：+2美元/桶。",
+          "另一目的地调整项：+0.50美元/桶。",
+          "船货数量：500000桶。"
         ],
-        "answer": "“同一桶油”在不同目的地的替代品和物流机会不同，合理价格不必从同一个 benchmark 推导。"
+        "setup": "销售团队把500000桶同一种中东原油卖给亚洲炼厂，合同引用78美元/桶的区域参照，并加入+2美元/桶的目的地调整。（教学单位标注：500000 barrels。）",
+        "steps": [
+          "按每桶口径，亚洲发票单价 = 78 + 2 = 80美元/桶。",
+          "亚洲船货金额 = 500000桶 × 80美元/桶 = 40000000美元。",
+          "两个目的地的调整项差额 = 2美元/桶 - 0.50美元/桶 = 1.50美元/桶；同样500000桶会少收500000桶 × 1.50美元/桶 = 750000美元。"
+        ],
+        "answer": "生产商会比较不同目的地净收入；炼厂也会比较本地参照下的可替代货，而不是只看全球标题价格。"
       },
-      "practitioner_lens": "同时观察 flat price 与 physical differential；前者代表共同市场，后者往往更早暴露局部紧张。",
-      "misreading": "把 Brent 当成全世界每桶原油的实际成交价，或把 OSP 当成脱离基准、由生产商任意宣布的固定价。",
-      "boundary": "Benchmark 只有在成分、交割规则和流动性仍具代表性时才可靠；basket 变化、制裁或贸易流重构会改变其覆盖能力。"
+      "practitioner_lens": "同时看绝对价格和相对调整。绝对价格告诉你大环境，相对调整更早告诉你某个地区或某种质量的货是否变紧。",
+      "terms_in_context": [
+        {
+          "term": "Official Selling Price",
+          "cn": "官方售价调整",
+          "plain_definition": "生产商定期公布、相对目的地价格锚的加价或折价。",
+          "why_it_matters": "它把生产商对区域需求、竞争货和炼厂利润的判断写进发票。"
+        },
+        {
+          "term": "BFOETM basket",
+          "cn": "北海交割篮子",
+          "plain_definition": "用于扩展北海布伦特相关定价代表性的可交付原油组合。",
+          "why_it_matters": "篮子成分变化会改变一个著名价格锚实际代表的货物流。"
+        }
+      ],
+      "misreading": "把Brent当成全世界每一桶原油的成交价，或者把生产商调整项当成脱离参照的任意绝对价，都会误读实物市场。",
+      "boundary": "价格锚只有在货物范围、交付规则和流动性仍有代表性时才可靠；篮子调整、制裁和贸易流重组都会改变它的含义。",
+      "deep_dive": [
+        {
+          "title": "同名价格也会演化",
+          "explanation": "一个价格锚看似名字稳定，背后的可交付货物、评估方法和区域贸易流可能在变化。分析时要跟踪方法，而不是只背名称。"
+        }
+      ]
     },
     {
       "id": "assay-identity",
       "title": "一桶油先有化学身份，才有经济价格",
-      "concept": {
-        "en": "Crude oil assay; fields, streams and blends",
-        "cn": "原油性质化验；油田、油流与混合原油",
-        "definition": "Assay 是为销售与炼制决策制作的性质档案；商业 grade 通常是若干稳定 stream 按规则汇成的 blend，而非地下某个均质湖泊。"
+      "reader_question": "为什么两桶都叫原油，却可能一个容易卖、一个要大幅折价找买家？",
+      "scene": {
+        "setting": "在油田集输站，许多井的液体先进入小管线，再汇入较大的管线。样品瓶被送到实验室，报告会说明这批液体能炼出多少汽油、柴油、航煤和重油，以及带来多少杂质负担。",
+        "actors": "油田操作员、实验室化验员、生产商营销人员、炼厂原油调度员和港口检验员。",
+        "action": "营销人员把多个性质稳定的小股液体汇成足够大的商业批次，同时用实验室报告向买方证明这批货适合哪类装置。"
       },
-      "explanation": "油藏更像充满微孔的坚硬岩石，多个 well 从同一 field 或相关 reservoirs 采出原油，经 gathering system 汇成性质缓慢变化的 stream；不同 stream 再合并为可长距离运输和交易的 blend。混合一方面凑足管道与油轮经济规模，另一方面稀释单一 stream 的极端 sulfur、acidity 等特征。Brent Blend 已不只是最初 Brent field 的油，WTI 也是在 Cushing 汇集的许多 light-sweet streams。Assay 记录预期 gasoline、diesel、jet、resid yields，以及 density、sulfur、TAN、viscosity、metals、salt、water 等。偏离紧规格的 off-spec cargo 可能延误、改送或折价；没有现成买家的 distressed cargo 又会因时间与去向受限进一步打折。",
+      "plain_answer": "原油不是一种均质商品。市场交易的是带有来源、混合规则和化验档案的商业品级；化验档案越能证明炼厂可处理、产出值高、杂质少，买家群体越宽。",
+      "concept": {
+        "en": "Crude oil assay, fields, streams and blends",
+        "cn": "原油化验、油田、油流与混合原油",
+        "definition": "用实验室性质档案描述一批商业原油，并说明它由哪些稳定来源汇集成可交易批次。"
+      },
+      "explanation": "从地下到市场，液体身份会被逐步整理。一个油田可能由一组井共同排采；来自同一地质结构的液体性质通常变化较慢。几条管线中的小股液体可以汇成更大的商业批次，这样才有足够数量支撑长距离管输和油轮运输，也能把某一小股液体的极端酸度或含硫特征摊薄。买方真正关心的不是名字好不好听，而是这批货进入自己的炼厂后会切出多少高价值产品、留下多少难处理残渣、需要多少脱硫和防腐措施。若实际到货偏离约定性质，就可能延迟卸货、改送别处或被迫打折。",
       "mechanism_chain": [
-        "多个 well 的产出汇成相对稳定的 stream",
-        "不同 stream 组合成有规模、性质较平滑的 commercial blend",
-        "实验室 assay 描述 blend 的产率与处理约束",
-        "炼厂据此筛选可运行的 cargo 并计算最高愿付价",
-        "Off-spec 或 distressed 状态把技术偏差转成价格折让"
+        "井口液体先被汇集成性质相对稳定的小股来源。",
+        "多个来源按规则汇成体量足够大的商业批次，形成可装船或可管输货物。",
+        "实验室报告把产物收率、密度、含硫、酸度、金属、盐和水等信息写成买方可读的档案。",
+        "炼厂用这些信息估算产品收入和处理成本，折算成愿意支付的价格。"
       ],
       "worked_example": {
-        "setup": "一艘按正常 grade 出售的原油到港后，检测发现 sulfur 或 BS&W 超出合同 assay spec，而接收炼厂没有足够处理余量。",
-        "steps": [
-          "炼厂先评估是否能通过调低 blending ratio、增加 desalter/hydrotreater 负荷或换罐接收；若不能，就会产生排队与 demurrage。",
-          "卖方需要寻找能接受该性质的另一家炼厂并承担改航成本，或用足够大的 discount 补偿原买方的额外处理和运营风险。"
+        "actor": "生产商调合计划员",
+        "inputs": [
+          "低硫来源数量：70000桶。",
+          "高酸来源数量：30000桶。",
+          "商业批次最低装船规模：100000桶。",
+          "买方允许的高酸来源占比上限：25%。"
         ],
-        "answer": "Assay 不是实验室附录，而是定义合同货物与违约经济后果的核心文件。"
+        "setup": "计划员准备把70000桶低硫来源和30000桶高酸来源汇成一批100000桶可装船货物。（教学单位标注：100000 barrels。）",
+        "steps": [
+          "可装船总量 = 70000桶 + 30000桶 = 100000桶。",
+          "高酸来源占比 = 30000桶 ÷ 100000桶 = 30%。",
+          "高酸来源占比超过买方上限 = 30% - 25% = 5个百分点。"
+        ],
+        "answer": "计划员会减少高酸来源或寻找更能处理酸性原油的炼厂；否则这批货即使数量够，也可能因质量组合不合适而折价。"
       },
-      "practitioner_lens": "看到 crude name 时，不要把名称当作永恒配方；检查当期 assay、blend composition 和交付 tolerances。",
-      "misreading": "把 WTI、Brent 等名字当成某一个油田持续产出的完全同质原油，忽略它们可能是多 stream 的商业混合物。",
-      "boundary": "Assay 通常是代表性样本，油田生命周期、blend 配比和操作污染都可能让实际 cargo 偏离典型值。"
+      "practitioner_lens": "看到一个原油名称，追问它是单一来源还是混合批次、典型性质是否稳定、偏离规格后谁承担延误和改送成本。",
+      "terms_in_context": [
+        {
+          "term": "Commercial grade",
+          "cn": "商业原油品名",
+          "plain_definition": "市场用来交易的一类原油货物名称，通常对应稳定来源和约定性质范围。",
+          "why_it_matters": "它让买卖双方知道这批货大致能进入哪些炼厂和合同。"
+        },
+        {
+          "term": "Off-spec cargo",
+          "cn": "偏离规格货物",
+          "plain_definition": "到货性质不在合同允许范围内的船货或管输批次。",
+          "why_it_matters": "它可能触发检验争议、重定价、延迟卸货或转卖折价。"
+        }
+      ],
+      "misreading": "只听到一个原油名字就假设每船货完全相同，是危险的；商业名称代表典型范围，不等于免检保证。",
+      "boundary": "混合可以平滑极端性质，但不能让所有杂质消失；如果目标炼厂缺少相应处理能力，名称再熟悉也无法自动变成高价货。",
+      "deep_dive": [
+        {
+          "title": "为什么没有买家的船货会便宜",
+          "explanation": "油轮占用资金、租船费和时间窗口。若货物找不到能处理它的买方，卖家为了避免继续漂在海上，往往要给出额外折价。"
+        }
+      ]
     },
     {
       "id": "api-sulfur-matrix",
-      "title": "API 与 sulfur 构成第一张品质价格地图",
+      "title": "轻重和甜酸先画出第一张质量价格地图",
+      "reader_question": "为什么市场老说轻质低硫油更贵，重质高硫油更便宜？这只是行业偏好吗？",
+      "scene": {
+        "setting": "实验室里，一根带刻度的玻璃浮计漂在样品筒中；另一份样品进入含硫测试。两项读数被放到同一张二维图上：横向看液体轻重，纵向看含硫高低。",
+        "actors": "化验员、炼厂工艺工程师、原油采购员、脱硫装置和焦化装置。",
+        "action": "采购员用这张图初筛买家群体：更轻的液体通常能切出更多运输燃料，含硫越高越需要设备和氢气把硫拿掉。"
+      },
+      "plain_answer": "轻重影响一桶油能切出什么，甜酸影响把产品做成合规燃料要付出多少处理代价。价格差不是口味问题，而是产品收入和处理成本的差。",
       "concept": {
         "en": "API gravity and sulfur quality matrix",
-        "cn": "API 密度与含硫量品质矩阵",
-        "definition": "以 API gravity 表示轻重、以 sulfur weight percent 表示甜酸的二维框架，用来初步判断产品收率、设备要求与潜在升贴水。"
+        "cn": "API密度与含硫质量矩阵",
+        "definition": "用反向密度刻度表示原油轻重，用硫的重量比例表示清洁程度，初步判断产品收率、设备需求和买方范围。"
       },
-      "explanation": "Density 是 assay 中最重要的单项，因为较重原油含更多大分子，天然更偏向 residual fuel 与 bitumen；较轻原油通常更容易产出 gasoline、diesel 和 jet。行业在 60°F、1 atmosphere 下用 kg/m³、specific gravity 与 API gravity 表示同一性质，且 API 是反向刻度：数字越大越轻。作者按 API 把 crude 分为 light（>31°）、medium（22–31°）、heavy（10–22°）与 extra-heavy（<10°）；后者可能比水重并需 diluent 才能进管道。Sulfur 则分 sweet（<0.5 wt%）、medium-sour（0.5–2.0%）与 sour（>2.0%）。Sulfur 会挤占 hydrocarbons、腐蚀设备，并要求昂贵 hydrotreating；所以 heavy-sour 通常折价，但复杂炼厂若有 coker 与 deep hydrotreating，反而可能把低价 feedstock 转成利润。",
+      "explanation": "密度是炼厂看原油的第一道门槛，因为它暗示分子大小和沸点分布。较轻的液体通常含更多能变成汽油、柴油和航煤的部分，较重的液体会留下更多残渣、沥青或需要进一步转化的重组分。含硫是第二道门槛。硫会腐蚀设备，燃烧后变成受监管污染物，还会让炼厂安装和运行脱硫设备。把两者放到一张图上，右下角通常买家最多，左上角通常需要复杂炼厂。可是这不是永久价格表：当复杂炼厂有空余能力且重质货很便宜时，处理能力强的买家反而可能愿意追逐折价货。",
       "mechanism_chain": [
-        "更低 API 与更高 sulfur 改变天然 product yield 和杂质负担",
-        "炼厂需要更多 coking、hydrocracking、hydrotreating 与氢气投入",
-        "可经济接收该 cargo 的 buyer base 缩小",
-        "相对于 light-sweet benchmark 的 discount 扩大",
-        "当复杂炼厂 spare capacity 增加时，竞争购买 cheap heavy barrel 又可压窄 discount"
+        "密度读数把液体轻重标准化，较高读数通常代表较轻分子占比更高。",
+        "较轻分子更容易进入高价值运输燃料池，较重分子更可能留下低价值残渣。",
+        "含硫越高，炼厂越需要脱硫、耐腐蚀材料和更多操作费用。",
+        "市场把预期产品收入减去处理代价，形成轻质低硫和重质高硫之间的价差。"
       ],
       "worked_example": {
-        "setup": "作者用 39.6° API 的 WTI 演示 API 与重量换算，并与 heavy-sour Maya 的 22° API、3.4% sulfur 对照。",
-        "steps": [
-          "按 SG = 141.5 / (39.6 + 131.5) 得到约 0.827，因此 WTI 密度约 827 kg/m³。",
-          "一桶是 159 liters，按该密度重量约 131 kg；而 Maya 更重且 sulfur 高，预期会产生更多重质馏分并占用复杂处理装置。"
+        "actor": "炼厂经济模型分析师",
+        "inputs": [
+          "某轻质样品的比重：0.827。",
+          "参考水密度：1000 kg/m3。",
+          "同体积水的质量：159 kg/桶。"
         ],
-        "answer": "品质差的经济含义来自产品收率与炼制成本，而不是因为市场给 light 或 sweet 贴了一个抽象的好坏标签。"
+        "setup": "分析师把这份轻质样品换成直观重量，判断它相对水和重质油有多轻。（教学单位标注：1 barrel。）",
+        "steps": [
+          "样品密度 = 0.827 × 1000 kg/m3 = 827 kg/m3。",
+          "一桶样品质量约 = 159 kg × 0.827 = 131.5 kg（四舍五入）。",
+          "它比一桶水轻约 159 kg - 131.5 kg = 27.5 kg。"
+        ],
+        "answer": "较低质量来自较低密度，而不是少装了油。采购员会继续看含硫和收率，再决定这份轻质优势值多少钱。"
       },
-      "practitioner_lens": "先把 cargo 放到 API-sulfur matrix，再问目标炼厂的 coker、hydrotreater 与 hydrogen capacity 是否稀缺。",
-      "misreading": "认为轻甜原油在任何时候都必然比重酸原油更赚钱；实际 refinery configuration 与产品裂解价差决定愿付价。",
-      "boundary": "二维矩阵只是第一筛选；高 TAN、metals、wax、RVP 或特殊 yield curve 足以让同一象限内的 crude 出现显著价差。"
+      "practitioner_lens": "先用轻重和甜酸定位，再问目标炼厂是否有转化和脱硫能力；不要把二维图当作所有炼厂的统一价格表。",
+      "terms_in_context": [
+        {
+          "term": "Specific gravity",
+          "cn": "相对密度",
+          "plain_definition": "在共同参考温度下，液体密度相对水密度的比值。",
+          "why_it_matters": "它是把现场密度换成行业反向刻度的基础。"
+        },
+        {
+          "term": "Sulfur by weight",
+          "cn": "重量含硫比例",
+          "plain_definition": "硫在原油总重量中所占的百分比。",
+          "why_it_matters": "它直接关系到腐蚀、污染物限制和脱硫成本。"
+        }
+      ],
+      "misreading": "读数越高不一定在所有炼厂都更赚钱；如果当地汽油过剩而柴油紧张，或者轻质油太多，轻质优势也会被压缩。",
+      "boundary": "这张矩阵是第一筛，不是完整化验。酸度、金属、黏度、凝点、盐和水都可能把看似漂亮的位置重新定价。",
+      "deep_dive": [
+        {
+          "title": "为什么温度基准重要",
+          "explanation": "液体受热体积会膨胀，密度读数必须校正到共同温度和压力。否则冷港装货、暖港卸货会让体积差异被误读成数量或质量变化。"
+        }
+      ]
     },
     {
       "id": "assay-tests-contract",
-      "title": "长尾 assay 指标把隐蔽处理成本写进合同",
+      "title": "长尾化验指标把隐蔽成本写进合同",
+      "reader_question": "如果已经知道轻重和含硫，为什么合同还要列酸度、金属、盐、水、凝点和蒸气压？",
+      "scene": {
+        "setting": "炼厂进料前，样品被送进一组标准实验：有的测试酸会不会腐蚀热管线，有的测试金属会不会伤害催化剂，有的测试盐和水会不会在装置里制造麻烦。",
+        "actors": "实验室技术员、炼厂设备工程师、催化剂供应商、原油买方和负责争议处理的合同经理。",
+        "action": "合同经理不写模糊形容词，而写可重复的测试方法和上限；一旦到货超限，买方可以要求折价、拒收或改变加工路线。"
+      },
+      "plain_answer": "轻重和含硫只是快速地图，长尾指标决定这桶油会不会堵、腐蚀、结蜡、毒化催化剂或带来水和泥。合同用标准方法把这些隐蔽风险变成可结算条件。",
       "concept": {
         "en": "Standardized crude assay tests",
         "cn": "标准化原油化验方法",
-        "definition": "由 ASTM 等方法号定义的可重复测试组合，使买卖双方能用同一实验语言描述腐蚀、流动、催化剂与污染风险。"
+        "definition": "用可重复实验方法定义原油的腐蚀、流动、污染和催化剂风险，使买卖双方能按同一规则验收。"
       },
-      "explanation": "API 与 sulfur 之外，TAN 用中和 1 gram crude 所需的 mg KOH 衡量 naphthenic acidity：多数炼厂按 TAN <0.5 设计，约 >0.7 会被标为高酸，Doba 曾测到 >2.0。Vanadium 与 nickel 即使只有 ppm 级也会毒化 catalyst；viscosity 决定泵送和 blending，且随温度剧变，作者举例 36° API crude 可能从 40°C 的约 3.5 cSt 降到 100°C 的约 1.5 cSt。Pour point 以下 waxy crude 会凝胶；RVP 衡量 light ends 挥发性；carbon residue 约 0.5–1.0 通常可接受，再高会增加 coke 风险；salt 要先经 desalter，BS&W 通常要求 <1 wt%。ASTM D287/D1298/D4052、D4294/D5453、D2892、D97、D664、D445、D3230、D5863/ICP 把这些性质变成合同可复验的共同语言。",
+      "explanation": "原油的价值常被小指标改写。酸度高的货会在高温管线里加大腐蚀风险；镍和钒会伤害炼厂催化剂；高黏度或高凝点会让管输和低温卸货困难；蒸气压影响轻端挥发和安全；盐进入常压塔前若脱不干净，会腐蚀后续系统；底部沉积物和水意味着买方为非油物质付了钱。标准组织把这些测试写成方法号，合同再把方法号和阈值写入验收条款。这样争议不靠“看起来脏不脏”，而靠同一套样品、实验和数字。",
       "mechanism_chain": [
-        "标准方法规定取样、仪器与报告单位",
-        "买卖双方据同一 assay 判断 cargo 是否在 specification 内",
-        "异常 TAN、metals、salt、water 或 viscosity 转成设备负荷和损失",
-        "炼厂把额外成本与停工风险折算进 bid differential",
-        "争议发生时以合同指定方法复测和裁决"
+        "长尾性质先通过标准实验被量化，避免买卖双方使用不同测量口径。",
+        "每个指标对应一个物理风险：腐蚀、催化剂中毒、堵塞、挥发、安全或无效体积。",
+        "炼厂把风险折成额外处理成本、装置限制或产量损失。",
+        "合同把超限后果写成验收、折价、改送或拒收机制。"
       ],
       "worked_example": {
-        "setup": "一家常规炼厂收到 TAN 0.9、metals 偏高且 salt 超过通常 intake range 的 cargo 报价。",
-        "steps": [
-          "商业团队不能只因 API 与 sulfur 合适就按 benchmark 买入，而要让 corrosion、catalyst 与 desalter 团队评估可运行比例。",
-          "若只能以较低 blend percentage 投入，炼厂会把受限 throughput、额外 chemicals 与潜在 catalyst loss 写成更大的 discount 或直接拒收。"
+        "actor": "炼厂到货检验与合同结算经理",
+        "inputs": [
+          "船货计量总质量：27000 metric tonnes。",
+          "合同允许底部沉积物和水上限：1 wt%。",
+          "实测底部沉积物和水：1.4 wt%。"
         ],
-        "answer": "长尾指标决定 buyer-specific value；两桶 API 和 sulfur 相近的 crude 仍可因为设备兼容性相差数美元。"
+        "setup": "Oil 101把底部沉积物和水写成重量百分比，因此经理直接用27000 metric tonnes船货的质量证书结算，不把wt%直接乘以桶数。（教学单位标注：27000 metric tonnes。）",
+        "steps": [
+          "按metric tonnes计，合同允许的沉积物与水质量 = 27000 tonnes × 1% = 270 tonnes；这里的1%明确指1 wt%。",
+          "实测沉积物与水质量 = 27000 metric tonnes × 1.4 wt% = 378 metric tonnes。",
+          "超过合同上限的非油质量 = 378 metric tonnes - 270 metric tonnes = 108 metric tonnes。"
+        ],
+        "answer": "买方会按合同处理超过上限的108 metric tonnes非油质量，要求质量补偿、重新脱水或改送；若还要换算成桶，必须另行声明水和沉积物混合物的密度，不能从wt%直接跳到体积。"
       },
-      "practitioner_lens": "数字旁必须保留 test method、temperature、unit 和 tolerance；没有这些元数据，比较可能是假的。",
-      "misreading": "只要知道 API 与 sulfur 就能完整估价，或把 ppm、PTB、cSt 和 mg KOH/g 当成可以脱离测试条件直接比较的普通数字。",
-      "boundary": "典型 intake range 不是所有炼厂的硬上限；材料等级、装置配置、blend slate 与检修状态会改变可接受范围。"
+      "practitioner_lens": "看到价差异常，除轻重和含硫外，继续查酸度、金属、盐、水、黏度、凝点和蒸气压是否让买方范围变窄。",
+      "terms_in_context": [
+        {
+          "term": "Total Acid Number",
+          "cn": "总酸值",
+          "plain_definition": "中和一克原油中酸性物质所需碱量的实验指标。",
+          "why_it_matters": "它提示高温管线和材料选择中的腐蚀风险。"
+        },
+        {
+          "term": "Basic Sediment and Water",
+          "cn": "底部沉积物与水",
+          "plain_definition": "随原油进入货物中的水、泥和杂质综合指标；Oil 101在这里用重量百分比表述。",
+          "why_it_matters": "它决定买方是否为不能炼成产品的非油质量付钱，也可能触发重新脱水或合同补偿。"
+        }
+      ],
+      "misreading": "把所有折价都归因于含硫，会漏掉高酸、高金属或高水货物带来的特殊处理成本。",
+      "boundary": "实验阈值不是全行业永久统一；不同炼厂、材料、预处理能力和混合比例会改变可接受范围。",
+      "deep_dive": [
+        {
+          "title": "标准方法为什么值钱",
+          "explanation": "方法号让实验可复验。没有共同方法，买卖双方可能都说自己测得正确，却无法把争议变成可执行的合同结果。"
+        }
+      ]
     },
     {
       "id": "product-standards-price",
-      "title": "标准先创造可替代商品，市场才形成可比价格",
+      "title": "产品规格先创造可替代商品，市场才有可比价格",
+      "reader_question": "为什么汽油、柴油、航煤和船燃的价格不能只从原油价格直接推出？",
+      "scene": {
+        "setting": "炼厂调合区里，不同半成品进入同一个成品罐。罐旁的质量系统检查抗爆、硫、蒸气压、凝点、闪点和芳烃等指标，只有达标后才允许装车、上船或进机场管线。",
+        "actors": "调合工程师、质检员、监管机构、汽车和飞机用户、船东以及批发买家。",
+        "action": "工程师不是把所有液体混到“差不多能烧”，而是把产品调到法律和设备要求的边界内；差一个指标，就可能从合格商品变成折价重调库存。"
+      },
+      "plain_answer": "成品油价格买的是合格功能。相同原油可以炼出不同产品池，而每个产品池又受地区、季节和安全环保标准约束；不合格库存不能按合格商品价格销售。",
       "concept": {
         "en": "Petroleum product specifications",
         "cn": "石油产品质量规格",
-        "definition": "由 ASTM、EN、ISO 及监管机构规定的性能和环保边界，使不同炼厂生产的油品能够履行同一种商品合同。"
+        "definition": "由标准组织和监管机构规定的性能、安全和环保边界，使不同炼厂的产品能履行同一种商品合同。"
       },
-      "explanation": "标准化让全球发动机、飞机和船舶能够在不同地点购买可兼容 fuel，也让短缺地区能进口替代品并形成竞争。API 负责部分上游尺度，ASTM 提供大量 D-series test methods，CEN/EN 定义欧洲汽柴油，ISO 8217 管 marine fuel，EPA、CARB 与 IMO 再加入环保规则。汽油用 octane 衡量抗爆：RON 是较低严苛度测试，MON 是更热、更高负荷测试，MON 通常更低；美国泵价显示 AKI 平均值，regular 87、midgrade 89、premium 91–93，而欧洲常见 95/98 RON 不是更高级的同标尺数字。Diesel 需要及时自燃，所以看 cetane；美国 ULSD sulfur 15 ppm、minimum cetane 40，欧洲 EN 590 minimum 51。Jet A 与 A-1 的 freeze point 分别不高于 -40°C 与 -47°C。IMO 2020 又把无 scrubber 船舶的 global marine sulfur cap 从 3.5% 降至 0.5%，ECA 要求 0.1%。这些规则会突然改变 refinery blending value 和各产品 benchmark。",
+      "explanation": "标准让市场可替代。汽车发动机需要确定的抗爆性能，柴油发动机需要合适的自燃性能，飞机需要低温安全和闪点边界，船舶燃料要满足海上硫限制。标准越严格，炼厂越需要脱硫、调合和测试；标准越分地区和季节，库存越难自由搬家。汽油夏季蒸气压要求限制易挥发组分，柴油低硫要求让旧高硫池不能随便混入道路燃料，航煤低温指标决定能否进入国际航线，船燃在硫上被分成不同池。价格因此不是原油加一个固定加工费，而是合格产品在某地某时的可用性。",
       "mechanism_chain": [
-        "标准组织定义可测量的商品边界",
-        "发动机、炼厂和贸易合同围绕同一 specification 配置",
-        "不同来源的合格产品变得可替代并能跨区补缺",
-        "法规收紧使旧规格失去需求、合规处理能力变稀缺",
-        "产品 crack、blend component 与相应 crude differential 重新定价"
+        "产品先被定义成满足某组性能、安全和环保边界的液体。",
+        "炼厂通过调合和处理把半成品推入合格范围。",
+        "地区和季节规则改变可用库存：同一液体可能在一个市场合格、另一个市场不合格。",
+        "合格池变紧时，产品价格相对原油上升，并反过来影响炼厂愿意买哪种原油。"
       ],
       "worked_example": {
-        "setup": "IMO 2020 于 2020-01-01 把无 scrubber 船舶的全球 marine fuel sulfur limit 从 3.5% 降至 0.5%。",
-        "steps": [
-          "原有高硫 bunker pool 被拆成 HSFO 3.5%（主要供 scrubber ships）、VLSFO 0.5% 与 ECA 使用的 0.1% MGO/ULSFO。",
-          "炼厂和船东需要在 desulfurization、低硫 blendstock、scrubber 与 fuel switching 之间选择，因而高硫 resid 与低硫 components 的相对价值改变。"
+        "actor": "汽油调合与质量放行主管",
+        "inputs": [
+          "E10成品目标：100000 gallons。",
+          "E10乙醇比例：严格按成品体积的10 vol%。",
+          "可用基础汽油组分：90000 gallons。",
+          "实际可用乙醇组分：8000 gallons。"
         ],
-        "answer": "规格变化不是标签更新，而是重新定义什么货物可以履约，从而重写需求池和价格关系。"
+        "setup": "主管要生产100000 gallons E10；每100 gallons合格成品必须含10 gallons乙醇和90 gallons基础汽油组分。",
+        "steps": [
+          "目标所需乙醇组分 = 100000 gallons × 10 vol% = 10000 gallons；乙醇组分短缺 = 10000 gallons - 8000 gallons = 2000 gallons。",
+          "乙醇约束下最多可生产E10 = 8000 gallons ÷ 10 vol% = 80000 gallons成品。",
+          "基础汽油比例 = 100 vol% - 10 vol% = 90 vol%；生产80000 gallons E10所需基础汽油 = 80000 gallons × 90 vol% = 72000 gallons，因此现有90000 gallons基础汽油有余量，乙醇才是约束产量的组分。",
+          "成品体积短缺 = 100000 gallons - 80000 gallons = 20000 gallons。"
+        ],
+        "answer": "2000 gallons是乙醇组分短缺，不是成品短缺。严格10 vol%配方把可售E10限制在80000 gallons，比目标少20000 gallons；主管会优先补购乙醇或下调合格成品出货计划。"
       },
-      "practitioner_lens": "比较两个 product price 前，先核对 sulfur、octane/cetane、RVP、freeze/flash point、交付市场与生效日期。",
-      "misreading": "把 95 RON 与 95 AKI 直接比较，或认为法规只影响终端消费者而不会向 refinery margin 和 crude slate 反向传导。",
-      "boundary": "同一法规下仍可能存在地区、季节与信用交易机制差异，例如 gasoline summer RVP 和 EPA ABT credits 会缓冲同步调整。"
+      "practitioner_lens": "比较产品价格时先统一规格、季节、地区和税前税后口径；否则看似同名的汽油或柴油并不是同一商品。",
+      "terms_in_context": [
+        {
+          "term": "Anti-Knock Index",
+          "cn": "抗爆指数",
+          "plain_definition": "美国油枪显示的汽油抗爆数字，等于两种发动机测试读数的平均。",
+          "why_it_matters": "它决定汽油是否适配目标车辆和销售标签。"
+        },
+        {
+          "term": "Ultra-low sulfur diesel",
+          "cn": "超低硫柴油",
+          "plain_definition": "道路柴油低硫产品池，硫限制远低于旧式高硫柴油。",
+          "why_it_matters": "它使现代尾气处理设备可用，也把高硫库存排除在道路市场之外。"
+        }
+      ],
+      "misreading": "把成品油都看作“原油炼出来的同一种燃料”，会低估地区规格、季节调合和环保阈值对价格的影响。",
+      "boundary": "本课只讲标准如何进入价格；实际产品价差还受炼厂开工、库存、进口窗口、天气和终端配送影响。",
+      "deep_dive": [
+        {
+          "title": "标准也会改变原油价值",
+          "explanation": "当燃料硫限制收紧时，高硫原油不只是成品端麻烦，原油采购端也会重新评估脱硫能力和氢气成本。"
+        }
+      ]
     },
     {
       "id": "delivery-ladder-units",
       "title": "同一桶油沿交付链会出现一串不同价格",
+      "reader_question": "为什么井口价、装船价、炼厂门口价、批发价和加油站价都能叫油价？",
+      "scene": {
+        "setting": "一批原油从油田出来后，先进入管线或集输系统，再到出口码头装船，抵达炼厂后变成汽油或柴油，最后经油库和卡车送到零售站。",
+        "actors": "油田卖方、管线公司、码头、船东、炼厂、批发油库、零售商和税务机关。",
+        "action": "每向下走一层，货物的位置、形态、服务和责任都变了；价格也加入运输、加工、储存、分销、零售利润和税费。"
+      },
+      "plain_answer": "交付链上的每个价格都回答不同问题。井口价回答原油在产地值多少，炼厂门口价包括送达成本，零售价还包括成品加工、分销和税费。",
       "concept": {
         "en": "Delivery-chain price ladder and unit conversion",
-        "cn": "交付链价格阶梯与计价单位换算",
-        "definition": "从 wellhead、FOB cargo、refinery gate、rack 到 retail 的各级报价，每一级对应不同地点、服务、利润和税费。"
+        "cn": "交付链价格阶梯与单位换算",
+        "definition": "从产地、装船、到厂、批发到零售的报价层级，以及桶、加仑、升、吨之间因体积和密度产生的换算。"
       },
-      "explanation": "实物报价永远落在交付链的某个点。作者用 2024–2025 illustrative averages 展示：美国 wellhead 约 $65/bbl、cargo FOB $70、refinery gate $73，之后产品按 gallon 报 rack $2.05、dealer tank wagon $2.30、pre-tax retail $2.55、all-in retail $3.45；欧洲 crude 成本接近，但 all-in retail 可到 $6.50/gal，核心差别是约 $3.80/gal tax 对美国示例 $0.90/gal。跨环节还必须统一单位：1 bbl = 42 US gal ≈159 L≈0.159 m³，1 US gal≈3.785 L；metric tonne 转 barrels 则取决于 density，WTI 约 7.50 bbl/t、Maya 约 6.50、gasoline 约 8.33、residual fuel 约 6.40。把不同层级或单位直接相减，会把运费、炼油、分销、密度和税都误当成原油价差。",
+      "explanation": "实物价格必须落在交付链的某个点上。原油在产地没有替你支付海运，到炼厂门口才包含运输和交付；批发油库卖的是已经合格的成品油，零售油枪还加了站点服务、零售利润和税。单位也会制造误读。原油常按桶交易，美国零售按加仑，欧洲产品可按吨，吨和桶之间又取决于密度：较轻产品每吨对应更多桶，重质燃料每吨对应更少桶。若对冲、库存估值或跨区比较用了错误换算，价差判断会系统性偏掉。",
       "mechanism_chain": [
-        "井口原油先承担集输与装港成本形成 FOB cargo value",
-        "海运和保险把货物送到 refinery gate",
-        "炼制把 crude 转成满足规格的 products 并形成 wholesale rack price",
-        "配送与零售 margin 形成 pre-tax pump price",
-        "政府 excise tax 与 VAT 形成消费者支付的 all-in price"
+        "同一物理流每经过一个交付点，卖方已提供的服务和承担的责任增加。",
+        "原油被炼成产品后，报价对象从未加工液体变成合格燃料。",
+        "零售层继续加入配送、站点运营、利润和政府税费。",
+        "单位换算把桶、加仑、升和吨连接起来；密度不同会改变吨与桶的比例。"
       ],
       "worked_example": {
-        "setup": "交易员把一份欧洲 diesel physical cargo（metric tonne）与美元/桶结算的 crude swap 做风险对冲。",
-        "steps": [
-          "先用对应 product density 的约 7.45 bbl per metric tonne 把 physical quantity 转成 swap barrels，而不是套用 WTI 的 7.50。",
-          "若误用 7.58，单吨差额看似很小，但跨越数百万吨会积累成显著 reconciliation error。"
+        "actor": "成品油批发报价员",
+        "inputs": [
+          "批发数量：1000 barrels。",
+          "固定体积关系：1 barrel = 42 gallons。",
+          "批发价：2.05美元/gallon。",
+          "错误预算采用的体积：40000 gallons。"
         ],
-        "answer": "单位不是展示格式，而是合同经济的一部分；错误 conversion factor 会直接创造未对冲敞口。"
+        "setup": "报价员把1000 barrels汽油批发量换成加仑，再计算批发货值。",
+        "steps": [
+          "销售体积 = 1000 barrels × 42 gallons = 42000 gallons。",
+          "批发货值 = 42000 gallons × 2.05美元/gallon = 86100美元。",
+          "如果误按40000 gallons做预算，会少估42000 gallons - 40000 gallons = 2000 gallons。"
+        ],
+        "answer": "少估2000 gallons会让运输车次、信用额度和库存价值都错配，进而影响是否接受这笔批发订单。"
       },
-      "practitioner_lens": "任何价差表都先统一 delivery point、Incoterm、currency、volume unit 与 density factor。",
-      "misreading": "看到欧洲泵价高于美国就断言欧洲原油更贵，或用固定 barrels-per-tonne 因子处理所有 crude 和 products。",
-      "boundary": "作者的阶梯数字是说明结构的 illustrative averages，不是任何日期、城市或品牌加油站的可交易实时价格。"
+      "practitioner_lens": "跨层比较时先把报价点和单位统一；不要用每桶原油价格直接解释每加仑含税零售价。",
+      "terms_in_context": [
+        {
+          "term": "Free on Board",
+          "cn": "装船交货",
+          "plain_definition": "卖方在装运点把货物交到船上后完成主要交付责任的条款。",
+          "why_it_matters": "它决定运费、保险和途中风险从哪一刻开始由买方承担。"
+        },
+        {
+          "term": "Rack price",
+          "cn": "油库装车批发价",
+          "plain_definition": "终端油库向卡车或分销商销售成品油的税前批发价格。",
+          "why_it_matters": "它比零售价更接近成品油批发供需。"
+        }
+      ],
+      "misreading": "看到欧洲泵价高于美国泵价，就直接推断欧洲原油更稀缺，是把零售税费和原油成本混在了一起。",
+      "boundary": "作者给出的交付链数字是教学示例；实际每个国家的税制、货币、零售结构和补贴会改变阶梯高度。",
+      "deep_dive": [
+        {
+          "title": "吨到桶没有一个永久系数",
+          "explanation": "一吨轻质汽油对应的桶数多于一吨重质燃料油。产品互换或对冲时必须用对应产品的密度系数。"
+        }
+      ]
     },
     {
       "id": "formula-osp",
-      "title": "Formula pricing 把一桶油拆成可解释的升贴水",
-      "concept": {
-        "en": "Formula pricing and Official Selling Price",
-        "cn": "公式定价与官方售价",
-        "definition": "以一个或多个 published benchmarks 为基础，按品质、地点和目的地需求加入权重与 constant 的实物原油结算方式。"
+      "title": "公式把一桶具体货物拆成可解释的升贴水",
+      "reader_question": "为什么Maya这样的原油要用好几个参照价格，而不是直接报一个WTI加减几美元？",
+      "scene": {
+        "setting": "一船重质含硫原油正准备卖给复杂炼厂。采购模型同时看轻质运输燃料的价值、重质残渣的价值、含硫处理负担和当月买家竞争。",
+        "actors": "国家生产商定价团队、复杂炼厂、焦化装置、残渣燃料市场、轻质低硫原油市场和月度销售会议。",
+        "action": "定价团队把不同部分的经济价值压缩进一个公式：若残渣燃料变差，重质货受压；若焦化炼厂抢货，月度调整可以抬高。"
       },
-      "explanation": "国际原油很少只按一个屏幕价格成交。公式会把 light/heavy、sweet/sour、waxy/clean 的品质差，把 FOB 与 delivered 的地点差，以及生产商每月调整的 OSP 组合起来。作者用 PEMEX 的历史典型公式说明逻辑：Olmeca 39° API 以 WTS、LLS、Dated Brent 各约三分之一加 constant；Isthmus 33° API 给 WTS 与 LLS 各 0.4、Dated Brent 0.2；Maya 22° API 则把 WTS、US Gulf No.6 3% fuel oil、LLS 与 Dated Brent 混合。Maya 之所以含 residual fuel assessment，是因为 heavy-sour barrel 在 complex refinery 中既有 transportation fuel potential，也有 bottom-of-barrel residual value。Constant 不是噪声，而是 PEMEX 根据 Maya 在 US Gulf/Asia 的需求和 coking margin 做的月度 OSP。",
+      "plain_answer": "公式定价不是数学装饰，而是把一桶油能变成什么、在哪卖、谁最想要它写进发票。重质含硫油不能只用轻质低硫参照，因为它还有残渣和处理负担。",
+      "concept": {
+        "en": "Formula pricing and monthly official adjustment",
+        "cn": "公式定价与月度官方调整",
+        "definition": "用一个或多个公开参照加权，再加入生产商按目的地和当月需求设置的调整项，形成实物原油结算价。"
+      },
+      "explanation": "国际原油大量使用公式结算。公式通常引用一个或多个公开参照，再加入质量、地点和剩余调整。作者给出的墨西哥Maya示例很适合教学：这种重质含硫原油的价值不只来自可变成汽油、柴油和航煤的轻质部分，也来自低价值残渣部分，还受能否进入有焦化和深度脱硫能力的炼厂影响。因此公式同时看含硫原油参照、重质高硫燃料油参照和轻质低硫参照，最后再加一个月度常数。常数不是永恒真理，而是生产商对当月买家需求、目的地竞争和炼厂利润的调整。",
       "mechanism_chain": [
-        "Assay 预测 cargo 的各产品 cut 与处理成本",
-        "生产商选择能代表这些价值和目的地替代品的 benchmarks",
-        "权重组合形成基础 refinery-equivalent value",
-        "Monthly OSP/constant 吸收相对需求与竞争变化",
-        "Pricing period 内的 assessments 代入公式形成最终 invoice"
+        "具体原油先被拆成若干经济暴露：轻质产品潜力、残渣价值、含硫处理负担和目的地需求。",
+        "每类暴露选择相对贴近的公开参照，而不是只选最出名的一个价格。",
+        "权重把这些参照合成一桶货物的近似产品价值。",
+        "月度调整吸收买方竞争、炼厂利润和生产商销售策略。"
       ],
       "worked_example": {
-        "setup": "用作者列出的 illustrative Maya formula 理解一个 heavy-sour cargo 的结算，而不是计算当前真实发票。",
-        "steps": [
-          "将 WTS 与 US Gulf No.6 3% 各按 0.4 组入，反映 sour feed 与高硫 resid 对 Maya bottom value 的解释力。",
-          "再将 LLS 与 Dated Brent 各按 0.10 组入，保留可转化为 light products 的价值，并加入当月 constant。"
+        "actor": "生产商月度定价分析师",
+        "inputs": [
+          "WTS价格：76美元/桶。",
+          "高硫残渣燃料油价格：62美元/桶。",
+          "LLS价格：80美元/桶。",
+          "Dated Brent价格：82美元/桶。",
+          "重质价格对系数：0.40。",
+          "轻质价格对系数：0.10。",
+          "月度调整：-3美元/桶。"
         ],
-        "answer": "多 benchmark 公式是在近似炼厂 yield economics；权重告诉你生产商认为哪些替代价值最能解释该 grade。"
+        "setup": "分析师用Maya教学公式估算一桶重质含硫货物：0.4×(WTS+残渣燃料油)+0.10×(LLS+Dated Brent)+月度调整。（教学单位标注：1 barrel。）",
+        "steps": [
+          "按每桶口径，重质部分 = 0.40 × (76 + 62) = 55.2美元/桶。",
+          "按每桶口径，轻质部分 = 0.10 × (80 + 82) = 16.2美元/桶。",
+          "两个价格部分合计 = 55.2 + 16.2 = 71.4美元/桶；公式价 = 71.4美元/桶 - 3美元/桶 = 68.4美元/桶。"
+        ],
+        "answer": "如果残渣燃料油走弱，公式价会先下调；生产商可能需要降低月度调整，炼厂则会重新比较是否继续买这类货。"
       },
-      "practitioner_lens": "读公式先给每个 benchmark 标注它代表的品质、地点和产品价值，再分析 constant 的月度变化。",
-      "misreading": "把 OSP 只看作生产商任意加价，或把示例公式的历史权重当成今天永远不变的精确合同条款。",
-      "boundary": "公式结构可长期稳定，但 benchmark eligibility、weights、timing 与 constant 会调整；实际交易必须查当期官方公告和合同。"
+      "practitioner_lens": "读公式时不要只看最终数，先问每个参照代表哪类产品价值或处理负担，再看常数为何变化。",
+      "terms_in_context": [
+        {
+          "term": "Formula pricing",
+          "cn": "公式型计价",
+          "plain_definition": "把公开参照、权重和调整项写入实物合同的定价方式。",
+          "why_it_matters": "它把复杂质量和地点差异变成可复算发票。"
+        },
+        {
+          "term": "Monthly constant",
+          "cn": "月度调价常数",
+          "plain_definition": "生产商在公式中定期调整的加价或折价项。",
+          "why_it_matters": "它表达当月相对需求和销售策略，而不是固定物理性质。"
+        }
+      ],
+      "misreading": "把示例公式当成今天逐日不变的官方价格，或把权重看成随意拼凑，都会误读作者的教学重点。",
+      "boundary": "具体权重、常数和参照会随时间调整；本课保留公式结构，用来训练如何读定价逻辑，而不是提供交易指令。",
+      "deep_dive": [
+        {
+          "title": "为什么残渣价格会进入原油公式",
+          "explanation": "重质原油会留下更多桶底材料。若残渣燃料或焦化利润恶化，这部分价值下降，即使轻质原油参照不变，重质货也会受压。"
+        }
+      ]
     },
     {
       "id": "freight-netback",
-      "title": "Freight netback 把远方价格倒推到本地",
+      "title": "运费净回值把远方价格倒推到本地",
+      "reader_question": "A地比B地便宜2美元/桶，为什么船货不一定马上从A地流向B地？",
+      "scene": {
+        "setting": "一艘油轮在海上等待指令。屏幕上B地价格更高，但船东报价、港口费、保险、航程时间、卸货窗口和质量差异都要先扣掉。",
+        "actors": "贸易商、船东、码头代理、保险方、目的地炼厂和信用部门。",
+        "action": "贸易商把目的地可卖价格倒推回装货点；如果倒推后的价值仍高于本地出售，船才有移动理由。"
+      },
+      "plain_answer": "地理价差只有覆盖真实可执行运输和交付成本后，才会推动货物流动。标题价差不是套利，净回值才接近卖方能拿到的原点价值。",
       "concept": {
         "en": "Freight netback pricing",
         "cn": "运费净回值定价",
-        "definition": "在本地缺乏流动性 benchmark 时，从另一地点的 published price 扣除或加回可验证运输成本，推导本地货物价值。"
+        "definition": "从另一个地点的公开价格扣除或加回可验证运输成本，倒推出当前地点货物价值的方法。"
       },
-      "explanation": "偏远装港、landlocked pipeline point 或 mid-voyage diverted cargo 往往没有足够交易生成独立 benchmark。卖方可从买家目的地的可观察价格开始，扣除把油运过去所需的 tanker freight、保险和相关交付成本，得到 origin netback；若定价方向相反，则按物流方向加回。Freight leg 可引用 Baltic Exchange tanker rate 或 Platts freight assessment，使合同仍有公共依据。这个逻辑也是地域套利的门槛：A 地便宜并不自动意味着 cargo 会流向 B，只有 B-A 的可实现价差大于全部 freight 与交易摩擦，搬运才有利润。因而运费上涨即使全球 flat price 不变，也能扩大地区价差并改变 crude flow。",
+      "explanation": "许多装货港、内陆管线点或临时改航船货没有足够活跃的本地公开价格。此时卖方会看一个更流动地点的价格，再扣除把货物送到那里所需的运费和交付成本，得到本地可比价值。这个方法也是跨区贸易的底层逻辑：如果B地价格高出A地3美元/桶，但运输和交付要4美元/桶，货物流过去反而亏。还要注意方向：若价格参照在目的地，常从目的地价减运费；若参照在装货地，可能要加运费得到到岸成本。真正可执行的计算还包括质量匹配、装卸窗口、信用和时间价值。",
       "mechanism_chain": [
-        "本地缺少足够 spot trades，不能独立形成可靠 benchmark",
-        "选择相关目的地或替代市场的 published price",
-        "按实际航线扣除 freight、保险和交付成本",
-        "得到 origin netback 并与卖方机会成本比较",
-        "当跨区价差覆盖运输门槛时 cargo 才改变流向"
+        "本地缺少可靠公开价时，交易员选择一个流动性更好的远方参照。",
+        "把从本地到参照地点所需运输、保险、港口和时间成本列出。",
+        "从远方可卖价格扣除这些成本，得到本地货物净值。",
+        "只有净值高于本地替代销售，货物流动才有经济理由。"
       ],
       "worked_example": {
-        "setup": "一船没有固定买家的 cargo 在航途中比较两个目的港：B 港 price 比 A 港高，但 B 港额外航程和运费也更高。",
-        "steps": [
-          "先把两个目的港价格调整到同一品质、同一交付条件，再分别扣除剩余航程 freight 和可能的 delay cost。",
-          "若 B 港净回值仍高于 A 港，改航才创造价值；否则屏幕上更高的 B 港价格只是被物流成本吃掉的名义差。"
+        "actor": "跨区海运套利交易员",
+        "inputs": [
+          "目的地可卖价格：82美元/桶。",
+          "海运和交付成本：4美元/桶。",
+          "装货港本地买价：79美元/桶。",
+          "船货数量：600000桶。"
         ],
-        "answer": "套利比较的是可实现 netback，不是两个 headline prices 的裸差。"
+        "setup": "交易员评估是否把一船原油从装货港运到目的地市场。（教学单位标注：600000 barrels。）",
+        "steps": [
+          "按每桶口径，目的地倒推净值 = 82 - 4 = 78美元/桶。",
+          "本地销售优势 = 79美元/桶 - 78美元/桶 = 1美元/桶。",
+          "本地销售多得 = 600000桶 × 1美元/桶 = 600000美元。"
+        ],
+        "answer": "交易员会选择在本地卖，而不是被82美元/桶的目的地标题价吸引；运费吃掉了跨区价差。"
       },
-      "practitioner_lens": "为每条套利路径写出可执行运费、装卸时间、损耗、信用与规格风险，而不是只使用平均航运指数。",
-      "misreading": "认为地区价格只要相差一美元就会立刻被套利抹平，忽略油轮可得性、航程、港口、规格和时间窗口。",
-      "boundary": "战争、制裁、运河受阻、船型限制或信用问题会使公开 freight assessment 不能代表该 cargo 的真实可执行成本。"
+      "practitioner_lens": "构建跨区价差时，统一质量和交付条款，再加入可执行运费、保险、港口费、时间和损耗。",
+      "terms_in_context": [
+        {
+          "term": "Freight netback",
+          "cn": "运费倒推净值",
+          "plain_definition": "用远方市场价格扣除运输和交付成本后得到的原点价值。",
+          "why_it_matters": "它决定一个偏远地点的货是否有外流经济性。"
+        },
+        {
+          "term": "Arbitrage threshold",
+          "cn": "跨区流动门槛",
+          "plain_definition": "价差足以覆盖运输和执行风险时货物流动所需的最低价差。",
+          "why_it_matters": "它解释为什么小价差常常不会带来真实船货移动。"
+        }
+      ],
+      "misreading": "把屏幕上的两地价差直接当作利润，忽略船期、港口拥堵、质量调整和信用成本，是最常见错误。",
+      "boundary": "净回值依赖可执行运费；若市场剧烈波动、船难找或港口受限，公开运价可能不能代表你能成交的成本。",
+      "deep_dive": [
+        {
+          "title": "为什么中途改航更复杂",
+          "explanation": "船已在海上时，沉没成本、剩余航程、卸货窗口和买方信用都会改变净回值。公式简单，执行并不简单。"
+        }
+      ]
     },
     {
       "id": "moc-assessment",
-      "title": "Platts MOC 不是收盘最后一笔，而是受监督的价格发现窗口",
+      "title": "收盘评估是受规则约束的价格发现窗口",
+      "reader_question": "价格报告机构发布的每日价格，为什么不是简单取当天最后一笔成交？",
+      "scene": {
+        "setting": "交易日快结束时，合格货物的买价、卖价和成交被集中报告。编辑团队盯着窗口内仍可执行的信息，判断收盘时市场愿意交易的价值。",
+        "actors": "价格报告机构编辑、现货交易员、合规团队、使用该读数结算的长期合同和场外衍生品。",
+        "action": "交易员可以报出真实愿意成交的买卖价；编辑按公开方法筛选信息，形成当天可写入合同的评估价。"
+      },
+      "plain_answer": "每日评估价是方法化的收盘市场价值，不是机械复制最后一笔成交。窄窗口让信息更接近收盘流动性，但参与者的报价必须有真实交易意愿。",
       "concept": {
         "en": "Market on Close assessment",
-        "cn": "收盘价评估窗口",
-        "definition": "Price Reporting Agency 在交易日最后一段受观察窗口内，根据可执行 bids、offers 与 trades 评估收盘市场价值的方法。"
+        "cn": "收盘市场评估",
+        "definition": "在交易日末的受观察窗口内，根据可执行买价、卖价和成交形成每日市场价值读数的方法。"
       },
-      "explanation": "Platts assessment 不是机械抄录最后一笔成交。作者说明，多数 physical crude 与 product assessment 使用最后 30 minutes 的 Market on Close；参与者通过 eWindow 实时报告 assessable cargo 的 bids、offers 和 trades，编辑依据其演变形成当天单一 assessment。窄窗口的目的，是让价格代表收盘时仍可交易的流动性，而不是早晨已经过时的成交。由于这些数字进入巨额 physical contracts 与 OTC swaps，窗口内的一个真实 bid 会影响市场判断；但该 bid 必须表现出履约意愿，不能只是无成本意见。LIBOR 等 benchmark 调查后，监管与方法披露更严格，Argus、OPIS 等也采用类似市场评估框架。合同中的 Platts MOC 或 MOP 必须按约定 methodology 理解。",
+      "explanation": "大量实物合同和场外互换需要一个每天可引用的价格。许多实物货物没有交易所连续订单簿，于是价格报告机构把注意力集中到收盘前一小段时间，观察合格货物的买价、卖价和成交。这样做的目的不是找全天平均价，而是估计收盘时市场价值。窗口越重要，参与者越愿意在窗口报价；报价又会影响评估。因此方法规则、合格货物定义、可执行性和监管监督都很关键。窗口行为可能有策略性，但真实可执行要求让报价不是零成本口号。",
       "mechanism_chain": [
-        "交易者在指定窗口提交可执行 bid、offer 与 trade",
-        "信息按时间、价格和可成交性暴露收盘边际价值",
-        "PRA editors 按公开 methodology 形成 daily assessment",
-        "Assessment 进入 physical invoices 与 OTC settlements",
-        "大量合同反过来集中窗口流动性与策略行为"
+        "实物合同需要每天统一的结算读数，但许多货物缺少连续透明订单簿。",
+        "评估方法把观察集中到收盘前的合格货物和可执行报价。",
+        "编辑根据窗口内买价、卖价和成交序列判断收盘价值。",
+        "评估价进入合同和互换结算，反过来提高窗口内交易的重要性。"
       ],
       "worked_example": {
-        "setup": "某 grade 当天上午成交活跃，但临近收盘供给突然收紧；MOC 内最高 bid 持续上调且愿意实际接货。",
-        "steps": [
-          "编辑不会只沿用上午最后一笔成交，而会观察窗口内仍可执行的 bid/offer 是否改变市场边界。",
-          "若上调 bid 符合 methodology 且卖方可成交，它会支持更高 assessment，并影响所有引用当天价格的合同。"
+        "actor": "价格评估窗口内的现货交易员",
+        "inputs": [
+          "一笔合格船货数量：600000桶。",
+          "窗口内新买价比上一读数高：0.25美元/桶。",
+          "引用该读数的后续合同数量：200000桶。",
+          "该买价必须代表真实成交意愿。"
         ],
-        "answer": "Assessment 是方法化的收盘市场判断；理解价格必须同时理解它的 observation window 与证据规则。"
+        "setup": "交易员在收盘窗口提高买价0.25美元/桶，希望表达实际需求并影响当天市场读数。（教学单位标注：600000 barrels。）",
+        "steps": [
+          "按0.25美元/桶的新买价增量，额外货款 = 600000 × 0.25 = 150000美元。",
+          "后续合同受影响金额 = 200000桶 × 0.25美元/桶 = 50000美元。",
+          "交易员不能免费喊价；一旦被卖方接受，就要为600000桶承担150000美元额外成本。"
+        ],
+        "answer": "这解释了为什么窗口报价既能影响市场，又受到可执行性约束；合规团队会特别关注这类行为。"
       },
-      "practitioner_lens": "研究一个异常 assessment 时，查 methodology、窗口时区、eligible cargo、pricing laycan 与当日 bid/offer sequence。",
-      "misreading": "把 PRA assessment 当作交易所自动生成的最后成交价，或认为编辑可以在没有可执行市场信息时随意写一个数字。",
-      "boundary": "在极低流动性、货物不合格或异常事件中，assessment 可能更依赖可比信息与方法判断，不能假装等同于深度订单簿。"
+      "practitioner_lens": "读每日评估时看方法、合格货物、窗口时间和实际买卖序列；不要把它当作全天最后一笔或全市场平均价。",
+      "terms_in_context": [
+        {
+          "term": "Market on Close",
+          "cn": "收盘观察机制",
+          "plain_definition": "在交易日末集中观察可执行报价和成交以评估收盘价值的机制。",
+          "why_it_matters": "它让分散的场外现货信息变成可结算读数。"
+        },
+        {
+          "term": "Price Reporting Agency",
+          "cn": "报价评估机构",
+          "plain_definition": "收集现货市场信息并按公开方法发布商品评估价的机构。",
+          "why_it_matters": "它的读数会进入实物合同、库存估值和场外衍生品结算。"
+        }
+      ],
+      "misreading": "把窗口策略行为直接等同于无成本操纵，或反过来以为公开方法能消除所有行为动机，都过于简单。",
+      "boundary": "评估质量依赖合格货物流动性和信息披露；若当天几乎没有可执行信息，读数的不确定性会更高。",
+      "deep_dive": [
+        {
+          "title": "为什么方法文件本身是市场基础设施",
+          "explanation": "当数十亿美金合同引用一个读数时，定义什么货合格、什么报价可用、何时排除异常，就和交易场所规则一样重要。"
+        }
+      ]
     },
     {
       "id": "dollar-retail-real",
-      "title": "美元油价、真实购买力与泵价回答不同问题",
+      "title": "美元油价、真实购买力和泵价回答不同问题",
+      "reader_question": "美元油价上涨时，为什么我还要看汇率、黄金口径和加油站税费？",
+      "scene": {
+        "setting": "一边是全球批发屏幕，用美元每桶报价；另一边是本国司机看到的每升或每加仑泵价。中间隔着汇率、炼制、配送、零售利润和政府税收。",
+        "actors": "全球生产商、消费国进口商、炼厂、零售站、财政部门、司机和宏观投资者。",
+        "action": "分析师先判断美元计价变化，再换成本币或购买力口径，最后把零售价拆成原油、炼制、分销、零售和税。"
+      },
+      "plain_answer": "美元每桶是全球交易语言，不等于消费者最终成本，也不等于真实稀缺度。泵价尤其混合了成品加工、配送和税收，跨国比较必须拆层。",
       "concept": {
         "en": "Dollar denomination, real oil value and retail taxation",
         "cn": "美元计价、真实油价与零售税负",
-        "definition": "美元/桶衡量名义交易价格，其他货币或黄金比值衡量相对购买力，含税泵价还叠加炼制、分销与政府税收。"
+        "definition": "区分美元名义交易价、相对购买力口径和含税零售成品油价格的分析框架。"
       },
-      "explanation": "Oil 以 US dollar 全球计价，主要因为美元流动性高、可兑换、交易成本低，统一货币也便利跨区比较和 arbitrage。美元对消费国货币走弱时，即使 oil 的实物稀缺程度不变，美元计价也可能上升；生产商收到美元后可立刻转换。作者用 gold 做 sanity check：把一盎司 gold 能买多少 barrels WTI 作为长期相对价格，Bretton Woods 结束后的长期平均约 15 bbl/oz；1973–1981 年只有约 8–10 bbl/oz，表示 oil 在 hard-money terms 很贵，而 2020 年后 dollar oil 上涨但 gold 涨得更快，oil in gold 反而变便宜。到了零售端，国家间差异主要常由 taxation 驱动；作者 2026 文字称欧洲 gasoline tax 可超过 $3/gal，而美国 federal + state average 约 $0.50/gal。",
+      "explanation": "石油用美元交易有实际便利：美元流动性高、可兑换性强、交易成本低，使跨国比较和套利更容易。但美元本身会变动。若美元走弱，以美元计的油价可能上涨，而消费国本币或黄金口径下的真实购买力变化并不相同。消费者看到的加油站价格又是另一个层级：原油只是输入之一，后面还有炼厂把原油变成产品、终端配送、零售站运营和税收。作者的示例显示，美国和欧洲在原油及炼厂门口成本上差距有限，但含税零售泵价差距很大，主要来自每加仑税负差异。",
       "mechanism_chain": [
-        "全球实物交易先以美元形成统一名义报价",
-        "汇率变化改变消费国本币成本和美元 headline price",
-        "炼制、物流与零售把 crude value 转成 pump product price",
-        "Excise tax 与 VAT 再扩大国家间 all-in price gap",
-        "用 gold 或本币重算可区分商品稀缺与计价单位变化"
+        "全球批发市场用美元报价，降低跨国交易和比较成本。",
+        "美元汇率变化会改变名义美元油价与消费国本币成本之间的关系。",
+        "原油进入炼厂后变成成品油，价格层级从每桶原油转为每加仑或每升产品。",
+        "零售端再加入配送、零售利润和税，形成司机实际支付的泵价。"
       ],
       "worked_example": {
-        "setup": "2020 年后美元 WTI 明显上涨，同时 gold price 上涨得更快。",
-        "steps": [
-          "先计算一盎司 gold 可购买的 WTI barrels，而不是只看美元/桶曲线。",
-          "若 bbl/oz 上升，说明相对 gold 而言 oil 变便宜，即使美元 headline 看起来在上涨。"
+        "actor": "消费国能源政策分析师",
+        "inputs": [
+          "美国含税汽油示例：3.45美元/gallon。",
+          "欧洲含税汽油示例：6.50美元/gallon。",
+          "美国税负示例：0.90美元/gallon。",
+          "欧洲税负示例：3.80美元/gallon。"
         ],
-        "answer": "名义美元上涨不等于 oil 在所有购买力尺度上都更稀缺；计价单位本身也在移动。"
+        "setup": "分析师比较作者示例中的美国和欧洲泵价差，先拆总价差，再拆税负差。（教学单位标注：1 gallon。）",
+        "steps": [
+          "按美元/gallon口径，含税泵价差 = 6.50 - 3.45 = 3.05美元/gallon。",
+          "税负差 = 3.80美元/gallon - 0.90美元/gallon = 2.90美元/gallon。",
+          "税负解释比例 = 2.90美元/gallon ÷ 3.05美元/gallon = 95.08%。"
+        ],
+        "answer": "分析师会把主要解释放在税制和零售层级，而不是草率断言欧洲原油比美国稀缺得多。"
       },
-      "practitioner_lens": "分析消费者压力时使用本币含税产品价；分析全球 crude market 时分开看美元 benchmark、汇率与 physical differentials。",
-      "misreading": "把欧洲高泵价全部归因于 Brent 更贵，或把美元油价上涨完全解释为实物供需而不检查美元本身的变化。",
-      "boundary": "Gold ratio 只是购买力 sanity check，不是原油公允价值模型；短期内利率、避险需求和 gold 自身供需都会改变比值。"
+      "practitioner_lens": "宏观上把美元名义价、本币价和真实购买力分开；消费者层面把税前产品价和含税泵价分开。",
+      "terms_in_context": [
+        {
+          "term": "Dollar denomination",
+          "cn": "美元报价口径",
+          "plain_definition": "国际石油交易主要用美元表达价格的市场惯例。",
+          "why_it_matters": "它方便跨国比较，但也让汇率变化进入标题油价。"
+        },
+        {
+          "term": "Retail all-in price",
+          "cn": "含税零售终端价",
+          "plain_definition": "消费者在油枪或零售端支付的成品油总价。",
+          "why_it_matters": "它包括原油、炼制、配送、零售和税，不能直接当成原油价格。"
+        }
+      ],
+      "misreading": "把泵价上涨全部归因于原油，或把美元油价上涨自动等同于真实资源更稀缺，都会混淆价格层级。",
+      "boundary": "黄金口径只是购买力 sanity check，不是短期交易模型；零售税费也会随国家、州省、补贴和汇率改变。",
+      "deep_dive": [
+        {
+          "title": "为什么同一个司机看到的是本币能源负担",
+          "explanation": "生产商可以马上把美元收入换成任意货币，但消费者支付的是本币工资购买力。宏观分析要同时看交易货币和消费货币。"
+        }
+      ]
     }
   ],
   "figures": [
@@ -409,61 +786,217 @@
   "comparison_tables": [
     {
       "title": "四类“油价”分别在回答什么",
-      "headers": ["价格层", "典型例子", "回答的问题", "不能直接证明"],
+      "headers": [
+        "价格层",
+        "典型例子",
+        "回答的问题",
+        "不能直接证明"
+      ],
       "rows": [
-        ["Futures benchmark", "NYMEX WTI、ICE Brent", "标准化交割体系中的共同价格锚", "所有具体 cargo 的成交价"],
-        ["Physical assessment", "Dated Brent、Dubai assessment", "特定现货窗口与货物的市场价值", "深度连续订单簿的最后成交"],
-        ["Grade differential / OSP", "Bonny Light vs Dated Brent、Arab Light OSP", "品质、地点与相对需求", "全球 flat price 方向"],
-        ["Retail all-in price", "加油站 gasoline/diesel", "产品、分销、零售与税后的消费者成本", "原油本身的全部价值变化"]
+        [
+          "Futures benchmark",
+          "NYMEX WTI、ICE Brent",
+          "标准化交割体系中的共同价格锚",
+          "所有具体 cargo 的成交价"
+        ],
+        [
+          "Physical assessment",
+          "Dated Brent、Dubai assessment",
+          "特定现货窗口与货物的市场价值",
+          "深度连续订单簿的最后成交"
+        ],
+        [
+          "Grade differential / OSP",
+          "Bonny Light vs Dated Brent、Arab Light OSP",
+          "品质、地点与相对需求",
+          "全球 flat price 方向"
+        ],
+        [
+          "Retail all-in price",
+          "加油站 gasoline/diesel",
+          "产品、分销、零售与税后的消费者成本",
+          "原油本身的全部价值变化"
+        ]
       ]
     },
     {
       "title": "原油 API 与 sulfur 的基础分类",
-      "headers": ["维度", "分类", "阈值", "典型经济含义"],
+      "headers": [
+        "维度",
+        "分类",
+        "阈值",
+        "典型经济含义"
+      ],
       "rows": [
-        ["API gravity", "Light", ">31° API", "较高 light-product yield，适配炼厂较广"],
-        ["API gravity", "Medium", "22–31° API", "产品结构较均衡，多数炼厂可处理"],
-        ["API gravity", "Heavy", "10–22° API", "需 coker/hydrocracker 降低 resid yield"],
-        ["API gravity", "Extra-heavy", "<10° API", "可能比水重，管输常需 diluent"],
-        ["Sulfur", "Sweet", "<0.5 wt%", "较低 hydrotreating 与腐蚀负担"],
-        ["Sulfur", "Medium-sour", "0.5–2.0 wt%", "需要更多脱硫处理"],
-        ["Sulfur", "Sour", ">2.0 wt%", "buyer base 更依赖复杂炼厂"]
+        [
+          "API gravity",
+          "Light",
+          ">31° API",
+          "较高 light-product yield，适配炼厂较广"
+        ],
+        [
+          "API gravity",
+          "Medium",
+          "22–31° API",
+          "产品结构较均衡，多数炼厂可处理"
+        ],
+        [
+          "API gravity",
+          "Heavy",
+          "10–22° API",
+          "需 coker/hydrocracker 降低 resid yield"
+        ],
+        [
+          "API gravity",
+          "Extra-heavy",
+          "<10° API",
+          "可能比水重，管输常需 diluent"
+        ],
+        [
+          "Sulfur",
+          "Sweet",
+          "<0.5 wt%",
+          "较低 hydrotreating 与腐蚀负担"
+        ],
+        [
+          "Sulfur",
+          "Medium-sour",
+          "0.5–2.0 wt%",
+          "需要更多脱硫处理"
+        ],
+        [
+          "Sulfur",
+          "Sour",
+          ">2.0 wt%",
+          "buyer base 更依赖复杂炼厂"
+        ]
       ]
     },
     {
       "title": "关键产品规格如何重新定义可交付商品",
-      "headers": ["产品/属性", "作者列示规格", "价格含义"],
+      "headers": [
+        "产品/属性",
+        "作者列示规格",
+        "价格含义"
+      ],
       "rows": [
-        ["US gasoline sulfur", "Tier 3 annual average 10 ppm；2017 生效", "提高 desulfurization 要求，也让美欧日 catalyst 标准更接近"],
-        ["US gasoline RVP", "summer 7.8 psi；non-ozone areas 9.0；California 6.5–7.0", "季节与地区规格改变 blendstock value"],
-        ["US on-road ULSD", "sulfur 15 ppm；cetane minimum 40；flash point minimum 52°C", "合规 diesel pool 与旧高硫产品分离"],
-        ["Jet A / Jet A-1", "freeze point max -40°C / -47°C；flash point min 38°C", "国际航线更偏 Jet A-1 的低温安全要求"],
-        ["Marine VLSFO", "global sulfur 0.5%", "IMO 2020 后无 scrubber 船舶的全球 baseline"],
-        ["Marine ECA fuel", "sulfur 0.1%", "北美、Baltic、North Sea 等 ECA 的更严约束"]
+        [
+          "US gasoline sulfur",
+          "Tier 3 annual average 10 ppm；2017 生效",
+          "提高 desulfurization 要求，也让美欧日 catalyst 标准更接近"
+        ],
+        [
+          "US gasoline RVP",
+          "summer 7.8 psi；non-ozone areas 9.0；California 6.5–7.0",
+          "季节与地区规格改变 blendstock value"
+        ],
+        [
+          "US on-road ULSD",
+          "sulfur 15 ppm；cetane minimum 40；flash point minimum 52°C",
+          "合规 diesel pool 与旧高硫产品分离"
+        ],
+        [
+          "Jet A / Jet A-1",
+          "freeze point max -40°C / -47°C；flash point min 38°C",
+          "国际航线更偏 Jet A-1 的低温安全要求"
+        ],
+        [
+          "Marine VLSFO",
+          "global sulfur 0.5%",
+          "IMO 2020 后无 scrubber 船舶的全球 baseline"
+        ],
+        [
+          "Marine ECA fuel",
+          "sulfur 0.1%",
+          "北美、Baltic、North Sea 等 ECA 的更严约束"
+        ]
       ]
     },
     {
       "title": "作者示例中的交付链价格阶梯",
-      "headers": ["环节", "美国示例", "欧洲示例", "新增内容"],
+      "headers": [
+        "环节",
+        "美国示例",
+        "欧洲示例",
+        "新增内容"
+      ],
       "rows": [
-        ["Wellhead", "$65/bbl", "$70/bbl", "原油物理锚"],
-        ["Cargo FOB", "$70/bbl", "$73/bbl", "集输与装港"],
-        ["Refinery gate", "$73/bbl", "$76/bbl", "运费与交付"],
-        ["Rack wholesale", "$2.05/gal", "$2.15/gal", "炼制后的批发产品"],
-        ["Retail pre-tax", "$2.55/gal", "$2.70/gal", "配送与零售 margin"],
-        ["Retail all-in", "$3.45/gal", "$6.50/gal", "包含约 $0.90 / $3.80 per gal tax 的 illustrative result"]
+        [
+          "Wellhead",
+          "$65/bbl",
+          "$70/bbl",
+          "原油物理锚"
+        ],
+        [
+          "Cargo FOB",
+          "$70/bbl",
+          "$73/bbl",
+          "集输与装港"
+        ],
+        [
+          "Refinery gate",
+          "$73/bbl",
+          "$76/bbl",
+          "运费与交付"
+        ],
+        [
+          "Rack wholesale",
+          "$2.05/gal",
+          "$2.15/gal",
+          "炼制后的批发产品"
+        ],
+        [
+          "Retail pre-tax",
+          "$2.55/gal",
+          "$2.70/gal",
+          "配送与零售 margin"
+        ],
+        [
+          "Retail all-in",
+          "$3.45/gal",
+          "$6.50/gal",
+          "包含约 $0.90 / $3.80 per gal tax 的 illustrative result"
+        ]
       ]
     },
     {
       "title": "常用体积与重量换算",
-      "headers": ["对象", "关系或 barrels/metric tonne", "为什么会不同"],
+      "headers": [
+        "对象",
+        "关系或 barrels/metric tonne",
+        "为什么会不同"
+      ],
       "rows": [
-        ["固定体积", "1 bbl = 42 US gal ≈ 159 L ≈ 0.159 m³", "定义关系"],
-        ["WTI crude", "约 7.50 bbl/t", "较轻、每 tonne 占更多 barrels"],
-        ["Maya heavy crude", "约 6.50 bbl/t", "密度更高"],
-        ["Diesel/gasoil", "约 7.45 bbl/t", "产品密度决定"],
-        ["Gasoline", "约 8.33 bbl/t", "较轻"],
-        ["Residual fuel", "约 6.40 bbl/t", "较重"]
+        [
+          "固定体积",
+          "1 bbl = 42 US gal ≈ 159 L ≈ 0.159 m³",
+          "定义关系"
+        ],
+        [
+          "WTI crude",
+          "约 7.50 bbl/t",
+          "较轻、每 tonne 占更多 barrels"
+        ],
+        [
+          "Maya heavy crude",
+          "约 6.50 bbl/t",
+          "密度更高"
+        ],
+        [
+          "Diesel/gasoil",
+          "约 7.45 bbl/t",
+          "产品密度决定"
+        ],
+        [
+          "Gasoline",
+          "约 8.33 bbl/t",
+          "较轻"
+        ],
+        [
+          "Residual fuel",
+          "约 6.40 bbl/t",
+          "较重"
+        ]
       ]
     }
   ],
@@ -472,33 +1005,186 @@
     "tree": "可交付价格对象 → 货物身份（field/stream/blend/assay/specification）→ 公共尺（WTI/Brent/Dubai/Murban/PRA assessment）→ 调整项（quality/location/freight/OSP）→ 交付链（wellhead/FOB/refinery gate/rack/retail/tax）",
     "analogy": "把 benchmark 想成地图上的海平面，把具体 cargo 的品质与地点想成地形高度，把 OSP 与运费想成通往买家的道路成本；只知道海平面，无法知道某栋房子的门口高度。",
     "branches": [
-      {"name": "货物身份", "children": ["Field", "Stream", "Blend", "Assay", "Specification"]},
-      {"name": "公共价格锚", "children": ["WTI", "Brent/Dated Brent", "Dubai/Oman", "Murban", "PRA MOC"]},
-      {"name": "升贴水", "children": ["Quality differential", "Location differential", "Freight netback", "OSP"]},
-      {"name": "交付层级", "children": ["Wellhead", "FOB", "Refinery gate", "Rack", "Retail all-in"]}
+      {
+        "name": "货物身份",
+        "children": [
+          "Field",
+          "Stream",
+          "Blend",
+          "Assay",
+          "Specification"
+        ]
+      },
+      {
+        "name": "公共价格锚",
+        "children": [
+          "WTI",
+          "Brent/Dated Brent",
+          "Dubai/Oman",
+          "Murban",
+          "PRA MOC"
+        ]
+      },
+      {
+        "name": "升贴水",
+        "children": [
+          "Quality differential",
+          "Location differential",
+          "Freight netback",
+          "OSP"
+        ]
+      },
+      {
+        "name": "交付层级",
+        "children": [
+          "Wellhead",
+          "FOB",
+          "Refinery gate",
+          "Rack",
+          "Retail all-in"
+        ]
+      }
     ]
   },
   "glossary": [
-    {"term": "Assay", "full_en": "Crude oil assay", "cn": "原油性质化验", "definition": "描述 crude 的预期 product yields 与 density、sulfur、TAN、viscosity、metals、salt、water 等性质的销售和炼制档案。", "example": "炼厂用 cargo assay 估算 gasoline、diesel、jet 与 resid 收率，再扣除杂质处理成本。", "confusion": "它不是只报告 API 与 sulfur 的两行化验单，也不保证每船货完全等于典型值。"},
-    {"term": "Benchmark", "full_en": "Price benchmark", "cn": "价格基准", "definition": "有明确货物、地点、时间和方法规则、被大量合同引用的公共价格参照。", "example": "WTI 物理交割在 Cushing，Dated Brent 用于大量非美国国际 crude cargo。", "confusion": "Benchmark 不是所有实物油的统一成交价。"},
-    {"term": "OSP", "full_en": "Official Selling Price", "cn": "官方售价调整", "definition": "生产商定期公布、相对于目的地 benchmark 的 premium 或 discount，常按月更新。", "example": "Arab Light 卖往亚洲与美国 Gulf Coast 可分别引用 Oman/Dubai 和 ASCI。", "confusion": "OSP 通常不是脱离 benchmark 的固定绝对价格。"},
-    {"term": "Dated Brent", "full_en": "Platts Dated Brent", "cn": "即期布伦特评估", "definition": "以北海可交付 cargo 为核心的 physical assessment，用于定价大量非美国国际原油。", "example": "Bonny Light term cargo 可按 Dated Brent 加减 grade differential 结算。", "confusion": "它与 ICE Brent futures 有联系，但不是同一个合约或同一价格对象。"},
-    {"term": "MOC", "full_en": "Market on Close", "cn": "收盘市场评估", "definition": "PRA 在收盘前窄窗口观察可执行 bids、offers 与 trades 后形成 daily assessment 的方法。", "example": "Platts 对多数 physical crude/product assessment 观察最后约 30 minutes。", "confusion": "不是简单复制当天最后一笔成交。"},
-    {"term": "Netback", "full_en": "Freight netback", "cn": "运费净回值", "definition": "从另一地点的可观察价格扣除到达该地点的运输与交付成本，倒推出 origin value。", "example": "偏远装港可从目的地 benchmark 减 tanker freight 得到可比较的装港净值。", "confusion": "不是只减一个公开平均运价，仍需处理品质、时间和合同条件。"},
-    {"term": "API gravity", "full_en": "American Petroleum Institute gravity", "cn": "API 度", "definition": "由 specific gravity 转换的反向密度刻度，数值越高表示液体越轻。", "example": "WTI 39.6° API 对应 SG 约 0.827、density 约 827 kg/m³。", "confusion": "API 越高不代表在所有 refinery configuration 下利润必然越高。"},
-    {"term": "TAN", "full_en": "Total Acid Number", "cn": "总酸值", "definition": "中和一克 crude 所含酸所需 mg KOH 的数量，用于衡量 naphthenic acid corrosion 风险。", "example": "作者指出多数炼厂按 TAN <0.5 配置，约 >0.7 常被标为 highly acidic。", "confusion": "它不是 pH，也不能脱离温度、材料和 blend ratio 直接推导腐蚀速度。"},
-    {"term": "AKI", "full_en": "Anti-Knock Index", "cn": "抗爆指数", "definition": "美国加油机使用的 (RON + MON)/2 octane 标尺。", "example": "美国 regular 通常显示 87 AKI，premium 91–93。", "confusion": "不能与欧洲 pump 上直接显示的 RON 数字一一比较。"},
-    {"term": "BS&W", "full_en": "Basic Sediment and Water", "cn": "底部沉积物与水", "definition": "随 crude 到达的 water、dirt 和杂质的综合指标。", "example": "作者给出的常见 refinery intake spec 是低于 1 wt%。", "confusion": "不能把成熟油田井口很高的 raw water cut 与已脱水 cargo 的 BS&W 规格混为一谈。"}
+    {
+      "term": "Assay",
+      "full_en": "Crude oil assay",
+      "cn": "原油性质化验",
+      "definition": "描述 crude 的预期 product yields 与 density、sulfur、TAN、viscosity、metals、salt、water 等性质的销售和炼制档案。",
+      "example": "炼厂用 cargo assay 估算 gasoline、diesel、jet 与 resid 收率，再扣除杂质处理成本。",
+      "confusion": "它不是只报告 API 与 sulfur 的两行化验单，也不保证每船货完全等于典型值。"
+    },
+    {
+      "term": "Benchmark",
+      "full_en": "Price benchmark",
+      "cn": "价格基准",
+      "definition": "有明确货物、地点、时间和方法规则、被大量合同引用的公共价格参照。",
+      "example": "WTI 物理交割在 Cushing，Dated Brent 用于大量非美国国际 crude cargo。",
+      "confusion": "Benchmark 不是所有实物油的统一成交价。"
+    },
+    {
+      "term": "OSP",
+      "full_en": "Official Selling Price",
+      "cn": "官方售价调整",
+      "definition": "生产商定期公布、相对于目的地 benchmark 的 premium 或 discount，常按月更新。",
+      "example": "Arab Light 卖往亚洲与美国 Gulf Coast 可分别引用 Oman/Dubai 和 ASCI。",
+      "confusion": "OSP 通常不是脱离 benchmark 的固定绝对价格。"
+    },
+    {
+      "term": "Dated Brent",
+      "full_en": "Platts Dated Brent",
+      "cn": "即期布伦特评估",
+      "definition": "以北海可交付 cargo 为核心的 physical assessment，用于定价大量非美国国际原油。",
+      "example": "Bonny Light term cargo 可按 Dated Brent 加减 grade differential 结算。",
+      "confusion": "它与 ICE Brent futures 有联系，但不是同一个合约或同一价格对象。"
+    },
+    {
+      "term": "MOC",
+      "full_en": "Market on Close",
+      "cn": "收盘市场评估",
+      "definition": "PRA 在收盘前窄窗口观察可执行 bids、offers 与 trades 后形成 daily assessment 的方法。",
+      "example": "Platts 对多数 physical crude/product assessment 观察最后约 30 minutes。",
+      "confusion": "不是简单复制当天最后一笔成交。"
+    },
+    {
+      "term": "Netback",
+      "full_en": "Freight netback",
+      "cn": "运费净回值",
+      "definition": "从另一地点的可观察价格扣除到达该地点的运输与交付成本，倒推出 origin value。",
+      "example": "偏远装港可从目的地 benchmark 减 tanker freight 得到可比较的装港净值。",
+      "confusion": "不是只减一个公开平均运价，仍需处理品质、时间和合同条件。"
+    },
+    {
+      "term": "API gravity",
+      "full_en": "American Petroleum Institute gravity",
+      "cn": "API 度",
+      "definition": "由 specific gravity 转换的反向密度刻度，数值越高表示液体越轻。",
+      "example": "WTI 39.6° API 对应 SG 约 0.827、density 约 827 kg/m³。",
+      "confusion": "API 越高不代表在所有 refinery configuration 下利润必然越高。"
+    },
+    {
+      "term": "TAN",
+      "full_en": "Total Acid Number",
+      "cn": "总酸值",
+      "definition": "中和一克 crude 所含酸所需 mg KOH 的数量，用于衡量 naphthenic acid corrosion 风险。",
+      "example": "作者指出多数炼厂按 TAN <0.5 配置，约 >0.7 常被标为 highly acidic。",
+      "confusion": "它不是 pH，也不能脱离温度、材料和 blend ratio 直接推导腐蚀速度。"
+    },
+    {
+      "term": "AKI",
+      "full_en": "Anti-Knock Index",
+      "cn": "抗爆指数",
+      "definition": "美国加油机使用的 (RON + MON)/2 octane 标尺。",
+      "example": "美国 regular 通常显示 87 AKI，premium 91–93。",
+      "confusion": "不能与欧洲 pump 上直接显示的 RON 数字一一比较。"
+    },
+    {
+      "term": "BS&W",
+      "full_en": "Basic Sediment and Water",
+      "cn": "底部沉积物与水",
+      "definition": "随 crude 到达的 water、dirt 和杂质的综合指标。",
+      "example": "作者给出的常见 refinery intake spec 是低于 1 wt%。",
+      "confusion": "不能把成熟油田井口很高的 raw water cut 与已脱水 cargo 的 BS&W 规格混为一谈。"
+    }
   ],
   "extreme_detail": [
-    {"mechanism": "Temperature-corrected density", "why_it_matters": "同一重量原油在暖环境体积更大，体积计量与 API 必须回到共同参考温度。", "micro_example": "油轮在寒冷装港装油、在温暖卸港排货，重量未变但体积会略增；作者因此把 density 统一引到 60°F、1 atmosphere。", "misreading": "把现场不同温度的 observed volume 或 hydrometer reading 直接当成品质或短装差异。", "takeaway": "核对 density basis 与 temperature correction，再比较数量和 API。"},
-    {"mechanism": "Hydrometer and Archimedes principle", "why_it_matters": "现场密度读数来自浮力平衡，而不是液体颜色或黏稠感。", "micro_example": "加重玻璃 hydrometer 在较密液体中浮得更高，thermohydrometer 同时测温以校正到 60°F。", "misreading": "认为仪器在轻质油中读数更高是因为它浮得更高；API 是后续反向换算。", "takeaway": "区分物理浮沉、specific gravity 与反向 API scale。"},
-    {"mechanism": "Off-spec versus distressed cargo", "why_it_matters": "品质违约与没有买家是两种不同折价来源，可能叠加。", "micro_example": "Cargo 先因 BS&W 超 spec 被原炼厂拒收，随后又因油轮等待、改航窗口收窄而成为 distressed cargo。", "misreading": "把所有折价都归为原油品质差，忽略时间、库容和买方稀缺。", "takeaway": "分别估算 reprocessing/compatibility cost 与 delay/diversion optionality loss。"},
-    {"mechanism": "TAN and metals are refinery-specific", "why_it_matters": "相同 assay 对不同材料、catalyst 与装置配置的炼厂成本不同。", "micro_example": "TAN 0.9 cargo 对受限常规炼厂可能需要深折价，对能控制高温环烷酸腐蚀且有 blending room 的炼厂价值更高。", "misreading": "把一个 refinery 的 intake limit 当作全球统一商品边界。", "takeaway": "升贴水是 cargo 与 marginal buyer configuration 的匹配结果。"},
-    {"mechanism": "RVP has value and compliance sides", "why_it_matters": "更高 volatility 可能代表更多 valuable light ends，也可能违反 summer gasoline environmental cap。", "micro_example": "同一 blend component 在冬季可提供 octane/volatility value，到了低 RVP summer market 却需要减少使用。", "misreading": "认为 RVP 越高总是越值钱，或越低总是品质更好。", "takeaway": "把 RVP 放回季节、地区与 finished gasoline spec。"},
-    {"mechanism": "Benchmark basket evolution", "why_it_matters": "基准代表性依赖可交付供应，成分会随产量和贸易路线调整。", "micro_example": "2023 年 WTI Midland 加入 BFOETM basket，使 US Gulf crude 直接参与 global Brent price formation。", "misreading": "认为 Brent 永远只代表一个名为 Brent 的北海油田。", "takeaway": "跟踪 deliverable basket 与 methodology，而不只背 benchmark 名称。"},
-    {"mechanism": "PRA assessment reflexivity", "why_it_matters": "Assessment 进入大量合同，使参与者更愿意在窗口交易，窗口行为又反过来塑造 assessment。", "micro_example": "交易者在 MOC 发布真实可执行 bid，不仅表达自身需求，也影响当日所有引用 Platts 的发票。", "misreading": "把窗口内策略行为等同于无成本操纵，或反过来假定 methodology 能消除所有行为动机。", "takeaway": "同时看可执行性、方法规则和流动性集中效应。"},
-    {"mechanism": "Density-dependent hedge conversion", "why_it_matters": "Metric tonne 与 barrel 之间没有跨产品固定系数。", "micro_example": "一吨 WTI 约 7.50 barrels，而一吨 Maya 约 6.50；把前者系数套给后者会系统性高估 barrel exposure。", "misreading": "把 1 tonne = 某个固定 barrels 当作物理常数。", "takeaway": "使用合同产品与 reference density 对应的 conversion factor。"}
+    {
+      "mechanism": "Temperature-corrected density",
+      "why_it_matters": "同一重量原油在暖环境体积更大，体积计量与 API 必须回到共同参考温度。",
+      "micro_example": "油轮在寒冷装港装油、在温暖卸港排货，重量未变但体积会略增；作者因此把 density 统一引到 60°F、1 atmosphere。",
+      "misreading": "把现场不同温度的 observed volume 或 hydrometer reading 直接当成品质或短装差异。",
+      "takeaway": "核对 density basis 与 temperature correction，再比较数量和 API。"
+    },
+    {
+      "mechanism": "Hydrometer and Archimedes principle",
+      "why_it_matters": "现场密度读数来自浮力平衡，而不是液体颜色或黏稠感。",
+      "micro_example": "加重玻璃 hydrometer 在较密液体中浮得更高，thermohydrometer 同时测温以校正到 60°F。",
+      "misreading": "认为仪器在轻质油中读数更高是因为它浮得更高；API 是后续反向换算。",
+      "takeaway": "区分物理浮沉、specific gravity 与反向 API scale。"
+    },
+    {
+      "mechanism": "Off-spec versus distressed cargo",
+      "why_it_matters": "品质违约与没有买家是两种不同折价来源，可能叠加。",
+      "micro_example": "Cargo 先因 BS&W 超 spec 被原炼厂拒收，随后又因油轮等待、改航窗口收窄而成为 distressed cargo。",
+      "misreading": "把所有折价都归为原油品质差，忽略时间、库容和买方稀缺。",
+      "takeaway": "分别估算 reprocessing/compatibility cost 与 delay/diversion optionality loss。"
+    },
+    {
+      "mechanism": "TAN and metals are refinery-specific",
+      "why_it_matters": "相同 assay 对不同材料、catalyst 与装置配置的炼厂成本不同。",
+      "micro_example": "TAN 0.9 cargo 对受限常规炼厂可能需要深折价，对能控制高温环烷酸腐蚀且有 blending room 的炼厂价值更高。",
+      "misreading": "把一个 refinery 的 intake limit 当作全球统一商品边界。",
+      "takeaway": "升贴水是 cargo 与 marginal buyer configuration 的匹配结果。"
+    },
+    {
+      "mechanism": "RVP has value and compliance sides",
+      "why_it_matters": "更高 volatility 可能代表更多 valuable light ends，也可能违反 summer gasoline environmental cap。",
+      "micro_example": "同一 blend component 在冬季可提供 octane/volatility value，到了低 RVP summer market 却需要减少使用。",
+      "misreading": "认为 RVP 越高总是越值钱，或越低总是品质更好。",
+      "takeaway": "把 RVP 放回季节、地区与 finished gasoline spec。"
+    },
+    {
+      "mechanism": "Benchmark basket evolution",
+      "why_it_matters": "基准代表性依赖可交付供应，成分会随产量和贸易路线调整。",
+      "micro_example": "2023 年 WTI Midland 加入 BFOETM basket，使 US Gulf crude 直接参与 global Brent price formation。",
+      "misreading": "认为 Brent 永远只代表一个名为 Brent 的北海油田。",
+      "takeaway": "跟踪 deliverable basket 与 methodology，而不只背 benchmark 名称。"
+    },
+    {
+      "mechanism": "PRA assessment reflexivity",
+      "why_it_matters": "Assessment 进入大量合同，使参与者更愿意在窗口交易，窗口行为又反过来塑造 assessment。",
+      "micro_example": "交易者在 MOC 发布真实可执行 bid，不仅表达自身需求，也影响当日所有引用 Platts 的发票。",
+      "misreading": "把窗口内策略行为等同于无成本操纵，或反过来假定 methodology 能消除所有行为动机。",
+      "takeaway": "同时看可执行性、方法规则和流动性集中效应。"
+    },
+    {
+      "mechanism": "Density-dependent hedge conversion",
+      "why_it_matters": "Metric tonne 与 barrel 之间没有跨产品固定系数。",
+      "micro_example": "一吨 WTI 约 7.50 barrels，而一吨 Maya 约 6.50；把前者系数套给后者会系统性高估 barrel exposure。",
+      "misreading": "把 1 tonne = 某个固定 barrels 当作物理常数。",
+      "takeaway": "使用合同产品与 reference density 对应的 conversion factor。"
+    }
   ],
   "cases": [
     {
@@ -549,25 +1235,75 @@
       "PRA assessment 是方法化的收盘价格发现，不是最后一笔成交，也不是无条件的深度订单簿。",
       "泵价是原油、炼制、物流、零售与税的总和；美元名义价格还要与本币或真实购买力分开。"
     ],
-    "one_liner": "油价不是一个数，而是“什么油、在哪里、何时、按什么规则交付”这份承诺的价格。"
+    "one_liner": "油价不是一个数，而是“什么油、在哪里、何时、按什么规则交付”这份承诺的价格。",
+    "premises": [
+      "公开价格锚仍有足够流动性和代表性，具体货物可以按质量、地点、时间和交付责任被清楚定义。",
+      "隐含前提：合同使用的评估方法、单位换算和规格测试可被买卖双方共同接受并复验。"
+    ],
+    "breaks_when": [
+      "制裁、战争、港口关闭或管制价格使公开价格无法代表可执行货物流。",
+      "货物偏离规格、缺少可用运力或买方炼厂无法处理时，纸面价差不能转化为真实交易。"
+    ]
   },
   "self_checks": [
-    {"prompt": "合上页面，用六个字段定义一个可以比较的“油价”。", "model_answer": "合格回答应包含 commodity/grade、quality specification、location、delivery or pricing time、contract/delivery basis 与 unit/currency，并说明缺少任一字段都会让比较对象发生变化。"},
-    {"prompt": "解释为什么 term contract 占多数 physical volume，却仍由 spot market 锚定价格。", "model_answer": "长期合同主要预先解决数量、时间和供应可靠性，但绝对结算价常引用每天由 spot bids、offers、trades 或 futures/PRA assessment 形成的 benchmark，再加入 differential。"},
-    {"prompt": "只知道两桶 crude 都是 32° API，为什么还不能断言它们等价？", "model_answer": "还需比较 sulfur、TAN、metals、salt、BS&W、viscosity、pour point、RVP、distillation yield 和 test conditions，并把这些性质放到具体 refinery configuration 与产品价格中估值。"},
-    {"prompt": "用自己的话解释 Maya illustrative formula 为什么含 residual fuel assessment。", "model_answer": "Maya 是 heavy-sour crude，其炼厂价值不只来自 light transport products，也取决于 bottom-of-barrel residual material；No.6 fuel oil assessment 因而帮助公式近似这一部分 yield value。"},
-    {"prompt": "为什么 Platts MOC assessment 不是当天最后一笔成交价？", "model_answer": "MOC 在最后约 30 分钟观察一组可执行 bids、offers 与 trades，编辑按公开 methodology 判断收盘市场价值；它重视窗口内仍可成交的信息，而非机械复制任何单笔成交。"},
-    {"prompt": "A 地比 B 地便宜 $2/bbl，为什么 cargo 未必从 A 流向 B？", "model_answer": "必须把两价调整为同品质和同交付条件，再确认 $2 是否覆盖可执行 freight、保险、装卸、时间、损耗、信用与规格风险；只有 destination netback 更高才有实际 arbitrage。"},
-    {"prompt": "解释欧洲泵价明显高于美国为什么不能直接证明欧洲 crude 更稀缺。", "model_answer": "泵价还包含 refining、distribution、retail margin、excise tax 与 VAT。作者的 illustrative ladder 中 refinery-gate crude 成本相近，而每 gallon tax 差距很大，因而主要是价格层级不同。"},
-    {"prompt": "美元 WTI 上涨时，怎样检查是 oil 更贵还是 dollar 计价变化？", "model_answer": "可同时观察消费国本币价格、physical differentials 与 barrels-per-ounce-of-gold 等购买力尺度；若美元油价涨但每盎司黄金可买更多 barrels，oil 相对 gold 实际变便宜。"}
+    {
+      "prompt": "合上页面，用六个字段定义一个可以比较的“油价”。",
+      "model_answer": "合格回答应包含 commodity/grade、quality specification、location、delivery or pricing time、contract/delivery basis 与 unit/currency，并说明缺少任一字段都会让比较对象发生变化。"
+    },
+    {
+      "prompt": "解释为什么 term contract 占多数 physical volume，却仍由 spot market 锚定价格。",
+      "model_answer": "长期合同主要预先解决数量、时间和供应可靠性，但绝对结算价常引用每天由 spot bids、offers、trades 或 futures/PRA assessment 形成的 benchmark，再加入 differential。"
+    },
+    {
+      "prompt": "只知道两桶 crude 都是 32° API，为什么还不能断言它们等价？",
+      "model_answer": "还需比较 sulfur、TAN、metals、salt、BS&W、viscosity、pour point、RVP、distillation yield 和 test conditions，并把这些性质放到具体 refinery configuration 与产品价格中估值。"
+    },
+    {
+      "prompt": "用自己的话解释 Maya illustrative formula 为什么含 residual fuel assessment。",
+      "model_answer": "Maya 是 heavy-sour crude，其炼厂价值不只来自 light transport products，也取决于 bottom-of-barrel residual material；No.6 fuel oil assessment 因而帮助公式近似这一部分 yield value。"
+    },
+    {
+      "prompt": "为什么 Platts MOC assessment 不是当天最后一笔成交价？",
+      "model_answer": "MOC 在最后约 30 分钟观察一组可执行 bids、offers 与 trades，编辑按公开 methodology 判断收盘市场价值；它重视窗口内仍可成交的信息，而非机械复制任何单笔成交。"
+    },
+    {
+      "prompt": "A 地比 B 地便宜 $2/bbl，为什么 cargo 未必从 A 流向 B？",
+      "model_answer": "必须把两价调整为同品质和同交付条件，再确认 $2 是否覆盖可执行 freight、保险、装卸、时间、损耗、信用与规格风险；只有 destination netback 更高才有实际 arbitrage。"
+    },
+    {
+      "prompt": "解释欧洲泵价明显高于美国为什么不能直接证明欧洲 crude 更稀缺。",
+      "model_answer": "泵价还包含 refining、distribution、retail margin、excise tax 与 VAT。作者的 illustrative ladder 中 refinery-gate crude 成本相近，而每 gallon tax 差距很大，因而主要是价格层级不同。"
+    },
+    {
+      "prompt": "美元 WTI 上涨时，怎样检查是 oil 更贵还是 dollar 计价变化？",
+      "model_answer": "可同时观察消费国本币价格、physical differentials 与 barrels-per-ounce-of-gold 等购买力尺度；若美元油价涨但每盎司黄金可买更多 barrels，oil 相对 gold 实际变便宜。"
+    }
   ],
   "applications": [
-    {"situation": "新闻只写“油价上涨 3%”", "action": "先确认是 WTI futures、Brent futures、Dated Brent assessment、某 grade differential 还是 pump product；补齐 location、month 和 unit 后再解释。"},
-    {"situation": "某 heavy-sour grade 相对 Brent discount 突然扩大", "action": "同时查 API/sulfur 之外的 assay、coker/hydrotreater outages、hydrogen cost、resid cracks、目的地运费和生产商 OSP，而不是只归因于全球需求。"},
-    {"situation": "看到 Saudi Aramco 或其他 producer 调整 OSP", "action": "把新旧 OSP 放到同一 destination benchmark 下比较，再检查区域 refinery margin、竞争 grade 与 freight，判断它表达的是哪一类相对需求。"},
-    {"situation": "两个港口 crude prices 出现明显 spread", "action": "构建 executable freight netback：统一品质与 Incoterm，加入 tanker rate、航程、保险、损耗和时间，判断是否真的能触发 cargo movement。"},
-    {"situation": "PRA assessment 与屏幕 futures 同日走势不同", "action": "核对 eligible physical cargo、MOC window、bid/offer sequence、pricing laycan 和 local differential，识别 futures flat price 与 physical close 各自在描述什么。"},
-    {"situation": "比较不同国家 gasoline 或 diesel 价格", "action": "先统一 AKI/RON、sulfur、RVP/cetane 等 spec 与税前/税后口径，再拆 crude、refining、distribution、retail margin 和 tax。"}
+    {
+      "situation": "新闻只写“油价上涨 3%”",
+      "action": "先确认是 WTI futures、Brent futures、Dated Brent assessment、某 grade differential 还是 pump product；补齐 location、month 和 unit 后再解释。"
+    },
+    {
+      "situation": "某 heavy-sour grade 相对 Brent discount 突然扩大",
+      "action": "同时查 API/sulfur 之外的 assay、coker/hydrotreater outages、hydrogen cost、resid cracks、目的地运费和生产商 OSP，而不是只归因于全球需求。"
+    },
+    {
+      "situation": "看到 Saudi Aramco 或其他 producer 调整 OSP",
+      "action": "把新旧 OSP 放到同一 destination benchmark 下比较，再检查区域 refinery margin、竞争 grade 与 freight，判断它表达的是哪一类相对需求。"
+    },
+    {
+      "situation": "两个港口 crude prices 出现明显 spread",
+      "action": "构建 executable freight netback：统一品质与 Incoterm，加入 tanker rate、航程、保险、损耗和时间，判断是否真的能触发 cargo movement。"
+    },
+    {
+      "situation": "PRA assessment 与屏幕 futures 同日走势不同",
+      "action": "核对 eligible physical cargo、MOC window、bid/offer sequence、pricing laycan 和 local differential，识别 futures flat price 与 physical close 各自在描述什么。"
+    },
+    {
+      "situation": "比较不同国家 gasoline 或 diesel 价格",
+      "action": "先统一 AKI/RON、sulfur、RVP/cetane 等 spec 与税前/税后口径，再拆 crude、refining、distribution、retail margin 和 tax。"
+    }
   ],
   "review_prompts": [
     "一周后：找一条油价新闻，用六字段价格对象模板重写标题，并指出原标题省略了哪些条件。",
@@ -579,46 +1315,160 @@
     {
       "source_id": "oil101-ch02-crude-oil-assay",
       "section_mappings": [
-        {"section": "What Is a Crude Oil Assay?", "lesson_target": "assay-identity :: assay definition and cargo consequences", "disposition": "covered"},
-        {"section": "Fields, Streams, and Blends", "lesson_target": "assay-identity :: commercial grade formation", "disposition": "covered"},
-        {"section": "Density: The Most Important Property", "lesson_target": "api-sulfur-matrix :: density, API formula, hydrometer and classes", "disposition": "covered"},
-        {"section": "Sweet versus Sour: Sulfur Content", "lesson_target": "api-sulfur-matrix :: sulfur thresholds and refining burden", "disposition": "covered"},
-        {"section": "The Crude Quality Matrix", "lesson_target": "api-sulfur-matrix :: two-dimensional quality map and Figure 2-3", "disposition": "covered"},
-        {"section": "Acidity, Metals, and the Rest of the Assay Sheet", "lesson_target": "assay-tests-contract :: TAN, metals, viscosity, pour point, RVP, carbon, salt and BS&W", "disposition": "covered"},
-        {"section": "Why the Assay Matters for Prices", "lesson_target": "assay-tests-contract :: refinery yield calculation and differential", "disposition": "covered"}
+        {
+          "section": "What Is a Crude Oil Assay?",
+          "lesson_target": "assay-identity :: assay definition and cargo consequences",
+          "disposition": "covered"
+        },
+        {
+          "section": "Fields, Streams, and Blends",
+          "lesson_target": "assay-identity :: commercial grade formation",
+          "disposition": "covered"
+        },
+        {
+          "section": "Density: The Most Important Property",
+          "lesson_target": "api-sulfur-matrix :: density, API formula, hydrometer and classes",
+          "disposition": "covered"
+        },
+        {
+          "section": "Sweet versus Sour: Sulfur Content",
+          "lesson_target": "api-sulfur-matrix :: sulfur thresholds and refining burden",
+          "disposition": "covered"
+        },
+        {
+          "section": "The Crude Quality Matrix",
+          "lesson_target": "api-sulfur-matrix :: two-dimensional quality map and Figure 2-3",
+          "disposition": "covered"
+        },
+        {
+          "section": "Acidity, Metals, and the Rest of the Assay Sheet",
+          "lesson_target": "assay-tests-contract :: TAN, metals, viscosity, pour point, RVP, carbon, salt and BS&W",
+          "disposition": "covered"
+        },
+        {
+          "section": "Why the Assay Matters for Prices",
+          "lesson_target": "assay-tests-contract :: refinery yield calculation and differential",
+          "disposition": "covered"
+        }
       ]
     },
     {
       "source_id": "oil101-ch08-standards",
       "section_mappings": [
-        {"section": "Why Standards Matter", "lesson_target": "product-standards-price :: fungibility and supply reliability", "disposition": "covered"},
-        {"section": "Standards-Setting Organizations", "lesson_target": "product-standards-price :: API, ASTM, ISO, CEN, EPA, CARB and IMO roles", "disposition": "covered"},
-        {"section": "Crude Oil Tests", "lesson_target": "assay-tests-contract :: ASTM method reference card", "disposition": "covered"},
-        {"section": "Octane: RON, MON, and AKI", "lesson_target": "product-standards-price :: knock resistance and AKI formula", "disposition": "covered"},
-        {"section": "Gasoline Specifications", "lesson_target": "product-standards-price :: Tier 3 sulfur, RVP, benzene, ethanol and lead", "disposition": "covered"},
-        {"section": "Diesel Specifications", "lesson_target": "product-standards-price :: cetane, ULSD and emissions controls", "disposition": "covered"},
-        {"section": "Jet Fuel Specifications", "lesson_target": "product-standards-price :: Jet A and Jet A-1 safety limits", "disposition": "covered"},
-        {"section": "Residual and Bunker Fuel", "lesson_target": "product-standards-price :: IMO 2020 marine grade split", "disposition": "covered"}
+        {
+          "section": "Why Standards Matter",
+          "lesson_target": "product-standards-price :: fungibility and supply reliability",
+          "disposition": "covered"
+        },
+        {
+          "section": "Standards-Setting Organizations",
+          "lesson_target": "product-standards-price :: API, ASTM, ISO, CEN, EPA, CARB and IMO roles",
+          "disposition": "covered"
+        },
+        {
+          "section": "Crude Oil Tests",
+          "lesson_target": "assay-tests-contract :: ASTM method reference card",
+          "disposition": "covered"
+        },
+        {
+          "section": "Octane: RON, MON, and AKI",
+          "lesson_target": "product-standards-price :: knock resistance and AKI formula",
+          "disposition": "covered"
+        },
+        {
+          "section": "Gasoline Specifications",
+          "lesson_target": "product-standards-price :: Tier 3 sulfur, RVP, benzene, ethanol and lead",
+          "disposition": "covered"
+        },
+        {
+          "section": "Diesel Specifications",
+          "lesson_target": "product-standards-price :: cetane, ULSD and emissions controls",
+          "disposition": "covered"
+        },
+        {
+          "section": "Jet Fuel Specifications",
+          "lesson_target": "product-standards-price :: Jet A and Jet A-1 safety limits",
+          "disposition": "covered"
+        },
+        {
+          "section": "Residual and Bunker Fuel",
+          "lesson_target": "product-standards-price :: IMO 2020 marine grade split",
+          "disposition": "covered"
+        }
       ]
     },
     {
       "source_id": "oil101-ch17-oil-prices",
       "section_mappings": [
-        {"section": "Physical Oil Trading", "lesson_target": "price-object :: term and spot contracts", "disposition": "covered"},
-        {"section": "Benchmark Pricing", "lesson_target": "benchmark-system :: global markers, OSP and Figure 17-1", "disposition": "covered"},
-        {"section": "The Delivery-Chain Price Ladder", "lesson_target": "delivery-ladder-units :: wellhead-to-retail layers", "disposition": "covered"},
-        {"section": "Unit Conversions", "lesson_target": "delivery-ladder-units :: volume and density-dependent conversions", "disposition": "covered"},
-        {"section": "Formula Pricing: A Worked Example", "lesson_target": "formula-osp :: PEMEX benchmark weights and constant", "disposition": "covered"},
-        {"section": "Freight Netback Pricing", "lesson_target": "freight-netback :: origin value and arbitrage threshold", "disposition": "covered"},
-        {"section": "Pricing Windows and the Platts MOC", "lesson_target": "moc-assessment :: thirty-minute close methodology", "disposition": "covered"},
-        {"section": "Oil and the US Dollar", "lesson_target": "dollar-retail-real :: denomination and gold sanity check", "disposition": "covered"},
-        {"section": "Retail Price Differences", "lesson_target": "dollar-retail-real :: tax-driven pump price gaps", "disposition": "covered"}
+        {
+          "section": "Physical Oil Trading",
+          "lesson_target": "price-object :: term and spot contracts",
+          "disposition": "covered"
+        },
+        {
+          "section": "Benchmark Pricing",
+          "lesson_target": "benchmark-system :: global markers, OSP and Figure 17-1",
+          "disposition": "covered"
+        },
+        {
+          "section": "The Delivery-Chain Price Ladder",
+          "lesson_target": "delivery-ladder-units :: wellhead-to-retail layers",
+          "disposition": "covered"
+        },
+        {
+          "section": "Unit Conversions",
+          "lesson_target": "delivery-ladder-units :: volume and density-dependent conversions",
+          "disposition": "covered"
+        },
+        {
+          "section": "Formula Pricing: A Worked Example",
+          "lesson_target": "formula-osp :: PEMEX benchmark weights and constant",
+          "disposition": "covered"
+        },
+        {
+          "section": "Freight Netback Pricing",
+          "lesson_target": "freight-netback :: origin value and arbitrage threshold",
+          "disposition": "covered"
+        },
+        {
+          "section": "Pricing Windows and the Platts MOC",
+          "lesson_target": "moc-assessment :: thirty-minute close methodology",
+          "disposition": "covered"
+        },
+        {
+          "section": "Oil and the US Dollar",
+          "lesson_target": "dollar-retail-real :: denomination and gold sanity check",
+          "disposition": "covered"
+        },
+        {
+          "section": "Retail Price Differences",
+          "lesson_target": "dollar-retail-real :: tax-driven pump price gaps",
+          "disposition": "covered"
+        }
       ]
     }
   ],
   "sources": [
-    {"id": "oil101-ch02-crude-oil-assay", "label": "Oil 101 Chapter 2: A Crude Oil Assay (author's 2026 web edition)", "url": "https://oil101.morgandowney.com/chapters/crude-oil-assay", "coverage": "Assay, fields/streams/blends, density/API, sulfur, quality matrix, TAN, metals, viscosity, pour point, RVP, carbon residue, salt, BS&W and price differentials", "accessed": "2026-07-11"},
-    {"id": "oil101-ch08-standards", "label": "Oil 101 Chapter 8: Standards (author's 2026 web edition)", "url": "https://oil101.morgandowney.com/chapters/standards", "coverage": "Standards bodies, ASTM crude tests, octane/AKI, gasoline, diesel, jet and marine fuel specifications", "accessed": "2026-07-11"},
-    {"id": "oil101-ch17-oil-prices", "label": "Oil 101 Chapter 17: Oil Prices (author's 2026 web edition)", "url": "https://oil101.morgandowney.com/chapters/oil-prices", "coverage": "Physical trading, benchmarks, delivery ladder, units, PEMEX formula pricing, freight netback, Platts MOC, dollar denomination and retail taxation", "accessed": "2026-07-11"}
+    {
+      "id": "oil101-ch02-crude-oil-assay",
+      "label": "Oil 101 Chapter 2: A Crude Oil Assay (author's 2026 web edition)",
+      "url": "https://oil101.morgandowney.com/chapters/crude-oil-assay",
+      "coverage": "Assay, fields/streams/blends, density/API, sulfur, quality matrix, TAN, metals, viscosity, pour point, RVP, carbon residue, salt, BS&W and price differentials",
+      "accessed": "2026-07-11"
+    },
+    {
+      "id": "oil101-ch08-standards",
+      "label": "Oil 101 Chapter 8: Standards (author's 2026 web edition)",
+      "url": "https://oil101.morgandowney.com/chapters/standards",
+      "coverage": "Standards bodies, ASTM crude tests, octane/AKI, gasoline, diesel, jet and marine fuel specifications",
+      "accessed": "2026-07-11"
+    },
+    {
+      "id": "oil101-ch17-oil-prices",
+      "label": "Oil 101 Chapter 17: Oil Prices (author's 2026 web edition)",
+      "url": "https://oil101.morgandowney.com/chapters/oil-prices",
+      "coverage": "Physical trading, benchmarks, delivery ladder, units, PEMEX formula pricing, freight netback, Platts MOC, dollar denomination and retail taxation",
+      "accessed": "2026-07-11"
+    }
   ]
 }
