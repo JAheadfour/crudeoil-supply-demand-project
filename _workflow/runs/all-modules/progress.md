@@ -10,7 +10,7 @@ Signed exemplar: `_workflow/exemplars/golden-exemplar-module-01.json`
 | 05 | complete | pass | changes required | approved | pending |
 | 06 | complete | pass | changes required | approved | pending |
 | 07 | complete | pass | changes required | approved | pending |
-| 08 | in progress | pending | pending | pending | pending |
+| 08 | complete | pass | approved | approved | pending |
 | 09 | in progress | pending | pending | pending | pending |
 
 Global beginner-first contract: RED as expected until Modules 02-09 are complete.
