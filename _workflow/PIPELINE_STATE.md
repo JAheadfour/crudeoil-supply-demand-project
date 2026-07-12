@@ -18,7 +18,7 @@ Updated: 2026-07-12
 - [x] Rewrite Modules 02-09 from original-author sources
 - [x] Blind-review every rewritten module against Module 01
 - [x] Run integrated desktop/mobile QA for all modules
-- [ ] Publish the complete course and verify GitHub Pages
+- [x] Publish the complete course and verify GitHub Pages
 
 ## Canonical artifacts
 
@@ -31,4 +31,4 @@ Updated: 2026-07-12
 
 ## Gate
 
-Production gates passed on 2026-07-12. Modules 02-09 were generated from original author pages, mechanically validated, independently blind-reviewed against the signed exemplar, repaired, and browser-tested on desktop and 390px mobile. Remaining action: push and verify the live GitHub Pages cache/data versions.
+Production gates passed on 2026-07-12. Modules 02-09 were generated from original author pages, mechanically validated, independently blind-reviewed against the signed exemplar, repaired, and browser-tested on desktop and 390px mobile. GitHub Pages was then verified live: all 9 module JSON files and the 4 representative figure assets returned HTTP 200, all 66 lessons exposed the signed beginner-teaching fields, and the latest module-data and service-worker versions were active.
