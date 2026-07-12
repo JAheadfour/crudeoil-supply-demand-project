@@ -1,8 +1,8 @@
 # Oil 101 理解版质量 Rubric（候选 v1）
 
-锚点候选：`course/data/oil101-understanding/module-05-inventory-curve.json`。
+签收锚点：`_workflow/exemplars/golden-exemplar-module-01.json`。
 
-状态：完整样课已经生成并通过机械地板，但尚未获得用户对完整成品的签收。签收前仅用于校准，不得据此批量生产。
+状态：模块 1 已从作者原文重新构建，经过内容审稿、代码审稿、桌面与 390px 手机验收，并获得用户对第一节清晰度的明确认可。自 2026-07-11 起，它是模块 2-9 批量生产的最低深度与表达基线。
 
 ## D1 主线先行
 

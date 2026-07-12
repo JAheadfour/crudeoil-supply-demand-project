@@ -5,7 +5,7 @@
   "session_label": "Oil 101 · Understanding Track",
   "description": "以市场分析能力为主线，重组 Oil 101 全书，并保留产业纵深与原章节追溯。",
   "module_order": ["01", "02", "03", "04", "05", "06", "07", "08", "09"],
-  "pilot_module": "05",
+  "pilot_module": "01",
   "source_root": "https://oil101.morgandowney.com/chapters",
   "source_anomalies": []
 }

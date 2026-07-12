@@ -323,67 +323,71 @@ test("catalog links all nine complete and mirrored course modules", () => {
   }
 });
 
-test("module 01 only uses newly introduced lesson terms after terms_in_context defines them", () => {
-  const module = JSON.parse(read("docs/data/oil101-understanding/module-01-barrel-journey.json"));
-  const firstDefinitionLessonByLabel = new Map();
+test("all course lessons follow the signed beginner-first teaching contract", () => {
+  const catalog = JSON.parse(read("docs/data/oil101-understanding/catalog.json"));
 
-  assert.equal(module.lessons.length, 8);
-  module.lessons.forEach((lesson, lessonIndex) => {
-    for (const term of lesson.terms_in_context || []) {
-      for (const label of [term.term, term.cn]) {
-        if (!isSubstantiveString(label) || firstDefinitionLessonByLabel.has(label)) {
-          continue;
+  for (const entry of catalog.modules) {
+    const module = JSON.parse(read(`docs/data/oil101-understanding/${entry.file}.json`));
+    const firstDefinitionLessonByLabel = new Map();
+
+    module.lessons.forEach((lesson, lessonIndex) => {
+      for (const term of lesson.terms_in_context || []) {
+        for (const label of [term.term, term.cn]) {
+          if (!isSubstantiveString(label) || firstDefinitionLessonByLabel.has(label)) {
+            continue;
+          }
+          firstDefinitionLessonByLabel.set(label, lessonIndex);
         }
-        firstDefinitionLessonByLabel.set(label, lessonIndex);
       }
-    }
-  });
+    });
 
-  const preDefinitionTextByLesson = module.lessons.map((lesson) =>
-    preDefinitionFields(lesson).join(" ")
-  );
+    const preDefinitionTextByLesson = module.lessons.map((lesson) =>
+      preDefinitionFields(lesson).join(" ")
+    );
 
-  for (const lesson of module.lessons) {
-    assert.ok(lesson.reader_question.length >= 20, lesson.id);
-    assert.ok(lesson.scene.setting.length >= 30, lesson.id);
-    assert.ok(lesson.scene.actors.length >= 15, lesson.id);
-    assert.ok(lesson.scene.action.length >= 40, lesson.id);
-    assert.ok(lesson.plain_answer.length >= 40, lesson.id);
-    assert.ok(lesson.mechanism_chain.length >= 3, lesson.id);
-    assert.ok(lesson.terms_in_context.length >= 2, lesson.id);
-    assert.ok(lesson.terms_in_context.every((term) =>
-      term.term && term.cn && term.plain_definition && term.why_it_matters
-    ), lesson.id);
-    const currentLabels = [...new Set(lesson.terms_in_context.flatMap((term) =>
-      [term.term, term.cn].filter((label) => isSubstantiveString(label))
-    ))];
-    for (const label of currentLabels) {
-      const firstDefinitionLessonIndex = firstDefinitionLessonByLabel.get(label);
-      for (let lessonIndex = 0; lessonIndex <= firstDefinitionLessonIndex; lessonIndex += 1) {
-        assert.doesNotMatch(
-          preDefinitionTextByLesson[lessonIndex],
-          termPattern(label),
-          `${module.lessons[lessonIndex].id}: ${label}`
-        );
+    for (const lesson of module.lessons) {
+      const lessonLabel = `${entry.file}/${lesson.id}`;
+      assert.ok(isSubstantiveString(lesson.reader_question, 20), `${lessonLabel}: reader question`);
+      assert.ok(isSubstantiveString(lesson.scene?.setting, 30), `${lessonLabel}: scene setting`);
+      assert.ok(isSubstantiveString(lesson.scene?.actors, 15), `${lessonLabel}: scene actors`);
+      assert.ok(isSubstantiveString(lesson.scene?.action, 40), `${lessonLabel}: scene action`);
+      assert.ok(isSubstantiveString(lesson.plain_answer, 40), `${lessonLabel}: plain answer`);
+      assert.ok(lesson.mechanism_chain.length >= 3, `${lessonLabel}: mechanism chain`);
+      assert.ok(lesson.terms_in_context.length >= 2, `${lessonLabel}: contextual terms`);
+      assert.ok(lesson.terms_in_context.every((term) =>
+        term.term && term.cn && term.plain_definition && term.why_it_matters
+      ), `${lessonLabel}: complete contextual terms`);
+      const currentLabels = [...new Set(lesson.terms_in_context.flatMap((term) =>
+        [term.term, term.cn].filter((label) => isSubstantiveString(label))
+      ))];
+      for (const label of currentLabels) {
+        const firstDefinitionLessonIndex = firstDefinitionLessonByLabel.get(label);
+        for (let lessonIndex = 0; lessonIndex <= firstDefinitionLessonIndex; lessonIndex += 1) {
+          assert.doesNotMatch(
+            preDefinitionTextByLesson[lessonIndex],
+            termPattern(label),
+            `${entry.file}/${module.lessons[lessonIndex].id}: ${label}`
+          );
+        }
       }
+      const example = lesson.worked_example;
+      assert.ok(isSubstantiveString(example.actor, 8), `${lessonLabel}: example actor`);
+      assert.ok(Array.isArray(example.inputs), `${lessonLabel}: example inputs array`);
+      assert.ok(
+        example.inputs.filter((input) => isSubstantiveString(input, 8)).length >= 2,
+        `${lessonLabel}: example substantive inputs`
+      );
+      assert.match(example.setup, numberPattern, `${lessonLabel}: setup numeric value`);
+      assert.match(example.setup, recognizedUnitPattern, `${lessonLabel}: setup recognized unit`);
+      assert.ok(example.steps.length >= 2, `${lessonLabel}: example steps`);
+      assert.ok(example.steps.every((step) => step.length >= 20), `${lessonLabel}: step detail`);
+      assert.ok(
+        example.steps.some((step) => explicitCalculationPattern.test(step)),
+        `${lessonLabel}: explicit = calculation with numbers and units`
+      );
+      assert.ok(isSubstantiveString(example.answer, 25), `${lessonLabel}: substantive answer`);
+      assert.ok(lesson.deep_dive.length >= 1, `${lessonLabel}: deep dive`);
     }
-    const example = lesson.worked_example;
-    assert.ok(isSubstantiveString(example.actor, 8), `${lesson.id}: example actor`);
-    assert.ok(Array.isArray(example.inputs), `${lesson.id}: example inputs array`);
-    assert.ok(
-      example.inputs.filter((input) => isSubstantiveString(input, 8)).length >= 2,
-      `${lesson.id}: example substantive inputs`
-    );
-    assert.match(example.setup, numberPattern, `${lesson.id}: setup numeric value`);
-    assert.match(example.setup, recognizedUnitPattern, `${lesson.id}: setup recognized unit`);
-    assert.ok(example.steps.length >= 2, `${lesson.id}: example steps`);
-    assert.ok(example.steps.every((step) => step.length >= 20), `${lesson.id}: step detail`);
-    assert.ok(
-      example.steps.some((step) => explicitCalculationPattern.test(step)),
-      `${lesson.id}: explicit = calculation with numbers and units`
-    );
-    assert.ok(isSubstantiveString(example.answer, 25), `${lesson.id}: substantive answer`);
-    assert.ok(lesson.deep_dive.length >= 1, lesson.id);
   }
 });
 
