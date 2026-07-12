@@ -1,4 +1,4 @@
-const CACHE_NAME = 'oil101-understanding-v6';
+const CACHE_NAME = 'oil101-understanding-v7';
 const ASSETS = [
   './index.html',
   './chapters.html',

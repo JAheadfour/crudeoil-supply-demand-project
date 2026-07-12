@@ -282,6 +282,50 @@ test("teaching lessons tolerate missing optional arrays without leaking undefine
   assert.match(html, /深入一层/);
 });
 
+test("figure renderer escapes chapter and original asset references without leaking empty links", () => {
+  const { renderFigure } = loadPlatformSandbox();
+  const escapedChapterUrl = "https://chapter.example.com/report?x=1&amp;y=&quot;quoted&quot;";
+  const escapedChapterLabel = "Chapter &amp; &quot;Label&quot;";
+  const escapedAssetUrl = "https://assets.example.com/raw?name=opec&amp;note=&quot;alpha&quot;";
+  const withAsset = renderFigure({
+    src: "../assets/figure.svg",
+    alt: "Figure alt",
+    caption: "Figure caption",
+    reading_guide: "Read carefully",
+    reference: {
+      url: "https://chapter.example.com/report?x=1&y=\"quoted\"",
+      label: "Chapter & \"Label\"",
+      accessed: "2026-07-11 & \"checked\"",
+      asset_url: "https://assets.example.com/raw?name=opec&note=\"alpha\"",
+    },
+  });
+  const withoutAsset = renderFigure({
+    src: "../assets/figure.svg",
+    alt: "Figure alt",
+    caption: "Figure caption",
+    reading_guide: "Read carefully",
+    reference: {
+      url: "https://chapter.example.com/report?x=1&y=\"quoted\"",
+      label: "Chapter & \"Label\"",
+      accessed: "2026-07-11 & \"checked\"",
+    },
+  });
+
+  assert.match(withAsset, new RegExp(`href="${escapeRegExp(escapedChapterUrl)}"`));
+  assert.match(withAsset, new RegExp(`>${escapeRegExp(escapedChapterLabel)}</a>`));
+  assert.match(withAsset, /访问日期 2026-07-11 &amp; &quot;checked&quot;/);
+  assert.match(withAsset, /原图 Original asset:/);
+  assert.match(withAsset, new RegExp(`href="${escapeRegExp(escapedAssetUrl)}"`));
+  assert.match(withAsset, new RegExp(`>${escapeRegExp(escapedAssetUrl)}</a>`));
+  assert.doesNotMatch(withAsset, /href="[^"]*&y="quoted"/);
+  assert.doesNotMatch(withAsset, /href="[^"]*&note="alpha"/);
+  assert.doesNotMatch(withAsset, /Chapter & "Label"/);
+  assert.doesNotMatch(withAsset, /raw\?name=opec&note="alpha"/);
+  assert.doesNotMatch(withoutAsset, /undefined|null/);
+  assert.doesNotMatch(withoutAsset, /原图 Original asset:/);
+  assert.doesNotMatch(withoutAsset, /<a href=""><\/a>/);
+});
+
 test("teaching renderer and lesson shells keep cache-busting versions aligned", () => {
   const platform = read("docs/assets/platform.js");
   const sw = read("docs/sw.js");
@@ -292,10 +336,10 @@ test("teaching renderer and lesson shells keep cache-busting versions aligned", 
   const dedicatedScriptVersion = dedicatedHtml.match(/platform\.js\?v=([0-9-]+)/)?.[1];
   const cacheName = sw.match(/CACHE_NAME = 'oil101-understanding-v(\d+)'/)?.[1];
 
-  assert.equal(dataVersion, "20260711-3");
+  assert.equal(dataVersion, "20260711-4");
   assert.equal(moduleScriptVersion, dataVersion);
   assert.equal(dedicatedScriptVersion, dataVersion);
-  assert.equal(cacheName, "6");
+  assert.equal(cacheName, "7");
 });
 
 test("catalog links all nine complete and mirrored course modules", () => {

@@ -1,6 +1,6 @@
 # Oil 101 Understanding Platform State
 
-Updated: 2026-07-11
+Updated: 2026-07-12
 
 ## Current phase
 
@@ -15,9 +15,10 @@ Updated: 2026-07-11
 - [x] User sign-off on the pilot teaching standard: first lesson is clear enough to scale
 - [x] Freeze pilot as `golden-exemplar-module-01.json`
 - [x] Pilot blind review and targeted repair
-- [ ] Rewrite Modules 02-09 from original-author sources
-- [ ] Blind-review every rewritten module against Module 01
-- [ ] Run integrated desktop/mobile QA and publish all modules
+- [x] Rewrite Modules 02-09 from original-author sources
+- [x] Blind-review every rewritten module against Module 01
+- [x] Run integrated desktop/mobile QA for all modules
+- [ ] Publish the complete course and verify GitHub Pages
 
 ## Canonical artifacts
 
@@ -30,4 +31,4 @@ Updated: 2026-07-11
 
 ## Gate
 
-Gate passed on 2026-07-11. Use Module 01 as the minimum teaching-depth and readability baseline. Every remaining module must be generated from the original author pages, mechanically validated, independently blind-reviewed against the signed exemplar, and browser-tested before publication.
+Production gates passed on 2026-07-12. Modules 02-09 were generated from original author pages, mechanically validated, independently blind-reviewed against the signed exemplar, repaired, and browser-tested on desktop and 390px mobile. Remaining action: push and verify the live GitHub Pages cache/data versions.

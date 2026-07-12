@@ -1,6 +1,6 @@
 const root = document.querySelector("[data-module-root]");
 const moduleNamePattern = /^module-\d{2}-[a-z0-9-]+$/;
-const MODULE_DATA_VERSION = "20260711-3";
+const MODULE_DATA_VERSION = "20260711-4";
 
 function resolveModuleUrl() {
   if (!root) return null;
@@ -35,12 +35,16 @@ function saveProgress(moduleId, state) {
 }
 
 function renderFigure(figure) {
+  const reference = figure.reference || {};
+  const originalAsset = reference.asset_url
+    ? `；原图 Original asset: <a href="${escapeHtml(reference.asset_url)}">${escapeHtml(reference.asset_url)}</a>`
+    : "";
   return `
     <figure class="figure-block">
       <p class="figure-guide">怎么看这张图：${escapeHtml(figure.reading_guide)}</p>
       <img src="../${escapeHtml(figure.src)}" alt="${escapeHtml(figure.alt)}" loading="lazy">
       <figcaption class="figure-caption">${escapeHtml(figure.caption)}</figcaption>
-      <div class="reference-note">Reference: <a href="${escapeHtml(figure.reference.url)}">${escapeHtml(figure.reference.label)}</a>，访问日期 ${escapeHtml(figure.reference.accessed)}</div>
+      <div class="reference-note">Reference: <a href="${escapeHtml(reference.url)}">${escapeHtml(reference.label)}</a>，访问日期 ${escapeHtml(reference.accessed)}${originalAsset}</div>
     </figure>`;
 }
 
