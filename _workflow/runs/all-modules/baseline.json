@@ -1,0 +1,167 @@
+﻿[
+    {
+        "file":  "module-01-barrel-journey.json",
+        "sha256":  "d106b4c39b34a26db4f7e335c8479731f7a4773758163b533d92f7c9e388a233",
+        "lesson_ids":  [
+                           "reservoir-to-well",
+                           "physical-chain",
+                           "liquids-family",
+                           "assay-quality",
+                           "molecular-barrel",
+                           "refinery-transformation",
+                           "products-specifications",
+                           "logistics-availability"
+                       ],
+        "lesson_count":  8,
+        "coverage_count":  87,
+        "figure_count":  1,
+        "source_count":  8,
+        "self_check_count":  7
+    },
+    {
+        "file":  "module-02-supply-demand-balance.json",
+        "sha256":  "e2774164e969ddd909d6bab25277ab2fdf237b250629595ac553a0295f80c019",
+        "lesson_ids":  [
+                           "balance-as-physical-flow",
+                           "resource-to-flow",
+                           "decline-and-reinvestment",
+                           "products-to-crude-demand",
+                           "seasonal-balance",
+                           "reserves-capacity-production",
+                           "control-and-concentration"
+                       ],
+        "lesson_count":  7,
+        "coverage_count":  57,
+        "figure_count":  1,
+        "source_count":  5,
+        "self_check_count":  7
+    },
+    {
+        "file":  "module-03-local-shortages.json",
+        "sha256":  "90ab16fe73cc7beeb18b9b498b17ca7fbcaf3a5bbce92471e43ea5654bc2f731",
+        "lesson_ids":  [
+                           "five-gates",
+                           "refinery-config",
+                           "spec-frag",
+                           "transport-net",
+                           "storage-local",
+                           "season-cycle",
+                           "compound-shock"
+                       ],
+        "lesson_count":  7,
+        "coverage_count":  53,
+        "figure_count":  3,
+        "source_count":  5,
+        "self_check_count":  7
+    },
+    {
+        "file":  "module-04-what-is-oil-price.json",
+        "sha256":  "98017fde095c19e09e8111ee71ac6ce43af059d132ae6fe346fdd5fe7a24b5b5",
+        "lesson_ids":  [
+                           "price-object",
+                           "benchmark-system",
+                           "assay-identity",
+                           "api-sulfur-matrix",
+                           "assay-tests-contract",
+                           "product-standards-price",
+                           "delivery-ladder-units",
+                           "formula-osp",
+                           "freight-netback",
+                           "moc-assessment",
+                           "dollar-retail-real"
+                       ],
+        "lesson_count":  11,
+        "coverage_count":  3,
+        "figure_count":  2,
+        "source_count":  3,
+        "self_check_count":  8
+    },
+    {
+        "file":  "module-05-inventory-curve.json",
+        "sha256":  "955e5bfb799f0d2884a397e1d6816d7a6c505a3666c041d821b9a1ed8d0151c0",
+        "lesson_ids":  [
+                           "inventory-buffer",
+                           "stock-flow",
+                           "curve-carry",
+                           "physical-convergence",
+                           "reading-framework"
+                       ],
+        "lesson_count":  5,
+        "coverage_count":  37,
+        "figure_count":  1,
+        "source_count":  5,
+        "self_check_count":  5
+    },
+    {
+        "file":  "module-06-risk-management.json",
+        "sha256":  "1c92a9c838f3423d62cb8821ffa2f02d2b93e87b9ea6c3613ba4e679f93ee041",
+        "lesson_ids":  [
+                           "exposure",
+                           "linear-hedge",
+                           "options",
+                           "basis-roll",
+                           "risk-metrics",
+                           "governance",
+                           "perpetuals"
+                       ],
+        "lesson_count":  7,
+        "coverage_count":  48,
+        "figure_count":  1,
+        "source_count":  5,
+        "self_check_count":  8
+    },
+    {
+        "file":  "module-07-producers-opec-shale.json",
+        "sha256":  "74ea0a0b9c50608a7a8f7a08ea5197e3f301e316ad6e005daf6f79a91f546c6d",
+        "lesson_ids":  [
+                           "supply-power-history",
+                           "project-pipeline",
+                           "reserves-bookability",
+                           "shale-short-cycle",
+                           "opec-spare-capacity",
+                           "hormuz-forced-shutins",
+                           "supply-dashboard"
+                       ],
+        "lesson_count":  7,
+        "coverage_count":  68,
+        "figure_count":  1,
+        "source_count":  11,
+        "self_check_count":  7
+    },
+    {
+        "file":  "module-08-products-petrochem-transition.json",
+        "sha256":  "40657f88b3af2fd1a372df29b55422910497562228af80016c87549fe2e002d8",
+        "lesson_ids":  [
+                           "product-barrel-map",
+                           "specification-feedback",
+                           "hard-to-substitute-fuels",
+                           "petrochemical-molecule-tree",
+                           "engine-stock-flow",
+                           "lng-globalization",
+                           "transition-portfolio"
+                       ],
+        "lesson_count":  7,
+        "coverage_count":  64,
+        "figure_count":  1,
+        "source_count":  6,
+        "self_check_count":  7
+    },
+    {
+        "file":  "module-09-industry-synthesis-lab.json",
+        "sha256":  "1c3f0505df19b58be0fd616aab3aadb58734aff9bc632112e7c6bf1b3746266a",
+        "lesson_ids":  [
+                           "shock-classification",
+                           "flow-and-lag",
+                           "bottleneck-geometry",
+                           "inventory-migration",
+                           "relative-price-map",
+                           "reaction-functions",
+                           "falsifiable-thesis"
+                       ],
+        "lesson_count":  7,
+        "coverage_count":  63,
+        "figure_count":  1,
+        "source_count":  14,
+        "self_check_count":  7
+    }
+]
