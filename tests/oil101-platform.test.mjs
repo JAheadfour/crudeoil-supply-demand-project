@@ -14,11 +14,11 @@ const termPattern = (label) =>
     : new RegExp(escapeRegExp(label), "i");
 const numberPattern = /\d[\d,]*(?:\.\d+)?/;
 const recognizedUnitPattern =
-  /\b(?:bbl|bbls|barrel|barrels|bpd|kbpd|mbpd|tonne|tonnes|ton|tons|gallon|gallons|psi|API|RVP|octane|cetane|hours?|days?|kg|m3|m³|liters?|litres?|L|days?)\b|°API|US\$|\$|%/i;
-const calculationUnitPattern = String.raw`(?:[\u4ebf\u4e07]?(?:\u6876|\u7f8e\u5143|bbls?|barrels?|bpd|kbpd|mbpd|tonnes?|tons?|gallons?|psi|API|RVP|octane|cetane|hours?|days?|kg|m3|m\u00c2\u00b3|liters?|litres?|L|%))`;
+  /\b(?:bbl|bbls|barrel|barrels|bpd|kbpd|mbpd|boe|tonne|tonnes|ton|tons|gallon|gallons|psi|API|RVP|octane|cetane|hours?|days?|weeks?|months?|years?|kg|m3|m³|liters?|litres?|L|contracts?|lots?|MMBtu|MWh)\b|°API|US\$|\$|%/i;
+const calculationUnitPattern = String.raw`(?:[\u4ebf\u4e07]?(?:\u6876|\u7f8e\u5143|bbls?|barrels?|bpd|kbpd|mbpd|boe|tonnes?|tons?|gallons?|psi|API|RVP|octane|cetane|hours?|days?|weeks?|months?|years?|kg|m3|m\u00b3|liters?|litres?|L|contracts?|lots?|MMBtu|MWh|%))`;
 const calculationOperandPattern = String.raw`\d[\d,]*(?:\.\d+)?(?:\s*${calculationUnitPattern})?`;
 const explicitCalculationPattern = new RegExp(
-  String.raw`${calculationOperandPattern}\s*[\u00d7\u00f7+\-]\s*${calculationOperandPattern}\s*=\s*\d[\d,]*(?:\.\d+)?\s*${calculationUnitPattern}(?:\s*\/\s*(?:\u6876|bbls?|barrels?|\u7f8e\u5143|bpd|kbpd|mbpd))?`,
+  String.raw`${calculationOperandPattern}\s*[\u00d7\u00f7+\-]\s*${calculationOperandPattern}\s*=\s*\d[\d,]*(?:\.\d+)?\s*${calculationUnitPattern}(?:\s*\/\s*(?:\u6876|bbls?|barrels?|\u7f8e\u5143|bpd|kbpd|mbpd|months?|years?))?`,
   "i"
 );
 const preDefinitionFields = (lesson) => [
