@@ -326,6 +326,36 @@ test("figure renderer escapes chapter and original asset references without leak
   assert.doesNotMatch(withoutAsset, /<a href=""><\/a>/);
 });
 
+test("figure renderer normalizes local asset paths for the published module shell", () => {
+  const { renderFigure } = loadPlatformSandbox();
+  const moduleUrl = "https://jaheadfour.github.io/crudeoil-supply-demand-project/learn/module.html";
+
+  for (const src of [
+    "assets/figures/x.png",
+    "./assets/figures/x.png",
+    "../assets/figures/x.png",
+    "../../../assets/figures/x.png",
+  ]) {
+    const html = renderFigure({
+      src,
+      alt: "Figure alt",
+      caption: "Figure caption",
+      reading_guide: "Read carefully",
+      reference: {},
+    });
+    const renderedSrc = html.match(/<img src="([^"]+)"/)?.[1];
+
+    assert.equal(renderedSrc, "../assets/figures/x.png", src);
+    assert.doesNotMatch(html, /src="\.\.\/\.\.\/assets\//, src);
+    assert.equal(
+      new URL(renderedSrc, moduleUrl).pathname,
+      "/crudeoil-supply-demand-project/assets/figures/x.png",
+      src
+    );
+    assert.notEqual(new URL(renderedSrc, moduleUrl).pathname, "/assets/figures/x.png", src);
+  }
+});
+
 test("teaching renderer and lesson shells keep cache-busting versions aligned", () => {
   const platform = read("docs/assets/platform.js");
   const sw = read("docs/sw.js");

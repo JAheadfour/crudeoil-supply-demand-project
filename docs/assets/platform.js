@@ -22,6 +22,31 @@ const asArray = (value) => Array.isArray(value) ? value : [];
 const list = (items, className = "") => `<ol class="${className}">${asArray(items).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol>`;
 const bullets = (items, className = "") => `<ul class="${className}">${asArray(items).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 
+function normalizeFigureSrc(value) {
+  const stripped = String(value || "")
+    .replaceAll("\\", "/")
+    .replace(/^(?:\.{1,2}\/)+/, "");
+  const encodedPath = stripped.split(/[?#]/, 1)[0];
+  let decodedPath;
+
+  try {
+    decodedPath = decodeURIComponent(encodedPath);
+  } catch {
+    return "";
+  }
+
+  const segments = decodedPath.split("/");
+  if (
+    !stripped.startsWith("assets/")
+    || decodedPath.includes("\\")
+    || segments.some((segment) => !segment || segment === "." || segment === "..")
+  ) {
+    return "";
+  }
+
+  return `../${stripped}`;
+}
+
 function loadProgress(moduleId) {
   try {
     return JSON.parse(localStorage.getItem(`oil101Progress:${moduleId}`)) || { checks: {} };
@@ -36,13 +61,14 @@ function saveProgress(moduleId, state) {
 
 function renderFigure(figure) {
   const reference = figure.reference || {};
+  const figureSrc = normalizeFigureSrc(figure.src);
   const originalAsset = reference.asset_url
     ? `；原图 Original asset: <a href="${escapeHtml(reference.asset_url)}">${escapeHtml(reference.asset_url)}</a>`
     : "";
   return `
     <figure class="figure-block">
       <p class="figure-guide">怎么看这张图：${escapeHtml(figure.reading_guide)}</p>
-      <img src="../${escapeHtml(figure.src)}" alt="${escapeHtml(figure.alt)}" loading="lazy">
+      <img src="${escapeHtml(figureSrc)}" alt="${escapeHtml(figure.alt)}" loading="lazy">
       <figcaption class="figure-caption">${escapeHtml(figure.caption)}</figcaption>
       <div class="reference-note">Reference: <a href="${escapeHtml(reference.url)}">${escapeHtml(reference.label)}</a>，访问日期 ${escapeHtml(reference.accessed)}${originalAsset}</div>
     </figure>`;
