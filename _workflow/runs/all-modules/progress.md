@@ -9,7 +9,7 @@ Signed exemplar: `_workflow/exemplars/golden-exemplar-module-01.json`
 | 04 | complete | pass | changes required | approved | pending |
 | 05 | complete | pass | changes required | approved | pending |
 | 06 | complete | pass | changes required | approved | pending |
-| 07 | complete | pass | changes required | in progress | pending |
+| 07 | complete | pass | changes required | approved | pending |
 | 08 | in progress | pending | pending | pending | pending |
 | 09 | in progress | pending | pending | pending | pending |
 
