@@ -85,3 +85,16 @@ identity, layout, source links, and file integrity. They cannot decide whether
 the voice chemistry and listening rhythm feel right to the intended listener.
 No Episodes 02-12 should enter batch audio production until the user has
 listened to this pilot and accepted or revised that experience.
+
+## Publication verification
+
+- Live page:
+  `https://jaheadfour.github.io/crudeoil-supply-demand-project/podcast/episode-01.html`
+- Page response: HTTP 200
+- Audio response: HTTP 206 for byte-range requests
+- Published range size: `bytes 0-1023/12671929`
+- Service worker: v9; audio and Range requests bypass Cache API
+- Automated live-browser result: desktop and 390-pixel mobile both loaded the
+  26:22 duration, rendered 8 chapters and 136 transcript segments, and sought
+  to 10:00 without a media error
+- Final two-viewport online run: 9.2 seconds

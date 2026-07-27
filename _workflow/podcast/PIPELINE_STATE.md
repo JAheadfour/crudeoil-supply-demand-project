@@ -19,12 +19,12 @@ Updated: 2026-07-27
 - [x] Verify media integrity, metadata, duration, and checksum
 - [x] Produce an exact timed transcript from the synthesis input
 - [x] Audit spoken claims against the source packet
-- [ ] Publish pilot to Oil 101 mobile site
+- [x] Publish pilot to Oil 101 mobile site
 - [ ] User signs or rejects the episode exemplar
 
 ## Current gate
 
-The audited 26:22 pilot and exact transcript are packaged for the website.
+The audited 26:22 pilot and exact transcript are live on GitHub Pages.
 NotebookLM has the final source packet and prompt, but its alternative Audio
-Overview is waiting on the account's daily audio quota. Publication and user
-listening approval are the remaining gates.
+Overview is waiting on the account's daily audio quota. User listening
+approval is the only remaining gate before Episodes 02-12 enter production.
