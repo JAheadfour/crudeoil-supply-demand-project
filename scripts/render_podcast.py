@@ -7,13 +7,13 @@ import asyncio
 import hashlib
 import json
 import re
-import struct
 from dataclasses import dataclass
 from pathlib import Path
 
 import edge_tts
 import lameenc
-from mutagen.id3 import ID3, TALB, TCOM, TIT2, TPE1, TXXX
+import miniaudio
+from mutagen.id3 import ID3, TALB, TCOM, TIT2, TLEN, TPE1, TXXX
 from mutagen.mp3 import MP3
 
 
@@ -102,16 +102,28 @@ async def synthesize_turn(
     raise AssertionError("unreachable")
 
 
-def encode_silence(seconds: float) -> bytes:
-    sample_rate = 24_000
-    sample_count = int(sample_rate * seconds)
-    pcm = struct.pack("<h", 0) * sample_count
+def decode_pcm(path: Path) -> bytes:
+    decoded = miniaudio.decode_file(
+        str(path),
+        output_format=miniaudio.SampleFormat.SIGNED16,
+        nchannels=1,
+        sample_rate=24_000,
+    )
+    return decoded.samples.tobytes()
+
+
+def pcm_silence(seconds: float) -> bytes:
+    sample_count = int(24_000 * seconds)
+    return b"\0\0" * sample_count
+
+
+def build_encoder(bit_rate: int) -> lameenc.Encoder:
     encoder = lameenc.Encoder()
-    encoder.set_bit_rate(48)
-    encoder.set_in_sample_rate(sample_rate)
+    encoder.set_bit_rate(bit_rate)
+    encoder.set_in_sample_rate(24_000)
     encoder.set_channels(1)
     encoder.set_quality(2)
-    return encoder.encode(pcm) + encoder.flush()
+    return encoder
 
 
 async def render(args: argparse.Namespace, segments: list[Segment]) -> dict[str, object]:
@@ -151,18 +163,23 @@ async def render(args: argparse.Namespace, segments: list[Segment]) -> dict[str,
         if completed % 20 == 0:
             print(f"rendered {completed} speech segments", flush=True)
 
+    encoder = build_encoder(args.bit_rate)
     with args.output.open("wb") as combined:
         for segment, audio_path in zip(segments, rendered, strict=True):
             if segment.kind == "PAUSE":
-                combined.write(encode_silence(min(segment.seconds, args.max_pause)))
+                pcm = pcm_silence(min(segment.seconds, args.max_pause))
             else:
-                combined.write(audio_path.read_bytes())
+                pcm = decode_pcm(audio_path)
+            combined.write(encoder.encode(pcm))
+        combined.write(encoder.flush())
 
+    encoded_audio = MP3(args.output)
     tags = ID3()
     tags.add(TIT2(encoding=3, text=args.title))
     tags.add(TALB(encoding=3, text="Oil 101 中文深度播客"))
     tags.add(TPE1(encoding=3, text="Oil 101 中文播客"))
     tags.add(TCOM(encoding=3, text="Source-bounded educational adaptation"))
+    tags.add(TLEN(encoding=3, text=str(round(encoded_audio.info.length * 1000))))
     tags.add(TXXX(encoding=3, desc="VOICE_A", text=args.voice_a))
     tags.add(TXXX(encoding=3, desc="VOICE_B", text=args.voice_b))
     tags.save(args.output)
@@ -203,6 +220,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--rate-b", default="-1%")
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument("--max-pause", type=float, default=30.0)
+    parser.add_argument("--bit-rate", type=int, default=64)
     parser.add_argument("--title", default="地下没有一座原油湖")
     parser.add_argument("--validate-only", action="store_true")
     return parser

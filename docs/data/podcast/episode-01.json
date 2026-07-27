@@ -3,10 +3,10 @@
   "episode": "01",
   "title": "地下没有一座原油湖",
   "deck": "岩石里的烃，如何穿过地质、井筒和地面处理三组闸门，最终成为稳定、可计量、能进入商业系统的一桶液体。",
-  "duration_seconds": 1582.392,
+  "duration_seconds": 1582.248,
   "duration_display": "26:22",
   "published_audio": "../assets/audio/oil101/episode-01-underground-no-lake.mp3",
-  "audio_sha256": "297EC99F45854005F530871AE93529144D610CA4089AC82F1CA8722C78D01995",
+  "audio_sha256": "6D5C33ADCA1ACF411A56C1377CBD7BBB14EAD73A3B8E90CDABA26207962D8915",
   "script_sha256": "DC3A387F6AB56AF2C01D6A1BC4DC9D015A81711907588C89D097F1ACF734F46E",
   "source_packet_sha256": "92FD4C2924F39493462648FCD527F74E0808E7C1E361A6900589669867AFC23C",
   "chapters": [

@@ -47,15 +47,20 @@ Teachability review:
 
 ## Audio integrity
 
-- Bytes: 9,505,115
-- Duration: 1,582.392 seconds
-- Bitrate: 48 kbps
+- Bytes: 12,671,929
+- Duration: 1,582.248 seconds
+- Bitrate: 64 kbps
 - Sample rate: 24 kHz
 - Channels: mono
 - Speech segments: Host A 67, Host B 65
 - Active-recall pauses: 4
 - SHA-256:
-  `297EC99F45854005F530871AE93529144D610CA4089AC82F1CA8722C78D01995`
+  `6D5C33ADCA1ACF411A56C1377CBD7BBB14EAD73A3B8E90CDABA26207962D8915`
+
+The 132 reviewed speech turns are decoded and encoded into one continuous
+64-kbps MP3 stream. This avoids publishing a byte-level concatenation of many
+small MP3 files and gives browsers a stable stream for duration detection and
+random seeking.
 
 The published transcript is generated from the exact synthesis input, with
 timestamps calculated from each rendered speech segment. This gives a

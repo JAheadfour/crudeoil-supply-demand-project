@@ -54,7 +54,7 @@ assert.ok(data.chapters.every((chapter, index, chapters) => (
   && (index === 0 || chapter.start_seconds > chapters[index - 1].start_seconds)
 )));
 
-assert.equal(audioStat.size, 9_505_115);
+assert.equal(audioStat.size, manifest.audited_audio.bytes);
 assert.equal(
   createHash("sha256").update(audio).digest("hex").toUpperCase(),
   data.audio_sha256,
