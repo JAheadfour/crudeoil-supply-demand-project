@@ -1,0 +1,1312 @@
+{
+  "series": "Oil 101 中文深度播客",
+  "episode": "01",
+  "title": "地下没有一座原油湖",
+  "deck": "岩石里的烃，如何穿过地质、井筒和地面处理三组闸门，最终成为稳定、可计量、能进入商业系统的一桶液体。",
+  "duration_seconds": 1582.392,
+  "duration_display": "26:22",
+  "published_audio": "../assets/audio/oil101/episode-01-underground-no-lake.mp3",
+  "audio_sha256": "297EC99F45854005F530871AE93529144D610CA4089AC82F1CA8722C78D01995",
+  "script_sha256": "DC3A387F6AB56AF2C01D6A1BC4DC9D015A81711907588C89D097F1ACF734F46E",
+  "source_packet_sha256": "92FD4C2924F39493462648FCD527F74E0808E7C1E361A6900589669867AFC23C",
+  "chapters": [
+    {
+      "title": "开场：12,000 桶到底是什么",
+      "summary": "先阻止自己把未定义的井口流量直接乘以油价。",
+      "start_seconds": 0.0,
+      "start_display": "0:00"
+    },
+    {
+      "title": "第一幕：地下没有原油湖",
+      "summary": "从生成、运移、封存讲到孔隙度、渗透率和油藏驱动力。",
+      "start_seconds": 59.088,
+      "start_display": "0:59"
+    },
+    {
+      "title": "三种桶数不能混用",
+      "summary": "分清地下原始石油、最终可采量和当前产量。",
+      "start_seconds": 361.776,
+      "start_display": "6:01"
+    },
+    {
+      "title": "第二幕：井是受控通道",
+      "summary": "地震、钻井、套管、水泥、完井和井口控制各自解决什么问题。",
+      "start_seconds": 561.72,
+      "start_display": "9:21"
+    },
+    {
+      "title": "第三幕：井口流量还不是销售量",
+      "summary": "油气水混合流必须经过分离、稳定、计量和质量确认。",
+      "start_seconds": 902.112,
+      "start_display": "15:02"
+    },
+    {
+      "title": "口算：10,000 如何变成 8,900",
+      "summary": "在统一计量基准下，逐步扣除水和稳定处理移走的轻端。",
+      "start_seconds": 1154.112,
+      "start_display": "19:14"
+    },
+    {
+      "title": "八个动词串起整条链",
+      "summary": "生成、运移、封存、连通、流动、分离、稳定、计量。",
+      "start_seconds": 1371.264,
+      "start_display": "22:51"
+    },
+    {
+      "title": "闭卷迁移：再看 12,000 桶",
+      "summary": "用组成、处理口径和持续能力三道闸门判断一条产量新闻。",
+      "start_seconds": 1443.84,
+      "start_display": "24:03"
+    }
+  ],
+  "takeaways": [
+    "地下原油存在于岩石孔隙中；孔隙度决定能装多少，渗透率决定能否流动。",
+    "地下原始石油、最终可采量、当前日产量是三种口径，不能互相替代。",
+    "井是受控通道；钻井、完井、井口控制和人工举升解决的是不同问题。",
+    "井口总流量通常仍含油、气和水，不能直接当作销售量或收入桶数。",
+    "看到产量新闻，先问组成，再问处理与计量口径，最后问设施能否持续接住。"
+  ],
+  "sources": [
+    {
+      "label": "Oil 101: Exploration & Production",
+      "url": "https://oil101.morgandowney.com/chapters/exploration-production"
+    },
+    {
+      "label": "Oil 101: Components",
+      "url": "https://oil101.morgandowney.com/chapters/components"
+    },
+    {
+      "label": "Oil 101: Industry Overview",
+      "url": "https://oil101.morgandowney.com/chapters/industry-overview"
+    }
+  ],
+  "production": {
+    "format": "双主持人中文深度讲解",
+    "method": "经逐句事实审校的固定脚本与双声道神经语音合成",
+    "transcript_relation": "逐字稿与合成输入完全一致",
+    "notebooklm_notebook": "https://notebook.google.com/notebook/1030df80-d6c2-4b3f-9a17-3680a19f064a",
+    "notebooklm_status": "源资料与生成指令已就绪；当日 Audio Overview 配额已用尽"
+  },
+  "transcript": [
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "一口新井宣布井口总流量达到每天一万二千桶，听起来像是每天一万二千桶都能拿去卖。",
+      "line": 1,
+      "start_seconds": 0.0,
+      "start_display": "0:00",
+      "duration_seconds": 8.64
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "我第一反应会拿桶数乘价格，可你现在就要把我的计算器收走，对吧？",
+      "line": 2,
+      "start_seconds": 8.64,
+      "start_display": "0:08",
+      "duration_seconds": 6.72
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "对，因为这股流体里可能同时有油、气和水，而且它的体积还取决于压力、温度和计量条件。我们甚至还不知道这是一段短期测试，还是设施能够持续接住的产量。",
+      "line": 3,
+      "start_seconds": 15.36,
+      "start_display": "0:15",
+      "duration_seconds": 16.872
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "所以“一万二千桶”只告诉我井口很热闹，没有告诉我最后能卖多少。",
+      "line": 4,
+      "start_seconds": 32.232,
+      "start_display": "0:32",
+      "duration_seconds": 6.24
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "正是。今天我们就追着同一桶流体走，看岩石里的东西怎样穿过一道道物理闸门，最后才成为稳定、可计量、可以进入商业系统的液体。",
+      "line": 5,
+      "start_seconds": 38.472,
+      "start_display": "0:38",
+      "duration_seconds": 12.144
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "我会一路只问三件事：油现在究竟在哪里，靠什么力量移动，这里的数字到底是哪一种口径？",
+      "line": 6,
+      "start_seconds": 50.616,
+      "start_display": "0:50",
+      "duration_seconds": 8.472
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "第一幕，从地下开始，而且先拆掉一个特别顽固的画面：地下没有一座原油湖。",
+      "line": 7,
+      "start_seconds": 59.088,
+      "start_display": "0:59",
+      "duration_seconds": 7.44
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "那石油最初是什么，又怎样到了我们后来钻井的位置？",
+      "line": 8,
+      "start_seconds": 66.528,
+      "start_display": "1:06",
+      "duration_seconds": 5.016
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "起点是古代海洋中的浮游生物和藻类。它们死亡后在缺氧环境中沉积，逐渐形成 kerogen，干酪根，也就是富含有机质、还没有变成油气的固体物质。",
+      "line": 9,
+      "start_seconds": 71.544,
+      "start_display": "1:11",
+      "duration_seconds": 13.752
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "然后埋得越来越深，温度和压力上升，大分子才逐步裂解成更小的烃分子。这里的“烃”，就是构成石油和天然气的那一类碳氢分子。",
+      "line": 10,
+      "start_seconds": 85.296,
+      "start_display": "1:25",
+      "duration_seconds": 12.648
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "适合形成液态石油的那段条件常叫 oil window，生油窗，可以先粗略想成地下约二到五千米的范围。这个深度只是 Oil 101 的公制近似，不需要背，也不是一条到处都完全相同的刻度线。",
+      "line": 11,
+      "start_seconds": 97.944,
+      "start_display": "1:37",
+      "duration_seconds": 17.016
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "那我先抓住第一个动词：生成。是不是只要生成了烃，地下就有一个商业油藏？",
+      "line": 12,
+      "start_seconds": 114.96,
+      "start_display": "1:54",
+      "duration_seconds": 7.632
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "远远不够。Source rock，源岩，是生成油气的岩层；生成后的油气还要离开源岩，这个移动过程叫 Migration，运移。",
+      "line": 13,
+      "start_seconds": 122.592,
+      "start_display": "2:02",
+      "duration_seconds": 11.88
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "它要沿着可以通过的路径移动，进入 Reservoir rock，储集岩，也就是有孔隙、能容纳流体的岩石。可有地方容纳，仍不等于留得住。",
+      "line": 14,
+      "start_seconds": 134.472,
+      "start_display": "2:14",
+      "duration_seconds": 12.24
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "对，还要有 Trap，圈闭，也就是能让向上运移的油气聚集起来的地质形态；还要有 Seal，封盖层，也就是渗透能力足够低、能阻止油气继续逃走的岩层。",
+      "line": 15,
+      "start_seconds": 146.712,
+      "start_display": "2:26",
+      "duration_seconds": 14.496
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "而且顺序得合适。油气运移时，圈闭和封盖若还没准备好，生成出来的烃也可能早已散失。",
+      "line": 16,
+      "start_seconds": 161.208,
+      "start_display": "2:41",
+      "duration_seconds": 9.24
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "所以我们把这段压成三个动作：生成、运移、封存。生成回答有没有烃，运移回答它能不能到达合适岩石，封存回答它能不能留到今天。",
+      "line": 17,
+      "start_seconds": 170.448,
+      "start_display": "2:50",
+      "duration_seconds": 14.736
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "找到一个看起来像储集岩的结构，不等于发现了油；证明这里曾生成过油气，也不等于油气现在仍在这里。",
+      "line": 18,
+      "start_seconds": 185.184,
+      "start_display": "3:05",
+      "duration_seconds": 9.624
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "现在再修正空间想象。原油、天然气和地层水在岩石颗粒之间极小的空隙里，不是在一个巨大空洞里等着抽。",
+      "line": 19,
+      "start_seconds": 194.808,
+      "start_display": "3:14",
+      "duration_seconds": 10.8
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "我可以把储集岩想成一块坚硬的海绵，但只能借这个画面理解“小孔很多”。岩石并不柔软，孔里的液体也未必能自由穿行。",
+      "line": 20,
+      "start_seconds": 205.608,
+      "start_display": "3:25",
+      "duration_seconds": 11.448
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "Porosity，孔隙度，回答岩石里有多少空间可以装流体。Oil 101 给出的典型储层孔隙度范围大约是百分之十到百分之二十五。",
+      "line": 21,
+      "start_seconds": 217.056,
+      "start_display": "3:37",
+      "duration_seconds": 12.168
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "Permeability，渗透率，回答这些孔是否彼此连通、流体能不能穿过来。它常用 millidarcy，毫达西，衡量，但这一集不用记单位换算。",
+      "line": 22,
+      "start_seconds": 229.224,
+      "start_display": "3:49",
+      "duration_seconds": 13.2
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "一块岩石可以孔很多，却像许多互不相通的小房间，油被分别关在里面。另一块岩石通道不错，但可容纳流体的总空间又可能很有限。",
+      "line": 23,
+      "start_seconds": 242.424,
+      "start_display": "4:02",
+      "duration_seconds": 11.544
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "商业上需要“能装”和“能流”同时成立。只看其中一个，就像只知道仓库面积，却不知道有没有门和路。",
+      "line": 24,
+      "start_seconds": 253.968,
+      "start_display": "4:13",
+      "duration_seconds": 9.576
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "错误说法：孔隙很多，油就一定流得快。",
+      "line": 25,
+      "start_seconds": 263.544,
+      "start_display": "4:23",
+      "duration_seconds": 4.464
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "纠正：孔隙度只回答能装多少，渗透率才回答孔隙是否连通、流体能否穿过来。",
+      "line": 26,
+      "start_seconds": 268.008,
+      "start_display": "4:28",
+      "duration_seconds": 8.376
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "即便孔隙相通，油也不会因为看见井就主动排队。真正让流体向井筒移动的，首先是压力差。",
+      "line": 27,
+      "start_seconds": 276.384,
+      "start_display": "4:36",
+      "duration_seconds": 9.528
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "Well，井，是穿过岩层的长期通道。投产后把井底流动压力控制在油藏压力以下，油藏与井底之间就形成了驱动力。",
+      "line": 28,
+      "start_seconds": 285.912,
+      "start_display": "4:45",
+      "duration_seconds": 11.592
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "油藏内部储存的能量在做功。溶在原油里的气体会随压力下降而膨胀；油层上方单独聚集的气层叫气顶，也会膨胀；侧面或下方充满水的岩层叫含水层，可以把油向井边推动，重力同样能够让流体移动。",
+      "line": 29,
+      "start_seconds": 297.504,
+      "start_display": "4:57",
+      "duration_seconds": 19.08
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "这些力量的形式不同，共同点却很清楚：不是地面上一根管子凭空把整块岩石吸干，而是压差驱动流体沿连通孔隙进入井筒。",
+      "line": 30,
+      "start_seconds": 316.584,
+      "start_display": "5:16",
+      "duration_seconds": 11.976
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "那是不是把井底压力压得越低、阀门开得越大，最后采出的油就越多？",
+      "line": 31,
+      "start_seconds": 328.56,
+      "start_display": "5:28",
+      "duration_seconds": 6.192
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "不能这样推。生产过快时，水或气可能沿高渗透通道提前到达井边，把一部分油绕在后面；压力也可能过早耗尽，让原本有机会流出的油留在岩石中。",
+      "line": 32,
+      "start_seconds": 334.752,
+      "start_display": "5:34",
+      "duration_seconds": 15.0
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "所以现场管理的是当前产量、压力维持、含水变化和最终采收之间的平衡。今天流得猛，不自动等于一生采得多。",
+      "line": 33,
+      "start_seconds": 349.752,
+      "start_display": "5:49",
+      "duration_seconds": 12.024
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "这就引出我的口径问题：地下到底有多少、最终能带上来多少、今天流出多少，是三个不同的数字。",
+      "line": 34,
+      "start_seconds": 361.776,
+      "start_display": "6:01",
+      "duration_seconds": 9.36
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "Original oil in place，地下原始石油，是对油藏中原来存在多少石油的估计。Recovery factor，采收率，是其中最终能够被带到地面的比例。",
+      "line": 35,
+      "start_seconds": 371.136,
+      "start_display": "6:11",
+      "duration_seconds": 12.864
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "可采量是最终可能带到地面的部分，当前产量则是今天实际通过井筒和地面设施流出的速度。可采量是一个数量，当前产量带着“每天”这样的时间单位。",
+      "line": 36,
+      "start_seconds": 384.0,
+      "start_display": "6:24",
+      "duration_seconds": 14.376
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "错误说法：地下存在一亿桶，就等于有一亿桶可采量，也等于市场马上多出一亿桶供应。",
+      "line": 37,
+      "start_seconds": 398.376,
+      "start_display": "6:38",
+      "duration_seconds": 8.088
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "纠正：地下存在量、最终可采量和当前产量口径不同，不能互换，更不能把发现量直接当成今天的供应。",
+      "line": 38,
+      "start_seconds": 406.464,
+      "start_display": "6:46",
+      "duration_seconds": 10.32
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "现在做第一道完整口算。经济问题是：如果我们只知道构造假设中的地下原始石油有多少，按 Oil 101 的平均教学量级，最终可能带到地面的桶数大约是多少？",
+      "line": 39,
+      "start_seconds": 416.784,
+      "start_display": "6:56",
+      "duration_seconds": 14.568
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "先把单位和边界钉住。这个一亿桶必须明确是“地下原始石油”，不是已经给出的可采资源、储量、产能或当前产量。",
+      "line": 40,
+      "start_seconds": 431.352,
+      "start_display": "7:11",
+      "duration_seconds": 11.52
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "教学构造如下：假设某油藏地下原始石油为一亿桶，再把来源提供的全球平均采收率量级约百分之三十套进来。这不是现实油田数据，百分之三十也不是每个油藏的固定参数。",
+      "line": 41,
+      "start_seconds": 442.872,
+      "start_display": "7:22",
+      "duration_seconds": 15.72
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "口算第一步，一亿桶乘百分之三十，就是三千万桶。这个三千万桶是按教学量级估出的可采量，不是每天三千万桶。",
+      "line": 42,
+      "start_seconds": 458.592,
+      "start_display": "7:38",
+      "duration_seconds": 11.328
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "第二步，一亿桶减三千万桶，还约有七千万桶留在岩石中。地质、流体性质、井网、压力管理和技术都会让真实结果偏离这个教学量级。",
+      "line": 43,
+      "start_seconds": 469.92,
+      "start_display": "7:49",
+      "duration_seconds": 14.544
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "而且只有数字明确是地下原始石油时，才可以在这里乘采收率。若新闻已经说的是技术上可能采出的资源或其他口径，就不能再机械地乘一次采收率。",
+      "line": 44,
+      "start_seconds": 484.464,
+      "start_display": "8:04",
+      "duration_seconds": 14.592
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "发现一亿桶地下原始石油，也不等于已经建成相应产能，更不等于今天市场收到三千万桶。开发要多久、每天能流多少、流量如何变化，仍是后面的闸门。",
+      "line": 45,
+      "start_seconds": 499.056,
+      "start_display": "8:19",
+      "duration_seconds": 14.904
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第一幕走完，我再问那句固定问题：这一步之后，我们离可以计量和出售的一桶油近了多少？",
+      "line": 46,
+      "start_seconds": 513.96,
+      "start_display": "8:33",
+      "duration_seconds": 8.472
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "我们只确认了烃可能生成、运移、被封存，也理解了岩石能装、能流和压差驱动。它仍在地下，离销售桶还很远，但我们已经排除了“有烃就有商品油”的第一个错觉。",
+      "line": 47,
+      "start_seconds": 522.432,
+      "start_display": "8:42",
+      "duration_seconds": 15.744
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "来一道主动回忆，不许往回看：一块岩石孔隙很多，为什么仍可能产不出商业规模的油？",
+      "line": 48,
+      "start_seconds": 538.176,
+      "start_display": "8:58",
+      "duration_seconds": 8.112
+    },
+    {
+      "kind": "pause",
+      "seconds": 6.0,
+      "line": 49,
+      "start_seconds": 546.288,
+      "start_display": "9:06",
+      "duration_seconds": 6.0
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "因为孔隙度只说明能容纳流体；如果孔隙之间不连通、渗透率太低，流体仍不能以足够速度流向井筒。",
+      "line": 50,
+      "start_seconds": 552.288,
+      "start_display": "9:12",
+      "duration_seconds": 9.432
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第二幕，我们终于来到井边。标题是：井是受控通道，不是一根吸管。",
+      "line": 51,
+      "start_seconds": 561.72,
+      "start_display": "9:21",
+      "duration_seconds": 7.2
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "在钻井以前，常用 seismic survey，地震勘探，也就是向地下发送声波，再记录不同岩层界面反射回来的信号。",
+      "line": 52,
+      "start_seconds": 568.92,
+      "start_display": "9:28",
+      "duration_seconds": 10.296
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "这些信号帮助地质人员判断岩层结构、断层和可能的圈闭。它是在寻找结构，不是在拍摄一池地下原油。",
+      "line": 53,
+      "start_seconds": 579.216,
+      "start_display": "9:39",
+      "duration_seconds": 10.704
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "以三维地震为一个简短例子，它把多条观测线组合成较立体的地下结构图像。图像能降低盲目程度，却不能替代进入地下取得证据。",
+      "line": 54,
+      "start_seconds": 589.92,
+      "start_display": "9:49",
+      "duration_seconds": 12.36
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "所以最终还是要钻井，看带回来的岩屑、井内测量和流体证据。结构像，不代表里面一定有油；里面有油，也不保证未来一定有商业产量。",
+      "line": 55,
+      "start_seconds": 602.28,
+      "start_display": "10:02",
+      "duration_seconds": 13.704
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "旋转钻机通过一串管柱把钻头送入地下并旋转破岩。它的主要任务，是安全抵达并认识目标岩层，建立井筒。",
+      "line": 56,
+      "start_seconds": 615.984,
+      "start_display": "10:15",
+      "duration_seconds": 11.808
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "钻头一路向下，那个刚形成的孔洞怎样不塌，地下压力又怎样不突然闯进来？",
+      "line": 57,
+      "start_seconds": 627.792,
+      "start_display": "10:27",
+      "duration_seconds": 7.392
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "钻井液是在井筒中循环的工程流体，不是把原油冲出地面的普通水。它沿管柱内部向下，再从管柱和井壁之间返回地面。",
+      "line": 58,
+      "start_seconds": 635.184,
+      "start_display": "10:35",
+      "duration_seconds": 11.976
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "往返这一路，它把岩屑带上来，冷却和润滑钻头；液柱压力帮助平衡地层压力，薄而低渗的泥饼帮助稳定井壁，停泵时它还要让岩屑保持悬浮。",
+      "line": 59,
+      "start_seconds": 647.16,
+      "start_display": "10:47",
+      "duration_seconds": 13.824
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "刚钻出的孔洞可能坍塌，也可能让不同压力、不同流体的岩层互相窜流。于是工程人员分段下入钢套管，用钢管支撑并隔离井筒。",
+      "line": 60,
+      "start_seconds": 660.984,
+      "start_display": "11:00",
+      "duration_seconds": 13.2
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "水泥把套管固定在井壁中，并隔离不同地层。套管和水泥做的不是“把油封死”，而是先把长期通道的边界建立清楚。",
+      "line": 61,
+      "start_seconds": 674.184,
+      "start_display": "11:14",
+      "duration_seconds": 11.232
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "完井系统负责让目标产层与井筒受控连通。常见做法之一是在目标位置打开小通道，让流体穿过套管和水泥进入井筒。",
+      "line": 62,
+      "start_seconds": 685.416,
+      "start_display": "11:25",
+      "duration_seconds": 12.624
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "也就是说，钻井负责到达，套管和水泥负责支撑与隔离，完井负责在正确位置打开受控连接。一个临时孔洞到这里才逐渐变成可长期管理的生产通道。",
+      "line": 63,
+      "start_seconds": 698.04,
+      "start_display": "11:38",
+      "duration_seconds": 15.192
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "井口上方还有采油树，也就是由阀门、接头和压力控制设备组成的井口装置。它控制井口压力、流量和关井操作。",
+      "line": 64,
+      "start_seconds": 713.232,
+      "start_display": "11:53",
+      "duration_seconds": 12.336
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "抽油机则是天然压力不足时可能使用的一种人工举升设备。人工举升的意思，是额外帮助井内液柱向地面移动。",
+      "line": 65,
+      "start_seconds": 725.568,
+      "start_display": "12:05",
+      "duration_seconds": 10.944
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "错误说法：地面上上下摆动的抽油机就是当初把井钻出来的钻机。",
+      "line": 66,
+      "start_seconds": 736.512,
+      "start_display": "12:16",
+      "duration_seconds": 6.336
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "纠正：钻机负责建立井筒，抽油机只是在天然压力不足时帮助成熟井把液体举到地面。",
+      "line": 67,
+      "start_seconds": 742.848,
+      "start_display": "12:22",
+      "duration_seconds": 8.88
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "还要再提醒一次，井不是一件设备的名字。钻机通常服务于钻井阶段，井是留下来的长期通道，完井系统连接目标层，采油树负责井口控制。",
+      "line": 68,
+      "start_seconds": 751.728,
+      "start_display": "12:31",
+      "duration_seconds": 13.056
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "油藏压力在这里有两副面孔。生产时它是推动流体的能量，钻井和生产控制不当时，它又是必须约束的风险来源。",
+      "line": 69,
+      "start_seconds": 764.784,
+      "start_display": "12:44",
+      "duration_seconds": 11.4
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "当地层压力超过井筒液柱压力，油气可能意外快速进入井筒，这叫井涌。若失去控制并到达地面，就可能成为井喷。",
+      "line": 70,
+      "start_seconds": 776.184,
+      "start_display": "12:56",
+      "duration_seconds": 11.616
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "钻井液提供第一层压力平衡，防喷器则是重要的最后机械防线，可以在需要时密封或关闭井筒。",
+      "line": 71,
+      "start_seconds": 787.8,
+      "start_display": "13:07",
+      "duration_seconds": 9.264
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "我们不讲事故故事，也不钻进设备细节。只保留机制：同一份地下压力，既可能把油送向井筒，也可能在边界失守时把流体推到不该去的地方。",
+      "line": 72,
+      "start_seconds": 797.064,
+      "start_display": "13:17",
+      "duration_seconds": 13.992
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "井钻到了目标深度，怎么知道碰到的到底是什么？单看钻了多少米显然不够。",
+      "line": 73,
+      "start_seconds": 811.056,
+      "start_display": "13:31",
+      "duration_seconds": 7.704
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "测井是利用井中和返出信息判断“钻到了什么”的方法。举一个例子，仪器可以下入井中测量岩层性质，帮助判断哪一段更像储集岩、孔隙里更可能是水还是烃。",
+      "line": 74,
+      "start_seconds": 818.76,
+      "start_display": "13:38",
+      "duration_seconds": 14.328
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "测井也能帮助判断目标层厚度和井筒是否仍在目标层中。它减少不确定性，却不是保证未来产量的一张证书。",
+      "line": 75,
+      "start_seconds": 833.088,
+      "start_display": "13:53",
+      "duration_seconds": 10.896
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "现在把第二幕合起来：地震勘探提出结构假设，钻井进入地下验证，测井增加证据，套管、水泥和完井建立受控连接，采油树守住井口边界。",
+      "line": 76,
+      "start_seconds": 843.984,
+      "start_display": "14:03",
+      "duration_seconds": 14.16
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "我照例追问：这一步之后，我们离可以计量和出售的一桶油近了多少？",
+      "line": 77,
+      "start_seconds": 858.144,
+      "start_display": "14:18",
+      "duration_seconds": 6.456
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "比第一幕近得多，因为岩石与地面之间已有受控通道。但我们只有让流体出来的条件，还没有证明出来的每一桶都是稳定、可销售的液体。",
+      "line": 78,
+      "start_seconds": 864.6,
+      "start_display": "14:24",
+      "duration_seconds": 11.88
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第二道主动回忆来了：钻机、采油树和抽油机分别做什么？",
+      "line": 79,
+      "start_seconds": 876.48,
+      "start_display": "14:36",
+      "duration_seconds": 5.952
+    },
+    {
+      "kind": "pause",
+      "seconds": 9.0,
+      "line": 80,
+      "start_seconds": 882.432,
+      "start_display": "14:42",
+      "duration_seconds": 9.0
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "钻机负责建立井筒；采油树在井口控制压力和流量；抽油机是在天然压力不足时帮助液体升到地面的一种人工举升方式。",
+      "line": 81,
+      "start_seconds": 891.432,
+      "start_display": "14:51",
+      "duration_seconds": 10.68
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第三幕，回到开场那一万二千桶。井口有流量，为什么仍不是可以出售的一桶油？",
+      "line": 82,
+      "start_seconds": 902.112,
+      "start_display": "15:02",
+      "duration_seconds": 7.728
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "在 primary recovery，初次采收阶段，也就是主要利用油藏自身能量生产的早期阶段，许多新井可以依靠天然压力让流体进入井筒并到达地面，不一定需要泵。",
+      "line": 83,
+      "start_seconds": 909.84,
+      "start_display": "15:09",
+      "duration_seconds": 13.848
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "随着生产继续，油藏压力下降，井内液柱更难举升，运营方可能采用人工举升。抽油机系统就是其中一个例子，我们不在这里展开其他类型。",
+      "line": 84,
+      "start_seconds": 923.688,
+      "start_display": "15:23",
+      "duration_seconds": 14.04
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "来源给了一个很容易被标题带偏的美国统计区别：按在产井的井数看，大多数井已经成熟并使用某种人工举升。",
+      "line": 85,
+      "start_seconds": 937.728,
+      "start_display": "15:37",
+      "duration_seconds": 10.56
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "但“按井数大多数”不能推出“按产量大多数桶”。新井、海上井和高产井可以依靠天然压力贡献大量产量，两个说法的统计分母不同。",
+      "line": 86,
+      "start_seconds": 948.288,
+      "start_display": "15:48",
+      "duration_seconds": 12.912
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "不论靠天然压力还是人工举升，刚到井口的通常不是整齐的一桶原油。Wellstream，井口混合流，就是从井中出来、尚未完成地面处理的混合物流。",
+      "line": 87,
+      "start_seconds": 961.2,
+      "start_display": "16:01",
+      "duration_seconds": 14.16
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "它包含液态烃、天然气和地层水，还可能带有少量固体和其他杂质。我们口头上说“油井流出来了”，物理上却是一股多相混合物。",
+      "line": 88,
+      "start_seconds": 975.36,
+      "start_display": "16:15",
+      "duration_seconds": 12.12
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "Phase，相态，就是物质此刻以气体还是液体等状态存在。压力从油藏条件降到井口和地面设施条件时，原先溶解在原油中的一部分天然气会释放出来。",
+      "line": 89,
+      "start_seconds": 987.48,
+      "start_display": "16:27",
+      "duration_seconds": 14.88
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "温度、压力和组成变化，总体积还会继续变化。因此按体积说“多少桶”时，如果不说明相态、温压和计量条件，不同位置的数字未必是同一个东西。",
+      "line": 90,
+      "start_seconds": 1002.36,
+      "start_display": "16:42",
+      "duration_seconds": 14.496
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "错误说法：井口报出多少桶混合流，就已经得到多少桶稳定液体。",
+      "line": 91,
+      "start_seconds": 1016.856,
+      "start_display": "16:56",
+      "duration_seconds": 6.816
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "纠正：井口混合流包含油、气和水且体积会随条件变化，稳定液体则已把游离气、采出水和挥发性降到下一环节接受的口径。",
+      "line": 92,
+      "start_seconds": 1023.672,
+      "start_display": "17:03",
+      "duration_seconds": 12.888
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "那股混合流先通过 gathering system，集输系统，也就是把一口或多口井的流体送往现场处理设施的连接系统。",
+      "line": 93,
+      "start_seconds": 1036.56,
+      "start_display": "17:16",
+      "duration_seconds": 9.24
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "到了处理设施，three-phase separator，三相分离器，利用压力变化、密度差和足够停留时间，把混合流拆成气相、液态烃和水相。",
+      "line": 94,
+      "start_seconds": 1045.8,
+      "start_display": "17:25",
+      "duration_seconds": 12.24
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "Separate，分离，关闭的是“井口总流量里各是什么”的不确定性。游离气进入后续气体系统，采出水离开原油液流，液态烃继续向下一步走。",
+      "line": 95,
+      "start_seconds": 1058.04,
+      "start_display": "17:38",
+      "duration_seconds": 13.344
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "我注意到你没有说“分完就纯了”。分离完成并不等于绝对没有气和水，而是先把三相混在一起的状态处理到下一环节能够继续工作的口径。",
+      "line": 96,
+      "start_seconds": 1071.384,
+      "start_display": "17:51",
+      "duration_seconds": 12.36
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "接着是 Stabilization，稳定处理，也就是移走或控制过轻、容易挥发的组分。蒸气压可以先理解为液体中的分子跑到气相的倾向；稳定处理把这种倾向控制到更适合储存、计量和管道运输的水平。",
+      "line": 97,
+      "start_seconds": 1083.744,
+      "start_display": "18:03",
+      "duration_seconds": 18.12
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "未经稳定的液体在压力继续下降时还可能放出更多气体。那会让储罐出现过多挥发气体，让同一批液体的体积继续变，也让接收方难以确认收到的对象。",
+      "line": 98,
+      "start_seconds": 1101.864,
+      "start_display": "18:21",
+      "duration_seconds": 14.544
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "所以稳定关闭的是“这股液体到了下一处还会不会明显变样”的不确定性。它把挥发性控制到下一环节可以接受的口径。",
+      "line": 99,
+      "start_seconds": 1116.408,
+      "start_display": "18:36",
+      "duration_seconds": 10.968
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "地下明明还有压力和可流动油，地面环节也可能卡住生产。水处理能力满了、气体没有去向，或者分离设备正在检修，井口潜力就不能全部变成可销售供应。",
+      "line": 100,
+      "start_seconds": 1127.376,
+      "start_display": "18:47",
+      "duration_seconds": 15.432
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "这提醒我们，生产瓶颈不只在岩石和井筒。水的处理、气的去向、现场设备和外输条件，都是物理链的一部分。",
+      "line": 101,
+      "start_seconds": 1142.808,
+      "start_display": "19:02",
+      "duration_seconds": 11.304
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "现在请给我第二道完整口算。我想知道从一股已经分出游离气的总液量，到稳定液体，桶数怎样一步步改变。",
+      "line": 102,
+      "start_seconds": 1154.112,
+      "start_display": "19:14",
+      "duration_seconds": 10.368
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "先说经济问题和单位：我们要估的是每天能得到多少桶稳定液体，不是井口油气水混合流的总量。所有体积必须处在同一温度、压力和计量条件下，单位都是桶每天。",
+      "line": 103,
+      "start_seconds": 1164.48,
+      "start_display": "19:24",
+      "duration_seconds": 15.0
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "下面完全是为帮助口算而构造的教学例子，不是真实井场数据。假设先分出游离气后，油水总液量为每天一万桶，其中水占这一个总液量的百分之八。",
+      "line": 104,
+      "start_seconds": 1179.48,
+      "start_display": "19:39",
+      "duration_seconds": 14.52
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "稳定时移走的轻端，也按同一液体基准折算为总液量的百分之三。这里的百分之八和百分之三都不是行业固定值。",
+      "line": 105,
+      "start_seconds": 1194.0,
+      "start_display": "19:53",
+      "duration_seconds": 10.32
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第一步，一万桶乘百分之八，水量是每天八百桶。这个百分比的分母，就是同一条件下每天一万桶的油水总液量。",
+      "line": 106,
+      "start_seconds": 1204.32,
+      "start_display": "20:04",
+      "duration_seconds": 11.136
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "第二步，一万桶乘百分之三，稳定过程中按同一基准折算的轻端移除量是每天三百桶。",
+      "line": 107,
+      "start_seconds": 1215.456,
+      "start_display": "20:15",
+      "duration_seconds": 8.544
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第三步，一万减八百，再减三百，等于每天八千九百桶。这个八千九百桶才是教学例子中的稳定液体。",
+      "line": 108,
+      "start_seconds": 1224.0,
+      "start_display": "20:23",
+      "duration_seconds": 10.056
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "也可以检查一遍：按同一液体基准折算，水和轻端合计每天一千一百桶，一万减一千一百，仍是每天八千九百桶。算式简单，真正重要的是每个数字的相态、温压、分母和计量基准一致。",
+      "line": 109,
+      "start_seconds": 1234.056,
+      "start_display": "20:34",
+      "duration_seconds": 18.336
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "结论绝不是“每个井场固定损失百分之十一”。结论是：没有说明气、水、相态和条件的井口桶数，不能直接当销售量、收入桶数或进入原油库存统计的桶数。",
+      "line": 110,
+      "start_seconds": 1252.392,
+      "start_display": "20:52",
+      "duration_seconds": 15.24
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "分离和稳定之后，还有 Metering，计量，也就是确认到底交付了多少被认可的净液体。质量检查则确认这股液体能否被下一段管道、储罐或终端接收。",
+      "line": 111,
+      "start_seconds": 1267.632,
+      "start_display": "21:07",
+      "duration_seconds": 14.928
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "行业不同环节还会发生 custody transfer，保管权或货权责任交接，也就是一方把被确认数量和质量的流体交给下一方。本集不展开合同，只看清物理量怎样成为双方认可的交付量。",
+      "line": 112,
+      "start_seconds": 1282.56,
+      "start_display": "21:22",
+      "duration_seconds": 17.424
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "计量关闭“到底有多少”的不确定性，质量确认关闭“这个对象能否被接收”的不确定性。物理桶正是在这里第一次明显变成商业关系。",
+      "line": 113,
+      "start_seconds": 1299.984,
+      "start_display": "21:39",
+      "duration_seconds": 11.904
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第三幕的固定追问：这一步之后，我们离可以计量和出售的一桶油近了多少？",
+      "line": 114,
+      "start_seconds": 1311.888,
+      "start_display": "21:51",
+      "duration_seconds": 6.84
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "分离把油、气、水拆开，稳定让液体不再随着条件变化而轻易变样，计量和质量确认给出可交接的数量与对象。我们终于来到本集终点：稳定、可计量、能进入商业系统的液体。",
+      "line": 115,
+      "start_seconds": 1318.728,
+      "start_display": "21:58",
+      "duration_seconds": 17.232
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "但还没进入原油牌号、化验、炼厂和价格。今天只负责把岩石里的烃带到一个可信的液体计量点。",
+      "line": 116,
+      "start_seconds": 1335.96,
+      "start_display": "22:15",
+      "duration_seconds": 9.576
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "现在请闭卷复述，不看任何提示，从“油在岩石里”开始，一直讲到“得到可计量液体”。尽量说出油在哪里、靠什么移动、每一道处理关掉什么不确定性。",
+      "line": 117,
+      "start_seconds": 1345.536,
+      "start_display": "22:25",
+      "duration_seconds": 13.728
+    },
+    {
+      "kind": "pause",
+      "seconds": 12.0,
+      "line": 118,
+      "start_seconds": 1359.264,
+      "start_display": "22:39",
+      "duration_seconds": 12.0
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "我来示范，并用八个动词压缩。Generate，生成，是有机质在合适条件下变成烃；Migrate，运移，是烃离开源岩；Trap，封存，是圈闭聚集油气、封盖层阻止它继续逃走。",
+      "line": 119,
+      "start_seconds": 1371.264,
+      "start_display": "22:51",
+      "duration_seconds": 17.664
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "到这里仍只是地下存在，还不是供应。",
+      "line": 120,
+      "start_seconds": 1388.928,
+      "start_display": "23:08",
+      "duration_seconds": 4.056
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "对。Connect，连通，是钻井和完井建立受控通道；Flow，流动，是油藏压力与较低井底流动压力形成压差，把流体推入井筒，必要时再由人工举升帮它到地面。",
+      "line": 121,
+      "start_seconds": 1392.984,
+      "start_display": "23:12",
+      "duration_seconds": 15.96
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "但井口出来的是油、气、水混合流，不能在这里提前叫销售桶。",
+      "line": 122,
+      "start_seconds": 1408.944,
+      "start_display": "23:28",
+      "duration_seconds": 6.672
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "所以还要 Separate，分离，把三相拆开；Stabilize，稳定，控制容易挥发的轻端；最后 Measure，计量并确认质量，才得到下一环节能够接收的稳定液体。",
+      "line": 123,
+      "start_seconds": 1415.616,
+      "start_display": "23:35",
+      "duration_seconds": 14.304
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "生成、运移、封存、连通、流动、分离、稳定、计量。前一步没关好，后面的桶数就会在位置、组成、状态或口径上继续漂移。",
+      "line": 124,
+      "start_seconds": 1429.92,
+      "start_display": "23:49",
+      "duration_seconds": 13.92
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "最后做一道三十秒闭卷迁移题。某公司宣布新井井口总流量达到每天一万二千桶，请先用一句话判断为什么不能直接估算收入。",
+      "line": 125,
+      "start_seconds": 1443.84,
+      "start_display": "24:03",
+      "duration_seconds": 12.168
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "然后按三道闸门追问：第一道是混合流组成，第二道是处理与计量，第三道是持续性与设施。别堆问题，要说出每个问题在关闭哪一种不确定性。",
+      "line": 126,
+      "start_seconds": 1456.008,
+      "start_display": "24:16",
+      "duration_seconds": 14.232
+    },
+    {
+      "kind": "pause",
+      "seconds": 30.0,
+      "line": 127,
+      "start_seconds": 1470.24,
+      "start_display": "24:30",
+      "duration_seconds": 30.0
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "核心判断是：每天一万二千桶是尚未定义清楚的井口口径，不能直接推成销售量、收入或市场供应。",
+      "line": 128,
+      "start_seconds": 1500.24,
+      "start_display": "25:00",
+      "duration_seconds": 9.768
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第一闸门，混合流组成：在统一相态、温压和计量基准下，这一万二千桶里油、气、水各是多少？",
+      "line": 129,
+      "start_seconds": 1510.008,
+      "start_display": "25:10",
+      "duration_seconds": 9.816
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "这一问关闭组成不确定性，才知道多少可能成为稳定液态烃。",
+      "line": 130,
+      "start_seconds": 1519.824,
+      "start_display": "25:19",
+      "duration_seconds": 6.288
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第二闸门，处理与计量：这股液体是否已经完成分离、稳定、质量确认和计量，达到下一环节的接收口径？",
+      "line": 131,
+      "start_seconds": 1526.112,
+      "start_display": "25:26",
+      "duration_seconds": 10.224
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "这一问关闭处理状态与交付口径的不确定性，检验数字是否已经越过井口。",
+      "line": 132,
+      "start_seconds": 1536.336,
+      "start_display": "25:36",
+      "duration_seconds": 7.632
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "第三闸门，持续性与设施：在油藏压力、地面处理和外输能力的共同约束下，这个流量能够持续多久？",
+      "line": 133,
+      "start_seconds": 1543.968,
+      "start_display": "25:43",
+      "duration_seconds": 10.152
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "这一问关闭时间和设施能力的不确定性，检验瞬时测试能否成为持续供应。",
+      "line": 134,
+      "start_seconds": 1554.12,
+      "start_display": "25:54",
+      "duration_seconds": 7.368
+    },
+    {
+      "kind": "turn",
+      "speaker": "B",
+      "text": "所以面对一万二千桶，我不会急着乘价格。我先判断它是什么，再看它处理到哪一步，最后看这条链能否持续运行。",
+      "line": 135,
+      "start_seconds": 1561.488,
+      "start_display": "26:01",
+      "duration_seconds": 11.04
+    },
+    {
+      "kind": "turn",
+      "speaker": "A",
+      "text": "Oil 101 第一集到稳定、计量的液体为止。下一集，我们才给这桶液体建立质量和价格的身份证。",
+      "line": 136,
+      "start_seconds": 1572.528,
+      "start_display": "26:12",
+      "duration_seconds": 9.672
+    }
+  ]
+}

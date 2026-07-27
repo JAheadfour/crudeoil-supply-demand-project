@@ -1,4 +1,4 @@
-const CACHE_NAME = 'oil101-understanding-v7';
+const CACHE_NAME = 'oil101-understanding-v8';
 const ASSETS = [
   './index.html',
   './chapters.html',
@@ -7,6 +7,8 @@ const ASSETS = [
   './assets/platform.css',
   './assets/platform.js',
   './assets/home.js',
+  './assets/podcast.css',
+  './assets/podcast.js',
   './assets/figures/eia-wti-negative-2020.svg',
   './assets/figures/module-01/crude-fractional-distillation.jpg',
   './assets/figures/module-02/ch06-seven-events.png',
@@ -32,6 +34,9 @@ const ASSETS = [
   './data/oil101-understanding/module-07-producers-opec-shale.json',
   './data/oil101-understanding/module-08-products-petrochem-transition.json',
   './data/oil101-understanding/module-09-industry-synthesis-lab.json',
+  './data/podcast/episode-01.json',
+  './podcast/index.html',
+  './podcast/episode-01.html',
   './manifest.webmanifest',
   './pages/part-one-oil-fundamentals--01-history.html',
   './pages/part-one-oil-fundamentals--02-crude-oil-assay.html',

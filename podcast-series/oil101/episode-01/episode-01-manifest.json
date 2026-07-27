@@ -1,0 +1,59 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "01",
+  "working_title": "地下没有一座原油湖",
+  "status": "audited_audio_packaged",
+  "language": "zh-CN",
+  "format": "two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 22,
+    "max": 28
+  },
+  "source_packet": "episode-01-source.md",
+  "generation_prompt": "episode-01-notebooklm-prompt.md",
+  "audited_script": "episode-01-script.md",
+  "source_urls": [
+    "https://oil101.morgandowney.com/chapters/exploration-production",
+    "https://oil101.morgandowney.com/chapters/components",
+    "https://oil101.morgandowney.com/chapters/industry-overview"
+  ],
+  "review": {
+    "factual": "approved",
+    "teachability": "approved",
+    "critical_findings_open": 0,
+    "important_findings_open": 0,
+    "minor_findings_open": 0
+  },
+  "notebooklm": {
+    "notebook_url": "https://notebook.google.com/notebook/1030df80-d6c2-4b3f-9a17-3680a19f064a",
+    "source_count": 1,
+    "source_and_prompt_ready": true,
+    "audio_generation": "blocked_by_daily_audio_overview_limit"
+  },
+  "audited_audio": {
+    "method": "edge-tts from the exact reviewed script",
+    "duration_seconds": 1582.392,
+    "duration_display": "26:22",
+    "bytes": 9505115,
+    "bitrate": 48000,
+    "sample_rate": 24000,
+    "channels": 1,
+    "segments": {
+      "A": 67,
+      "B": 65,
+      "pauses": 4
+    }
+  },
+  "sha256": {
+    "source_packet": "92FD4C2924F39493462648FCD527F74E0808E7C1E361A6900589669867AFC23C",
+    "generation_prompt": "DF31693D5F4C9A8E345C9128245E458D84F7514D733333EC2CE3073D58FD54E6",
+    "audited_script": "DC3A387F6AB56AF2C01D6A1BC4DC9D015A81711907588C89D097F1ACF734F46E",
+    "published_audio": "297EC99F45854005F530871AE93529144D610CA4089AC82F1CA8722C78D01995"
+  },
+  "outputs": {
+    "audio": "../../../docs/assets/audio/oil101/episode-01-underground-no-lake.mp3",
+    "transcript": "../../../docs/data/podcast/episode-01.json",
+    "audit": "../../../_workflow/podcast/runs/episode-01/review-summary.md",
+    "site_url": "https://jaheadfour.github.io/crudeoil-supply-demand-project/podcast/episode-01.html"
+  }
+}

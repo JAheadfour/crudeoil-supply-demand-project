@@ -4,3 +4,6 @@ data/raw/
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
+podcast-series/**/render/
+_workflow/podcast/**/screenshots/
+_workflow/podcast/*.log
