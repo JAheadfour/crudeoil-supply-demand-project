@@ -369,7 +369,7 @@ test("teaching renderer and lesson shells keep cache-busting versions aligned", 
   assert.equal(dataVersion, "20260711-4");
   assert.equal(moduleScriptVersion, dataVersion);
   assert.equal(dedicatedScriptVersion, dataVersion);
-  assert.equal(cacheName, "8");
+  assert.equal(cacheName, "9");
 });
 
 test("catalog links all nine complete and mirrored course modules", () => {

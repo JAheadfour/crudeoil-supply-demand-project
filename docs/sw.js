@@ -1,4 +1,4 @@
-const CACHE_NAME = 'oil101-understanding-v8';
+const CACHE_NAME = 'oil101-understanding-v9';
 const ASSETS = [
   './index.html',
   './chapters.html',
@@ -84,9 +84,13 @@ self.addEventListener('activate', event => {
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+  if (event.request.destination === 'audio' || event.request.headers.has('range')) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
   event.respondWith(
     caches.match(event.request, { ignoreSearch: true }).then(cached => cached || fetch(event.request).then(response => {
-      if (response.ok) {
+      if (response.ok && response.status === 200) {
         const copy = response.clone();
         caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
       }

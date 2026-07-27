@@ -114,7 +114,7 @@ def build_payload(segments: list[dict[str, object]]) -> dict[str, object]:
         "deck": "岩石里的烃，如何穿过地质、井筒和地面处理三组闸门，最终成为稳定、可计量、能进入商业系统的一桶液体。",
         "duration_seconds": round(audio.info.length, 3),
         "duration_display": format_time(audio.info.length),
-        "published_audio": "../assets/audio/oil101/episode-01-underground-no-lake.mp3",
+        "published_audio": "../assets/audio/oil101/episode-01-underground-no-lake.mp3?v=2",
         "audio_sha256": sha256(SOURCE_AUDIO),
         "script_sha256": sha256(SCRIPT),
         "source_packet_sha256": sha256(SOURCE),

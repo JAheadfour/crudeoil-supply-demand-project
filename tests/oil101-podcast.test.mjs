@@ -73,8 +73,10 @@ assert.match(episodeHtml, /Exploration &amp; Production/);
 assert.match(seriesHtml, /12 集/);
 assert.match(seriesHtml, /地下没有一座原油湖/);
 assert.match(homeHtml, /podcast\/episode-01\.html/);
-assert.match(serviceWorker, /oil101-understanding-v8/);
+assert.match(serviceWorker, /oil101-understanding-v9/);
 assert.match(serviceWorker, /\.\/podcast\/episode-01\.html/);
+assert.match(serviceWorker, /event\.request\.destination === 'audio'/);
+assert.match(serviceWorker, /event\.request\.headers\.has\('range'\)/);
 assert.ok(root);
 
 console.log("PODCAST DATA OK: 26:22, 136 timed segments, 8 chapters, audio checksum verified");
