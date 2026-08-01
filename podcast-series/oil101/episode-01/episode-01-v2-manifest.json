@@ -1,0 +1,45 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "01-v2",
+  "working_title": "先别急着乘油价",
+  "status": "generated_user_accepted_pending_download",
+  "language": "zh-CN",
+  "format": "notebooklm-two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 15,
+    "max": 19
+  },
+  "content_contract": {
+    "central_claims": 1,
+    "mental_images": 3,
+    "calculations": 0,
+    "quizzes": 0,
+    "active_recall_pauses": 0,
+    "maximum_english_terms": 3
+  },
+  "source_packet": "episode-01-v2-source.md",
+  "generation_prompt": "episode-01-v2-notebooklm-prompt.md",
+  "notebooklm": {
+    "notebook_url": "https://notebook.google.com/notebook/f0b26921-48a1-475e-bedb-266652429a86",
+    "source_count": 1,
+    "format": "Deep Dive",
+    "language": "中文（简体）",
+    "length": "Default",
+    "first_generation_attempted_at": "2026-07-28",
+    "successful_generation_at": "2026-08-01",
+    "generation_result": "Simplified Chinese Deep Dive generated and accepted by the user as the series baseline; semantic repetition must be reduced in later episodes",
+    "non_deliverable_artifacts": [
+      "English default-language Audio Overview generated during the quota check"
+    ]
+  },
+  "sha256": {
+    "source_packet": "4B7D5B7AC08C11FE9C15A7FB0412C5373CF562D07D97B8E498632CEF99219A4B",
+    "generation_prompt": "6A15E1DA1CC53C489931ED1A5E2F3DE47262244F59B078384F042FB6D550B9FD",
+    "audio": null
+  },
+  "outputs": {
+    "audio": null,
+    "audit": null,
+    "site_url": null
+  }
+}

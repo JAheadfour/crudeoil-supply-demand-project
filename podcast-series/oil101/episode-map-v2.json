@@ -1,0 +1,209 @@
+{
+  "series": "Oil 101 中文播客 V2",
+  "variant": "understanding",
+  "source_toc": "https://oil101.morgandowney.com/chapters",
+  "edition": "2026 web second edition",
+  "core_episode_count": 19,
+  "bonus_episode_count": 2,
+  "default_target_minutes": {
+    "min": 12,
+    "max": 17
+  },
+  "production_rules": {
+    "central_questions_per_episode": 1,
+    "memory_images_per_episode": 3,
+    "recall_pauses": 0,
+    "listener_calculations": 0,
+    "standalone_recaps": 0,
+    "max_full_claim_expressions": 2,
+    "default_max_hard_numbers": 3,
+    "default_max_new_english_terms": 7,
+    "source_policy": "Re-read the original author chapter pages for every source packet; local summaries are navigation only.",
+    "repetition_policy": "Every return to the central question must add a mechanism, condition, example, or boundary. Paraphrase without new information is repetition."
+  },
+  "episodes": [
+    {
+      "id": "01",
+      "title": "先别急着乘油价",
+      "status": "accepted_baseline_with_repetition_repair",
+      "central_question": "井口测试桶数为什么不是销售桶数？",
+      "primary_chapters": [3, 5, 6],
+      "memory_images": ["硬海绵", "压力推流", "油气水混合流"],
+      "deferred_to": [3, 4, 5, 11]
+    },
+    {
+      "id": "02",
+      "title": "权力总在寻找一只阀门",
+      "central_question": "石油史上谁说了算为什么不断变化？",
+      "primary_chapters": [1],
+      "supporting_chapters": [5, 21, 22, 23],
+      "memory_images": ["煤油灯旁的第一口井", "连成网络的巨型公司", "不断换手的供给阀门"],
+      "exclude": ["完整年代大事表", "OPEC+配额机制", "页岩压裂技术"]
+    },
+    {
+      "id": "03",
+      "title": "一桶原油的身份证",
+      "central_question": "看起来都黑的一桶油为什么价值不同？",
+      "primary_chapters": [2, 4],
+      "memory_images": ["原油化验单", "碳链楼梯", "炼厂购物清单"],
+      "exclude": ["API公式推导", "assay项目大全", "完整炼厂流程"]
+    },
+    {
+      "id": "04",
+      "title": "统计表里的油为什么越算越多",
+      "central_question": "原油、凝析油、NGL和炼厂增益为何不能混为一谈？",
+      "primary_chapters": [3],
+      "supporting_chapters": [10],
+      "memory_images": ["五个标签不同的量杯", "NGL分馏列车", "炼厂体积刻度杯"],
+      "exclude": ["石化产品树", "储量", "机构统计表逐项比较"]
+    },
+    {
+      "id": "05",
+      "title": "一口井背后为什么站着几十家公司",
+      "central_question": "从取得权利到持续生产谁分别承担什么风险？",
+      "primary_chapters": [5, 6],
+      "memory_images": ["勘探权合同", "开发接力棒", "运营商身后的承包网络"],
+      "exclude": ["井口流体复述", "公司排名", "页岩递减"]
+    },
+    {
+      "id": "06",
+      "title": "炼厂不是一个大过滤器",
+      "central_question": "炼厂怎样把不匹配需求的分子改造成市场要的产品？",
+      "primary_chapters": [7],
+      "memory_images": ["蒸馏塔楼层", "分子改造车间", "成品调和罐"],
+      "exclude": ["装置清单", "成品油百科", "crack spread计算"]
+    },
+    {
+      "id": "07",
+      "title": "汽油不是一种液体",
+      "central_question": "产品名称相同为什么仍可能不能互换和销售？",
+      "primary_chapters": [8, 9],
+      "supporting_chapters": [15],
+      "memory_images": ["规格护照", "炼厂配方台", "季节切换标签"],
+      "exclude": ["全部成品油目录", "发动机四冲程", "环境法规史"]
+    },
+    {
+      "id": "08",
+      "title": "石油需求不只在油箱里",
+      "central_question": "一股油气怎样进入塑料、化肥和工业材料？",
+      "primary_chapters": [10],
+      "supporting_chapters": [3],
+      "memory_images": ["两扇原料门", "基础分子树干", "材料产品树"],
+      "exclude": ["聚合物大全", "塑料政策辩论", "峰值需求预测"]
+    },
+    {
+      "id": "09",
+      "title": "油不会自己流到缺油的地方",
+      "central_question": "全球有油本地为什么仍会缺货？",
+      "primary_chapters": [11],
+      "memory_images": ["固定管线网", "油轮与狭窄海峡", "最后一公里运输"],
+      "exclude": ["Worldscale计算", "完整Incoterms", "霍尔木兹案例"]
+    },
+    {
+      "id": "10",
+      "title": "储罐是市场的时间机器",
+      "central_question": "今天的供需不平衡怎样被搬到未来？",
+      "primary_chapters": [12, 13],
+      "memory_images": ["储罐水位", "四层季节日历", "接近罐顶的窄入口"],
+      "exclude": ["期货曲线详解", "运输方式复述", "负油价事件"]
+    },
+    {
+      "id": "11",
+      "title": "地下有很多油，供应为什么还会掉",
+      "central_question": "资源、储量、项目、递减和页岩节奏怎样限制供给？",
+      "primary_chapters": [14, 21],
+      "supporting_chapters": [6],
+      "memory_images": ["多级供给阶梯", "老井递减滑坡", "页岩跑步机"],
+      "exclude": ["各国R/P排名", "完整压裂作业", "OPEC+配额"]
+    },
+    {
+      "id": "12",
+      "title": "一桶油为什么没有一个价格",
+      "central_question": "基准、质量、地点、时间和运费怎样组成成交价？",
+      "primary_chapters": [17],
+      "supporting_chapters": [2, 8, 11],
+      "memory_images": ["基准价标签", "加减价账本", "netback地图"],
+      "exclude": ["复杂公式价格例题", "完整期货曲线", "价格预测"]
+    },
+    {
+      "id": "13",
+      "title": "期货曲线不是价格预言",
+      "central_question": "不同月份的价格究竟在给什么约束定价？",
+      "primary_chapters": [18],
+      "supporting_chapters": [12, 17],
+      "appendices": ["A1"],
+      "memory_images": ["不同月份的两桶油", "交割时钟", "储存桥"],
+      "exclude": ["期权", "crack spread算题", "将曲线等同预测"]
+    },
+    {
+      "id": "14",
+      "title": "锁住价格，为什么仍可能缺现金",
+      "central_question": "对冲解决了哪种风险又留下了哪些风险？",
+      "primary_chapters": [19, 20],
+      "supporting_chapters": [18],
+      "memory_images": ["保险菜单", "基差缝隙", "保证金日历"],
+      "exclude": ["Black-76推导", "Greeks背诵", "听众计算payoff"]
+    },
+    {
+      "id": "15",
+      "title": "一纸减产能少掉多少真实桶",
+      "central_question": "OPEC+公告怎样变成真实可用供给？",
+      "primary_chapters": [22],
+      "supporting_chapters": [5, 14],
+      "memory_images": ["baseline尺子", "闲置产能弹簧", "履约记分牌"],
+      "exclude": ["完整石油史", "逐国产量清单", "海峡封锁"]
+    },
+    {
+      "id": "16",
+      "title": "油价为什么能跌到零以下",
+      "central_question": "2020年负油价为什么是物理交割和时间约束的结果？",
+      "primary_chapters": [23],
+      "supporting_chapters": [12, 18],
+      "memory_images": ["即将过期的交割票", "接近罐顶的Cushing", "拥挤的窄出口"],
+      "exclude": ["完整疫情史", "逐分钟价格", "所有原油都没人要"]
+    },
+    {
+      "id": "17",
+      "title": "美国天然气怎样进入全球价格",
+      "central_question": "LNG如何把本地管道气变成跨洋商品？",
+      "primary_chapters": [24],
+      "supporting_chapters": [11],
+      "memory_images": ["液化列车", "跨洋LNG船", "三块区域价格屏"],
+      "exclude": ["天然气工程课", "油轮类型复述", "把LNG和原油混为一谈"]
+    },
+    {
+      "id": "18",
+      "title": "峰值需求不是突然不用油",
+      "central_question": "法规、发动机、车队更新和投资怎样共同改变需求？",
+      "primary_chapters": [15, 16, 25],
+      "supporting_chapters": [8, 9, 10],
+      "memory_images": ["法规与尾气系统接口", "发动机能量去向图", "车队更新传送带"],
+      "exclude": ["政策年份大全", "车型优劣辩论", "峰值年份押注"]
+    },
+    {
+      "id": "19",
+      "title": "一条海峡怎样震动整条产业链",
+      "central_question": "霍尔木兹受阻怎样传到船、罐、产量、库存和价格？",
+      "primary_chapters": [26],
+      "supporting_chapters": [11, 12, 22],
+      "memory_images": ["全球油流窄门", "产区填满的储罐", "两层买家地图"],
+      "exclude": ["重讲运输与库存基础课", "永久化2026情景", "地缘政治立场评论"]
+    }
+  ],
+  "bonus_episodes": [
+    {
+      "id": "B01",
+      "title": "桶、吨和BTU为什么不能直接互换",
+      "appendices": ["A2"],
+      "target_minutes": {"min": 8, "max": 10},
+      "listener_calculations": 0
+    },
+    {
+      "id": "B02",
+      "title": "24/7的油价是真市场还是借来的影子",
+      "appendices": ["A3"],
+      "target_minutes": {"min": 10, "max": 12},
+      "listener_calculations": 0
+    }
+  ]
+}

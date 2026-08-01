@@ -1,51 +1,103 @@
-# Oil 101 Chinese Podcast Series
+# Oil 101 中文播客系列 V2
 
-## Product promise
+## 产品承诺
 
-This series is a source-bounded Chinese audio companion to Morgan Downey's
-Oil 101. It is designed for industry understanding rather than examination
-preparation.
+这是一套基于 Morgan Downey《Oil 101》2026 网页第二版原文制作的中文双人播客。目标不是替代原书逐字朗读，也不是备考，而是让听众先建立完整的行业心智模型：一桶油是什么，谁让它流动，瓶颈在哪里，价格怎样形成，风险怎样沿物理链和现金流链传播。
 
-After one focused listen, the listener should be able to reconstruct the
-physical and economic chain behind ordinary oil-market news. The original
-book should then feel like a place to deepen details, not a first encounter
-with the industry.
+听完整个核心系列后，听众应能：
 
-## Recurring format
+- 看见石油新闻中的真实物理链，而不只看标题数字；
+- 区分质量、地点、时间、计量口径和合同口径；
+- 理解供给、库存、炼厂、物流、价格和对冲之间的因果关系；
+- 带着问题回到原书深入细节，而不是把原书当第一次接触行业。
 
-- Format: two-host deep-dive conversation in Simplified Chinese
-- Target length: 22-28 minutes per episode
-- Host A: petroleum-industry explainer who builds the physical mechanism
-- Host B: skeptical physical-market analyst who keeps asking where the barrel
-  is, what constrains it, how long the response takes, and when cash changes
-  hands
-- Structure: cold open, three acts, two active-recall pauses, one spoken
-  calculation, one adjacent-concept distinction, one 60-second recap, and one
-  closed-book transfer question
-- Fact rule: use only the curated packet supplied for the episode
-- Number rule: distinguish original-source figures from teaching examples
-- Language rule: introduce an English term once with its Chinese meaning and
-  then use the clearest spoken form
+事实源以作者原始章节为准：<https://oil101.morgandowney.com/chapters>。既有中文网站和知识库只可用于定位，不可代替原文成为播客事实源。
 
-## Episode map
+## 已签收基准
 
-| Episode | Working title | Central question |
-|---|---|---|
-| 01 | 地下没有一座原油湖 | 岩石里的烃如何成为稳定、可计量的井场液体？ |
-| 02 | 一桶黑色液体的身份证 | API、硫、酸值、金属与收率为何决定原油价值？ |
-| 03 | 炼厂不是一个大过滤器 | 炼厂如何分离、改造、清理并调和分子？ |
-| 04 | 供需不是两条线，而是储罐账本 | 生产、加工、贸易和库存如何形成物理平衡？ |
-| 05 | 全球有油，本地为什么还会断供 | 规格、路线、罐容、检修与日历如何制造局部短缺？ |
-| 06 | 一桶油为什么没有一个价格 | 基准、质量、地点、时间和运费如何组成成交价？ |
-| 07 | 库存和期货曲线在说什么 | 期限结构如何给储存和即时可用性定价？ |
-| 08 | 锁住价格，为什么仍可能现金流破产 | 对冲如何改变价格风险、保证金和现金流路径？ |
-| 09 | 谁真的能在明天增加供给 | 项目时滞、衰减、储量和页岩钻井节奏如何约束供应？ |
-| 10 | OPEC+究竟控制了什么 | 配额、执行、闲置能力和出口通道如何改变可用桶数？ |
-| 11 | 石油需求远不止汽车加油 | 燃料、石化、LNG和能源转型为何以不同速度变化？ |
-| 12 | 听到一条石油新闻后，应该怎样推演 | 如何用流量、时钟、瓶颈、库存和主体反应形成可验证判断？ |
+Episode 01 V2 已被用户评价为“比较满意”，可作为系列制作基准，但后续各集必须修复一个明确缺点：**同义反复仍略多**。
 
-## Production gate
+继承项：
 
-Episode 01 is the unsigned pilot. No batch generation begins until the user
-has listened to it and explicitly accepted its clarity, depth, host dynamic,
-and pacing as the series exemplar.
+- 自然的男女双人 Deep Dive；
+- 一集只回答一个反直觉问题；
+- 用三个清晰画面承载知识；
+- 不考试、不要求复述、不安排心算；
+- 专业词服务于故事，不把节目讲成术语表。
+
+强制改进项：
+
+- 节目长度按内容决定，默认 12-17 分钟，不再追求 22-28 分钟；
+- 核心结论只允许在开场设问和结尾落点各出现一次；
+- 中段回到开场问题时必须新增机制、条件或边界，纯换句话说即删除；
+- 不同时设置“阶段复盘”“一分钟总结”和“结尾总结”；只保留自然收束；
+- 一个概念最多使用一个主类比，讲清边界后立即继续故事。
+
+## 固定节目形态
+
+- 语言：简体中文。
+- 形式：男女双人 Deep Dive。
+- 主持人 A：建立机制和因果链，但不扮演授课老师。
+- 主持人 B：代表聪明的行业新手，追问真实困惑，不当考官。
+- 每集：一个问题、一条因果主线、三个记忆画面、一个自然结尾。
+- 数字：只保留改变判断的数字；默认 0-3 个，禁止数字清单。
+- 算术：不要求听众计算。价格和风险章节需要数字时，由主持人直接解释意义。
+- 术语：每集新增英文术语原则上不超过 7 个；首次白话解释后使用中文短称。
+- 事实：生成资料包时重新阅读对应原始章节，不从旧摘要扩写。
+- 边界：每集都要写清楚本集不讲什么，避免提前消费后续节目。
+
+## 去重复闸门
+
+每份资料包和生成提示必须通过以下检查：
+
+1. **新增信息账本**：每个段落必须新增一个机制、条件、例子或边界。
+2. **结论预算**：核心结论最多完整表达两次；近义改写也计入。
+3. **类比预算**：同一概念只保留一个主类比，不连续堆类比。
+4. **回顾预算**：没有独立复盘段；结尾不再重讲三个主体段落。
+5. **主持人反应预算**：连续的“对、没错、也就是说”最多一次，随后必须推进。
+6. **问题质量**：主持人 B 的每个问题都要打开新信息，不允许用问句复述 A 刚说的话。
+7. **相邻集去重**：若同一概念再次出现，只用一句调用旧认知，然后讲本集新增部分。
+
+反作弊规则：改换词语、交换句序或换一个类比，但信息没有增加，仍算重复。
+
+## 核心系列
+
+| 集数 | 工作标题 | 唯一核心问题 | 原书主章节 |
+|---|---|---|---|
+| 01 | 先别急着乘油价 | 井口测试桶数为什么不是销售桶数？ | 3、5、6（局部） |
+| 02 | 权力总在寻找一只阀门 | 石油史上“谁说了算”为什么不断变化？ | 1 |
+| 03 | 一桶原油的身份证 | 看起来都黑的一桶油，为什么价值不同？ | 2、4 |
+| 04 | 统计表里的油为什么越算越多 | 原油、凝析油、NGL 和炼厂增益为何不能混为一谈？ | 3 |
+| 05 | 一口井背后为什么站着几十家公司 | 从取得权利到持续生产，谁分别承担什么风险？ | 5、6 |
+| 06 | 炼厂不是一个大过滤器 | 炼厂怎样把不匹配需求的分子改造成市场要的产品？ | 7 |
+| 07 | 汽油不是一种液体 | 产品名称相同，为什么仍可能不能互换和销售？ | 8、9 |
+| 08 | 石油需求不只在油箱里 | 一股油气怎样进入塑料、化肥和工业材料？ | 10 |
+| 09 | 油不会自己流到缺油的地方 | 全球有油，本地为什么仍会缺货？ | 11 |
+| 10 | 储罐是市场的时间机器 | 今天的供需不平衡怎样被搬到未来？ | 12、13 |
+| 11 | 地下有很多油，供应为什么还会掉 | 资源、储量、项目、递减和页岩节奏怎样限制供给？ | 14、21 |
+| 12 | 一桶油为什么没有一个价格 | 基准、质量、地点、时间和运费怎样组成成交价？ | 17 |
+| 13 | 期货曲线不是价格预言 | 不同月份的价格究竟在给什么约束定价？ | 18、附录 1 |
+| 14 | 锁住价格，为什么仍可能缺现金 | 对冲解决了哪种风险，又留下了哪些风险？ | 19、20 |
+| 15 | 一纸减产能少掉多少真实桶 | OPEC+ 公告怎样变成真实可用供给？ | 22 |
+| 16 | 油价为什么能跌到零以下 | 2020 年负油价为什么是物理交割和时间约束的结果？ | 23 |
+| 17 | 美国天然气怎样进入全球价格 | LNG 如何把本地管道气变成跨洋商品？ | 24 |
+| 18 | 峰值需求不是突然不用油 | 法规、发动机、车队更新和投资怎样共同改变需求？ | 15、16、25 |
+| 19 | 一条海峡怎样震动整条产业链 | 霍尔木兹受阻怎样传到船、罐、产量、库存和价格？ | 26 |
+
+详细冷开场、记忆画面、内容边界和相邻集去重要求见 `EPISODE_BLUEPRINTS_V2.md`。机器可读版本见 `episode-map-v2.json`。
+
+## 附录短篇
+
+- **B01｜桶、吨和 BTU 为什么不能直接互换**：依据附录 2，做 8-10 分钟单位直觉篇；不出计算题。
+- **B02｜24/7 的油价是真市场还是借来的影子**：依据附录 3，做 10-12 分钟现代市场篇；重点讲价格锚与流动性边界。
+
+附录 1 已融入 Episode 13，不再单独制作，避免重复。
+
+## 制作顺序
+
+1. 先制作 Episode 02，验证“更短、少重复”的改进是否真正成立。
+2. 通过后制作 03-04，完成“桶是什么”这一小组。
+3. 再按 05-08、09-11、12-16、17-19 分批制作。
+4. 每批第一集先听审，再放行同批剩余节目。
+
+不得一次性生成全部节目。Episode 01 V2 定义基准，Episode 02 负责验证本次新增的去重复规则。

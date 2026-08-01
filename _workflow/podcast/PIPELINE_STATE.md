@@ -1,13 +1,13 @@
 # Oil 101 Podcast Pipeline State
 
-Updated: 2026-07-27
+Updated: 2026-08-01
 
 ## North star
 
 - Process exemplar: FRM Reading 9 NotebookLM pilot
 - Format exemplar: source-bounded Simplified Chinese two-host Deep Dive
-- Signed Oil 101 episode exemplar: pending user acceptance of Episode 01
-- Mass-production rule: do not generate Episodes 02-12 before Episode 01 is accepted
+- Signed Oil 101 episode exemplar: Episode 01 V2 accepted as the baseline with a mandatory semantic-repetition repair
+- Mass-production rule: Episode 02 must validate the new repetition gate before later batches are generated
 
 ## Episode 01
 
@@ -20,11 +20,40 @@ Updated: 2026-07-27
 - [x] Produce an exact timed transcript from the synthesis input
 - [x] Audit spoken claims against the source packet
 - [x] Publish pilot to Oil 101 mobile site
-- [ ] User signs or rejects the episode exemplar
+- [x] User rejected V1 as the episode exemplar
+
+## Episode 01 V2
+
+- [x] Freeze the V1 rejection as a negative calibration fixture
+- [x] Narrow the episode to one memorable claim
+- [x] Remove quizzes, calculations, recall pauses, and equipment encyclopedism
+- [x] Draft a podcast-native source packet from the original-source audit
+- [x] Draft a NotebookLM prompt calibrated to the FRM voice benchmark
+- [x] Generate the NotebookLM male/female Deep Dive in Simplified Chinese
+- [ ] Download and verify media integrity
+- [ ] Replace the public V1 audio only after listening review
+- [x] User accepts V2 as the production baseline, with the required repair “reduce repetitive filler”
+
+## Series V2 design
+
+- [x] Recheck the 2026 web second-edition table of contents
+- [x] Replace the old 12-episode exam-like format with a 19-episode understanding series
+- [x] Map original Chapters 1-26 to at least one primary episode
+- [x] Define one central question, three memory images, and explicit exclusions for Episodes 02-19
+- [x] Add semantic-repetition gates and freeze Episode 01 V2 as the qualified golden exemplar
+- [ ] Produce Episode 02 source packet directly from the original Chapter 1 page
+- [ ] Generate and listen-review Episode 02 before releasing the next batch
 
 ## Current gate
 
-The audited 26:22 pilot and exact transcript are live on GitHub Pages.
-NotebookLM has the final source packet and prompt, but its alternative Audio
-Overview is waiting on the account's daily audio quota. User listening
-approval is the only remaining gate before Episodes 02-12 enter production.
+V1 remains a rejected, fact-audited artifact. An accidental English NotebookLM
+generation is also non-deliverable. The Simplified Chinese Episode 01 V2 has
+been generated and listened to by the user; it is the qualified golden
+exemplar. Its voice, clarity, and single-thread structure pass, while semantic
+repetition is the mandatory repair for every later episode.
+
+The complete series now contains 19 core episodes plus two appendix shorts.
+Design work is complete in `podcast-series/oil101/SERIES_PLAN.md`,
+`EPISODE_BLUEPRINTS_V2.md`, and `episode-map-v2.json`. Production is unblocked
+only for Episode 02. Do not use fallback TTS and do not batch-generate Episodes
+03-19 until Episode 02 proves the shorter runtime and repetition gate in audio.
