@@ -2,7 +2,7 @@
   "series": "oil101-chinese-deep-dive",
   "episode": "04",
   "working_title": "统计表里的油为什么越算越多",
-  "status": "notebooklm_generating",
+  "status": "blocked_by_daily_limit_after_wrong_language_retry",
   "language": "zh-CN",
   "format": "notebooklm-two-host-deep-dive",
   "target_duration_minutes": {
@@ -27,10 +27,10 @@
   "source_packet": "episode-04-source.md",
   "generation_prompt": "episode-04-notebooklm-prompt.md",
   "source_packet_characters": 2818,
-  "generation_prompt_characters": 1405,
+  "generation_prompt_characters": 1453,
   "sha256": {
     "source_packet": "7FC6D86EADF4C16B758CF0639AB6C865B9BC78AACDFF02FC50D980EC3FE50AE1",
-    "generation_prompt": "D05026C565837875A6F66F07839237DE1F76F7DF080FB4E8B445AA3FCD35C3BA",
+    "generation_prompt": "AC2346126507B375FB2071243AB5555A98BF55E2DD4649377D5F507BEB06CA8E",
     "audio": null
   },
   "notebooklm": {
@@ -38,8 +38,15 @@
     "format": "Deep Dive",
     "language": "中文（简体）",
     "length": "Default",
-    "generation_result": "accepted_generating",
-    "submitted_at": "2026-08-01T13:14:00-04:00"
+    "generation_result": "You have reached your daily Audio Overview limits, come back later.",
+    "submitted_at": "2026-08-01T13:14:00-04:00",
+    "retry_language_verified": "中文（简体）",
+    "wrong_language_attempt": {
+      "language": "Korean",
+      "audio_title": "석유 공급 통계 속 부풀려진 부피의 함정",
+      "duration": "24:30",
+      "disposition": "deleted"
+    }
   },
   "outputs": {
     "audio": null,

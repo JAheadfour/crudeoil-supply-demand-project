@@ -22,6 +22,7 @@ for (const directory of productionEpisodes) {
 
   assert.equal(manifest.episode, id);
   assert.equal(manifest.language, "zh-CN");
+  assert.equal(manifest.notebooklm.language, "中文（简体）");
   assert.equal(manifest.content_contract.central_claims, 1);
   assert.equal(manifest.content_contract.mental_images, 3);
   assert.equal(manifest.content_contract.calculations, 0);
@@ -44,6 +45,12 @@ for (const directory of productionEpisodes) {
   assert.match(promptText, /去重复硬约束/);
   assert.doesNotMatch(promptText, /主动回忆|闭卷|心算|请你复述/);
   assert.doesNotMatch(promptText, /第一阶段复盘|一分钟总结|三点回顾/);
+
+  if (manifest.notebooklm.wrong_language_attempt) {
+    assert.equal(manifest.notebooklm.wrong_language_attempt.disposition, "deleted");
+    assert.equal(manifest.notebooklm.retry_language_verified, "中文（简体）");
+    assert.match(promptText, /只能使用简体中文/);
+  }
 }
 
 console.log(`PODCAST PRODUCTION V2 OK: ${productionEpisodes.join(", ")}`);

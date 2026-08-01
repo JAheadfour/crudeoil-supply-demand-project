@@ -8,6 +8,7 @@ Updated: 2026-08-01
 - Format exemplar: source-bounded Simplified Chinese two-host Deep Dive
 - Signed Oil 101 episode exemplar: Episode 01 V2 accepted as the baseline with a mandatory semantic-repetition repair
 - Mass-production rule: every episode uses one central question, three memory images, explicit exclusions, and a semantic-repetition gate
+- Runtime language gate: after filling the prompt, re-read the NotebookLM language control and require `中文（简体）`; reject and delete any output whose title or spoken language is not Chinese
 
 ## Episode 01
 
@@ -44,7 +45,8 @@ Updated: 2026-08-01
 - [x] Produce Episode 02 source packet directly from the original Chapter 1 page
 - [x] Submit Episodes 02-04 as Simplified Chinese NotebookLM Deep Dives
 - [x] Prepare Episode 05 and stop at NotebookLM's first explicit daily Audio Overview limit
-- [ ] Download and listen-review Episodes 02-04 when generation completes
+- [ ] Download and listen-review Episodes 02-03
+- [ ] Regenerate Episode 04 after deleting the rejected Korean output
 - [ ] Resume with the prepared Episode 05 notebook after the daily allowance returns
 
 ## Current gate
@@ -59,9 +61,12 @@ The complete series now contains 19 core episodes plus two appendix shorts.
 Design work is complete in `podcast-series/oil101/SERIES_PLAN.md`,
 `EPISODE_BLUEPRINTS_V2.md`, and `episode-map-v2.json`. On 2026-08-01,
 Episodes 02, 03, and 04 were accepted by NotebookLM as Simplified Chinese Deep
-Dives. Episodes 02 and 03 are ready pending listening review; Episode 04 was
-still generating at the final check. Episode 05 was fully prepared and uploaded,
+Dives. Episodes 02 and 03 are ready pending listening review. Episode 04 completed
+in Korean, was rejected and deleted, and its corrected Simplified Chinese retry
+was blocked by the daily limit after both the UI language and prompt constraint
+were verified. Episode 05 was fully prepared and uploaded,
 but its generation request returned `You have reached your daily Audio Overview
 limits, come back later.` No later episodes were submitted. The next production
-action is to listen-review Episodes 02-04, then resume from the existing Episode
-05 notebook after the allowance returns. Do not use fallback TTS.
+action is to listen-review Episodes 02-03, regenerate Episode 04 from its existing
+notebook, then resume from the existing Episode 05 notebook after the allowance
+returns. Do not use fallback TTS.
