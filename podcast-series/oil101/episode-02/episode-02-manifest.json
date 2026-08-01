@@ -1,0 +1,52 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "02",
+  "working_title": "权力总在寻找一只阀门",
+  "status": "notebooklm_ready_pending_listen_review",
+  "language": "zh-CN",
+  "format": "notebooklm-two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 12,
+    "max": 15
+  },
+  "primary_sources": [
+    "https://oil101.morgandowney.com/chapters/history"
+  ],
+  "supporting_sources": [
+    "https://oil101.morgandowney.com/chapters/industry-overview"
+  ],
+  "content_contract": {
+    "central_claims": 1,
+    "mental_images": 3,
+    "calculations": 0,
+    "quizzes": 0,
+    "active_recall_pauses": 0,
+    "standalone_recaps": 0,
+    "maximum_full_claim_expressions": 2,
+    "maximum_hard_number_anchors": 3,
+    "maximum_english_terms": 7
+  },
+  "source_packet": "episode-02-source.md",
+  "generation_prompt": "episode-02-notebooklm-prompt.md",
+  "source_packet_characters": 2665,
+  "generation_prompt_characters": 1226,
+  "sha256": {
+    "source_packet": "A093A2B7206353686654B8EABEFD8AE41D4B64D8D2EF3ACBCEF93B6B904B6C63",
+    "generation_prompt": "BD8C8F4C11C5E9C06FDA6E0768BCAC6CE2D55FDFFF5B21213C42CD3F694D8E59",
+    "audio": null
+  },
+  "notebooklm": {
+    "notebook_url": "https://notebook.google.com/notebook/9b49de48-b0a5-4887-9682-0fbe3bbfaf07",
+    "format": "Deep Dive",
+    "language": "中文（简体）",
+    "length": "Default",
+    "generation_result": "ready",
+    "submitted_at": "2026-08-01T13:03:34-04:00",
+    "audio_title": "石油阀门在谁手里"
+  },
+  "outputs": {
+    "audio": null,
+    "audit": null,
+    "site_url": null
+  }
+}

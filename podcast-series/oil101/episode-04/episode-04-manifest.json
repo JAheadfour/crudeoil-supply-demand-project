@@ -1,0 +1,49 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "04",
+  "working_title": "统计表里的油为什么越算越多",
+  "status": "notebooklm_generating",
+  "language": "zh-CN",
+  "format": "notebooklm-two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 12,
+    "max": 15
+  },
+  "primary_sources": [
+    "https://oil101.morgandowney.com/chapters/components"
+  ],
+  "supporting_sources": [],
+  "content_contract": {
+    "central_claims": 1,
+    "mental_images": 3,
+    "calculations": 0,
+    "quizzes": 0,
+    "active_recall_pauses": 0,
+    "standalone_recaps": 0,
+    "maximum_full_claim_expressions": 2,
+    "maximum_hard_number_anchors": 1,
+    "maximum_english_terms": 6
+  },
+  "source_packet": "episode-04-source.md",
+  "generation_prompt": "episode-04-notebooklm-prompt.md",
+  "source_packet_characters": 2818,
+  "generation_prompt_characters": 1405,
+  "sha256": {
+    "source_packet": "7FC6D86EADF4C16B758CF0639AB6C865B9BC78AACDFF02FC50D980EC3FE50AE1",
+    "generation_prompt": "D05026C565837875A6F66F07839237DE1F76F7DF080FB4E8B445AA3FCD35C3BA",
+    "audio": null
+  },
+  "notebooklm": {
+    "notebook_url": "https://notebook.google.com/notebook/b6209e61-5777-4834-82ef-c7856b3fc68e",
+    "format": "Deep Dive",
+    "language": "中文（简体）",
+    "length": "Default",
+    "generation_result": "accepted_generating",
+    "submitted_at": "2026-08-01T13:14:00-04:00"
+  },
+  "outputs": {
+    "audio": null,
+    "audit": null,
+    "site_url": null
+  }
+}

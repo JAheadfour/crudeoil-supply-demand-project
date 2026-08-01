@@ -1,0 +1,52 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "03",
+  "working_title": "一桶原油的身份证",
+  "status": "notebooklm_ready_pending_listen_review",
+  "language": "zh-CN",
+  "format": "notebooklm-two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 12,
+    "max": 15
+  },
+  "primary_sources": [
+    "https://oil101.morgandowney.com/chapters/crude-oil-assay"
+  ],
+  "supporting_sources": [
+    "https://oil101.morgandowney.com/chapters/chemistry"
+  ],
+  "content_contract": {
+    "central_claims": 1,
+    "mental_images": 3,
+    "calculations": 0,
+    "quizzes": 0,
+    "active_recall_pauses": 0,
+    "standalone_recaps": 0,
+    "maximum_full_claim_expressions": 2,
+    "maximum_hard_number_anchors": 0,
+    "maximum_english_terms": 7
+  },
+  "source_packet": "episode-03-source.md",
+  "generation_prompt": "episode-03-notebooklm-prompt.md",
+  "source_packet_characters": 2831,
+  "generation_prompt_characters": 1323,
+  "sha256": {
+    "source_packet": "C85D7D0338ACF8B1349213C9103ADE50809F06EF0E6E6025679942CDD2717BA4",
+    "generation_prompt": "8C1CA72D49CFCA23FDF7199AE25FC0253AC50B8E6B13DD16E41726B037C94219",
+    "audio": null
+  },
+  "notebooklm": {
+    "notebook_url": "https://notebook.google.com/notebook/31793406-6625-4e41-b517-a878f4c961ab",
+    "format": "Deep Dive",
+    "language": "中文（简体）",
+    "length": "Default",
+    "generation_result": "ready",
+    "submitted_at": "2026-08-01T13:10:00-04:00",
+    "audio_title": "决定原油身价的化学指纹"
+  },
+  "outputs": {
+    "audio": null,
+    "audit": null,
+    "site_url": null
+  }
+}

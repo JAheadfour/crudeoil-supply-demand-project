@@ -1,0 +1,50 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "05",
+  "working_title": "一口井背后为什么站着几十家公司",
+  "status": "blocked_by_notebooklm_daily_audio_limit",
+  "language": "zh-CN",
+  "format": "notebooklm-two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 12,
+    "max": 15
+  },
+  "primary_sources": [
+    "https://oil101.morgandowney.com/chapters/industry-overview",
+    "https://oil101.morgandowney.com/chapters/exploration-production"
+  ],
+  "supporting_sources": [],
+  "content_contract": {
+    "central_claims": 1,
+    "mental_images": 3,
+    "calculations": 0,
+    "quizzes": 0,
+    "active_recall_pauses": 0,
+    "standalone_recaps": 0,
+    "maximum_full_claim_expressions": 2,
+    "maximum_hard_number_anchors": 0,
+    "maximum_english_terms": 7
+  },
+  "source_packet": "episode-05-source.md",
+  "generation_prompt": "episode-05-notebooklm-prompt.md",
+  "source_packet_characters": 2828,
+  "generation_prompt_characters": 1364,
+  "sha256": {
+    "source_packet": "A4350A7D49BDA8D7E55F1EC6D7B11A73CFC903E7CFCC52AB2D04976EF9C62C2B",
+    "generation_prompt": "091CBD27BF7C9B3939EE7759958761E47C0A3A0357CF802B0CD54C2CF872165C",
+    "audio": null
+  },
+  "notebooklm": {
+    "notebook_url": "https://notebook.google.com/notebook/3b6d7ed7-1b59-4ecb-ad48-06ffdfbdc32c",
+    "format": "Deep Dive",
+    "language": "中文（简体）",
+    "length": "Default",
+    "generation_result": "You have reached your daily Audio Overview limits, come back later.",
+    "blocked_at": "2026-08-01T13:20:23-04:00"
+  },
+  "outputs": {
+    "audio": null,
+    "audit": null,
+    "site_url": null
+  }
+}

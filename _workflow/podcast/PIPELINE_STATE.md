@@ -7,7 +7,7 @@ Updated: 2026-08-01
 - Process exemplar: FRM Reading 9 NotebookLM pilot
 - Format exemplar: source-bounded Simplified Chinese two-host Deep Dive
 - Signed Oil 101 episode exemplar: Episode 01 V2 accepted as the baseline with a mandatory semantic-repetition repair
-- Mass-production rule: Episode 02 must validate the new repetition gate before later batches are generated
+- Mass-production rule: every episode uses one central question, three memory images, explicit exclusions, and a semantic-repetition gate
 
 ## Episode 01
 
@@ -41,8 +41,11 @@ Updated: 2026-08-01
 - [x] Map original Chapters 1-26 to at least one primary episode
 - [x] Define one central question, three memory images, and explicit exclusions for Episodes 02-19
 - [x] Add semantic-repetition gates and freeze Episode 01 V2 as the qualified golden exemplar
-- [ ] Produce Episode 02 source packet directly from the original Chapter 1 page
-- [ ] Generate and listen-review Episode 02 before releasing the next batch
+- [x] Produce Episode 02 source packet directly from the original Chapter 1 page
+- [x] Submit Episodes 02-04 as Simplified Chinese NotebookLM Deep Dives
+- [x] Prepare Episode 05 and stop at NotebookLM's first explicit daily Audio Overview limit
+- [ ] Download and listen-review Episodes 02-04 when generation completes
+- [ ] Resume with the prepared Episode 05 notebook after the daily allowance returns
 
 ## Current gate
 
@@ -54,6 +57,11 @@ repetition is the mandatory repair for every later episode.
 
 The complete series now contains 19 core episodes plus two appendix shorts.
 Design work is complete in `podcast-series/oil101/SERIES_PLAN.md`,
-`EPISODE_BLUEPRINTS_V2.md`, and `episode-map-v2.json`. Production is unblocked
-only for Episode 02. Do not use fallback TTS and do not batch-generate Episodes
-03-19 until Episode 02 proves the shorter runtime and repetition gate in audio.
+`EPISODE_BLUEPRINTS_V2.md`, and `episode-map-v2.json`. On 2026-08-01,
+Episodes 02, 03, and 04 were accepted by NotebookLM as Simplified Chinese Deep
+Dives. Episodes 02 and 03 are ready pending listening review; Episode 04 was
+still generating at the final check. Episode 05 was fully prepared and uploaded,
+but its generation request returned `You have reached your daily Audio Overview
+limits, come back later.` No later episodes were submitted. The next production
+action is to listen-review Episodes 02-04, then resume from the existing Episode
+05 notebook after the allowance returns. Do not use fallback TTS.
