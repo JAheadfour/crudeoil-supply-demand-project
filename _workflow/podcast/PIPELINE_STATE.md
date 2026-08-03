@@ -1,6 +1,6 @@
 # Oil 101 Podcast Pipeline State
 
-Updated: 2026-08-01
+Updated: 2026-08-03
 
 ## North star
 
@@ -8,7 +8,7 @@ Updated: 2026-08-01
 - Format exemplar: source-bounded Simplified Chinese two-host Deep Dive
 - Signed Oil 101 episode exemplar: Episode 01 V2 accepted as the baseline with a mandatory semantic-repetition repair
 - Mass-production rule: every episode uses one central question, three memory images, explicit exclusions, and a semantic-repetition gate
-- Runtime language gate: after filling the prompt, re-read the NotebookLM language control and require `中文（简体）`; reject and delete any output whose title or spoken language is not Chinese
+- Runtime language gate: select the last language option with keyboard navigation, move up twice, confirm `中文（简体）` by DOM readback, then require an explicit Simplified-Chinese-only instruction in the prompt; reject and delete any output whose title or spoken language is not Chinese
 
 ## Episode 01
 
@@ -43,11 +43,12 @@ Updated: 2026-08-01
 - [x] Define one central question, three memory images, and explicit exclusions for Episodes 02-19
 - [x] Add semantic-repetition gates and freeze Episode 01 V2 as the qualified golden exemplar
 - [x] Produce Episode 02 source packet directly from the original Chapter 1 page
-- [x] Submit Episodes 02-04 as Simplified Chinese NotebookLM Deep Dives
-- [x] Prepare Episode 05 and stop at NotebookLM's first explicit daily Audio Overview limit
+- [x] Submit Episodes 02-06 as Simplified Chinese NotebookLM Deep Dives
+- [x] Regenerate Episode 04 after deleting the rejected Korean output
+- [x] Resume Episode 05 after the daily allowance returned
+- [x] Build Episode 06 directly from the original refining chapter and submit it
 - [ ] Download and listen-review Episodes 02-03
-- [ ] Regenerate Episode 04 after deleting the rejected Korean output
-- [ ] Resume with the prepared Episode 05 notebook after the daily allowance returns
+- [ ] Download and listen-review Episodes 04-06
 
 ## Current gate
 
@@ -57,16 +58,13 @@ been generated and listened to by the user; it is the qualified golden
 exemplar. Its voice, clarity, and single-thread structure pass, while semantic
 repetition is the mandatory repair for every later episode.
 
-The complete series now contains 19 core episodes plus two appendix shorts.
-Design work is complete in `podcast-series/oil101/SERIES_PLAN.md`,
-`EPISODE_BLUEPRINTS_V2.md`, and `episode-map-v2.json`. On 2026-08-01,
-Episodes 02, 03, and 04 were accepted by NotebookLM as Simplified Chinese Deep
-Dives. Episodes 02 and 03 are ready pending listening review. Episode 04 completed
-in Korean, was rejected and deleted, and its corrected Simplified Chinese retry
-was blocked by the daily limit after both the UI language and prompt constraint
-were verified. Episode 05 was fully prepared and uploaded,
-but its generation request returned `You have reached your daily Audio Overview
-limits, come back later.` No later episodes were submitted. The next production
-action is to listen-review Episodes 02-03, regenerate Episode 04 from its existing
-notebook, then resume from the existing Episode 05 notebook after the allowance
-returns. Do not use fallback TTS.
+The complete series contains 19 core episodes plus two appendix shorts. Design
+work is complete in `podcast-series/oil101/SERIES_PLAN.md`,
+`EPISODE_BLUEPRINTS_V2.md`, and `episode-map-v2.json`. On 2026-08-03, the daily
+allowance returned. Episode 04 was regenerated in Simplified Chinese and is ready
+at 17:58; Episode 05 is ready in Simplified Chinese at 13:39. Episode 06 was built
+directly from the original refining chapter and submitted after all four preflight
+checks passed; NotebookLM is still generating it. These outputs remain pending
+listening review, so they are not yet qualified as final-quality releases. The next
+production action is to finish Episode 06, then download and listen-review Episodes
+04-06 against the Episode 01 V2 benchmark. Do not use fallback TTS.

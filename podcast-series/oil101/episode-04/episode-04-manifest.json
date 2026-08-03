@@ -2,7 +2,7 @@
   "series": "oil101-chinese-deep-dive",
   "episode": "04",
   "working_title": "统计表里的油为什么越算越多",
-  "status": "blocked_by_daily_limit_after_wrong_language_retry",
+  "status": "notebooklm_ready_pending_listen_review",
   "language": "zh-CN",
   "format": "notebooklm-two-host-deep-dive",
   "target_duration_minutes": {
@@ -38,9 +38,12 @@
     "format": "Deep Dive",
     "language": "中文（简体）",
     "length": "Default",
-    "generation_result": "You have reached your daily Audio Overview limits, come back later.",
+    "generation_result": "ready",
     "submitted_at": "2026-08-01T13:14:00-04:00",
+    "retry_submitted_at": "2026-08-03T11:13:00-04:00",
     "retry_language_verified": "中文（简体）",
+    "audio_title": "石油产量新高的统计幻觉",
+    "duration": "17:58",
     "wrong_language_attempt": {
       "language": "Korean",
       "audio_title": "석유 공급 통계 속 부풀려진 부피의 함정",

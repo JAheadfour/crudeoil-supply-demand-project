@@ -1,0 +1,50 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "06",
+  "working_title": "炼厂不是一个大过滤器",
+  "status": "notebooklm_generating",
+  "language": "zh-CN",
+  "format": "notebooklm-two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 12,
+    "max": 15
+  },
+  "primary_sources": [
+    "https://oil101.morgandowney.com/chapters/refining"
+  ],
+  "supporting_sources": [],
+  "content_contract": {
+    "central_claims": 1,
+    "mental_images": 3,
+    "calculations": 0,
+    "quizzes": 0,
+    "active_recall_pauses": 0,
+    "standalone_recaps": 0,
+    "maximum_full_claim_expressions": 2,
+    "maximum_hard_number_anchors": 0,
+    "maximum_english_terms": 9
+  },
+  "source_packet": "episode-06-source.md",
+  "generation_prompt": "episode-06-notebooklm-prompt.md",
+  "source_packet_characters": 2551,
+  "generation_prompt_characters": 1498,
+  "sha256": {
+    "source_packet": "73080FF0E2F3DBFB61B42CF7CD4D2B4DD1698FF00FB0BB68723127EE02C9F2E4",
+    "generation_prompt": "CD084F28229800E882FEA26F918DBFCE51D4FE27D1FB1917C7AC26E75FF208AC",
+    "audio": null
+  },
+  "notebooklm": {
+    "notebook_url": "https://notebook.google.com/notebook/28098073-230a-4df4-aedd-e5674ea32dfa",
+    "format": "Deep Dive",
+    "language": "中文（简体）",
+    "length": "Default",
+    "generation_result": "accepted_generating",
+    "submitted_at": "2026-08-03T11:16:00-04:00",
+    "retry_language_verified": "中文（简体）"
+  },
+  "outputs": {
+    "audio": null,
+    "audit": null,
+    "site_url": null
+  }
+}

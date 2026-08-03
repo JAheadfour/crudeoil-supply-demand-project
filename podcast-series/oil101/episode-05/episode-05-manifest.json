@@ -2,7 +2,7 @@
   "series": "oil101-chinese-deep-dive",
   "episode": "05",
   "working_title": "一口井背后为什么站着几十家公司",
-  "status": "blocked_by_notebooklm_daily_audio_limit",
+  "status": "notebooklm_ready_pending_listen_review",
   "language": "zh-CN",
   "format": "notebooklm-two-host-deep-dive",
   "target_duration_minutes": {
@@ -28,10 +28,10 @@
   "source_packet": "episode-05-source.md",
   "generation_prompt": "episode-05-notebooklm-prompt.md",
   "source_packet_characters": 2828,
-  "generation_prompt_characters": 1364,
+  "generation_prompt_characters": 1412,
   "sha256": {
     "source_packet": "A4350A7D49BDA8D7E55F1EC6D7B11A73CFC903E7CFCC52AB2D04976EF9C62C2B",
-    "generation_prompt": "091CBD27BF7C9B3939EE7759958761E47C0A3A0357CF802B0CD54C2CF872165C",
+    "generation_prompt": "B234ABEDA15D92CA58367166CD5513E10F1320EC0605731EC6D8AC520CE67324",
     "audio": null
   },
   "notebooklm": {
@@ -39,8 +39,12 @@
     "format": "Deep Dive",
     "language": "中文（简体）",
     "length": "Default",
-    "generation_result": "You have reached your daily Audio Overview limits, come back later.",
-    "blocked_at": "2026-08-01T13:20:23-04:00"
+    "generation_result": "ready",
+    "blocked_at": "2026-08-01T13:20:23-04:00",
+    "submitted_at": "2026-08-03T11:14:00-04:00",
+    "retry_language_verified": "中文（简体）",
+    "audio_title": "谁在为十亿桶石油打工",
+    "duration": "13:39"
   },
   "outputs": {
     "audio": null,

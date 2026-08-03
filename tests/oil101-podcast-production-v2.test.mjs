@@ -46,6 +46,10 @@ for (const directory of productionEpisodes) {
   assert.doesNotMatch(promptText, /主动回忆|闭卷|心算|请你复述/);
   assert.doesNotMatch(promptText, /第一阶段复盘|一分钟总结|三点回顾/);
 
+  if (Number(id) >= 4) {
+    assert.match(promptText, /只能使用简体中文/);
+  }
+
   if (manifest.notebooklm.wrong_language_attempt) {
     assert.equal(manifest.notebooklm.wrong_language_attempt.disposition, "deleted");
     assert.equal(manifest.notebooklm.retry_language_verified, "中文（简体）");
