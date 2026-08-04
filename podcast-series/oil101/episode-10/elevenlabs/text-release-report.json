@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "model": "eleven_v3",
+  "turn_counts": {
+    "canonical": 60,
+    "sanitized": 60,
+    "request": 60,
+    "studio": 60
+  },
+  "text_mismatches": [],
+  "speaker_mismatches": [],
+  "voice_mismatches": [],
+  "studio_text_mismatches": [],
+  "coverage_ids": 10,
+  "freeze_manifest_verified": true,
+  "enhance_batches_verified": true,
+  "new_arabic_number_tokens": [],
+  "audio_generated": false,
+  "errors": []
+}

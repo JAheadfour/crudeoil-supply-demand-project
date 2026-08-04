@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "editorial_profile": "system-narrative",
+  "turns": 60,
+  "speakers": [
+    "Shan Shan",
+    "Mr. Chen"
+  ],
+  "speaker_character_share": {
+    "Shan Shan": 0.3942,
+    "Mr. Chen": 0.6058
+  },
+  "question_turn_share": 0.3333,
+  "short_text_turn_share_le_15_chars": 0.0,
+  "long_text_turn_share_ge_80_chars": 0.15,
+  "coverage_ids": 10,
+  "story_rail_coverage_share": 1.0,
+  "memory_anchors": 3,
+  "misconception_loops": 3,
+  "pronunciation_items": 0,
+  "spoken_arithmetic_anchors": 0,
+  "arabic_number_tokens": [],
+  "errors": [],
+  "warnings": [],
+  "script": "C:\\Users\\justi\\OneDrive\\Documents\\oil\\podcast-series\\oil101\\episode-10\\author\\candidate.json"
+}

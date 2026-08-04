@@ -1,0 +1,55 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "10",
+  "working_title": "储罐是市场的时间机器",
+  "status": "elevenlabs_v3_generated_pending_listen_review",
+  "language": "zh-CN",
+  "format": "elevenlabs-v3-two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 12,
+    "max": 17
+  },
+  "primary_sources": [
+    "https://oil101.morgandowney.com/chapters/storage",
+    "https://oil101.morgandowney.com/chapters/seasonality"
+  ],
+  "supporting_sources": [],
+  "content_contract": {
+    "central_claims": 1,
+    "mental_images": 3,
+    "calculations": 0,
+    "quizzes": 0,
+    "active_recall_pauses": 0,
+    "standalone_recaps": 0,
+    "maximum_full_claim_expressions": 2,
+    "maximum_hard_number_anchors": 0,
+    "maximum_english_terms": 3
+  },
+  "source_packet": "episode-10-source.md",
+  "canonical_script": "frozen/canonical.json",
+  "final_script": "elevenlabs/final-canonical.json",
+  "generation_request": "elevenlabs/studio-request.json",
+  "generation_metadata": "elevenlabs/generation-metadata.json",
+  "sha256": {
+    "source_packet": "7419EC580ABACF05F10AB4291121719E244FE6E78C760955744E16D2DD3E29CB",
+    "canonical_script": "21A50D487F86517FAB766F01EEB910D921D652E9B481BB3D030A6BEB55560BB5",
+    "final_script": "DA9B250625213E9BCDB9269A48344E9196254D68C4C7A2D8D5C26E41B77B2E2A",
+    "generation_request": "4F909EC98D567AFB68CA958ABD8460143664550447BC254D97BE6DF5A22B2BE7",
+    "audio": "0DE92CC0C536977AE8A1C38304C96D59D305FD61D83D837E6246578D3926E722"
+  },
+  "elevenlabs": {
+    "model": "eleven_v3",
+    "project_url": "https://elevenlabs.io/app/studio/rpgibnUexDQ9Wd21sSvG?chapterId=fZTUvcFRPh5Yl85Jv31n",
+    "turns": 60,
+    "enhance_batches": 2,
+    "text_release_status": "PASS",
+    "audio_release_status": "REVIEW",
+    "duration": "13:14",
+    "format": "MP3, 192kbps"
+  },
+  "outputs": {
+    "audio": "audio/Oil101-Episode10-Storage-and-Seasonality-eleven-v3.mp3",
+    "audit": "elevenlabs/text-release-report.json",
+    "site_url": null
+  }
+}

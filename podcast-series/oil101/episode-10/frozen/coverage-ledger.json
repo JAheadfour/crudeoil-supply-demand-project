@@ -1,0 +1,239 @@
+[
+  {
+    "id": "O10.01",
+    "source_refs": [
+      "packet:S12.WHY",
+      "packet:S12.MOTIVES"
+    ],
+    "depth": "deep",
+    "audio_turns": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "required_terms": [
+      "时间桥"
+    ],
+    "teaching_actions": [
+      "mechanism",
+      "boundary",
+      "consequence"
+    ]
+  },
+  {
+    "id": "O10.02",
+    "source_refs": [
+      "packet:S12.WORKING"
+    ],
+    "depth": "mechanism",
+    "audio_turns": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "required_terms": [
+      "工作容量"
+    ],
+    "teaching_actions": [
+      "mechanism",
+      "boundary"
+    ]
+  },
+  {
+    "id": "O10.03",
+    "source_refs": [
+      "packet:S12.CATEGORIES",
+      "packet:S12.HUB"
+    ],
+    "depth": "contrast",
+    "audio_turns": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "required_terms": [
+      "管线充填"
+    ],
+    "teaching_actions": [
+      "contrast",
+      "decision"
+    ]
+  },
+  {
+    "id": "O10.04",
+    "source_refs": [
+      "packet:S12.REPORT",
+      "packet:S13.TURNAROUND"
+    ],
+    "depth": "deep",
+    "audio_turns": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ],
+    "required_terms": [
+      "库存增加"
+    ],
+    "teaching_actions": [
+      "mechanism",
+      "contrast",
+      "decision"
+    ]
+  },
+  {
+    "id": "O10.05",
+    "source_refs": [
+      "packet:S13.CALENDARS",
+      "packet:S13.WEATHER"
+    ],
+    "depth": "mechanism",
+    "audio_turns": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "required_terms": [
+      "四层日历"
+    ],
+    "teaching_actions": [
+      "mechanism",
+      "boundary"
+    ]
+  },
+  {
+    "id": "O10.06",
+    "source_refs": [
+      "packet:S13.PRODUCTS",
+      "packet:S13.TURNAROUND",
+      "packet:S13.CANCEL"
+    ],
+    "depth": "deep",
+    "audio_turns": [
+      29,
+      30,
+      31,
+      32,
+      35,
+      36
+    ],
+    "required_terms": [
+      "炼厂检修"
+    ],
+    "teaching_actions": [
+      "mechanism",
+      "contrast",
+      "consequence"
+    ]
+  },
+  {
+    "id": "O10.07",
+    "source_refs": [
+      "packet:S13.BASELINE"
+    ],
+    "depth": "contrast",
+    "audio_turns": [
+      35,
+      36,
+      37,
+      38
+    ],
+    "required_terms": [
+      "基准线"
+    ],
+    "teaching_actions": [
+      "contrast",
+      "decision"
+    ]
+  },
+  {
+    "id": "O10.08",
+    "source_refs": [
+      "packet:S12.REPORT"
+    ],
+    "depth": "deep",
+    "audio_turns": [
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "required_terms": [
+      "五年区间"
+    ],
+    "teaching_actions": [
+      "mechanism",
+      "boundary",
+      "decision"
+    ]
+  },
+  {
+    "id": "O10.09",
+    "source_refs": [
+      "packet:S12.WHY",
+      "packet:S13.TURNAROUND"
+    ],
+    "depth": "mechanism",
+    "audio_turns": [
+      47,
+      48,
+      49,
+      50,
+      51,
+      52
+    ],
+    "required_terms": [
+      "当期供应"
+    ],
+    "teaching_actions": [
+      "mechanism",
+      "consequence"
+    ]
+  },
+  {
+    "id": "O10.10",
+    "source_refs": [
+      "packet:S12.CARRY"
+    ],
+    "depth": "summary",
+    "audio_turns": [
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "required_terms": [
+      "持有成本"
+    ],
+    "teaching_actions": [
+      "boundary",
+      "decision"
+    ]
+  }
+]

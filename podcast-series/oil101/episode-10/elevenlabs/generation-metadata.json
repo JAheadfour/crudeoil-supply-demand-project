@@ -1,0 +1,62 @@
+{
+  "episode": "10",
+  "engine": "ElevenLabs Studio",
+  "model": "eleven_v3",
+  "language": "zh-CN",
+  "authorization": {
+    "status": "authorized",
+    "basis": "User requested: 用我的oil podcast skill用eleven v3来做episode10",
+    "scope": "Episode 10 synthesis and MP3 export"
+  },
+  "projects": {
+    "raw_enhance": {
+      "project_id": "qdmMEx4da0wJb70rlWdo",
+      "chapter_id": "lxvD48QYxy1utjSxGFEs"
+    },
+    "final_audio": {
+      "project_id": "rpgibnUexDQ9Wd21sSvG",
+      "chapter_id": "fZTUvcFRPh5Yl85Jv31n",
+      "url": "https://elevenlabs.io/app/studio/rpgibnUexDQ9Wd21sSvG?chapterId=fZTUvcFRPh5Yl85Jv31n"
+    }
+  },
+  "voices": [
+    {
+      "speaker": "Shan Shan",
+      "voice_id": "ByhETIclHirOlWnWKhHc",
+      "voice_name": "Shan Shan - Young Energetic Female",
+      "turns": 30
+    },
+    {
+      "speaker": "Mr. Chen",
+      "voice_id": "cwzmKSYMCC9Aym1ymCnt",
+      "voice_name": "Mr. Chen - Trustworthy Chinese Narrator",
+      "turns": 30
+    }
+  ],
+  "enhance": {
+    "coverage": "turns 1-60 exactly once",
+    "batches": 2,
+    "raw_tagged_turns": 43,
+    "raw_lexical_changes_restored": 11,
+    "final_tagged_turns": 12,
+    "text_release_status": "PASS"
+  },
+  "export": {
+    "format": "MP3",
+    "bitrate_kbps": 192,
+    "duration": "00:13:14",
+    "bytes": 19070967,
+    "credits_before": 72016,
+    "credits_after": 68215,
+    "credits_consumed_observed": 3801,
+    "file": "../audio/Oil101-Episode10-Storage-and-Seasonality-eleven-v3.mp3",
+    "sha256": "0de92cc0c536977ae8a1c38304c96d59d305fd61d83d837e6246578d3926e722"
+  },
+  "release_gate": {
+    "status": "REVIEW",
+    "audio_integrity": "PASS",
+    "scribe_v2_transcript": "not_run_no_separate_authorization",
+    "human_ab_listen": "pending_user_review",
+    "claim": "Generated and structurally verified; not yet human-listen approved."
+  }
+}

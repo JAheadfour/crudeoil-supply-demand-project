@@ -1,0 +1,828 @@
+{
+  "title": "储罐是市场的时间机器",
+  "language": "zh-CN",
+  "episode": "10",
+  "source_packet": "../episode-10-source.md",
+  "editorial_profile": "system-narrative",
+  "profile_rationale": "本集跟随一批在炼厂检修时抵达的原油，依次经过入罐、被库存报告看见、跨过季节日历并重新进入炼厂。知识形态是多个运营角色和时间约束共同解释一次库存变化，适合让完整因果回答自然展开。",
+  "speaker_roles": {
+    "Shan Shan": "现场直觉、反例和综合判断；代表已经懂基本供需、但容易把库存数字直接翻译成涨跌信号的聪明听众。",
+    "Mr. Chen": "机制、边界和运营因果；负责沿同一批原油的旅程补全缺失环节，不占据固定教师位置。"
+  },
+  "story_rail": {
+    "object_or_decision": "一批在炼厂春季检修时抵达终端的原油",
+    "opening_intuition": "今天没有被炼厂吃掉的油，只是多余供应，放进仓库等待即可。",
+    "central_tension": "同样是库存增加，可能来自需求走弱、炼厂检修、物流受阻或为未来需求提前备货；而罐里有油也不等于它此刻可用。",
+    "closing_decision": "看到库存变化时，先问是什么油、在哪里、为什么变化、何时能重新进入市场，再判断它对当期供需意味着什么。",
+    "coverage_ids": [
+      "O10.01",
+      "O10.02",
+      "O10.03",
+      "O10.04",
+      "O10.05",
+      "O10.06",
+      "O10.07",
+      "O10.08",
+      "O10.09",
+      "O10.10"
+    ]
+  },
+  "memory_anchors": [
+    {
+      "name": "储罐水位",
+      "phrases": [
+        "储罐水位"
+      ],
+      "turns": [
+        10,
+        12,
+        44,
+        51
+      ]
+    },
+    {
+      "name": "四层日历",
+      "phrases": [
+        "四层日历"
+      ],
+      "turns": [
+        27,
+        28,
+        37,
+        48
+      ]
+    },
+    {
+      "name": "接近罐顶的窄入口",
+      "phrases": [
+        "入口越来越窄"
+      ],
+      "turns": [
+        14,
+        51
+      ]
+    }
+  ],
+  "misconception_loops": [
+    {
+      "old_model": "库存只是油暂时不动时停放的被动仓库。",
+      "contradiction": "生产、船期、炼厂运行和消费从不按同一分钟对齐，没有库存时一次时间错位就会迫使连续系统停下来。",
+      "new_model": "库存主动连接不同时间的流量，把今天暂时用不掉的桶搬到未来，也把过去留下的桶释放给今天。",
+      "save_sentence": "库存是市场的时间桥。",
+      "turns": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "old_model": "原油库存增加就必然说明终端需求崩了，因此一定是单向利空。",
+      "contradiction": "炼厂检修会暂时减少原油加工，使原油库存上升，同时成品油供应反而可能变紧。",
+      "new_model": "库存变化是结果，必须先识别产品、地点和运营原因，才能解释价格含义。",
+      "save_sentence": "先问为什么变化，再判断库存变化意味着什么。",
+      "turns": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    },
+    {
+      "old_model": "季节规律既然每年重复，就可以直接当作价格预测。",
+      "contradiction": "不同产品的季节高峰互相抵消，天气、故障和物流又会让当年偏离正常路径。",
+      "new_model": "季节性提供比较基准，新闻流决定本年度偏离基准的方向和幅度。",
+      "save_sentence": "季节性是一条基准线，不是一张预言书。",
+      "turns": [
+        35,
+        36,
+        37,
+        38
+      ]
+    }
+  ],
+  "turns": [
+    {
+      "speaker": "Shan Shan",
+      "text": "先看一批很普通的原油。星期一早上，船已经靠近终端，可旁边炼厂的一套装置正在春季检修，今天吃不下这批油。它没有消失，也不能让船永远等在港外，那它到底去了哪里？",
+      "coverage_ids": [
+        "O10.01"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[thoughtful] 它先进入储罐，也就是先从今天退到未来。储罐真正提供的不是一个静止地点，而是一段可以重新安排的时间。把这批油沿时间轴看，库存就是一座时间桥。",
+      "coverage_ids": [
+        "O10.01"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "可仓库不就是把暂时卖不掉的东西放进去吗？把储罐叫成时间机器，会不会把一个很朴素的动作说复杂了？",
+      "coverage_ids": [
+        "O10.01"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "差别在于石油系统不能随意暂停。油田持续生产，油轮按船期到港，炼厂连续运行，汽车和锅炉却按自己的节奏消费。四只钟很少同时走到一个点，库存负责把它们之间的时间差吸收掉。",
+      "coverage_ids": [
+        "O10.01"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "也就是说，如果没有储罐，问题不只是多出来的油放哪儿，而是上一个环节会被下一个环节的日程反过来卡住？",
+      "coverage_ids": [
+        "O10.01"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "没错。炼厂每天都要进料，但大型船货可能隔一段时间才来一次；终端每天都有提货，管线却按批次输送。库存把一大口到货拆成许多小口使用，也把连续生产攒成一次可以装船的批量。",
+      "coverage_ids": [
+        "O10.01"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "那今天进入库存的桶，仍然属于供应，只是没有成为今天的可消费供应。等炼厂恢复，它才重新跨过这座桥。",
+      "coverage_ids": [
+        "O10.01"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[thoughtful] 库存是市场的时间桥。它能把当期盈余搬到未来，也能把过去留下的油带回今天；但它只移动时间，不创造新的石油。",
+      "coverage_ids": [
+        "O10.01"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "现在这批油获准入罐。我的第一反应是看罐子还空多少，只要外壳没装满，就总能再塞一点。",
+      "coverage_ids": [
+        "O10.02"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "先把第一幅画面立起来：储罐水位。它看着像浴缸里的水线，可罐底有抽不干净的残余，管口和泵也有安全边界，所以外壳容积不等于真正能周转的空间。",
+      "coverage_ids": [
+        "O10.02"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "新闻说一座罐区接近装满时，分母究竟是什么？是钢板围出来的全部体积，还是运营人员实际能够注入和提取的那一段？",
+      "coverage_ids": [
+        "O10.02"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "市场更关心工作容量，也就是扣除罐底残余和操作限制后可用的部分。接近工作上限，表示新增一桶的安置难度正在上升，不是还剩一条均匀、随时可用的空白。",
+      "coverage_ids": [
+        "O10.02"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "所以总容量看着很大，也可能只剩零散空间：这个罐的品质不合适，那个罐已经租给别人，还有一只罐虽然能进，却接不到炼厂需要的出口。",
+      "coverage_ids": [
+        "O10.02"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[thoughtful] 这就是第三幅画面：水位越接近罐顶，入口越来越窄。最后的空间往往附带更多地点、品质、权利和流向条件，不能把全地区的空罐容简单加成一个共同水池。",
+      "coverage_ids": [
+        "O10.02"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "那所有被统计成库存的油，流动性也不一样吧？地上罐里的原油、管线里的油、盐穴里的油和停在海上的船货，不能只看桶数。",
+      "coverage_ids": [
+        "O10.03"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "要按任务看。炼厂罐区负责把到货节奏和加工节奏接起来；商业终端给不同公司周转和调和；盐穴适合大体量保存；船货可以等待新的卸货时点。每一种库存都在解决不同的时间和地点问题。",
+      "coverage_ids": [
+        "O10.03"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "管线充填更特别。那部分油真实存在，却是让整条管线保持运行所必需的油，不能因为账面短缺就随手把它抽空。",
+      "coverage_ids": [
+        "O10.03"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[thoughtful] 所以看到一个大库存数字，先别把它想成一排可以同时打开的水龙头。库存是否有用，要同时回答四件事：它在哪里、是什么品质、谁有权动、能通过哪条出口及时送走。",
+      "coverage_ids": [
+        "O10.03"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "回到我们的船货。它进入与炼厂相连的原油罐，品质也能进入那套装置，终端还有可用罐权。这样它才算真正获得了跨时间的通行证。",
+      "coverage_ids": [
+        "O10.03"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "还要分清持有动机。现在是运营库存，为了让装置检修和船期不互相撞车；政府应急库存是另一种任务；交易商为未来价差持有油又是第三种任务。同样一桶油，决策逻辑可以完全不同。",
+      "coverage_ids": [
+        "O10.03"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "第二天，库存报告显示原油库存增加。市场上最顺手的翻译是：油卖不动，需求很差，所以价格应该下跌。这个翻译错在哪儿？",
+      "coverage_ids": [
+        "O10.04"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[thoughtful] 它把结果当成了原因。库存等于过去流入减去过去流出后的存量。流入增加会让库存涨，流出减少也会让库存涨；两种变化背后的市场含义不一定相同。",
+      "coverage_ids": [
+        "O10.04"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "这次流出为什么少？是司机突然不加油了，还是炼厂正在检修，暂时少买原油？",
+      "coverage_ids": [
+        "O10.04"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "故事里是第二种。炼厂检修让原油加工量下降，船和管线来的油却不会瞬间停下，于是原油在炼厂上游积起来。与此同时，炼厂少生产汽油和柴油，成品油那一侧反而可能变紧。",
+      "coverage_ids": [
+        "O10.04"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "同一天完全可能出现原油库存上升、成品油库存下降。前者不是终端需求崩溃的直接证据，而是炼厂这道门暂时收窄了。",
+      "coverage_ids": [
+        "O10.04"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "先问为什么变化，再判断库存变化意味着什么。产品、地点和运营原因没有对上之前，单独一个正负号还不是完整的供需结论。",
+      "coverage_ids": [
+        "O10.04"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "[surprised] 可炼厂为什么偏偏现在检修？这是不是第二幅画面，也就是你说的四层日历开始发挥作用？",
+      "coverage_ids": [
+        "O10.05"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "把四层日历叠在一起：夏天有驾驶需求，冬天有取暖需求，春秋夹缝适合炼厂维护，夏末到秋季还叠着飓风风险。炼厂要在需求高峰之间寻找停机窗口。",
+      "coverage_ids": [
+        "O10.05"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "为什么驾驶季和取暖季不能直接合成一个全年高峰？反正最后都要消耗石油产品。",
+      "coverage_ids": [
+        "O10.05",
+        "O10.06"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "因为它们拉动的是不同产品，也要求炼厂提前准备不同产出。夏季更多拉动汽油，寒冷冬季更多拉动取暖燃料和其他中间馏分。需求接力，而不是所有产品同时冲到顶点。",
+      "coverage_ids": [
+        "O10.05",
+        "O10.06"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "炼厂检修就被安排在两个高峰之间。它不是随机故障，而是把必须做的检查、清洁和更换尽量放到需求较弱的肩部月份。",
+      "coverage_ids": [
+        "O10.05",
+        "O10.06"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "而这会把季节信号传回原油端。检修期间原油加工下降，原油库存容易积累；装置恢复后，炼厂为下一轮产品需求提高运行，之前存下的原油再被抽走。",
+      "coverage_ids": [
+        "O10.05",
+        "O10.06"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "那飓风这一层为什么麻烦？它听起来更像一次突发新闻，而不是日历。",
+      "coverage_ids": [
+        "O10.05"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "风险窗口每年会回来，但落点不确定。风暴打到海上生产，可能减少原油供应；打到炼厂，可能降低原油需求却收紧汽油供应；打到港口和管线，又会把问题变成物流延迟。同一个天气词可以击中不同环节。",
+      "coverage_ids": [
+        "O10.05"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "既然产品需求这么有季节性，为什么原油价格和需求反而没有一条同样清楚的夏高冬低曲线？",
+      "coverage_ids": [
+        "O10.06",
+        "O10.07"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "因为夏季汽油、冬季取暖燃料和肩部炼厂检修不是同方向叠加。炼厂还会调整产品组合。把这些变化重新汇总到原油这一层，许多峰谷会互相抵消，所以产品季节性通常比原油更鲜明。",
+      "coverage_ids": [
+        "O10.06",
+        "O10.07"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "季节性是一条基准线，不是一张预言书。四层日历告诉我正常年份大概往哪儿走，却不能告诉我今年的天气、故障和消费一定照剧本出现。",
+      "coverage_ids": [
+        "O10.07"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[thoughtful] 真正有价值的是偏离。先画出正常日历，再问今年为什么高于或低于基准线。这样季节性不是替你下注，而是帮你把新闻放进正确坐标。",
+      "coverage_ids": [
+        "O10.07"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "现在每周库存报告出来了。只看本周比上周多还是少，为什么还不够？",
+      "coverage_ids": [
+        "O10.08"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "因为一周是噪声很大的切片。船货到港时点、管线批次、炼厂开停和统计边界都会让数字跳动。先确认这是原油、汽油还是馏分油，再看发生在哪个地区，信息才开始成形。",
+      "coverage_ids": [
+        "O10.08"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "然后把这周放进五年区间？那条带状范围究竟帮我排除了什么误解？",
+      "coverage_ids": [
+        "O10.08"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "五年区间让同一周与过去几个正常年份的相同季节位置比较。春季原油累库也许是常见检修节奏；如果库存路径明显冲出历史范围，才更值得追问是异常流入、需求损失还是物流堵塞。",
+      "coverage_ids": [
+        "O10.08"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "库存是一个水位，不是一条流量。水位上升只说明这段时间流入大于流出，却没有单独告诉我是哪一边变了。",
+      "coverage_ids": [
+        "O10.08"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "沿用储罐水位就够了。同样上升一格，可能是进水更快，也可能是出水更慢。库存报告给结果，炼厂运行、进口、出口、产品需求和天气才帮助解释阀门为何变化。",
+      "coverage_ids": [
+        "O10.08"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "那读报告时最值得先问的三件事是什么？我不想再拿一个库存正负号直接猜涨跌。",
+      "coverage_ids": [
+        "O10.08"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[thoughtful] 先问是什么油、在哪个地点；再问变化来自流入还是流出；最后把它放回五年区间和四层日历。三步做完，库存才从一个数字变成一段可以解释的运营故事。",
+      "coverage_ids": [
+        "O10.08"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "几周后检修结束，夏季驾驶需求临近。我们那批油接下来发生什么？",
+      "coverage_ids": [
+        "O10.09"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "四层日历翻到下一页。炼厂重新开高负荷，从相连的罐区提取原油，转成市场需要的汽油和其他产品。此前的库存增加开始反向运行，原油水位回落。",
+      "coverage_ids": [
+        "O10.09"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "过去的盈余于是变成当期供应。它没有增加全年的石油总量，却让市场不必等下一艘船，时间桥开始从另一端放行。",
+      "coverage_ids": [
+        "O10.09"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "这也解释了库存为什么能缓冲冲击。需求突然抬升或到货推迟时，系统可以先提取过去储存的桶；但每提取一次，未来缓冲就少一点，所以库存只能购买时间，不能永久替代新供应。",
+      "coverage_ids": [
+        "O10.09"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "[surprised] 反过来，如果炼厂仍没恢复，而储罐水位已经逼近工作上限，会发生什么？",
+      "coverage_ids": [
+        "O10.09"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "入口越来越窄。终端可能提高安置成本，远处原油即使充足也进不来，卖方必须寻找别的罐、别的出口或推迟生产。此时价格反映的不只是全球有没有油，而是这批油此刻还有没有地方和时间可去。",
+      "coverage_ids": [
+        "O10.09"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "[questioning] 还有一种说法：只要未来卖价比今天高，就把油存起来。这和我们的运营故事是什么关系？",
+      "coverage_ids": [
+        "O10.10"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "那是商业持有的边界。未来价格多出来的部分必须覆盖完整持有成本，包括储罐、资金、保险和损耗，储油才有经济意义。这里先记住门槛，期货曲线怎么形成留给后面的节目。",
+      "coverage_ids": [
+        "O10.10"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "所以储存本身不是免费的供应魔法。有人必须支付空间和资金，而且油被放在错误地点、错误品质或错误出口旁边时，账面库存也救不了眼前的短缺？",
+      "coverage_ids": [
+        "O10.10"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[thoughtful] 正是这个边界。库存能跨时间，不能无视空间、品质和通道；能缓冲错位，不能凭空补充耗尽的桶。把它理解成时间桥，比理解成无限仓库更接近真实市场。",
+      "coverage_ids": [
+        "O10.10"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "以后看到库存大增，我应该先问：这是原油还是产品，发生在哪里，为什么进出不平衡，以及它在正常季节路径的什么位置？",
+      "coverage_ids": [
+        "O10.10"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "[questioning] 再补一问：这部分库存何时、通过什么通道，能重新成为可用供应？如果答案含糊，那个巨大的桶数就可能只是看上去安心。",
+      "coverage_ids": [
+        "O10.10"
+      ]
+    },
+    {
+      "speaker": "Shan Shan",
+      "text": "回到星期一的那艘船。它不是被市场遗忘，而是在炼厂检修、夏季需求和罐区容量之间，买到了一段等待时间。",
+      "coverage_ids": [
+        "O10.10"
+      ]
+    },
+    {
+      "speaker": "Mr. Chen",
+      "text": "而市场真正交易的，常常就是这段时间值多少钱。看懂库存，不是背诵今天多了几桶，而是看见一批油如何从今天退到未来，又在需要它的时候重新走回来。",
+      "coverage_ids": [
+        "O10.10"
+      ]
+    }
+  ],
+  "coverage_ledger": [
+    {
+      "id": "O10.01",
+      "source_refs": [
+        "packet:S12.WHY",
+        "packet:S12.MOTIVES"
+      ],
+      "depth": "deep",
+      "audio_turns": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "required_terms": [
+        "时间桥"
+      ],
+      "teaching_actions": [
+        "mechanism",
+        "boundary",
+        "consequence"
+      ]
+    },
+    {
+      "id": "O10.02",
+      "source_refs": [
+        "packet:S12.WORKING"
+      ],
+      "depth": "mechanism",
+      "audio_turns": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "required_terms": [
+        "工作容量"
+      ],
+      "teaching_actions": [
+        "mechanism",
+        "boundary"
+      ]
+    },
+    {
+      "id": "O10.03",
+      "source_refs": [
+        "packet:S12.CATEGORIES",
+        "packet:S12.HUB"
+      ],
+      "depth": "contrast",
+      "audio_turns": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "required_terms": [
+        "管线充填"
+      ],
+      "teaching_actions": [
+        "contrast",
+        "decision"
+      ]
+    },
+    {
+      "id": "O10.04",
+      "source_refs": [
+        "packet:S12.REPORT",
+        "packet:S13.TURNAROUND"
+      ],
+      "depth": "deep",
+      "audio_turns": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "required_terms": [
+        "库存增加"
+      ],
+      "teaching_actions": [
+        "mechanism",
+        "contrast",
+        "decision"
+      ]
+    },
+    {
+      "id": "O10.05",
+      "source_refs": [
+        "packet:S13.CALENDARS",
+        "packet:S13.WEATHER"
+      ],
+      "depth": "mechanism",
+      "audio_turns": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "required_terms": [
+        "四层日历"
+      ],
+      "teaching_actions": [
+        "mechanism",
+        "boundary"
+      ]
+    },
+    {
+      "id": "O10.06",
+      "source_refs": [
+        "packet:S13.PRODUCTS",
+        "packet:S13.TURNAROUND",
+        "packet:S13.CANCEL"
+      ],
+      "depth": "deep",
+      "audio_turns": [
+        29,
+        30,
+        31,
+        32,
+        35,
+        36
+      ],
+      "required_terms": [
+        "炼厂检修"
+      ],
+      "teaching_actions": [
+        "mechanism",
+        "contrast",
+        "consequence"
+      ]
+    },
+    {
+      "id": "O10.07",
+      "source_refs": [
+        "packet:S13.BASELINE"
+      ],
+      "depth": "contrast",
+      "audio_turns": [
+        35,
+        36,
+        37,
+        38
+      ],
+      "required_terms": [
+        "基准线"
+      ],
+      "teaching_actions": [
+        "contrast",
+        "decision"
+      ]
+    },
+    {
+      "id": "O10.08",
+      "source_refs": [
+        "packet:S12.REPORT"
+      ],
+      "depth": "deep",
+      "audio_turns": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "required_terms": [
+        "五年区间"
+      ],
+      "teaching_actions": [
+        "mechanism",
+        "boundary",
+        "decision"
+      ]
+    },
+    {
+      "id": "O10.09",
+      "source_refs": [
+        "packet:S12.WHY",
+        "packet:S13.TURNAROUND"
+      ],
+      "depth": "mechanism",
+      "audio_turns": [
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "required_terms": [
+        "当期供应"
+      ],
+      "teaching_actions": [
+        "mechanism",
+        "consequence"
+      ]
+    },
+    {
+      "id": "O10.10",
+      "source_refs": [
+        "packet:S12.CARRY"
+      ],
+      "depth": "summary",
+      "audio_turns": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "required_terms": [
+        "持有成本"
+      ],
+      "teaching_actions": [
+        "boundary",
+        "decision"
+      ]
+    }
+  ],
+  "protected_terms": [
+    "工作容量",
+    "管线充填",
+    "五年区间",
+    "持有成本"
+  ],
+  "pronunciation_map": {
+    "items": []
+  },
+  "spoken_arithmetic_budget": [],
+  "closing_questions": [
+    "这是什么油，库存发生在哪里？",
+    "变化来自流入增加还是流出减少，背后的运营原因是什么？",
+    "这些桶何时通过什么通道重新成为可用供应？"
+  ],
+  "show_notes": {
+    "source_urls": [
+      "https://oil101.morgandowney.com/chapters/storage",
+      "https://oil101.morgandowney.com/chapters/seasonality"
+    ],
+    "excluded_precision": "月份表、库存规模、战略储备数字和持有成本报价保留在 source packet，不进入口播。"
+  },
+  "status": "studio-enhance-curated",
+  "delivery_enhancement": {
+    "model": "eleven_v3",
+    "policy": "Restore canonical words and retain sparse Enhance cues only at stance changes.",
+    "tagged_turns": [
+      2,
+      8,
+      14,
+      18,
+      22,
+      27,
+      38,
+      46,
+      51,
+      53,
+      56,
+      58
+    ],
+    "kept_tag_counts": {
+      "thoughtful": 8,
+      "surprised": 2,
+      "questioning": 2
+    },
+    "discarded_tag_counts": {
+      "thoughtful": 3,
+      "annoyed": 2,
+      "thinking": 1,
+      "sighs": 1,
+      "calm": 1
+    }
+  }
+}

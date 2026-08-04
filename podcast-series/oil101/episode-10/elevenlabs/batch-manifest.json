@@ -1,0 +1,39 @@
+{
+  "status": "complete",
+  "script": "C:\\Users\\justi\\OneDrive\\Documents\\oil\\podcast-series\\oil101\\episode-10\\frozen\\canonical.json",
+  "turns": 60,
+  "max_turns": 40,
+  "max_characters": 3000,
+  "batches": [
+    {
+      "batch": 1,
+      "start_turn": 1,
+      "end_turn": 40,
+      "turn_count": 40,
+      "spoken_characters": 2433,
+      "start_text_sha256": "12ff4fe0aac1ec300f47d726a73a6898d7e2da795ba38c154857b5b5d5f63440",
+      "end_text_sha256": "ba3562d94f6492e5d622353ddc00904cb28d7bf978ac007fa5945115e1fa75b3",
+      "status": "completed",
+      "completed_at_utc": "2026-08-04T17:34:37.066970+00:00",
+      "selected_count": 40,
+      "observed_turn_count": 60,
+      "model": "eleven_v3",
+      "evidence": "podcast-series/oil101/episode-10/elevenlabs/enhance-batch-01-evidence.md"
+    },
+    {
+      "batch": 2,
+      "start_turn": 41,
+      "end_turn": 60,
+      "turn_count": 20,
+      "spoken_characters": 1164,
+      "start_text_sha256": "048dea90b01e63b9fa5d02d0945e7172e58710412dab076d427a3333270da4a1",
+      "end_text_sha256": "2e2152b11f1499c3f35fe9acb078c406dead97e83a3bb145c0f8ffd37657c2af",
+      "status": "completed",
+      "completed_at_utc": "2026-08-04T17:35:25.817974+00:00",
+      "selected_count": 20,
+      "observed_turn_count": 60,
+      "model": "eleven_v3",
+      "evidence": "podcast-series/oil101/episode-10/elevenlabs/enhance-batch-02-evidence.md"
+    }
+  ]
+}

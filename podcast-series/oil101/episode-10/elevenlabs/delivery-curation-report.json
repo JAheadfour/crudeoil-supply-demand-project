@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "turns": 60,
+  "tagged_turns": [
+    2,
+    8,
+    14,
+    18,
+    22,
+    27,
+    38,
+    46,
+    51,
+    53,
+    56,
+    58
+  ],
+  "tag_count": 12,
+  "kept_tag_counts": {
+    "thoughtful": 8,
+    "surprised": 2,
+    "questioning": 2
+  },
+  "spoken_word_mismatches_after_removing_tags": []
+}

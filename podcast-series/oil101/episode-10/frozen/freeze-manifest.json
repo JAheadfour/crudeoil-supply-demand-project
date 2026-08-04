@@ -1,0 +1,31 @@
+{
+  "status": "frozen",
+  "created_at_utc": "2026-08-04T17:27:22.664834+00:00",
+  "source_script": "C:\\Users\\justi\\OneDrive\\Documents\\oil\\podcast-series\\oil101\\episode-10\\author\\candidate.json",
+  "source_report": "C:\\Users\\justi\\OneDrive\\Documents\\oil\\podcast-series\\oil101\\episode-10\\author\\author-report.json",
+  "editorial_profile": "system-narrative",
+  "turns": 60,
+  "files": {
+    "canonical.json": {
+      "sha256": "21a50d487f86517fab766f01eeb910d921d652e9b481bb3d030a6beb55560bb5",
+      "bytes": 25899
+    },
+    "canonical.md": {
+      "sha256": "6b2b2c979ed5e2b7655cd158d80a298b3c3ba861f34cd316d2cf412235b4e335",
+      "bytes": 11985
+    },
+    "coverage-ledger.json": {
+      "sha256": "b1ac4054ba01bb480beaa7db3a64ab42b4b46d74fa866de06ae00b0dbb4c9f14",
+      "bytes": 3467
+    },
+    "pronunciation-map.json": {
+      "sha256": "0343639fac1511a32a4c9a92c7655a6e9f9ad3a600fc6f30b5bdad6806160a97",
+      "bytes": 18
+    },
+    "author-report.json": {
+      "sha256": "49f8326379f04726fe04137ce69052baaad60acc25b4799d4a93a5d9cc0d2a25",
+      "bytes": 692
+    }
+  },
+  "canonical_sha256": "21a50d487f86517fab766f01eeb910d921d652e9b481bb3d030a6beb55560bb5"
+}

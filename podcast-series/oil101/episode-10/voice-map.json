@@ -1,0 +1,15 @@
+{
+  "selection_source": "Existing FRM long-form ElevenLabs v3 production pair",
+  "speakers": {
+    "Shan Shan": {
+      "voice_id": "ByhETIclHirOlWnWKhHc",
+      "voice_name": "Shan Shan - Young Energetic Female",
+      "role": "现场直觉、反例和综合判断"
+    },
+    "Mr. Chen": {
+      "voice_id": "cwzmKSYMCC9Aym1ymCnt",
+      "voice_name": "Mr. Chen - Trustworthy Chinese Narrator",
+      "role": "机制、边界和运营因果"
+    }
+  }
+}
