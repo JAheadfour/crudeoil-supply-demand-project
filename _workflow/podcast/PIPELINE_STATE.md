@@ -1,6 +1,6 @@
 # Oil 101 Podcast Pipeline State
 
-Updated: 2026-08-03
+Updated: 2026-08-04
 
 ## North star
 
@@ -47,6 +47,12 @@ Updated: 2026-08-03
 - [x] Regenerate Episode 04 after deleting the rejected Korean output
 - [x] Resume Episode 05 after the daily allowance returned
 - [x] Build Episode 06 directly from the original refining chapter and submit it
+- [x] Confirm Episode 06 completed in Simplified Chinese at 20:30
+- [x] Build Episodes 07-09 directly from original Chapters 8-11
+- [x] Submit Episodes 07-09 after Simplified-Chinese preflight checks
+- [x] Confirm Episode 07 completed in Simplified Chinese at 19:29
+- [x] Confirm Episode 08 completed in Simplified Chinese at 11:46
+- [x] Confirm Episode 09 completed in Simplified Chinese at 17:59
 - [ ] Download and listen-review Episodes 02-03
 - [ ] Download and listen-review Episodes 04-06
 
@@ -60,11 +66,16 @@ repetition is the mandatory repair for every later episode.
 
 The complete series contains 19 core episodes plus two appendix shorts. Design
 work is complete in `podcast-series/oil101/SERIES_PLAN.md`,
-`EPISODE_BLUEPRINTS_V2.md`, and `episode-map-v2.json`. On 2026-08-03, the daily
-allowance returned. Episode 04 was regenerated in Simplified Chinese and is ready
-at 17:58; Episode 05 is ready in Simplified Chinese at 13:39. Episode 06 was built
-directly from the original refining chapter and submitted after all four preflight
-checks passed; NotebookLM is still generating it. These outputs remain pending
-listening review, so they are not yet qualified as final-quality releases. The next
-production action is to finish Episode 06, then download and listen-review Episodes
-04-06 against the Episode 01 V2 benchmark. Do not use fallback TTS.
+`EPISODE_BLUEPRINTS_V2.md`, and `episode-map-v2.json`. Episode 06 completed in
+Simplified Chinese at 20:30 and remains pending listening review because it exceeds
+the duration target. On 2026-08-04, the rolling allowance restored three Audio
+Overview slots. Episodes 07, 08, and 09 were rebuilt directly from the original
+Standards, Finished Products, Petrochemicals, Components, and Transporting Oil
+pages. All three passed the Simplified-Chinese, explicit-language-constraint, Deep
+Dive, and Default-length preflight checks and were accepted into generation without
+a quota error. All three completed in Simplified Chinese: Episode 07 is `同名汽油为何不能互换`
+at 19:29, Episode 08 is `蒸汽裂解出的石化积木` at 11:46, and Episode 09 is
+`为什么有油你却加不到` at 17:59. All remain pending listening review; Episode 08
+is 14 seconds under the target window, while Episodes 07 and 09 exceed it. Today's
+three slots are now consumed. The next production action is to listen-review Episodes
+04-09 against the Episode 01 V2 benchmark. Do not use fallback TTS.

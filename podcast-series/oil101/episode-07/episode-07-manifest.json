@@ -1,7 +1,7 @@
 {
   "series": "oil101-chinese-deep-dive",
-  "episode": "06",
-  "working_title": "炼厂不是一个大过滤器",
+  "episode": "07",
+  "working_title": "汽油不是一种液体",
   "status": "notebooklm_ready_pending_listen_review",
   "language": "zh-CN",
   "format": "notebooklm-two-host-deep-dive",
@@ -10,7 +10,8 @@
     "max": 15
   },
   "primary_sources": [
-    "https://oil101.morgandowney.com/chapters/refining"
+    "https://oil101.morgandowney.com/chapters/standards",
+    "https://oil101.morgandowney.com/chapters/finished-products"
   ],
   "supporting_sources": [],
   "content_contract": {
@@ -22,27 +23,27 @@
     "standalone_recaps": 0,
     "maximum_full_claim_expressions": 2,
     "maximum_hard_number_anchors": 0,
-    "maximum_english_terms": 9
+    "maximum_english_terms": 6
   },
-  "source_packet": "episode-06-source.md",
-  "generation_prompt": "episode-06-notebooklm-prompt.md",
-  "source_packet_characters": 2551,
-  "generation_prompt_characters": 1498,
+  "source_packet": "episode-07-source.md",
+  "generation_prompt": "episode-07-notebooklm-prompt.md",
+  "source_packet_characters": 2428,
+  "generation_prompt_characters": 1251,
   "sha256": {
-    "source_packet": "73080FF0E2F3DBFB61B42CF7CD4D2B4DD1698FF00FB0BB68723127EE02C9F2E4",
-    "generation_prompt": "CD084F28229800E882FEA26F918DBFCE51D4FE27D1FB1917C7AC26E75FF208AC",
+    "source_packet": "B4D0C5DA26515A0711711262B1D9B6F2141BB6FD4CB2B1208820EF3FD3C68A29",
+    "generation_prompt": "75C9B6ADC36D6FCD350CDB4E6CEBE4B2C3A24738E7D6DFED3CBBFB5A3575808A",
     "audio": null
   },
   "notebooklm": {
-    "notebook_url": "https://notebook.google.com/notebook/28098073-230a-4df4-aedd-e5674ea32dfa",
+    "notebook_url": "https://notebook.google.com/notebook/53e2aac7-4b06-4944-a3da-72757b158694",
     "format": "Deep Dive",
     "language": "中文（简体）",
     "length": "Default",
     "generation_result": "ready",
-    "submitted_at": "2026-08-03T11:16:00-04:00",
+    "submitted_at": "2026-08-04T12:07:00-04:00",
     "retry_language_verified": "中文（简体）",
-    "audio_title": "炼油厂如何重组分子",
-    "duration": "20:30"
+    "audio_title": "同名汽油为何不能互换",
+    "duration": "19:29"
   },
   "outputs": {
     "audio": null,

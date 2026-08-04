@@ -1,0 +1,54 @@
+{
+  "series": "oil101-chinese-deep-dive",
+  "episode": "08",
+  "working_title": "石油需求不只在油箱里",
+  "status": "notebooklm_ready_pending_listen_review",
+  "language": "zh-CN",
+  "format": "notebooklm-two-host-deep-dive",
+  "target_duration_minutes": {
+    "min": 12,
+    "max": 15
+  },
+  "primary_sources": [
+    "https://oil101.morgandowney.com/chapters/petrochemicals"
+  ],
+  "supporting_sources": [
+    "https://oil101.morgandowney.com/chapters/components"
+  ],
+  "content_contract": {
+    "central_claims": 1,
+    "mental_images": 3,
+    "calculations": 0,
+    "quizzes": 0,
+    "active_recall_pauses": 0,
+    "standalone_recaps": 0,
+    "maximum_full_claim_expressions": 2,
+    "maximum_hard_number_anchors": 0,
+    "maximum_english_terms": 6
+  },
+  "source_packet": "episode-08-source.md",
+  "generation_prompt": "episode-08-notebooklm-prompt.md",
+  "source_packet_characters": 2400,
+  "generation_prompt_characters": 1224,
+  "sha256": {
+    "source_packet": "FF5DD2E275C755CB38AB1489857860A0742A19EE7117DFB152909C5E2F683AAE",
+    "generation_prompt": "35BC3C5522BEF462E3494789A8CDC6AD55D71BCFBEB5E806EF384CF8A9DA340C",
+    "audio": null
+  },
+  "notebooklm": {
+    "notebook_url": "https://notebook.google.com/notebook/c9cd11df-dcc0-4c19-80d2-e01d24f540c1",
+    "format": "Deep Dive",
+    "language": "中文（简体）",
+    "length": "Default",
+    "generation_result": "ready",
+    "submitted_at": "2026-08-04T12:09:00-04:00",
+    "retry_language_verified": "中文（简体）",
+    "audio_title": "蒸汽裂解出的石化积木",
+    "duration": "11:46"
+  },
+  "outputs": {
+    "audio": null,
+    "audit": null,
+    "site_url": null
+  }
+}
